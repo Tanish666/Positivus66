@@ -1,342 +1,1196 @@
 'use client'
-import {motion, useScroll, useTransform} from 'framer-motion'
-import { IconArrowNarrowRight } from "@tabler/icons-react";
-import FlipCard from '@/components/ui/flip-card'
-import { MorphingText } from '@/components/ui/morphingText'
-import { TextHoverEffect } from '@/components/ui/text-hover-effect'
-import { TextReveal } from '@/components/ui/TextReveal'
-import { Raleway,Inter } from 'next/font/google'
-import React, { useRef,useEffect,useState,useId } from 'react'
-import { RetroGrid } from '@/components/ui/retrogrid'
+import React, { useEffect, useState,useRef } from 'react'
+import { IconHome, IconMessage, IconUser } from "@tabler/icons-react";
+import { FloatingNav } from '@/components/ui/floating-navbar';
+import { IconArrowLeft,IconArrowRight,IconArrowBadgeDown } from '@tabler/icons-react';
+import {AnimatePresence, motion,useMotionValueEvent,useScroll,useTransform} from 'framer-motion'
 import { TextAnimate } from '@/components/ui/textAnimate'
-import { BackgroundGradient } from '@/components/ui/background-gradient'
-import CommentReplyCard from '@/components/ui/comment-reply-card';
-import { AnimatedTooltip } from '@/components/ui/animated-tooltip';
+import MagicBento from '@/components/ui/magicBento';
+import Lenis from 'lenis'
+import { Montserrat } from 'next/font/google';
+import CodeEditor from '@/components/motion-components/editor'
+import { LoaderFive, LoaderOne } from '@/components/ui/loader';
+import { TypingAnimation,AnimatedSpan } from '@/components/ui/terminal';
+import { ProgressiveBlur } from '@/components/ui/blurBT';
+import { X } from 'lucide-react';
+import { Safari } from '@/components/mockups/safari';
 
-interface CarouselProps {
-  slides: SlideData[];
-}
-
-interface SlideData {
-  title: string;
-  button: string;
-  src: string;
-}
- 
-interface CarouselControlProps {
-  type: string;
-  title: string;
-  handleClick: () => void;
-}
-
-interface SlideProps {
-  index: number;
-  current: number;
-  image:string,
-  link:string,
-  bio:string;
-  salary:string,
-  title:string,
-  companyLogo:string,
-  description:string,
-  subtitle:string,
-  handleSlideClick: (index: number) => void;
-  
-}
-
-const inter = Inter({
+const montserrat = Montserrat({
   subsets: ['latin'],
-  display: 'swap', // optional
-  variable: '--font-inter', // optional, for CSS variable usage
+  weight: ['400', '500', '600', '700'], // Add what you need
+  variable: '--font-montserrat', // Optional, for CSS variable usage
+});
+
+const montserrat2 = Montserrat({
+  subsets: ['latin'],
+  weight: ['200'], // Add what you need
+  variable: '--font-montserrat', // Optional, for CSS variable usage
 });
 
 
 function Page() {
-    const heroRef = useRef<HTMLDivElement>(null);
-    const bannerRef = useRef<HTMLDivElement>(null);
-    const {scrollYProgress} = useScroll({
-      target:heroRef,
-      offset:['start start','end start']
-    })
+  const brokenComponent = [
+  { code: "import React from 'react'", isError: false },
+  { code: "", isError: false },
+  { code: "type Props = {", isError: false },
+  { code: "  name: string", isError: false },
+  { code: "}", isError: false },
+  { code: "", isError: false },
+  { code: "export const ErrorComp: React.FC<Props> = ({ name }) => {", isError: false },
+  { code: "  const [count, setCount]: number = useState(0)", isError: true }, // ❌ incorrect type annotation + useState not imported
+  { code: "", isError: false },
+  { code: "  useEffect(() => {", isError: true }, // ❌ useEffect not imported
+  { code: "    console.logg('Name is:', name)", isError: true }, // ❌ typo `logg`
+  { code: "  }, [nam])", isError: true }, // ❌ `nam` is not defined
+  { code: "", isError: false },
+  { code: "  return (", isError: false },
+  { code: "    <div>", isError: false },
+  { code: "      <h1>Hello, {namee}</h1>", isError: true }, // ❌ `namee` is a typo
+  { code: "      <button onClick={() => setCount(cn => cn + 1)}>Click</buttn>", isError: true }, // ❌ `buttn` typo
+  { code: "      <p>Count: {countt}</p>", isError: true }, // ❌ `countt` is a typo
+  { code: "    </div>", isError: false },
+  { code: "  )", isError: true }, // ❌ return not wrapped in fragment or single parent (could error in strict JSX)
+  { code: "}", isError: false },
+]
 
-
-     const salary1 = {
-        src: "https://cdn.techkareer.com/success-stories/manan.jpeg",
-        title: "Manan Adhikari",
-        category: "Product Designer (Contract)",
-        companyLogo: "https://cdn.techkareer.com/success-stories/Luppa.jpeg",
-        companyName: "Luppa",
-          bio: "4.0 YOE, Ex Silver, HackerRank, Innovacer, and more.",
-        linkedin: "https://linkedin.com/in/mananadhikari",
-        salaryRange: "20-40 LPA",
-        content: null,
-     }
-
-
-
-     const people = [
-  {
-    id: 1,
-    name: "John Doe",
-    designation: "Software Engineer",
-    image:
-      "https://cdn.techkareer.com/success-stories/Debabrata.jpeg",
-  },
-  {
-    id: 2,
-    name: "Robert Johnson",
-    designation: "Product Manager",
-    image:
-      "https://cdn.techkareer.com/success-stories/akshat.jpeg",
-  },
-  {
-    id: 3,
-    name: "Jane Smith",
-    designation: "Data Scientist",
-    image:
-      "https://cdn.techkareer.com/success-stories/Sahil.jpeg",
-  },
-  {
-    id: 4,
-    name: "Emily Davis",
-    designation: "UX Designer",
-    image:
-     "https://cdn.techkareer.com/success-stories/jignesh.jpeg",
-  },
-  {
-    id: 5,
-    name: "Tyler Durden",
-    designation: "Soap Developer",
-    image:
-  "https://cdn.techkareer.com/success-stories/prakher.jpeg",
-  },
-  {
-    id: 6,
-    name: "Dora",
-    designation: "The Explorer",
-    image:
-"https://cdn.techkareer.com/success-stories/Tushar.jpeg",
-  },
+const fixedComponent = [
+  { code: "import React, { useState, useEffect } from 'react'", isError: false },
+  { code: "", isError: false },
+  { code: "type Props = {", isError: false },
+  { code: "  name: string", isError: false },
+  { code: "}", isError: false },
+  { code: "", isError: false },
+  { code: "export const ErrorComp: React.FC<Props> = ({ name }) => {", isError: false },
+  { code: "  const [count, setCount] = useState(0)", isError: true },
+  { code: "", isError: false },
+  { code: "  useEffect(() => {", isError: true },
+  { code: "    console.log('Name is:', name)", isError: true },
+  { code: "  }, [name])", isError: true },
+  { code: "", isError: false },
+  { code: "  return (", isError: false },
+  { code: "    <div>", isError: false },
+  { code: "      <h1>Hello, {name}</h1>", isError: true },
+  { code: "      <button onClick={() => setCount(cn => cn + 1)}>Click</button>", isError: true },
+  { code: "      <p>Count: {count}</p>", isError: true },
+  { code: "    </div>", isError: false },
+  { code: "  )", isError: true },
+  { code: "}", isError: false },
 ];
-   
-     function handleBanner(){
-      bannerRef?.current?.classList.add("hidden") 
+
+ const navItems = [
+    {
+      name: "Home",
+      link: "/",
+      icon: <IconHome className="h-4 w-4 text-neutral-500 dark:text-white" />,
+    },
+    {
+      name: "About",
+      link: "/about",
+      icon: <IconUser className="h-4 w-4 text-neutral-500 dark:text-white" />,
+    },
+    {
+      name: "Contact",
+      link: "/contact",
+      icon: (
+        <IconMessage className="h-4 w-4 text-neutral-500 dark:text-white" />
+      ),
+    },
+  ];
+  const heroRef = useRef(null);
+  const [d,setD] = useState(false); 
+  const [r,setR] = useState(false);
+  const [a,setA] = useState(false);
+  const [isP1,setIsP1] = useState(false);
+  const [isP2,setIsP2] = useState(false);
+  const [isShowProd,setIsShowProd] = useState(true);
+  const [isProds , setIsProds] = useState(false);
+  const [isFix,setIsFix] = useState(false);
+  const [isRef1,setIsRef1] = useState(false);
+  const [isRef2,setIsRef2] = useState(false);
+  const [isRef3,setIsRef3] = useState(false);
+  const feature1Ref = useRef<HTMLDivElement>(null);
+  const drawer1Ref = useRef<HTMLDivElement>(null);
+  const drawer2Ref = useRef<HTMLDivElement>(null);
+  const editor2Ref = useRef<HTMLDivElement>(null);
+  const testiRef = useRef<HTMLDivElement>(null);
+  const prodRef = useRef<HTMLDivElement>(null);
+  const Ref1 = useRef<HTMLDivElement>(null);
+  const Ref2 = useRef<HTMLDivElement>(null);
+  const Ref3 = useRef<HTMLDivElement>(null);
+  const productShowRef = useRef<HTMLDivElement>(null);
+  const codeOverlayRef = useRef<HTMLDivElement>(null);
+  const [isLoad,setIsLoad] = useState(false);
+  const debugBtnRef = useRef<HTMLButtonElement>(null);
+  const productRef = useRef<HTMLDivElement>(null);
+  const productRef2 = useRef<HTMLDivElement>(null);
+  const productsWrapper = useRef<HTMLDivElement>(null);
+  const exploreRef = useRef<HTMLDivElement>(null);
+  const title = ["Don't","be","techy","to"];
+  const title2 = ["Develop","Softwares"];
+  const [isTitle,setIstitle] = useState(false);
+    const {scrollYProgress:shadingProgress} = useScroll({
+   target:heroRef,
+   offset:['end end','end start']
+  })
+   const shadingHeight = useTransform(shadingProgress,[0,1],[0,1000]);
+  
+    const {scrollYProgress:p1YProg} = useScroll({
+      target:productRef,
+      offset:['start start','end start']
+    });
+
+    const {scrollYProgress:PShowYProg} = useScroll({
+      target:productShowRef,
+      offset:['start start','end start']
+    });
+        const {scrollYProgress:PShowYProg2} = useScroll({
+      target:productShowRef,
+      offset:['start end','end start']
+    });
+    const {scrollYProgress:testiYProg} = useScroll({
+      target:testiRef,
+      offset:['start start','end start']
+    });
+    const {scrollYProgress:WYProg} = useScroll({
+      target:productsWrapper,
+      offset:['start start','end start']
+    });
+    const {scrollYProgress:PYProg} = useScroll({
+      target:prodRef,
+      offset:['start start','end start']
+    });
+    const feature1Scale = useTransform(p1YProg,[0,0.7],[1.2,1.1]);
+    const featureTitleY = useTransform(p1YProg,[0,0.9],[0,-500]);
+    const featureTitleOpacity = useTransform(p1YProg,[0,0.4],[1,0]);
+    const codeBlur = useTransform(p1YProg,[0,0.4 ],['blur(15px)','blur(0px)']);
+    const drawerX = useTransform(p1YProg,[0,0.1,0.3],[0,45,0]);
+    const drawerX2 = useTransform(p1YProg,[0.3,0.4,0.6],[0,45,0]);
+    const drawerX3 = useTransform(p1YProg,[0.7,0.8],[0,45]);
+    
+
+    ///for productShowcase 
+    const div1X = useTransform(PShowYProg,[0,0.3],[1200,0]);
+    const div2X = useTransform(PShowYProg,[0.3,0.6],[1800,0]);
+    const div3X = useTransform(PShowYProg,[0.5,0.7],[2400,0]);
+
+    const height = useTransform(PShowYProg,[0,1],[0,600]);
+
+    const titlesX = useTransform(PShowYProg,[0,1],[0,-550]);
+
+    const op1 = useTransform(PShowYProg,[0,0.2,0.4],[1,1,0]);
+    const op2 = useTransform(PShowYProg,[0.2,0.3,0.6],[0.2,1,0]);
+    const op3 = useTransform(PShowYProg,[0.4,0.5,0.8],[0.2,1,0]);
+    const op4 = useTransform(PShowYProg,[0.6,0.8],[0.2,1]);
+
+    ///for code editor
+    const barY = useTransform(p1YProg,[0,1],["0%","100%"]);
+
+   useEffect(()=>{
+     const lenis = new Lenis({
+       duration:2
+     });
+     function raf(time: any){
+      lenis.raf(time) 
+      requestAnimationFrame(raf)
      }
+     requestAnimationFrame(raf);
+    },[]);
+
+  ///codeEditor part
+
+    const scaleE = useTransform(WYProg,[0.3164624761083433,0.34929470555864864,0.42436403710166223],[1,1.5,1]);
+    const xE = useTransform(WYProg,[0.3164624761083433,0.42436403710166223],[0,-516]);
+
+   ///for testi
+    const tdiv1X = useTransform(testiYProg,[0,0.1],[900,0]);
+    const tdiv2X = useTransform(testiYProg,[0.1,0.3],[1500,0]);
+    const tdiv3X = useTransform(testiYProg,[0.3,0.5],[2100,0]);
+    const tdiv4X = useTransform(testiYProg,[0.5,0.7],[2700,0]);
+    const tdiv5X = useTransform(testiYProg,[0.7,0.8],[3300,0]);
+    const tdiv6X = useTransform(testiYProg,[0.8,1],[3900,0]);
+    const commentsX = useTransform(testiYProg,[0,1],[0,1500]);
+    
+   //for bento
+   const scaleB = useTransform(WYProg,[0.8103453100614014,0.81325938924655],[1,1.5]);
+   const xB = useTransform(WYProg,[0.8103453100614014,0.81325938924655],[0,550]);
+   function handleOverlay(){
+    codeOverlayRef.current?.classList.remove('hidden');
+    setIsLoad(true);
+    setTimeout(()=>{
+      
+      setIsFix(true);
+    },5000)
+
+    setTimeout(()=>{
+    codeOverlayRef.current?.classList.add('hidden');
+    setIsLoad(false);
+    },16000)
+     
+    setTimeout(()=>{
+      debugBtnRef.current?.classList.add('hidden');
+    },16500);
+
+   }
+
+ useEffect(() => {
+    const handleKeyDown = (event:any) => {
+      if (event.key === 'Enter') {
+        productRef.current?.classList.remove('hidden');
+
+        setTimeout(()=>{
+                  feature1Ref.current?.scrollIntoView({ behavior: 'smooth' });
+        },700)
+        setTimeout(()=>{
+         exploreRef.current?.classList.add('hidden');
+         productRef2.current?.classList.remove('hidden');
+        },2000);
+
+      }
+
+      if(event.key.toLowerCase() === 'd'){
+        setD(state => !state);
+        setR(false);
+        setA(false);
+      }
+      
+      if(event.key.toLowerCase() === 'r'){
+        setD(false);
+        setR(state => !state);
+        setA(false);
+      }
+      if(event.key.toLowerCase() === 'a'){
+        setA(state => !state);
+        setD(false);
+        setR(false);
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+
+    // Clean up the event listener
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, []);
+
+useMotionValueEvent(p1YProg, 'change', (latest) => {
+  // --- Main state handling ---
+  if (latest > 0.78) {
+    // Show Ref3 as flex, hide Ref1/Ref2, hide drawer2
+    setIsRef3(true);
+    setIsRef2(false);
+    setIsRef1(false);
+    drawer2Ref.current?.classList.add('hidden');
+  } else if (latest > 0.6) {
+    // Show Ref2, hide Ref1 & Ref3, show editor2, keep drawer2 visible
+    drawer2Ref.current?.classList.remove('hidden');
+    setIsRef1(false);
+    setIsRef3(false);
+    setIsRef2(true);
+    editor2Ref.current?.classList.remove('hidden');
+
+  } else if (latest > 0.2) {
+    // Show Ref1 as flex, hide Ref2, hide editor2, keep drawer2 visible
+    drawer2Ref.current?.classList.remove('hidden');
+    setIsRef1(true);
+    setIsRef2(false);
+    setIsRef3(false);
+    editor2Ref.current?.classList.add('hidden');
+
+  } else {
+    // Hide everything in the lowest range
+    drawer2Ref.current?.classList.remove('hidden');
+    setIsRef1(false);
+    
+    setIsRef2(false);
+    setIsRef3(false);
+    editor2Ref.current?.classList.add('hidden');
+  }
+
+  // --- Drawer1 logic (separate condition) ---
+  if (latest > 0.5051476587223102) {
+    drawer1Ref.current?.classList.add('hidden');
+  } else {
+    drawer1Ref.current?.classList.remove('hidden');
+  }
+});
+ 
+  ///for new products section
+
+
+useMotionValueEvent(PShowYProg2,'change',(lastest) => {
+  // console.log(lastest);
+  if(lastest >= 0.12578616352201258){
+    setIsProds(true);
+  }
+  if(lastest <= 0.12578616352201258) {
+    setIsProds(false);
+  }
+})
+
+
+
+useMotionValueEvent(WYProg,'change',(lastest) => {
+  // console.log(lastest);
+  if(lastest >= 0.3004624761083433) setIsShowProd(false);
+  if(lastest <= 0.3004624761083433) setIsShowProd(true);
+  // if(lastest === 1) setIsProds(false);
+  // if(lastest < 1 )  setIsProds(true);
+  if(lastest  >= 0.9191078444275464) {
+    setIsProds(false);
+    console.log('working')
+  } 
+  if(lastest <= 0.9191078444275464){
+    setIsProds(true);
+  }
+})
+
+////for new prods
+useMotionValueEvent(PYProg,'change',(latest) => {
+console.log(latest);
+if(latest <= 0.2){ 
+  setIsP1(false);
+  setIsP2(false);
+  }
+if(latest >= 0.3){ 
+  setIsP1(true);
+  setIsP2(false);
+  }
+if(latest >= 0.6){
+  setIsP2(true);
+  setIsP1(false);
+}  
+})
+
+  useEffect(() => {
+  const timer = setTimeout(() => {
+    setIstitle(true);
+  }, 2000);
+
+  return () => clearTimeout(timer);
+}, []);
+
+  return (
+    <>
+
+
+{/* bottom blur */}
+<div className='fixed h-[2%] w-full bg-gradient-to-t from-white/30 to-transparent backdrop-blur-[5px] bottom-0 z-40 opacity-100'>
+</div>
+<div className='fixed h-[4%] w-full bg-gradient-to-t from-white/30 to-transparent backdrop-blur-[10px] bottom-0 z-40 opacity-100'>
+</div>
+<div className='fixed h-[6%] w-full bg-gradient-to-t from-zinc-950/30 to-transparent backdrop-blur-[9px] bottom-0 z-40 opacity-100'>
+</div>
+<div className='fixed h-[8%] w-full bg-gradient-to-t from-zinc-950/30 to-transparent backdrop-blur-[6px] bottom-0 z-40 opacity-100'>
+</div>
+<div className='fixed h-[10%] w-full bg-gradient-to-t from-zinc-950/30 to-transparent backdrop-blur-[5px] bottom-0 z-40 opacity-100'>
+</div>
+<div className='fixed h-[12%] w-full bg-gradient-to-t from-zinc-950/30 to-transparent backdrop-blur-[4px] bottom-0 z-40 opacity-100'>
+</div>
+<div className='fixed h-[14%] w-full bg-gradient-to-t from-zinc-950/30 to-transparent backdrop-blur-[3px] bottom-0 z-40 opacity-100'>
+</div>
+<div className='fixed h-[16%] w-full bg-gradient-to-t from-zinc-950/30 to-transparent backdrop-blur-[2px] bottom-0 z-40 opacity-100'>
+</div>
+<div className='fixed h-[18%] w-full bg-gradient-to-t from-zinc-950/30 to-transparent backdrop-blur-[1px] bottom-0 z-40 opacity-100'>
+</div>
+{/* bottom blur */}
+
+  <div className='fixed h-full w-5 right-0 flex justify-center items-center z-40'>
+   <ul className='flex flex-col justify-center items-center gap-5 opacity-65'>
+   {/* {Array(10).fill(null).map((_, idx) => (
+     idx === 1? <li key={idx} className="size-2 bg-white rounded-full ">j</li> :    <li key={idx} className="size-1 bg-white rounded-full "></li>
+    ))} */}
+    </ul>  
+  </div> 
+
+  {/* <FloatingNav navItems={navItems} /> */}
+
+  {/* hero section  */}
+   <div ref={heroRef} className='relative h-screen w-full bg-[rgb(1,1,1)] overflow-hidden z-50'>
+
+    <motion.div 
+
+    className='absolute h-full w-full z-0'>
+      <img src="/bg2.svg" className='object-fit w-full opacity-55' alt="" />
+    </motion.div>
+     
+    <motion.div
+
+    className='absolute h-full w-full opacity-25 z-0'>
+      <img src="/bgNoise.png" className='object-fit w-full' alt="" />
+    </motion.div>
+
+<div className='relative z-50 h-full w-full flex justify-center items-center'>
+
+ 
+ {/* navbar */}
+  <motion.div 
+  // initial={{opacity:0,filter:'blur(10px)'}}
+  // animate={{opacity:1,filter:'blur(0px)'}}
+  // transition={{duration:1,delay:7}}
+  style={{background:'rgba(0, 0, 0, 0.35)',   
+        boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1)',
+        backdropFilter: 'blur(4.7px)',
+        WebkitBackdropFilter: 'blur(4.7px)',
+        zIndex:'9999px'
+        }}
+  className='fixed flex top-0 w-full '>
+    <div className='flex justify-between items-center h-full w-full text-white px-10 py-2  gap-4 '>
+    <span className='flex gap-5 justify-center items-center'>
+    <img src="/codemateLogo.png" alt="" />
+    <div className='flex gap-3 text-lg opacity-65 justify-center items-center cursor-pointer'>
+      <h1>Feature</h1>
+      <h1>Pricing</h1>
+      <h1 className='flex text-center justify-center items-center'>Products <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="currentColor"  className="icon icon-tabler icons-tabler-filled icon-tabler-arrow-badge-down"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M16.375 6.22l-4.375 3.498l-4.375 -3.5a1 1 0 0 0 -1.625 .782v6a1 1 0 0 0 .375 .78l5 4a1 1 0 0 0 1.25 0l5 -4a1 1 0 0 0 .375 -.78v-6a1 1 0 0 0 -1.625 -.78z" /></svg></h1>
+    </div>
+    </span>
+     {/* <h1 className=' p-2 bg-[#1a1a1a] border border-opacity-15 bg-opacity-25 rounded-md flex justify-center items-center'>Book a Demo</h1> */}
+    </div>
+    </motion.div>
+    
+
+    <div className=' flex  flex-col  items-center z-50 text-white gap-5'>
+
+    <motion.div 
+    // animate={{y:[120,35]}}
+    // transition={{duration:1,delay:6}}    
+    className='absolute top-24 left-9 text-9xl font-semibold flex flex-col  bg-gradient-to-b from-white to-gray-300/80 bg-clip-text  text-transparent pl-12'> 
+    <div className={`${montserrat.className} flex `}>
+     {/* {title.map((e,idx)=>(
+      <motion.h1
+      initial={{opacity:0}}
+      animate={{opacity:1}}
+      transition={{duration:1,delay: idx * 0.5}}
+      key={idx}>
+        {e}
+      </motion.h1>
+     ))} */}
+     <h1>On Device AI First</h1>
+    </div>
+    <div className={`${montserrat.className} flex gap-4`}>
+     {/* {title2.map((e,idx)=>(
+      <motion.h1
+      initial={{opacity:0}}
+      animate={ isTitle? {opacity:1} : {}}
+      transition={{duration:1,delay: idx * 0.5}}
+      key={idx}>
+        {e}
+      </motion.h1>
+     ))} */}
+
+     <h1>Developer's Agent</h1>
+     
+    </div>
+          <div className={`flex flex-col ${montserrat.className} text-xl mt-5`}>
+        <p>Build and ship 20x faster with CodeMate IDE —</p>
+        <p>Your all-in-one accelerator for the development lifecycle</p>
+      </div>
+      <div className={`${montserrat.className} flex gap-5 text-sm mt-10`}>
+      <button className='px-4 py-3  bg-black text-white border border-white rounded-sm bg-opacity-90 text-opacity-60'>GET Extension</button>
+      <button className='px-4 py-3  bg-[#FFFFFF] text-black border border-black rounded-sm   opacity-80'>Book a demo</button>
+      </div>
+     </motion.div>
+   
+       {/* <motion.span className='mt-32' initial={{display:'none',y:50,filter:'blur(10px)'}}
+       animate={{display:'block',y:0,filter:'blur(0px)'}}
+       transition={{delay:7,duration:1}}
+       >
+       <img src="/chat.png" className='object-cover w-[45rem]' alt="" />
+       </motion.span> */}
+
+      {/* <motion.p
+      initial={{opacity:0,display:'hidden',filter:'blur(10px)'}}
+      animate={{opacity:1,filter:'blur(0px)',display:'block'}}
+      transition={{duration:1,delay:8}}
+      className={`${montserrat.className} opacity-60 text-xl`}>You Think ! We Develop</motion.p> */}
+
+   {/* <motion.div 
+   initial={{opacity:0}}
+   animate={{opacity:0.6,y:[10,0,10]}}
+   transition={{duration:4,delay:10,repeat:Infinity,repeatType:'reverse'}}
+   className='absolute bottom-10 text-3xl opacity-50'>
+     <span className='flex justify-center items-center'>Scroll Up <svg  xmlns="http://www.w3.org/2000/svg"  width="32"  height="32"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  strokeWidth="2"  strokeLinecap="round"  strokeLinejoin="round"  className="icon icon-tabler icons-tabler-outline icon-tabler-arrow-narrow-up"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 5l0 14" /><path d="M16 9l-4 -4" /><path d="M8 9l4 -4" /></svg></span>
+   </motion.div> */}
+    </div>
 
   
 
-
-
-
-    const words = [
-      '20+ Satisfied Founders',
-      '20+ Successful Candidates'
-  ];
-
-  return (
-    <div  className='relative overflow-x-hidden xl:overflow-x-visible  bg-[#1e1e1e] w-full text-white'>
-{/* 
-     <motion.div ref={bannerRef} initial={{y:50}} animate={{y:0}} transition={{duration:1,delay:5}} className="fixed flex z-50 bottom-0 h-14 md:h-10 w-full bg-[#3A75F0]">
-              <p className="w-full h-full flex justify-center items-center  text-white drop-shadow-md text-xs sm:text-sm md:text-base px-7 md:px-1 gap-1">
-          Check out our professional Resume Reviewer service for just $1 and take the first step toward landing your dream job..{" "}
-          <a href="#" className="transition duration-200 hover:underline  text-center mr-2 md:mr-0">
-            Read more
-          </a>
-        </p>
-        <button onClick={handleBanner} className='absolute flex h-full justify-center items-center right-2  sm:right-5 text-white'>    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="20" height="20" viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-      <path d="M18 6l-12 12" />
-      <path d="M6 6l12 12" />
-    </svg></button>
-     </motion.div> */}
-
-
-       <div ref={heroRef} className='absolute top-0 w-full mt-5 px-4 md:px-8 lg:px-16 flex justify-between items-center'>
-      <img src="/logo.webp" alt="logo" width={250} height={50} className="w-28 md:w-40 lg:w-[250px] h-auto"/>
-      <span className={`bg-white text-black flex justify-center items-center p-2 w-24 md:w-32 lg:w-40 font-bold rounded-full ${inter.className} text-xs md:text-base`}>DASHBOARD</span>
-     </div>
-
-      
-      <div className='relative flex flex-col gap-8 md:gap-16 justify-center items-center w-full h-[100vh] md:h-[100vh] '>
-        
-            <div className="absolute h-[60rem] md:h-[150rem] flex items-center justify-center mb-10 md:mb-20 w-full">
-      <TextHoverEffect text="#TechKareer"  />
     </div>
- 
-      <motion.span initial={{opacity:0,filter:'blur(50px)'}} animate={{opacity:1,filter:'blur(0px)'}} 
-      transition={{delay:1,duration:1.5}}
-      className='relative flex flex-col justify-center items-center w-full text-[	#EDEADE] mt-32 md:mt-[18rem] px-2'>
-      <MorphingText className='text-nowrap text-3xl md:text-2xl' texts={words}/>
-          <h1 className='opacity-65 text-base md:text-2xl font-mono text-center'>Connecting exceptional talent with innovative companies</h1>
-       </motion.span>
-        
-       <RetroGrid/>
-      </div>
+        <motion.div style={{height:shadingHeight}} className="absolute bottom-0 left-0 right-0  bg-gradient-to-b from-zinc-950/0 to-zinc-950 z-20" />
+   </div>
+   {/* hero section */}
 
-        <motion.div  className='xl:block hidden h-[80vh] md:h-[200vh] w-full bg-[#EDEADE]'>
-          <TextReveal>LET'S SHED SOME LIGHT ON OTHER CAREERS. 💡</TextReveal>
+   {/* enter section */}
+   {/* <div
+   ref={exploreRef} 
+   className={`${montserrat2.className} flex justify-center items-center h-[100vh] w-full bg-zinc-950`}>
+    <motion.span 
+    initial={{opacity:0,filter:'blur(20px)'}}
+    whileInView={{opacity:1,filter:'blur(0px)'}}
+    viewport={{amount:1}}
+    transition={{duration:1.3}}
+    className='flex gap-5 text-6xl'>
+      <h1 className='font-semibold text-white'>Press</h1>
+      <motion.h1 animate={{scale:[1,1.1]}} 
+      transition={{duration:2,repeat:Infinity,repeatType:'mirror',}}
+      className='p-2 bg-opacity-80 bg-[#1B2021] text-[#00FFFF]'>Enter</motion.h1>
+      <h1 className='font-semibold text-white'>to</h1>
+      <h1 className='italic text-white'>Explore</h1>
+    </motion.span>
+   </div> */}
+   {/* enter section */}
+
+<div ref={prodRef} className='h-[300vh] w-full bg-zinc-950 text-white'>
+   <h1 className='text-center font-mono pt-8 opacity-75'>Introducing Codemate.AI</h1>
+
+   
+    <div className={`${montserrat.className}  text-6xl font-semibold bg-gradient-to-b from-white to-gray-300/80 bg-clip-text  text-transparent pl-10  pt-2 pb-2 text-center`}>Your<span className='bg-gradient-to-b from-[#00BFFF] to-[#1E90FF] bg-clip-text text-transparent'> New</span> coding assistant.</div>
+    <div className='relative h-full w-full  flex flex-col'>
+    {/* <div className='h-[30%] w-full flex gap-10 px-10'>
+       <Safari className='dark h-[27vw] w-fit' />
+       <div>
+        <h1 className={`${montserrat.className} text-5xl font-semibold mt-2`}>Codemate Build</h1>
+        <p className={`text-sm opacity-65 ${montserrat.className} w-[50vw] mt-5`}>Codemate Build is your reliable partner in turning ideas into impactful solutions. With a focus on innovation and precision, we craft scalable applications and seamless digital experiences that empower businesses to grow. Our team is dedicated to building not just products, but long-lasting value that helps you stay ahead in a competitive world.</p>
+       </div>
+    </div> */}
+
+
+
+        <div 
+        className='sticky top-0 h-screen w-full flex gap-10 px-10 justify-center items-center'>
+          
+        <div 
+        style={{background:'rgba(0, 0, 0, 0.35)',   
+        boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1)',
+        backdropFilter: 'blur(4.7px)',
+        WebkitBackdropFilter: 'blur(4.7px)',
+        }}
+        className='absolute h-[30vw] w-[98vw] rounded-3xl  -z-10 border-y-[0.1px]  border-white border-opacity-25'/>
+
+        <div className="absolute flex gap-3 right-10 top-[5vw] z-50">
+          <button className='rounded-full p-1 bg-white text-black '><IconArrowLeft stroke={2} /></button>
+          <button className='rounded-full p-1 bg-white text-black'><IconArrowRight stroke={2} /></button>
+        </div>
+
+          <motion.div 
+          animate={{x:isP1? 800 : isP2? 0 : 0}}
+          transition={{duration:0.8}}
+          >
+       <Safari className='dark h-[27vw] w-fit rounded-3xl' />
+       </motion.div>
+       <motion.div 
+       animate={{x:isP1? -700 : isP2? 0 : 0}}
+       transition={{duration:0.8}}
+       className='mb-52'>
+
+        {!isP1 && !isP2 && <motion.span
+        initial={{opacity:0,filter:'blur(20px)'}}
+        animate={{opacity:1,filter:'blur(0px)'}}
+        transition={{duration:1}}
+        >
+        <h1 className={`${montserrat.className} text-5xl font-semibold mt-2 bg-gradient-to-b from-[#00BFFF] to-[#1E90FF] bg-clip-text text-transparent`}>Codemate Build</h1>
+        <p className={`text-lg text-zinc-500 ${montserrat.className} w-[50vw] mt-5 `}>Codemate Build is your reliable partner in turning ideas into impactful solutions. With a focus on innovation and precision, we craft scalable applications and seamless digital experiences that empower businesses to grow. Our team is dedicated to building not just products, but long-lasting value that helps you stay ahead in a competitive world.</p>
+        </motion.span>}
+
+        {isP1 && <motion.span
+        initial={{opacity:0,filter:'blur(20px)'}}
+        animate={{opacity:1,filter:'blur(0px)'}}
+        transition={{duration:1}}
+        >
+        <h1 className={`${montserrat.className} text-5xl font-semibold mt-2 bg-gradient-to-b from-[#00BFFF] to-[#1E90FF] bg-clip-text text-transparent`}>Codemate chat</h1>
+        <p className={`text-lg text-zinc-500 ${montserrat.className} w-[50vw] mt-5 `}>Codemate Build is your reliable partner in turning ideas into impactful solutions. With a focus on innovation and precision, we craft scalable applications and seamless digital experiences that empower businesses to grow. Our team is dedicated to building not just products, but long-lasting value that helps you stay ahead in a competitive world.</p>
+        </motion.span>}
+      
+        {isP2 && <motion.span
+        initial={{opacity:0,filter:'blur(20px)'}}
+        animate={{opacity:1,filter:'blur(0px)'}}
+        transition={{duration:1}}
+        >
+        <h1 className={`${montserrat.className} text-5xl font-semibold mt-2 bg-gradient-to-b from-[#00BFFF] to-[#1E90FF] bg-clip-text text-transparent`}>Codemate terminal</h1>
+        <p className={`text-lg text-zinc-500 ${montserrat.className} w-[50vw] mt-5 `}>Codemate Build is your reliable partner in turning ideas into impactful solutions. With a focus on innovation and precision, we craft scalable applications and seamless digital experiences that empower businesses to grow. Our team is dedicated to building not just products, but long-lasting value that helps you stay ahead in a competitive world.</p>
+        </motion.span>}
+
+       </motion.div>
+    </div>
+
+        {/* <div className='h-[30%] w-full flex gap-10 px-10'>
+       
+       <div>
+        <h1 className={`${montserrat.className} text-5xl font-semibold mt-2`}>Codemate chat</h1>
+        <p className={`text-sm opacity-65 ${montserrat.className} w-[50vw] mt-5`}>Codemate Build is your reliable partner in turning ideas into impactful solutions. With a focus on innovation and precision, we craft scalable applications and seamless digital experiences that empower businesses to grow. Our team is dedicated to building not just products, but long-lasting value that helps you stay ahead in a competitive world.</p>
+       </div>
+       <Safari className='dark h-[27vw] w-fit' />
+    </div> */}
+
+        {/* <div className='h-[30%] w-full flex gap-10 px-10'>
+       <Safari className='dark h-[27vw] w-fit' />
+       <div>
+        <h1 className={`${montserrat.className} text-5xl font-semibold mt-2`}>Codemate terminal</h1>
+        <p className={`text-sm opacity-65 ${montserrat.className} w-[50vw] mt-5`}>Codemate Build is your reliable partner in turning ideas into impactful solutions. With a focus on innovation and precision, we craft scalable applications and seamless digital experiences that empower businesses to grow. Our team is dedicated to building not just products, but long-lasting value that helps you stay ahead in a competitive world.</p>
+       </div>
+    </div> */}
+    </div>
+</div>
+
+<div ref={productsWrapper}>
+  {isProds &&      
+  <AnimatePresence mode="wait">
+  <motion.div
+    key={1} 
+     exit={{opacity:0,filter:'blur(20px)'}}
+     initial={{opacity:0,filter:'blur(20px)'}}
+     animate={{opacity:1,filter:'blur(0px)'}}
+     transition={{duration:0.8}}
+     className='fixed top-0 left-32 h-full w-[70%] flex items-center justify-center z-50'>
+
+      <AnimatePresence>
+      {isShowProd && <motion.div 
+    key={1}
+     exit={{opacity:0,filter:'blur(20px)'}}
+     initial={{opacity:0,filter:'blur(20px)'}}
+     animate={{opacity:1,filter:'blur(0px)'}}
+      className='absolute left-[30rem] h-[30vw] w-[58vw] rounded-xl bg-zinc-900'>
+        {/* <Safari url='codemate.ai' imageSrc='chatss.png' className='dark'/> */}
+        </motion.div>}
+     
+       {isShowProd &&      <motion.div 
+     key={2}
+     style={{x:div1X}}
+     exit={{opacity:0,filter:'blur(20px)'}}
+     initial={{opacity:0,filter:'blur(20px)'}}
+     animate={{opacity:1,filter:'blur(0px)'}}
+     className='absolute left-[30rem] h-[30vw] w-[58vw] rounded-xl '>
+      {/* <Safari url='codemate.ai' imageSrc='buildss.png' className='dark'/> */}
+      
+      </motion.div>}
+
+     {isShowProd && <motion.div
+     key={3}
+     style={{x:div2X}} 
+     exit={{opacity:0,filter:'blur(20px)'}}
+     initial={{opacity:0,filter:'blur(20px)'}}
+     animate={{opacity:1,filter:'blur(0px)'}}
+     className='absolute left-[30rem] h-[30vw] w-[58vw] rounded-xl'>
+      {/* <Safari url='codemate.ai' className='dark object-cover object-left-top' imageSrc='eduation.png'/> */}
+     </motion.div>}
+    </AnimatePresence>
+     <motion.div 
+     style={{x:div3X}} className='absolute left-[30rem] h-[30vw] w-[58vw] rounded-xl text-white'>
+             <motion.div style={{x:xE}} className='h-full w-full'>
+             <CodeOverlay ref={codeOverlayRef}/> 
+
+        <CodeEditor comp1={brokenComponent} comp2={fixedComponent} isFix={isFix}/> 
+        </motion.div>
+     </motion.div>  
+     </motion.div>
+     </AnimatePresence> }
+
+
+   {/* products showcase */}
+   <div 
+   ref={productShowRef} 
+   
+   className='relative h-[200vw] w-full bg-zinc-950'>
+   
+ <div className={`${montserrat.className}  text-6xl font-semibold bg-gradient-to-b from-white to-gray-300/80 bg-clip-text  text-transparent pl-10 mb-6 pt-20 pb-2 text-center`}>With our <span className='bg-gradient-to-b from-[#00BFFF] to-[#1E90FF] bg-clip-text text-transparent'>Products</span> take yourself to perfection.</div>
+
+   <div className='sticky top-0   h-screen w-full overflow-x-hidden'>
+       
+<div
+className='relative h-full w-[40%] flex  items-center justify-center  pl-10 py-3'>
+
+    <div className={`relative ${montserrat.className}  text-7xl font-semibold bg-gradient-to-b from-white to-gray-300/80 bg-clip-text  text-transparent flex flex-col   h-full w-full `}>
+     
+       <div className='relative h-full py-6 pl-5 flex justify-center overflow-hidden gap-5 '>
+        
+        <div>
+        <motion.div 
+        style={{y:height}}
+        className='absolute rounded-md w-[0.25rem] h-[15%]  bg-gradient-to-b from-[#00BFFF] to-[#1E90FF]  opacity-80 z-50'/>
+
+       <div className='w-[0.20rem] rounded-md  h-full bg-[#1c1c1c] '/> 
+       </div>
+
+       <motion.div 
+       style={{y:titlesX}}
+       className='h-full w-full flex flex-col gap-[17rem]'>
+          
+        <motion.div 
+        style={{opacity:op1}}
+        className='text-white flex flex-col gap-2'>
+          <h1 className='text-2xl'>Codemate Chat</h1>
+
+          <p className='text-sm opacity-70'>
+            We’re your AI coding partner, here to handle the messy parts — from stubborn bugs to broken features while You focus on your vision.
+          </p>
+        </motion.div>
+         
+                 <motion.div 
+                 style={{opacity:op2}}
+                 className='text-white flex flex-col gap-2'>
+          <h1 className='text-2xl'>Codemate Build</h1>
+
+          <p className='text-sm opacity-70'>
+            We’re your AI coding partner, here to handle the messy parts — from stubborn bugs to broken features while You focus on your vision.
+          </p>
         </motion.div>
 
 
+                <motion.div 
+                style={{opacity:op3}}
+                className='text-white flex flex-col gap-2'>
+          <h1 className='text-2xl'>Codemate Education</h1>
+
+          <p className='text-sm opacity-70'>
+            We’re your AI coding partner, here to handle the messy parts — from stubborn bugs to broken features while You focus on your vision.
+          </p>
+        </motion.div>
 
 
-        <div className={`${inter.className}  relative h-[100vh] md:h-[100vh] w-full overflow-hidden pb-20 md:pb-52`}>
+                <motion.div 
+                style={{opacity:op4}}
+                className='text-white flex flex-col gap-2'>
+          <h1 className='text-2xl'>Gonna help you in your shit..</h1>
 
-                     <motion.div viewport={{once:true}} transition={{duration:1}} initial={{y:0,x:100,opacity:0}} whileInView={{y:0,x:0,opacity:1}} className=' md:hidden absolute right-0 rounded-l-[4rem] h-24 w-44  bg-[#3A75F0]'></motion.div>
-
-                   
-                    <motion.div viewport={{once:true}} transition={{duration:1}} initial={{y:0,x:350,opacity:0}} whileInView={{y:0,x:50,opacity:1}} className='hidden md:block absolute right-0 rounded-b-[4rem] h-32 w-96  bg-[#3A75F0]'></motion.div>
-
-         <motion.div viewport={{once:true}} initial={{opacity:0,filter:'blur(50px)',y:-15,x:20}} whileInView={{opacity:1,filter:'blur(0px)'}} 
-      transition={{duration:1,delay:1}} className='absolute right-0 top-0 p-10 md:p-12 font-semibold'>
-          <h1 className='text-2xl md:text-5xl'>10 - 20 LPA</h1>
-          <h2 className='text-sm md:text-xl font-mono font-thin opacity-65'>6 Success Story</h2> 
-         </motion.div>
+          <p className='text-sm opacity-70'>
+            We’re your AI coding partner, here to handle the messy parts — from stubborn bugs to broken features while You focus on your vision.
+          </p>
+        </motion.div>
         
-        <div className='p-2 md:p-20 lg:p-52 flex justify-center items-center h-full w-full mt-32 md:mt-32'>
-        <div className="w-full max-w-[95vw] md:max-w-none flex justify-center items-center">
-        <Carousel/>
-        </div>
-        </div>
-        </div>
-
-
-        <div className={`${inter.className} relative h-[100vh]  md:h-[100vh] w-full overflow-hidden pb-20 md:pb-52`}>
-
-                                 <motion.div viewport={{once:true}} transition={{duration:1}} initial={{y:0,x:-100,opacity:0}} whileInView={{y:0,x:0,opacity:1}} className=' md:hidden absolute left-0 rounded-r-[4rem] h-24 w-44  bg-[#3A75F0]'></motion.div>
-           
-
-                 <motion.div viewport={{once:true}} transition={{duration:1}} initial={{y:10,x:-350,opacity:0}} whileInView={{y:10,x:-50,opacity:1}}  className='hidden md:block absolute rounded-b-[4rem] h-32 w-96 bg-[#3A75F0]'></motion.div>
-
-         <motion.div viewport={{ once: true }} initial={{opacity:0,filter:'blur(50px)'}} whileInView={{opacity:1,filter:'blur(0px)'}} 
-      transition={{duration:1,delay:1}} className='absolute top-2 md:top-0 left-4 md:left-0 p-4 md:p-12 font-semibold'>
-          <h1 className='text-2xl md:text-5xl'>5 - 10 LPA</h1>
-          <h2 className='text-sm md:text-xl font-mono font-thin opacity-65'>3 Success Story</h2> 
-         </motion.div>
-        
-        <div className='p-2 md:p-20 lg:p-52 flex justify-center items-center h-full w-full mt-32 md:mt-32'>
-        <div className="w-full max-w-[95vw] md:max-w-none flex justify-center items-center">
-        <Carousel2/>
-        </div>
-        </div>
-        </div>
-
-        <div className={`${inter.className} relative h-[100vh] md:h-[100vh] w-full overflow-hidden pb-20 md:pb-52`}>
-             
-
-                              <motion.div viewport={{once:true}} transition={{duration:1}} initial={{y:0,x:100,opacity:0}} whileInView={{y:0,x:0,opacity:1}} className=' md:hidden absolute right-0 rounded-l-[4rem] h-24 w-44  bg-[#3A75F0]'></motion.div>
-
-                              <motion.div viewport={{once:true}} transition={{duration:1}} initial={{y:10,x:350,opacity:0}} whileInView={{y:10,x:50,opacity:1}} className='hidden md:block absolute right-0 rounded-b-[4rem] h-32 w-96 bg-[#3A75F0]'></motion.div>
-         <motion.div viewport={{ once: true }} initial={{opacity:0,filter:'blur(50px)'}} whileInView={{opacity:1,filter:'blur(0px)'}} 
-      transition={{duration:1,delay:1}} className='absolute right-2 top-2 md:right-0 md:top-0 p-4 md:p-12 font-semibold '>
-          <h1 className='text-2xl md:text-5xl'>3-5 LPA</h1>
-          <h2 className='text-sm md:text-xl font-mono font-thin opacity-65'>3 Success Story</h2> 
-         </motion.div>
-
-        
-        <div className='p-2 md:p-20 lg:p-52 flex justify-center items-center h-full w-full mt-32 md:mt-32'>
-        <div className="w-full max-w-[95vw] md:max-w-none flex justify-center items-center">
-        <Carousel3/>
-        </div>
-        </div>
-        </div>
-        
-
-                <div className={`relative  h-full md:h-[100vh] ${inter.className} w-full`}>
-
-                                 <motion.div viewport={{once:true}} transition={{duration:1}} initial={{y:-30,x:-100,opacity:0}} whileInView={{y:-30,x:0,opacity:1}} className=' md:hidden absolute left-0 rounded-r-[4rem] h-24 w-44  bg-[#3A75F0]'></motion.div>
-
-         <motion.div viewport={{once:true}} transition={{duration:1}} initial={{y:20,x:-350,opacity:0}} whileInView={{y:20,x:-50,opacity:1}} className='hidden md:block absolute rounded-b-[4rem] h-32 w-96 bg-[#3A75F0]'></motion.div>
-
-         <motion.div initial={{opacity:0,filter:'blur(50px)'}} whileInView={{opacity:1,filter:'blur(0px)',}} viewport={{ once: true }}
-      transition={{duration:1,delay:1}} className={`absolute -top-6 left-2 md:left-0 md:top-0 p-4 md:p-12 font-semibold   ${inter.className}`}>
-          <h1 className='text-2xl md:text-5xl'>20 - 40 LPA</h1>
-          <h2 className='text-sm md:text-xl font-mono font-thin opacity-65'>1 Success Story</h2> 
-         </motion.div>
-        
-        <div className='h-full w-full mt-8 md:mt-20 flex justify-center items-center overflow-x-hidden'>
-        <div className='flex flex-col lg:flex-row justify-center items-center gap-8 md:gap-16 pt-20 md:pt-44 px-2 md:px-24 w-full'>
-          <span className='w-full mb-9 xl:mb-0 mt-32 md:mt-0 max-w-[95vw] md:max-w-none flex justify-center items-center'>
-          <BackgroundGradient>
-             <FlipCard bio={salary1.category} image={salary1.src} title={salary1.title} link={salary1.linkedin} salary={salary1.salaryRange} companyLogo={salary1.companyLogo} subtitle={salary1.companyName} description={salary1.category+" "+salary1.bio}/>
-           </BackgroundGradient>
-       </span>
-                   <div className='flex flex-col   gap-4 md:gap-8 overflow-hidden md:overflow-visible mb-32'>
-                   <h1 className={`${inter.className} font-semibold text-2xl md:text-4xl xl:text-nowrap text-center`}>Almost  <motion.span initial={{opacity:0,filter:'blur(30px)'}} viewport={{once:true}} whileInView={{opacity:1,filter:'blur(0px)'}} transition={{duration:1}} className="bg-[#3A75F0] t px-1 py-1  font-semibold text-white">20+ Sucess Stories</motion.span> and counting more...🚀</h1>
-                   <div className='absolute sm:relative bottom-0 flex w-[92%] overflow-visible justify-center items-center'> 
-                    <AnimatedTooltip items={people}  />
-                    </div>
-         </div>
-       </div>
-        </div>
-        </div>
-
-        <div className='flex flex-col mt-8 md:mt-0'>
-
-                 <h1 className={`${inter.className} text-2xl md:text-5xl mt-16 md:mt-16 text-center font-semibold px-2`}>Why wait so long? Let's get this party started already!🚀</h1>
-        <motion.div viewport={{ once: true }} initial={{opacity:0,filter:'blur(50px)'}} whileInView={{opacity:1,filter:'blur(0px)'}} 
-      transition={{duration:1}}  className='mt-8 md:mt-20'>
-        <CommentReplyCard
-        initialComments={[
-         {
-        avatarColor: 'tech_kareer_logo.jpg',
-        id: 1,
-        text: [
-        'What about your career? Ready to build it with us?'
-        ],
-        time: 'Just Now',
-        user: 'TechKareer'
-        }
-        ]}
-       />
        </motion.div>
 
-
        </div>
-
-
-  <div className='relative flex flex-col md:flex-row justify-between text-white p-4 md:p-8 w-full opacity-60 gap-8 md:gap-0'>
-         <div className='flex flex-col px-2 md:px-5 items-center md:items-start'>
-          <img src="logo.webp" alt=""  width={200} className="w-32 md:w-[200px] h-auto"/>
-          <p className={`${inter.className} text-base md:text-2xl w-full md:w-[32rem] text-center md:text-left`}>The biggest tech opportunities aggregator. Find your next gig, internship, and job at our platform.</p>
-          <span className='flex gap-3 mt-2'><a href="https://x.com/techkareer" aria-label="X" className="hover:text-white"><svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 512 512" className="md:w-10 md:h-10" height="32" width="32" xmlns="http://www.w3.org/2000/svg"><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"></path></svg></a>
-          <a href="https://www.linkedin.com/company/thetechkareer" aria-label="LinkedIn" className="hover:text-white"><svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 448 512" className="md:w-10 md:h-10" height="32" width="32" xmlns="http://www.w3.org/2000/svg"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"></path></svg></a></span>
-         </div>
-
-
-         <div className='flex text-white gap-6 md:gap-10 justify-center'>
-          <div className='flex flex-col gap-1 md:gap-2'>
-            <h1 className='font-bold text-sm md:text-base'>COMMUNITY</h1>
-            <h2 className='opacity-65 text-xs md:text-base'>Discord</h2>
-            <h2 className='opacity-65 text-xs md:text-base'>Whatsapp</h2>
-            <h2 className='opacity-65 text-xs md:text-base'>Telegram</h2>
-          </div>
-          <div className='flex flex-col gap-1 md:gap-2'>
-            <h1 className='font-bold text-sm md:text-base'>OTHERS</h1>
-            <h2 className='opacity-65 text-xs md:text-base'>Blog</h2>
-            <h2 className='opacity-65 text-xs md:text-base'>Case Studies</h2>
-           
-          </div>
-                   <div className='flex flex-col gap-1 md:gap-2'>
-            <h1 className='font-bold text-sm md:text-base'>LEGAL</h1>
-            <h2 className='opacity-65 text-xs md:text-base'>Privacy Police</h2>
-            <h2 className='opacity-65 text-xs md:text-base'>Terms of Service</h2>
-          </div>
-         </div>
-       </div>
-
-
-       
 
     </div>
+
+
+</div>
+
+   </div>
+
+   </div>
+    {/* products showcase */}
+
+   <div ref={productRef} className='relative h-[550vh] w-full bg-zinc-950 text-white flex  flex-col'>
+
+  {/* <div className={`absolute text-white w-full flex justify-center items-center text-7xl font-light pt-14 opacity-45 whitespace-pre-wrap bg-gradient-to-b from-black to-gray-300/80 bg-clip-text text-transparent ${montserrat.className}`}>
+    <TextAnimate delay={1} duration={2} animation="blurIn" as="h1" className=' '>A New Way To Build Apps With AI</TextAnimate>
+  </div> */}
+    
+    {/* <div 
+    className="absolute top-0 text-[13rem]  pl-5 font-mono flex">
+      
+<AnimatePresence mode="wait">
+  {isRef1 && (
+    <motion.div
+      key="ref1"
+      ref={Ref1}
+      className="flex"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0, filter: 'blur(20px)' }}
+      transition={{ duration: 1 }}
+    >
+      <p>Press "R" for Review mode.</p>
+    </motion.div>
+  )}
+
+  {isRef2 && (
+    <motion.div
+      key="ref2"
+      ref={Ref2}
+      className="flex pl-[82.5vw]"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0, filter: 'blur(20px)' }}
+      transition={{ duration: 1 }}
+    >
+      <motion.h1
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.6 }}
+      >
+        0
+      </motion.h1>
+      <motion.h1
+        initial={{ opacity: 0, y: 150 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.8 }}
+      >
+        2
+      </motion.h1>
+    </motion.div>
+  )}
+
+  {isRef3 && (
+    <motion.div
+      key="ref3"
+      ref={Ref3}
+      className="flex"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0, filter: 'blur(20px)' }}
+      transition={{ duration: 1 }}
+    >
+      <motion.h1
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.6 }}
+      >
+        0
+      </motion.h1>
+      <motion.h1
+        initial={{ opacity: 0, y: 150 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.8 }}
+      >
+        3
+      </motion.h1>
+    </motion.div>
+  )}
+</AnimatePresence>
+
+
+    </div> */}
+
+
+ <div className={`${montserrat.className}  text-6xl font-semibold bg-gradient-to-b from-white to-gray-300/80 bg-clip-text  text-transparent pl-10 mb-6 pt-20 text-center`}>Let's see what our <span className='bg-gradient-to-b from-[#00BFFF] to-[#1E90FF] bg-clip-text text-transparent'>Extension</span> alone can do.</div>
+
+     <motion.div 
+     initial={{opacity:0,filter:'blur(50px)'}}
+     whileInView={{opacity:1,filter:'blur(0px)'}}
+     transition={{duration:0.8}}
+     className='sticky h-screen top-0 w-full flex  items-center'>
+     {/* <AnimatePresence mode='wait'>
+      {!d && !r && !a && <motion.div 
+            initial={{opacity:0,filter:'blur(20px)'}}
+            animate={{opacity:1,filter:'blur(0px)'}}
+            transition={{duration:1}}
+            exit={{opacity:0,filter:'blur(20px)'}}
+            key={1}
+            className='absolute top-0 z-30 left-0 h-screen flex  justify-center gap-3 items-center ml-9 text-2xl font-mono w-[15%] flex-col z-0'> <h1 className='opacity-45'>Press</h1> <h1 className='text-5xl text-[#00FFFF] opacity-70'>"D"</h1>  <h1 className='opacity-45'>for Debug mode</h1></motion.div>
+            }
+
+              {d && <motion.div 
+            initial={{opacity:0,filter:'blur(20px)'}}
+            animate={{opacity:1,filter:'blur(0px)'}}
+            transition={{duration:1}}
+            exit={{opacity:0,filter:'blur(20px)'}}
+            key={2}
+            className='absolute top-0 z-30 left-0 h-screen flex  justify-center gap-3 items-center ml-9 text-2xl font-mono w-[15%] flex-col '> <h1 className='opacity-45'>Press</h1> <h1 className='text-5xl text-[#00FFFF] opacity-70'>"R"</h1>  <h1 className='opacity-45'>for Review mode</h1></motion.div>
+            }    
+
+            {r && 
+            <motion.div 
+            initial={{opacity:0,filter:'blur(20px)'}}
+            animate={{opacity:1,filter:'blur(0px)'}}
+            transition={{duration:1}}
+            exit={{opacity:0,filter:'blur(20px)'}}
+            key={3}
+            className='absolute top-0 z-30 right-0 h-screen flex  justify-center gap-3 items-center mr-9 text-2xl font-mono w-[15%] flex-col'> <h1 className='opacity-45'>Press</h1> <h1 className='text-5xl text-[#00FFFF] opacity-70'>"A"</h1>  <h1 className='opacity-45'>for Auto-complete mode</h1></motion.div>
+            }
+
+            {a && 
+            <motion.div 
+            initial={{opacity:0,filter:'blur(20px)'}}
+            animate={{opacity:1,filter:'blur(0px)'}}
+            transition={{duration:1}}
+            exit={{opacity:0,filter:'blur(20px)'}}
+            key={4}
+            className='absolute top-0 z-30 left-0 h-screen flex  justify-center gap-3 items-center ml-9 text-2xl font-mono w-[15%] flex-col'> <h1 className='opacity-45'>Press</h1> <h1 className='text-5xl text-[#00FFFF] opacity-70'>"D"</h1>  <h1 className='opacity-45'>for Debug mode</h1></motion.div>
+            }
+      </AnimatePresence> */}
+
+
+      <div className='relative flex justify-center items-center w-[70%]'>
+
+        
+      <motion.div 
+      ref={feature1Ref}
+      className='relative h-[30vw] w-[58vw] opacity-80 rounded-xl flex justify-center items-center overflow-y-scroll z-50'>
+
+        
+
+        <motion.div
+        initial={{opacity:0,filter:'blur(20px)'}}
+        whileInView={{opacity:1,filter:'blur(0px)'}}
+        transition={{duration:1.5}}
+        ref={editor2Ref}
+        className='hidden absolute h-full w-full bg-zinc-900 rounded-xl flex z-40 '></motion.div>
+
+
+        {/* <CodeOverlay ref={codeOverlayRef}/> 
+
+        <CodeEditor comp1={brokenComponent} comp2={fixedComponent} isFix={isFix}/> */}
+
+
+
+<AnimatePresence mode="wait">
+     
+      
+        <motion.div  
+        key={1}
+        
+        
+        transition={{duration:0.7}} 
+        exit={{x:0}} 
+        ref={drawer1Ref}
+        whileHover={{background:'#ffffff',
+           color:'black',
+           opacity:0.4
+        }}
+        style={{background: 'rgba(255, 255, 255, 0.02)',
+        y:drawerX,  
+        boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1)',
+        backdropFilter: 'blur(4.7px)',
+        WebkitBackdropFilter: 'blur(4.7px)',
+        border: '1px solid rgba(255, 255, 255, 0.3)',
+        }}
+        className='absolute bottom-0 right-8 py-2 px-4 bg-white rounded-b-2xl text-2xl  flex flex-col justify-center items-center  text-white cursor-pointer'>
+       
+
+          Debug
+               {/* <h1 className='text-white text-5xl mb-5 mt-3 '>Debug</h1> */}
+       {/* <motion.span
+       initial={{opacity:0,filter:'blur(20px)'}}
+       whileInView={{opacity:1,filter:'blur(0px)'}}
+       transition={{duration:0.7}}
+       viewport={{amount:0.8}}
+       >
+
+        {/* <p className='text-sm opacity-60'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius facilis fugiat tenetur in autem commodi dolor quae magni </p> 
+       </motion.span> */}
+
+       {/* {isLoad?    
+        <motion.span 
+        initial={{opacity:0,filter:'blur(20px)'}}
+        whileInView={{opacity:1,filter:'blur(0px)'}}
+        transition={{duration:1,delay:1}}
+        className='mb-10 ml-14'>
+        <LoaderOne/>
+        </motion.span>  :         <button ref={debugBtnRef} onClick={handleOverlay} className='bg-[#343434] rounded-[54px] px-2 py-2 m-4 hover:opacity-70'>
+          Debug this code
+        </button>} */}
+      
+
+
+        </motion.div>
+        
+
+         
+        <motion.div 
+        key={2}
+        transition={{duration:0.7}} 
+        exit={{x:0}} 
+        ref={drawer2Ref}
+        style={{background: 'rgba(255, 255, 255, 0.02)',
+        y:
+        
+        drawerX2,  
+        boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1)',
+        backdropFilter: 'blur(4.7px)',
+        WebkitBackdropFilter: 'blur(4.7px)',
+        border: '1px solid rgba(255, 255, 255, 0.3)',
+        }}
+        className='absolute bottom-0 right-8 py-2 px-4 bg-white rounded-b-2xl text-2xl  flex flex-col justify-center items-center  text-white cursor-pointer'>
+       
+
+         Review
+
+       {/* <motion.span
+       initial={{opacity:0,filter:'blur(20px)'}}
+       whileInView={{opacity:1,filter:'blur(0px)'}}
+       transition={{duration:0.7}}
+       viewport={{amount:0.8}}
+       >
+        <h1 className='text-white text-5xl ml-8 mb-5 mt-3 '>Review</h1>
+        <p className='text-sm opacity-60 ml-8'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius facilis fugiat tenetur in autem commodi dolor quae magni </p>
+       </motion.span>
+
+       {isLoad?    
+        <motion.span 
+        initial={{opacity:0,filter:'blur(20px)'}}
+        whileInView={{opacity:1,filter:'blur(0px)'}}
+        transition={{duration:1,delay:1}}
+        className='mb-10 ml-20'>
+        <LoaderOne/>
+        </motion.span>  :         <button ref={debugBtnRef} onClick={handleOverlay} className='bg-[#343434] rounded-[54px] px-2 py-2 m-4 hover:opacity-70'>
+          Review this code
+        </button>} */}
+      
+
+
+      </motion.div>
+      
+
+
+      
+        <motion.div 
+        exit={{x:0}} 
+        // ref={drawer1Ref}
+        key={3}
+
+        style={{background: 'rgba(255, 255, 255, 0.02)',
+        boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1)',
+        y:drawerX3,
+        backdropFilter: 'blur(4.7px)',
+        WebkitBackdropFilter: 'blur(4.7px)',
+        border: '1px solid rgba(255, 255, 255, 0.3)',
+        }}
+        className='absolute bottom-0 right-8 py-2 px-4 bg-white rounded-b-2xl text-2xl  flex flex-col justify-center items-center  text-white cursor-pointer'>
+       
+        Auto-Complete
+
+       {/* <motion.span
+       initial={{opacity:0,filter:'blur(20px)'}}
+       whileInView={{opacity:1,filter:'blur(0px)'}}
+       transition={{duration:0.7}}
+       viewport={{amount:0.8}}
+       >
+        <h1 className='text-white text-3xl mb-5 mt-3 '>/h1>
+        <p className='text-sm opacity-60'>PRESS!</p>
+       </motion.span>
+
+       {isLoad?    
+        <motion.span 
+        initial={{opacity:0,filter:'blur(20px)'}}
+        whileInView={{opacity:1,filter:'blur(0px)'}}
+        transition={{duration:0.7}}
+        className='mb-10 ml-14'>
+        <LoaderOne/>
+        </motion.span>  :         <button ref={debugBtnRef} className='bg-[#343434] font-mono py-2 mr-4 mb-4  text-opacity-35 text-3xl cursor-not-allowed rounded-sm'>
+        TAB
+        </button>} */}
+        </motion.div>
+        
+</AnimatePresence>
+
+
+
+      </motion.div>  
+       
+       {/* <motion.h1 
+       style={{y:featureTitleY,opacity:featureTitleOpacity}}
+       className='absolute text-7xl text-nowrap'>You can do much more with just Plugin...</motion.h1> */}
+      </div>
+
+        <div className='w-[30%] h-full flex justify-end pr-20 py-10 gap-10'> 
+
+      <div className='w-full'>
+         <div>
+          <h1 className='text-white text-6xl mb-5 mt-24 '>Debug</h1>
+       <motion.span
+       initial={{opacity:0,filter:'blur(20px)'}}
+       whileInView={{opacity:1,filter:'blur(0px)'}}
+       transition={{duration:0.7}}
+       viewport={{amount:0.8}}
+       >
+
+        <p className='text-xl opacity-60'>You can do debug with our extension seamlessly, allowing you to identify and resolve issues without leaving your development environment. It provides real-time logs and clear insights, making the debugging process faster and more efficient.</p> 
+       </motion.span>
+
+       {isLoad?    
+        <motion.span 
+        initial={{opacity:0,filter:'blur(20px)'}}
+        whileInView={{opacity:1,filter:'blur(0px)'}}
+        transition={{duration:1,delay:1}}
+        className='mb-10 '>
+        <LoaderOne/>
+        </motion.span>  :         <button ref={debugBtnRef} onClick={handleOverlay} className='bg-[#343434] rounded-[50px] px-2 py-2 mt-10 hover:opacity-70'>
+          Debug this code
+        </button>} 
+        </div>
+
+      </div>
+
+        <div className='z-50'>
+        <motion.div 
+        style={{height:barY}}
+        className='absolute rounded-md w-[0.25rem] h-[15%]  bg-gradient-to-b from-[#00BFFF] to-[#1E90FF]  opacity-80 z-50'/>
+
+       <div className='w-[0.20rem] rounded-md  h-full bg-[#1c1c1c] '/> 
+      </div>
+        
+
+      </div>
+     </motion.div>
+      
+
+
+   </div>
+
+</div>
+
+{/* bento */}
+     <div className=' relative h-[170vh] w-full bg-zinc-950 text-white overflow-hidden'>
+   <div className={`${montserrat.className}  text-6xl font-semibold bg-gradient-to-b from-white to-gray-300/80 bg-clip-text  text-transparent pl-10 mb-6 pt-20 text-center`}>More than <span className='bg-gradient-to-b from-[#00BFFF] to-[#1E90FF] bg-clip-text text-transparent'>100k</span> users</div>
+   
+  <MagicBento 
+  textAutoHide={true}
+  enableStars={true}
+  enableSpotlight={true}
+  enableBorderGlow={true}
+  enableTilt={false}
+  enableMagnetism={true}
+  clickEffect={true}
+  spotlightRadius={400}
+  particleCount={12}
+  glowColor="0, 191, 255"
+/>
+
+  </div> 
+{/* bento   */}
+
+
+
+  <div ref={testiRef} className='relative h-[950vh] w-full bg-zinc-950'>
+         <div className={`${montserrat.className}  text-6xl font-semibold bg-gradient-to-b from-white to-gray-300/80 bg-clip-text  text-transparent pl-10 mb-6 pt-20 text-center`}>Do not listen to us but from <span className='bg-gradient-to-b from-[#00BFFF] to-[#1E90FF] bg-clip-text text-transparent'>People</span></div>
+
+   <div className=' sticky top-0   h-screen w-full overflow-x-hidden '>
+       
+<div
+className='relative h-full w-full flex  items-center justify-center   pl-10 py-3'>
+
+
+     <motion.div 
+     style={{x:commentsX}}
+     className={`${montserrat.className} absolute flex gap-10 text-7xl text-white font-semibold`}>
+<h1 className="whitespace-nowrap text-opacity-80">thrilled 🤩</h1>
+<h1 className="whitespace-nowrap text-opacity-80">grateful 🙏</h1>
+<h1 className="whitespace-nowrap text-opacity-80">inspired ✨</h1>
+<h1 className="whitespace-nowrap text-opacity-80">amazed 🤯</h1>
+<h1 className="whitespace-nowrap text-opacity-80">relieved 😌</h1>
+<h1 className="whitespace-nowrap text-opacity-80">blessed 🥰</h1>
+<h1 className="whitespace-nowrap text-opacity-80">accomplished 🏆</h1>
+<h1 className="whitespace-nowrap text-opacity-80">delighted 😊</h1>
+<h1 className="whitespace-nowrap text-opacity-80">empowered 💪</h1>
+<h1 className="whitespace-nowrap text-opacity-80">fulfilled ❤️</h1>
+     </motion.div>
+
+
+     <div className='h-full w-full flex items-center justify-center flex-col'>
+     <motion.div className='absolute  h-[30rem] w-[40rem] bg-pink-700 rounded-3xl'></motion.div>
+     <motion.div 
+     style={{y:tdiv1X}}
+     className='absolute  h-[30rem] w-[40rem] bg-white rounded-3xl'></motion.div>
+     <motion.div
+     style={{y:tdiv2X}} 
+     className='absolute  h-[30rem] w-[40rem] bg-blue-500 rounded-3xl'></motion.div>
+     <motion.div style={{y:tdiv3X}} className='absolute  h-[30rem] w-[40rem] bg-red-700 rounded-3xl'></motion.div>  
+     <motion.div style={{y:tdiv4X}} className='absolute  h-[30rem] w-[40rem] bg-purple-600 rounded-3xl'></motion.div>
+     <motion.div style={{y:tdiv5X}} className='absolute  h-[30rem] w-[40rem] bg-yellow-500 rounded-3xl'></motion.div>
+     <motion.div style={{y:tdiv6X}} className='absolute  h-[30rem] w-[40rem] bg-green-600 rounded-3xl'></motion.div>
+     </div> 
+</div>
+
+   </div>
+     </div>
+
+
+
+<div className='h-screen w-full bg-zinc-950'></div>
+
+    </>
   )
 }
 
@@ -344,484 +1198,120 @@ export default Page
 
 
 
+// function Product2({productRef2}:{productRef2:React.RefObject<HTMLDivElement>}){
+  
+//   const feature2Ref = useRef<HTMLDivElement>(null);
+//   const {scrollYProgress:p2YProg} = useScroll({
+//       target:productRef2,
+//       offset:['start end','end start']
+//     });
+//   const drawerX = useTransform(p2YProg,[0.4,1],[0,-1500]);  
+//   return(
+//     <>
+//     <motion.div 
+//      initial={{opacity:0,filter:'blur(50px)'}}
+//      whileInView={{opacity:1,filter:'blur(0px)'}}
+//      transition={{duration:0.8}}
+//      className='sticky h-screen top-0 w-full flex justify-center items-center'>
+//       <div className='relative flex justify-center items-center'>
+//       <motion.div 
+//       ref={feature2Ref}
+//       style={{scale:1,}}
+//       className='relative h-[35vw] w-[55vw] opacity-80 rounded-xl flex justify-center items-center bg-white'>
+
+
+//         {/* <CodeOverlay ref={codeOverlayRef}/> 
+
+//         // <CodeEditor comp1={brokenComponent} comp2={fixedComponent} isFix={isFix}/> */}
+
+//         <motion.div 
+//         style={{x:drawerX,background:'rgba(255, 255, 255, 0.02)',
+//         boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1)',
+//         backdropFilter: 'blur(4.7px)',
+//         WebkitBackdropFilter: 'blur(4.7px)',
+//         border: '1px solid rgba(255, 255, 255, 0.3)',
+//         }}
+//         className='absolute right-0 h-[99%] w-[60%] bg-white rounded-3xl pl-[20rem] flex flex-col justify-between  text-white'>
+       
+//        <motion.span
+//        initial={{opacity:0,filter:'blur(20px)'}}
+//        whileInView={{opacity:1,filter:'blur(0px)'}}
+//        transition={{duration:0.7,delay:1}}
+//        viewport={{amount:0.5}}
+//        >
+//         <h1 className='text-white text-5xl mb-5 mt-3 '>Debug</h1>
+//         <p className='text-sm opacity-60'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius facilis fugiat tenetur in autem commodi dolor quae magni </p>
+//        </motion.span>
+
+//        {/* {isLoad?    
+//         <motion.span 
+//         initial={{opacity:0,filter:'blur(20px)'}}
+//         whileInView={{opacity:1,filter:'blur(0px)'}}
+//         transition={{duration:1,delay:1}}
+//         className='mb-10 ml-14'>
+//         <LoaderOne/>
+//         </motion.span>  :         <button ref={debugBtnRef} onClick={handleOverlay} className='bg-[#343434] rounded-[54px] px-2 py-2 m-4 hover:opacity-70'>
+//           Debug this code
+//         </button>} */}
+      
+
+
+//       </motion.div>
 
 
 
+//       </motion.div>  
+       
+//        {/* <motion.h1 
+//        style={{y:featureTitleY,opacity:featureTitleOpacity}}
+//        className='absolute text-7xl text-nowrap'>You can do much more with just Plugin...</motion.h1> */}
+//       </div>
+//      </motion.div>
+
+//     </>
+//   )
+// }
+
+function CodeOverlay({ref}:{ref:React.RefObject<HTMLDivElement>}){
+  return(
+      <motion.div 
+       ref={ref}
+       initial={{opacity:0,filter:'blur(20px)'}}
+       whileInView={{opacity:1,filter:'blur(0px)'}}
+       transition={{duration:1.5}}
+       className='hidden absolute h-full w-full bg-zinc-900 z-50 rounded-3xl text-white flex flex-col gap-5 p-10'>
+       <LoaderFive text="Debugging Inprogress..."/>
 
 
-const Slide = ({
-  image,
-  bio,
-  link,
-  salary,
-  title,
-  companyLogo,
-  description,
-  subtitle,
-  index, current, handleSlideClick }: SlideProps) => {
-  const slideRef = useRef<HTMLLIElement>(null);
- 
-  const xRef = useRef(0);
-  const yRef = useRef(0);
-  const frameRef = useRef<number>();
+      {/* <TypingAnimation className='text-2xl font-mono opacity-90'> </TypingAnimation> */}
+      
+       <TextAnimate animation="blurInUp" by="character" duration={2}>
+      &gt; Analyzing your code...
+    </TextAnimate>
+      
+      <AnimatedSpan delay={4000} className="text-[#00FFFF] font-mono opacity-75 text-md">
+        <span>✔ Parsing the code line by line.</span>
+      </AnimatedSpan>
+       
 
-  useEffect(() => {
-    const animate = () => {
-      if (!slideRef.current) return;
- 
-      const x = xRef.current;
-      const y = yRef.current;
- 
-      slideRef.current.style.setProperty("--x", `${x}px`);
-      slideRef.current.style.setProperty("--y", `${y}px`);
- 
-      frameRef.current = requestAnimationFrame(animate);
-    };
- 
-    frameRef.current = requestAnimationFrame(animate);
- 
-    return () => {
-      if (frameRef.current) {
-        cancelAnimationFrame(frameRef.current);
-      }
-    };
-  }, []);
- 
-  const handleMouseMove = (event: React.MouseEvent) => {
-    const el = slideRef.current;
-    if (!el) return;
- 
-    const r = el.getBoundingClientRect();
-    xRef.current = event.clientX - (r.left + Math.floor(r.width / 2));
-    yRef.current = event.clientY - (r.top + Math.floor(r.height / 2));
-  };
- 
-  const handleMouseLeave = () => {
-    xRef.current = 0;
-    yRef.current = 0;
-  };
- 
-  const imageLoaded = (event: React.SyntheticEvent<HTMLImageElement>) => {
-    event.currentTarget.style.opacity = "1";
-  };
- 
-   
- 
-  return (
-    <div className="relative right-[0.5rem] sm:right-0 [perspective:1200px] [transform-style:preserve-3d]">
-      <li
-        ref={slideRef}
-        className="flex flex-1 flex-col items-center justify-center relative text-center text-white opacity-100 transition-all duration-300 ease-in-out w-[90vmin] h-[90vmin] md:w-[70vmin] md:h-[70vmin] z-10 "
-        onClick={() => handleSlideClick(index)}
-        onMouseMove={handleMouseMove}
-        onMouseLeave={handleMouseLeave}
-        style={{
-          transform:
-            current !== index
-              ? "scale(0.98) rotateX(8deg)"
-              : "scale(1) rotateX(0deg)",
-          transition: "transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)",
-          transformOrigin: "bottom",
-        }}
-      >
-  <FlipCard
-  bio={bio}
-  description={description}
-  salary={salary}
-  link={link}
-  image={image}
-  rotate="y"
-  subtitle={subtitle}
-  title={title}
-  companyLogo={companyLogo}
-/>
-      </li>
-    </div>
-  );
-};
- 
+      <AnimatedSpan delay={6000} className="text-[#00FFFF] font-mono opacity-75 text-md">
+        <span>✔ Identified 8 errors.</span>
+      </AnimatedSpan>
 
- 
-const CarouselControl = ({
-  type,
-  title,
-  handleClick,
-}: CarouselControlProps) => {
-  return (
-    <button
-      className={`w-10 mt-6 h-10 flex items-center mx-2 justify-center bg-neutral-200 dark:bg-neutral-800 border-3 border-transparent rounded-full focus:border-[#6D64F7] focus:outline-none hover:-translate-y-0.5 active:translate-y-0.5 transition duration-200 ${
-        type === "previous" ? "rotate-180" : ""
-      }`}
-      title={title}
-      onClick={handleClick}
-    >
-      <IconArrowNarrowRight className="text-neutral-600 dark:text-neutral-200" />
-    </button>
-  );
-};
- 
+      <AnimatedSpan delay={8000} className="text-[#00FFFF] font-mono opacity-75 text-md">
+        <span>✔ Applying changes.</span>
+      </AnimatedSpan>
 
- 
-function Carousel() {
-  const [current, setCurrent] = useState(1);
-        const salary2 = [
-      {
-        src: "https://cdn.techkareer.com/success-stories/Debabrata.jpeg",
-        title: "Debabrata Mondal",
-        category: "AI Engineer (Full-Time)",
-          bio: "2.0 YOE, Founder of citrus, an open-source vector database. Worked at Dashibase and Pebblely.",
-        linkedin: "https://www.linkedin.com/in/0xdebabrata/",
-        salaryRange: "10-20 LPA",
-        content: null,
-        companyLogo: "https://cdn.techkareer.com/success-stories/rifflix_logo.jpeg",
-        companyName: "Rifflix",
-      },
-      {
-        src: "https://cdn.techkareer.com/success-stories/Royal.jpeg",
-        title: "Royal Sanga",
-        category: "AI Engineer (Full-Time)",
-        bio: "3.0 YOE, Extensive experience in building AI-powered apps",
-        linkedin: "https://linkedin.com/in/royal-sanga-267655191",
-        salaryRange: "10-20 LPA",
-        content: null,
-        companyLogo: "https://cdn.techkareer.com/success-stories/rifflix_logo.jpeg",
-        companyName: "Rifflix",
-      },
-      {
-        src: "https://cdn.techkareer.com/success-stories/Tushar.jpeg",
-        title: "Tushar Verma",
-        category: "Software Engineer (Full-Time)",
-        bio: "1.0 YOE, Founder of CrafturaAI (craftura.art) and GupShupAI (gupshap.fun). Ex ChatGPT Writer and Adimis.",
-        linkedin: "https://linkedin.com/in/tushar-verma-developer",
-        salaryRange: "10-20 LPA",
-        content: null,
-        companyLogo: "https://pub-cb911cae9c3e4c4c887c2f8360e681c7.r2.dev/success-stories/space_harpoon.jpeg",
-        companyName: "Space Harpoon",
-      },
-      {
-        src: "https://cdn.techkareer.com/success-stories/Marvel.jpeg",
-        title: "Marvel John",
-        category: "QA Engineer (Full-Time)",
-          bio: "3 YOE in Web, iOS & Android testing. Tested 5+ AI apps & 15+ hyper-casual games at Quiet Games, Gameberry Labs, Indium Software & others.",
-        linkedin: "https://linkedin.com/in/marveljohn",
-        salaryRange: "10-20 LPA",
-        content: null,
-        companyLogo: "https://cdn.techkareer.com/success-stories/Luppa.jpeg",
-        companyName: "Luppa",
-      },
-      {
-        src: "https://cdn.techkareer.com/success-stories/lavish.jpeg",
-        title: "Lavish Goyal",
-        category: "Software Engineer (Contract)",
-          bio: "2.0 YOE, Working at a YC startup",
-        linkedin: "https://www.linkedin.com/in/goellavish10/",
-        salaryRange: "10-20 LPA",
-        content: null,
-        companyLogo: "https://cdn.techkareer.com/success-stories/funnel_kit.jpeg",
-        companyName: "Funnel Kit",
-      },
-      {
-        src: "https://cdn.techkareer.com/success-stories/Joshua.jpeg",
-        title: "Joshua D'Costa",
-        category: "Growth Lead (Full-Time)",
-          bio: "4.0 YOE, At last job at Xoxoday, generated over $150k in revenue & $2M pipeline via growth. Ex Unifynd Technologies and Points for Good.",
-        linkedin: "https://www.linkedin.com/in/joshua-d-costa/",
-        salaryRange: "10-20 LPA",
-        content: null,
-        companyLogo: "https://cdn.techkareer.com/success-stories/dodo.jpeg",
-        companyName: "Dodo",
-      },
-    ]
-  const handlePreviousClick = () => {
-    const previous = current - 1;
-    setCurrent(previous < 0 ? salary2.length - 1 : previous);
-  };
- 
-  const handleNextClick = () => {
-    const next = current + 1;
-    setCurrent(next === salary2.length ? 0 : next);
-  };
- 
-  const handleSlideClick = (index: number) => {
-    if (current !== index) {
-      setCurrent(index);
-    }
-  };
- 
-  const id = useId();
- 
-  return (
-    <div
-      className="relative w-[90vmin] h-[90vmin] md:w-[70vmin] md:h-[70vmin] mx-auto -mt-36 sm:mt-0"
-      aria-labelledby={`carousel-heading-${id}`}
-    >
-      <ul
-        className="absolute flex transition-transform duration-1000 ease-in-out gap-8 sm:gap-0 justify-center items-center"
-        style={{
-          transform: `translateX(-${current * (100 / salary2.length)}%)`,
-        }}
-      >
-        {salary2.map((slide, index) => (
-          <Slide
-            key={index}
-            title={slide.title}
-            image={slide.src}
-            salary={slide.salaryRange}
-            bio={slide.category}
-            description={`${slide.category} ${slide.bio}`}
-            link={slide.linkedin}
-            companyLogo={slide.companyLogo}
-            subtitle={slide.companyName}
-            index={index}
-            current={current}
-            handleSlideClick={handleSlideClick}
-          />
-        ))}
-      </ul>
- 
-      <div className="absolute flex justify-center h-full mt-14 sm:mt-0 md:mt-0 w-full top-[calc(100%+1rem)]">
-        <CarouselControl
-          type="previous"
-          title="Go to previous slide"
-          handleClick={handlePreviousClick}
-        />
- 
-        <CarouselControl
-          type="next"
-          title="Go to next slide"
-          handleClick={handleNextClick}
-        />
-      </div>
-    </div>
-  );
-}
+      <AnimatedSpan delay={10000} className="text-[#00FFFF] font-mono opacity-75 text-md">
+        <span>✔ Success!</span>
+      </AnimatedSpan>
 
 
+      <AnimatedSpan delay={12000} className="text-white  font-mono opacity-55 text-sm">
+        <span>All 8 errors are fixed!</span>
+      </AnimatedSpan>
+       </motion.div>
 
-function Carousel2() {
-  const [current, setCurrent] = useState(1);
-        const salary2 =[
-      {
-        src: "https://cdn.techkareer.com/success-stories/akshat.jpeg",
-        title: "Akshat Goel",
-        category: "Software Engineer (Full-Time)",
-          bio: "1.0 YOE, Ex SDE at Procurenet. Reported to the CEO Gurbaksh Chahal, a prominent serial entrepreneur.",
-        linkedin: "https://www.linkedin.com/in/akshatgoel7/",
-        salaryRange: "5-10 LPA",
-        content: null,
-        companyLogo: "https://cdn.techkareer.com/success-stories/enpointe.jpeg",
-        companyName: "Enpointe",
-      },
-      {
-        src: "https://cdn.techkareer.com/success-stories/Sahil.jpeg",
-        title: "Sahil Zambani",
-        category: "Software Engineer (Full-Time)",
-          bio: "1.0 YOE, Runs his own frontend dev agency",
-        linkedin: "https://linkedin.com/in/sahilzambani",
-        salaryRange: "5-10 LPA",
-        content: null,
-        companyLogo: "https://cdn.techkareer.com/success-stories/enpointe.jpeg",
-        companyName: "Enpointe",
-      },
-      {
-        src: "https://cdn.techkareer.com/success-stories/manu.jpeg",
-        title: "Manu Goel",
-        category: "Software Engineer (Full-Time)",
-          bio: "1 YOE. Built an Outlook extension for email productivity. Worked remotely at an AI startup, developed multiple products from scratch & mentored juniors.",
-        linkedin: "https://www.linkedin.com/in/manu-goel-7899781a0",
-        salaryRange: "5-10 LPA",
-        content: null,
-        companyLogo: "https://cdn.techkareer.com/success-stories/aeos.jpeg",
-        companyName: "Aeos",
-      },
-    ]
-
-  const handlePreviousClick = () => {
-    const previous = current - 1;
-    setCurrent(previous < 0 ? salary2.length - 1 : previous);
-  };
- 
-  const handleNextClick = () => {
-    const next = current + 1;
-    setCurrent(next === salary2.length ? 0 : next);
-  };
- 
-  const handleSlideClick = (index: number) => {
-    if (current !== index) {
-      setCurrent(index);
-    }
-  };
- 
-  const id = useId();
- 
-  return (
-    <div
-      className="relative w-[90vmin] h-[90vmin] md:w-[70vmin] md:h-[70vmin] mx-auto -mt-36 sm:mt-0"
-      aria-labelledby={`carousel-heading-${id}`}
-    >
-      <ul
-        className="absolute flex  transition-transform duration-1000 ease-in-out gap-8 sm:gap-0 justify-center items-center"
-        style={{
-          transform: `translateX(-${current * (100 / salary2.length)}%)`,
-        }}
-      >
-        {salary2.map((slide, index) => (
-          <Slide
-            bio={slide.category}
-            key={index}
-            title={slide.title}
-            image={slide.src}
-            salary={slide.salaryRange}
-            description={`${slide.category} ${slide.bio}`}
-            link={slide.linkedin}
-            companyLogo={slide.companyLogo}
-            subtitle={slide.companyName}
-            index={index}
-            current={current}
-            handleSlideClick={handleSlideClick}
-          />
-        ))}
-      </ul>
- 
-      <div className="absolute flex justify-center w-full mt-14 sm:mt-2 md:mt-0 top-[calc(100%+1rem)]">
-        <CarouselControl
-          type="previous"
-          title="Go to previous slide"
-          handleClick={handlePreviousClick}
-        />
- 
-        <CarouselControl
-          type="next"
-          title="Go to next slide"
-          handleClick={handleNextClick}
-        />
-      </div>
-    </div>
-  );
-}
-
-
-function Carousel3() {
-  const [current, setCurrent] = useState(1);
-        const salary2 =[
-      {
-        src: "https://cdn.techkareer.com/success-stories/jignesh.jpeg",
-        title: "Jignesh Sharma",
-        category: "Software Engineer (Full-time)",
-          bio: "0.5 YOE, Had PHP specific expertise which the hiring partner (FunnelKit) required",
-        linkedin: "https://linkedin.com/in/jignesh-sharma-a6243b234",
-        salaryRange: "3-5 LPA",
-        content: null,
-        companyLogo: "https://cdn.techkareer.com/success-stories/funnel_kit.jpeg",
-        companyName: "Funnel Kit",
-      },
-      {
-        src: "https://cdn.techkareer.com/success-stories/prakher.jpeg",
-        title: "Prakhar Shukla",
-        category: "Software Engineer (Internship)",
-          bio: "1 YOE. Founder of Andronix (1.7M+ downloads, #1 ranked Linux-on-Android app) & Lumoflo (beta) — a full-featured, domain-based e-commerce platform for merchants.",
-        linkedin: "https://linkedin.com/in/iamprakharshukla",
-        salaryRange: "3-5 LPA",
-        content: null,
-        companyLogo: "https://cdn.techkareer.com/success-stories/casecraft.jpeg",
-        companyName: "CaseCraft",
-      },
-      {
-        src: "https://cdn.techkareer.com/success-stories/saket.jpeg",
-        title: "Saket Sarin",
-        category: "Software Engineer (Internship)",
-          bio: "1.0 YOE, Ex SDE at DoWhile (Backed by Sequoia and Nexus Venture Partners), MFSewa, and E33 Productions",
-        linkedin: "https://linkedin.com/in/saketsarin",
-        salaryRange: "3-5 LPA",
-        content: null,
-        companyLogo: "https://cdn.techkareer.com/success-stories/banterai.jpeg",
-        companyName: "BanterAI",
-      },
-      {
-        src: "https://cdn.techkareer.com/success-stories/utkarsh.jpeg",
-        title: "Utkarsh Utkarsh",
-        category: "Software Engineer (Internship)",
-        bio: "0.5 YOE, Built impressive projects for college hackathons and portfolio. Contributor to GeeksForGeeks articles.",
-        linkedin: "https://linkedin.com/in/utkarsh575",
-        salaryRange: "3-5 LPA",
-        content: null,
-        companyLogo: "https://cdn.techkareer.com/success-stories/Slashbase.jpeg",
-        companyName: "Slashbase",
-      },
-      {
-        src: "https://cdn.techkareer.com/success-stories/sagar.jpeg",
-        title: "Sagar Pant",
-        category: "3D Designer (Freelance)",
-          bio: "2.0 YOE, Worked as an indie 3D generalist and VFX artist at Wrought Studios.",
-        linkedin: "https://linkedin.com/in/dokutaiyo",
-        salaryRange: "3-5 LPA",
-        content: null,
-        companyLogo: "https://cdn.techkareer.com/success-stories/reddygames_logo.jpeg",
-        companyName: "Reddy Games",
-      },
-    ]
-
-
-  const handlePreviousClick = () => {
-    const previous = current - 1;
-    setCurrent(previous < 0 ? salary2.length - 1 : previous);
-  };
- 
-  const handleNextClick = () => {
-    const next = current + 1;
-    setCurrent(next === salary2.length ? 0 : next);
-  };
- 
-  const handleSlideClick = (index: number) => {
-    if (current !== index) {
-      setCurrent(index);
-    }
-  };
- 
-  const id = useId();
- 
-  return (
-    <div
-      className="relative w-[90vmin] h-[90vmin] md:w-[70vmin] md:h-[70vmin] mx-auto -mt-36 sm:mt-0"
-      aria-labelledby={`carousel-heading-${id}`}
-    >
-      <ul
-        className="absolute flex  transition-transform duration-1000 ease-in-out gap-8 sm:gap-0"
-        style={{
-          transform: `translateX(-${current * (100 / salary2.length)}%)`,
-        }}
-      >
-        {salary2.map((slide, index) => (
-          <Slide
-            bio={slide.category}
-            key={index}
-            title={slide.title}
-            image={slide.src}
-            salary={slide.salaryRange}
-            description={`${slide.category} ${slide.bio}`}
-            link={slide.linkedin}
-            companyLogo={slide.companyLogo}
-            subtitle={slide.companyName}
-            index={index}
-            current={current}
-            handleSlideClick={handleSlideClick}
-          />
-        ))}
-      </ul>
- 
-      <div className="absolute flex justify-center  mt-14 sm:mt-2 md:mt-0 w-full top-[calc(100%+1rem)]">
-        <CarouselControl
-          type="previous"
-          title="Go to previous slide"
-          handleClick={handlePreviousClick}
-        />
- 
-        <CarouselControl
-          type="next"
-          title="Go to next slide"
-          handleClick={handleNextClick}
-        />
-      </div>
-    </div>
-  );
+       
+  )
 }

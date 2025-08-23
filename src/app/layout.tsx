@@ -16,7 +16,7 @@ export default function RootLayout({
         <title>rough work</title>
       </head>
       <body
-        className= {`antialiased bg-[#F7F8F9]  scrollbar scrollbar-white`}
+        className= {`antialiased bg-[#F7F8F9]`}
       >
         <Provider store={store}>
         {children}
