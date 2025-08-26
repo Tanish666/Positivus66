@@ -46,7 +46,6 @@
     "react-scroll": "^1.9.3",
     "simplex-noise": "^4.0.3",
     "tailwind-merge": "^2.6.0",
-    "tailwind-scrollbar": "^4.0.2",
     "tailwindcss-animate": "^1.0.7",
     "three": "^0.178.0",
     "typeface-poppins": "^1.1.13"
