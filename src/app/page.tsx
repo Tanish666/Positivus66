@@ -653,22 +653,22 @@ console.log(latest);
      <img src="build.svg" className='absolute -bottom-5 -right-14 size-[90%]' alt="" />
 
     </div>
-    <div className='relative h-[16.5rem] w-[30rem] bg-gradient-to-b from-[#6441A5] to-[#2A0845] rounded-lg pl-7 overflow-hidden' >
+    <div className='relative h-[18.5rem] w-[30rem] bg-gradient-to-b from-[#6441A5] to-[#2A0845] rounded-lg pl-7 overflow-hidden' >
      <h1 className={`text-2xl opacity-90 mt-2`}>Codemate Chat</h1>
      <img src="build.svg" className='absolute -bottom-5 -right-14 size-[90%]' alt="" />
 
     </div>
-    <div className='relative h-[16.5rem] w-[30rem] bg-gradient-to-b from-[#6441A5] to-[#2A0845] rounded-lg pl-7 overflow-hidden' >
+    <div className='relative h-[18.5rem] w-[30rem] bg-gradient-to-b from-[#6441A5] to-[#2A0845] rounded-lg pl-7 overflow-hidden' >
      <h1 className={`text-2xl opacity-90 mt-2`}>Codemate Chat</h1>
      <img src="build.svg" className='absolute -bottom-5 -right-14 size-[90%]' alt="" />
 
     </div>
-    <div className='relative h-[16.5rem] w-[30rem] bg-gradient-to-b from-[#6441A5] to-[#2A0845] rounded-lg pl-7 overflow-hidden' >
+    <div className='relative h-[18.5rem] w-[30rem] bg-gradient-to-b from-[#6441A5] to-[#2A0845] rounded-lg pl-7 overflow-hidden' >
      <h1 className={`text-2xl opacity-90 mt-2`}>Codemate Chat</h1>
      <img src="build.svg" className='absolute -bottom-5 -right-14 size-[90%]' alt="" />
 
     </div>
-    <div className='relative h-[16.5rem] w-[30rem] bg-gradient-to-b from-[#6441A5] to-[#2A0845] rounded-lg pl-7 overflow-hidden' >
+    <div className='relative h-[18.5rem] w-[30rem] bg-gradient-to-b from-[#6441A5] to-[#2A0845] rounded-lg pl-7 overflow-hidden' >
      <h1 className={`text-2xl opacity-90 mt-2`}>Codemate Chat</h1>
      <img src="build.svg" className='absolute -bottom-5 -right-14 size-[90%]' alt="" />
 
