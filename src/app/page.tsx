@@ -564,10 +564,9 @@ console.log(latest);
        </div>
     </div> */}
 
-<div className='relative h-full w-full flex pl-3'>
+<div className='relative h-full w-full flex justify-center gap-5'>
       {/* section for products */}
-        <div 
-        className='sticky top-0 h-screen w-[63%]  flex gap-10  items-center pl-16'>
+        <div className='sticky top-0 h-screen   flex   items-center justify-center   '>
           
         
 
@@ -587,7 +586,7 @@ console.log(latest);
           animate={{opacity:1,filter:"blur(0px)"}}
            exit={{opacity:0,filter:"blur(30px)"}}
           transition={{duration:1}}
-          className='h-[33rem] w-[55rem] bg-zinc-700 rounded-lg'>
+          className='h-[33rem] w-[57rem] bg-zinc-700 rounded-lg'>
          </motion.div>
          <span className={`${montserrat.className} text-4xl flex flex-col gap-2`}>
          <h1>Codemate Webapp</h1>
@@ -604,7 +603,7 @@ console.log(latest);
           animate={{opacity:1,filter:"blur(0px)"}}
            exit={{opacity:0,filter:"blur(30px)"}}
           transition={{duration:1}}
-          className='h-[33rem] w-[55rem] bg-zinc-700 rounded-lg'>
+          className='h-[33rem] w-[57rem] bg-zinc-700 rounded-lg'>
          </motion.div>
          <span className={`${montserrat.className} text-4xl flex flex-col gap-2`}>
          <h1>Codemate Webapp</h1>
@@ -620,7 +619,7 @@ console.log(latest);
           animate={{opacity:1,filter:"blur(0px)"}}
            exit={{opacity:0,filter:"blur(30px)"}}
           transition={{duration:1}}
-          className='h-[33rem] w-[55rem]  bg-zinc-700 rounded-lg'>
+          className='h-[33rem] w-[57rem]  bg-zinc-700 rounded-lg'>
          </motion.div>
          <span className={`${montserrat.className} text-4xl flex flex-col gap-2`}>
          <h1>Codemate Webapp</h1>
@@ -641,7 +640,7 @@ console.log(latest);
 
      {/* features of product */}
 
-  <div className={`h-full w-[30%] flex flex-col pt-[4.2rem] gap-[1rem] ${montserrat.className}`}>
+  <div className={`h-full  flex flex-col pt-[4.2rem] gap-[1.2rem] items-center ${montserrat.className} `}>
     
     <div className='relative h-[18.5rem] w-[30rem] bg-gradient-to-b from-[#243B55] to-[#141E30] rounded-lg pl-7 overflow-hidden' >
      <h1 className={`text-2xl opacity-90 mt-2`}>Codemate Build</h1>
