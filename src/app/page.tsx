@@ -14,6 +14,7 @@ import { TypingAnimation,AnimatedSpan } from '@/components/ui/terminal';
 import { ProgressiveBlur } from '@/components/ui/blurBT';
 import { X } from 'lucide-react';
 import { Safari } from '@/components/mockups/safari';
+import { BackgroundGradientAnimation } from '@/components/ui/background-gradient-animation';
 
 const montserrat = Montserrat({
   subsets: ['latin'],
@@ -100,6 +101,7 @@ const fixedComponent = [
   const [d,setD] = useState(false); 
   const [r,setR] = useState(false);
   const [a,setA] = useState(false);
+  const [isNBack,setIsNBack] = useState(false);
   const [isP1,setIsP1] = useState(false);
   const [isP2,setIsP2] = useState(false);
   const [isShowProd,setIsShowProd] = useState(true);
@@ -108,6 +110,7 @@ const fixedComponent = [
   const [isRef1,setIsRef1] = useState(false);
   const [isRef2,setIsRef2] = useState(false);
   const [isRef3,setIsRef3] = useState(false);
+  const mainRef = useRef<HTMLDivElement>(null);
   const feature1Ref = useRef<HTMLDivElement>(null);
   const drawer1Ref = useRef<HTMLDivElement>(null);
   const drawer2Ref = useRef<HTMLDivElement>(null);
@@ -157,6 +160,10 @@ const fixedComponent = [
     });
     const {scrollYProgress:PYProg} = useScroll({
       target:prodRef,
+      offset:['start start','end start']
+    });
+    const {scrollYProgress:MYProg} = useScroll({
+      target:mainRef,
       offset:['start start','end start']
     });
     const feature1Scale = useTransform(p1YProg,[0,0.7],[1.2,1.1]);
@@ -348,18 +355,25 @@ useMotionValueEvent(WYProg,'change',(lastest) => {
 ////for new prods
 useMotionValueEvent(PYProg,'change',(latest) => {
 console.log(latest);
-if(latest <= 0.2){ 
+if(latest <= 0.15){ 
   setIsP1(false);
   setIsP2(false);
   }
-if(latest >= 0.3){ 
+if(latest >= 0.25){ 
   setIsP1(true);
   setIsP2(false);
   }
-if(latest >= 0.6){
+if(latest >= 0.45){
   setIsP2(true);
   setIsP1(false);
 }  
+})
+
+// for main div events
+useMotionValueEvent(MYProg,'change',(latest) => {
+console.log(latest);
+ if(latest >= 0.001203313524221142) setIsNBack(true);
+ if(latest <= 0.001203313524221142) setIsNBack(false);
 })
 
   useEffect(() => {
@@ -371,11 +385,11 @@ if(latest >= 0.6){
 }, []);
 
   return (
-    <>
+    <div ref={mainRef}>
 
 
 {/* bottom blur */}
-<div className='fixed h-[2%] w-full bg-gradient-to-t from-white/30 to-transparent backdrop-blur-[5px] bottom-0 z-40 opacity-100'>
+{/* <div className='fixed h-[2%] w-full bg-gradient-to-t from-white/30 to-transparent backdrop-blur-[5px] bottom-0 z-40 opacity-100'>
 </div>
 <div className='fixed h-[4%] w-full bg-gradient-to-t from-white/30 to-transparent backdrop-blur-[10px] bottom-0 z-40 opacity-100'>
 </div>
@@ -392,31 +406,22 @@ if(latest >= 0.6){
 <div className='fixed h-[16%] w-full bg-gradient-to-t from-zinc-950/30 to-transparent backdrop-blur-[2px] bottom-0 z-40 opacity-100'>
 </div>
 <div className='fixed h-[18%] w-full bg-gradient-to-t from-zinc-950/30 to-transparent backdrop-blur-[1px] bottom-0 z-40 opacity-100'>
-</div>
+</div> */}
 {/* bottom blur */}
 
-  <div className='fixed h-full w-5 right-0 flex justify-center items-center z-40'>
-   <ul className='flex flex-col justify-center items-center gap-5 opacity-65'>
-   {/* {Array(10).fill(null).map((_, idx) => (
-     idx === 1? <li key={idx} className="size-2 bg-white rounded-full ">j</li> :    <li key={idx} className="size-1 bg-white rounded-full "></li>
-    ))} */}
-    </ul>  
-  </div> 
+
 
   {/* <FloatingNav navItems={navItems} /> */}
 
   {/* hero section  */}
-   <div ref={heroRef} className='relative h-screen w-full bg-[rgb(1,1,1)] overflow-hidden z-50'>
+  <BackgroundGradientAnimation interactive={true} gradientBackgroundStart='rgb(9, 9, 11)' gradientBackgroundEnd='rgb(9, 9, 11)' firstColor='0, 255, 255' secondColor='30, 144, 255' thirdColor='0, 255, 255' fourthColor='255,255,255' pointerColor='30, 144, 255' size='100%'>
+   <div ref={heroRef} className='relative h-screen w-full z-50 overflow-hidden cursor-default'>
 
-    <motion.div 
 
-    className='absolute h-full w-full z-0'>
-      <img src="/bg2.svg" className='object-fit w-full opacity-55' alt="" />
-    </motion.div>
      
     <motion.div
 
-    className='absolute h-full w-full opacity-25 z-0'>
+    className='absolute h-full w-full opacity-5 z-0'>
       <img src="/bgNoise.png" className='object-fit w-full' alt="" />
     </motion.div>
 
@@ -428,22 +433,25 @@ if(latest >= 0.6){
   // initial={{opacity:0,filter:'blur(10px)'}}
   // animate={{opacity:1,filter:'blur(0px)'}}
   // transition={{duration:1,delay:7}}
-  style={{background:'rgba(0, 0, 0, 0.35)',   
+  style={{background:!isNBack? 'rgba(15, 12, 12, 0.2)' : 'rgba(15, 12, 12, 0.55)',   
         boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1)',
-        backdropFilter: 'blur(4.7px)',
-        WebkitBackdropFilter: 'blur(4.7px)',
-        zIndex:'9999px'
+        backdropFilter: 'blur(13.1px)',
+        WebkitBackdropFilter: 'blur(13.1px)',
         }}
-  className='fixed flex top-0 w-full '>
-    <div className='flex justify-between items-center h-full w-full text-white px-10 py-2  gap-4 '>
-    <span className='flex gap-5 justify-center items-center'>
+  className='fixed flex top-0 w-full bg-opacity-65 z-[9999]'>
+    <div className='flex  h-full w-full text-white px-[6rem] py-2'>
+    <div className='flex gap-5 justify-between items-center w-full h-full'>
+    <div>
     <img src="/codemateLogo.png" alt="" />
-    <div className='flex gap-3 text-lg opacity-65 justify-center items-center cursor-pointer'>
-      <h1>Feature</h1>
-      <h1>Pricing</h1>
-      <h1 className='flex text-center justify-center items-center'>Products <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="currentColor"  className="icon icon-tabler icons-tabler-filled icon-tabler-arrow-badge-down"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M16.375 6.22l-4.375 3.498l-4.375 -3.5a1 1 0 0 0 -1.625 .782v6a1 1 0 0 0 .375 .78l5 4a1 1 0 0 0 1.25 0l5 -4a1 1 0 0 0 .375 -.78v-6a1 1 0 0 0 -1.625 -.78z" /></svg></h1>
     </div>
-    </span>
+    <div className='flex gap-3 text-xl  justify-center items-center cursor-pointer text-right '>
+       <h1 className='flex text-center justify-center items-center opacity-65'>Products</h1>
+       <h1 className='opacity-65'>Feature</h1>
+       <h1 className='opacity-65'>Pricing</h1>
+       <h1 className='opacity-65'>Contact</h1>
+       <button className={`${montserrat.className} px-2 py-1  bg-[#FFFFFF] text-black  rounded-sm font-semibold opacity-85`}>Get Started</button>
+    </div>
+    </div>
      {/* <h1 className=' p-2 bg-[#1a1a1a] border border-opacity-15 bg-opacity-25 rounded-md flex justify-center items-center'>Book a Demo</h1> */}
     </div>
     </motion.div>
@@ -454,7 +462,7 @@ if(latest >= 0.6){
     <motion.div 
     // animate={{y:[120,35]}}
     // transition={{duration:1,delay:6}}    
-    className='absolute top-24 left-9 text-9xl font-semibold flex flex-col  bg-gradient-to-b from-white to-gray-300/80 bg-clip-text  text-transparent pl-12'> 
+    className='absolute top-24 left-9 text-9xl font-semibold flex flex-col pb-1  pl-12 mt-5 z-50 '> 
     <div className={`${montserrat.className} flex `}>
      {/* {title.map((e,idx)=>(
       <motion.h1
@@ -465,9 +473,9 @@ if(latest >= 0.6){
         {e}
       </motion.h1>
      ))} */}
-     <h1>On Device AI First</h1>
+     <h1 className='bg-gradient-to-b from-white to-gray-300/60 bg-clip-text  text-transparent z-50'>On Device AI First</h1>
     </div>
-    <div className={`${montserrat.className} flex gap-4`}>
+    <div className={`${montserrat.className} flex gap-4 bg-gradient-to-b from-white to-gray-300/10 bg-clip-text  text-transparent`}>
      {/* {title2.map((e,idx)=>(
       <motion.h1
       initial={{opacity:0}}
@@ -478,16 +486,17 @@ if(latest >= 0.6){
       </motion.h1>
      ))} */}
 
-     <h1>Developer's Agent</h1>
+     <h1 className='pb-3'>Developer's Agent</h1>
      
     </div>
-          <div className={`flex flex-col ${montserrat.className} text-xl mt-5`}>
+          <div className={`flex flex-col ${montserrat.className} text-xl mt-5 opacity-60`}>
         <p>Build and ship 20x faster with CodeMate IDE —</p>
         <p>Your all-in-one accelerator for the development lifecycle</p>
       </div>
       <div className={`${montserrat.className} flex gap-5 text-sm mt-10`}>
       <button className='px-4 py-3  bg-black text-white border border-white rounded-sm bg-opacity-90 text-opacity-60'>GET Extension</button>
-      <button className='px-4 py-3  bg-[#FFFFFF] text-black border border-black rounded-sm   opacity-80'>Book a demo</button>
+      <button 
+      className='px-4 py-3  bg-[#FFFFFF] text-black border border-black rounded-sm   opacity-80'>Book a demo</button>
       </div>
      </motion.div>
    
@@ -516,8 +525,9 @@ if(latest >= 0.6){
   
 
     </div>
-        <motion.div style={{height:shadingHeight}} className="absolute bottom-0 left-0 right-0  bg-gradient-to-b from-zinc-950/0 to-zinc-950 z-20" />
+        <motion.div style={{height:shadingHeight}} className="absolute bottom-0 left-0 right-0  bg-gradient-to-b from-zinc-950/0 to-zinc-950 z-50" />
    </div>
+   </BackgroundGradientAnimation>
    {/* hero section */}
 
    {/* enter section */}
@@ -540,11 +550,11 @@ if(latest >= 0.6){
    </div> */}
    {/* enter section */}
 
-<div ref={prodRef} className='h-[300vh] w-full bg-zinc-950 text-white'>
-   <h1 className='text-center font-mono pt-8 opacity-75'>Introducing Codemate.AI</h1>
+<div ref={prodRef} className='h-[350vh] w-full bg-zinc-950 text-white'>
+   <h1 className=' font-mono pt-8 opacity-75 pr-[4rem] text-right  text-lg'>Introducing Codemate.AI</h1>
 
    
-    <div className={`${montserrat.className}  text-6xl font-semibold bg-gradient-to-b from-white to-gray-300/80 bg-clip-text  text-transparent pl-10  pt-2 pb-2 text-center`}>Your<span className='bg-gradient-to-b from-[#00BFFF] to-[#1E90FF] bg-clip-text text-transparent'> New</span> coding assistant.</div>
+    <div className={`${montserrat.className} mt-4 text-6xl pr-[4rem] font-semibold bg-gradient-to-b from-white to-gray-300/80 bg-clip-text  text-transparent  pt-2 pb-2 w-full text-right pl-[58.5rem]`}>Your<span className='bg-gradient-to-b from-[#00BFFF] to-[#1E90FF] bg-clip-text text-transparent'> Full-Stack</span> Coding Assistant.</div>
     <div className='relative h-full w-full  flex flex-col'>
     {/* <div className='h-[30%] w-full flex gap-10 px-10'>
        <Safari className='dark h-[27vw] w-fit' />
@@ -554,85 +564,125 @@ if(latest >= 0.6){
        </div>
     </div> */}
 
-
-
+<div className='relative h-full w-full flex pl-3'>
+      {/* section for products */}
         <div 
-        className='sticky top-0 h-screen w-full flex gap-10 px-10 justify-center items-center'>
+        className='sticky top-0 h-screen w-[63%]  flex gap-10  items-center pl-16'>
           
-        <div 
-        style={{background:'rgba(0, 0, 0, 0.35)',   
-        boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1)',
-        backdropFilter: 'blur(4.7px)',
-        WebkitBackdropFilter: 'blur(4.7px)',
-        }}
-        className='absolute h-[30vw] w-[98vw] rounded-3xl  -z-10 border-y-[0.1px]  border-white border-opacity-25'/>
+        
 
-        <div className="absolute flex gap-3 right-10 top-[5vw] z-50">
-          <button className='rounded-full p-1 bg-white text-black '><IconArrowLeft stroke={2} /></button>
-          <button className='rounded-full p-1 bg-white text-black'><IconArrowRight stroke={2} /></button>
-        </div>
 
           <motion.div 
-          animate={{x:isP1? 800 : isP2? 0 : 0}}
+          animate={{x:0}}
           transition={{duration:0.8}}
           >
-       <Safari className='dark h-[27vw] w-fit rounded-3xl' />
+          
+          <AnimatePresence mode='wait'>
+
+          {!isP1 && !isP2 && 
+          <div  key={3} className="flex flex-col gap-2 pt-10">
+          <motion.div 
+          key={1} 
+          initial={{opacity:0,filter:"blur(30px)"}}
+          animate={{opacity:1,filter:"blur(0px)"}}
+           exit={{opacity:0,filter:"blur(30px)"}}
+          transition={{duration:1}}
+          className='h-[33rem] w-[55rem] bg-zinc-700 rounded-lg'>
+         </motion.div>
+         <span className={`${montserrat.className} text-4xl flex flex-col gap-2`}>
+         <h1>Codemate Webapp</h1>
+         <p className='text-sm opacity-70'>This is the browser-based version of CodeMate — accessible via app.codemate.ai.</p>
+         </span>
+         </div>
+         }          
+          
+          {isP1 && 
+          <div  key={2} className="flex flex-col gap-2 pt-10">
+          <motion.div 
+         
+          initial={{opacity:0,filter:"blur(30px)"}}
+          animate={{opacity:1,filter:"blur(0px)"}}
+           exit={{opacity:0,filter:"blur(30px)"}}
+          transition={{duration:1}}
+          className='h-[33rem] w-[55rem] bg-zinc-700 rounded-lg'>
+         </motion.div>
+         <span className={`${montserrat.className} text-4xl flex flex-col gap-2`}>
+         <h1>Codemate Webapp</h1>
+         <p className='text-sm opacity-70'>This is the browser-based version of CodeMate — accessible via app.codemate.ai.</p>
+         </span>
+         </div>}  
+
+         {isP2 &&           
+         <div  key={3}  className="flex flex-col gap-2 pt-10">
+          <motion.div 
+         
+          initial={{opacity:0,filter:"blur(30px)"}}
+          animate={{opacity:1,filter:"blur(0px)"}}
+           exit={{opacity:0,filter:"blur(30px)"}}
+          transition={{duration:1}}
+          className='h-[33rem] w-[55rem]  bg-zinc-700 rounded-lg'>
+         </motion.div>
+         <span className={`${montserrat.className} text-4xl flex flex-col gap-2`}>
+         <h1>Codemate Webapp</h1>
+         <p className='text-sm opacity-70'>This is the browser-based version of CodeMate — accessible via app.codemate.ai.</p>
+         </span>
+         </div>}        
+        </AnimatePresence>
        </motion.div>
        <motion.div 
        animate={{x:isP1? -700 : isP2? 0 : 0}}
        transition={{duration:0.8}}
        className='mb-52'>
-
-        {!isP1 && !isP2 && <motion.span
-        initial={{opacity:0,filter:'blur(20px)'}}
-        animate={{opacity:1,filter:'blur(0px)'}}
-        transition={{duration:1}}
-        >
-        <h1 className={`${montserrat.className} text-5xl font-semibold mt-2 bg-gradient-to-b from-[#00BFFF] to-[#1E90FF] bg-clip-text text-transparent`}>Codemate Build</h1>
-        <p className={`text-lg text-zinc-500 ${montserrat.className} w-[50vw] mt-5 `}>Codemate Build is your reliable partner in turning ideas into impactful solutions. With a focus on innovation and precision, we craft scalable applications and seamless digital experiences that empower businesses to grow. Our team is dedicated to building not just products, but long-lasting value that helps you stay ahead in a competitive world.</p>
-        </motion.span>}
-
-        {isP1 && <motion.span
-        initial={{opacity:0,filter:'blur(20px)'}}
-        animate={{opacity:1,filter:'blur(0px)'}}
-        transition={{duration:1}}
-        >
-        <h1 className={`${montserrat.className} text-5xl font-semibold mt-2 bg-gradient-to-b from-[#00BFFF] to-[#1E90FF] bg-clip-text text-transparent`}>Codemate chat</h1>
-        <p className={`text-lg text-zinc-500 ${montserrat.className} w-[50vw] mt-5 `}>Codemate Build is your reliable partner in turning ideas into impactful solutions. With a focus on innovation and precision, we craft scalable applications and seamless digital experiences that empower businesses to grow. Our team is dedicated to building not just products, but long-lasting value that helps you stay ahead in a competitive world.</p>
-        </motion.span>}
-      
-        {isP2 && <motion.span
-        initial={{opacity:0,filter:'blur(20px)'}}
-        animate={{opacity:1,filter:'blur(0px)'}}
-        transition={{duration:1}}
-        >
-        <h1 className={`${montserrat.className} text-5xl font-semibold mt-2 bg-gradient-to-b from-[#00BFFF] to-[#1E90FF] bg-clip-text text-transparent`}>Codemate terminal</h1>
-        <p className={`text-lg text-zinc-500 ${montserrat.className} w-[50vw] mt-5 `}>Codemate Build is your reliable partner in turning ideas into impactful solutions. With a focus on innovation and precision, we craft scalable applications and seamless digital experiences that empower businesses to grow. Our team is dedicated to building not just products, but long-lasting value that helps you stay ahead in a competitive world.</p>
-        </motion.span>}
-
        </motion.div>
     </div>
+      {/* section for products */}
+     
 
-        {/* <div className='h-[30%] w-full flex gap-10 px-10'>
-       
-       <div>
-        <h1 className={`${montserrat.className} text-5xl font-semibold mt-2`}>Codemate chat</h1>
-        <p className={`text-sm opacity-65 ${montserrat.className} w-[50vw] mt-5`}>Codemate Build is your reliable partner in turning ideas into impactful solutions. With a focus on innovation and precision, we craft scalable applications and seamless digital experiences that empower businesses to grow. Our team is dedicated to building not just products, but long-lasting value that helps you stay ahead in a competitive world.</p>
-       </div>
-       <Safari className='dark h-[27vw] w-fit' />
-    </div> */}
 
-        {/* <div className='h-[30%] w-full flex gap-10 px-10'>
-       <Safari className='dark h-[27vw] w-fit' />
-       <div>
-        <h1 className={`${montserrat.className} text-5xl font-semibold mt-2`}>Codemate terminal</h1>
-        <p className={`text-sm opacity-65 ${montserrat.className} w-[50vw] mt-5`}>Codemate Build is your reliable partner in turning ideas into impactful solutions. With a focus on innovation and precision, we craft scalable applications and seamless digital experiences that empower businesses to grow. Our team is dedicated to building not just products, but long-lasting value that helps you stay ahead in a competitive world.</p>
-       </div>
-    </div> */}
+     {/* features of product */}
+
+  <div className={`h-full w-[30%] flex flex-col pt-[4.2rem] gap-[1rem] ${montserrat.className}`}>
+    
+    <div className='relative h-[18.5rem] w-[30rem] bg-gradient-to-b from-[#243B55] to-[#141E30] rounded-lg pl-7 overflow-hidden' >
+     <h1 className={`text-2xl opacity-90 mt-2`}>Codemate Build</h1>
+     <img src="build.svg" className='absolute -bottom-5 -right-14 size-[90%]' alt="" />
+
+    </div>
+    <div className='relative h-[18.5rem] w-[30rem] bg-gradient-to-b from-[#6441A5] to-[#2A0845] rounded-lg pl-7 overflow-hidden' >
+     <h1 className={`text-2xl opacity-90 mt-2`}>Codemate Chat</h1>
+     <img src="build.svg" className='absolute -bottom-5 -right-14 size-[90%]' alt="" />
+
+    </div>
+    <div className='relative h-[16.5rem] w-[30rem] bg-gradient-to-b from-[#6441A5] to-[#2A0845] rounded-lg pl-7 overflow-hidden' >
+     <h1 className={`text-2xl opacity-90 mt-2`}>Codemate Chat</h1>
+     <img src="build.svg" className='absolute -bottom-5 -right-14 size-[90%]' alt="" />
+
+    </div>
+    <div className='relative h-[16.5rem] w-[30rem] bg-gradient-to-b from-[#6441A5] to-[#2A0845] rounded-lg pl-7 overflow-hidden' >
+     <h1 className={`text-2xl opacity-90 mt-2`}>Codemate Chat</h1>
+     <img src="build.svg" className='absolute -bottom-5 -right-14 size-[90%]' alt="" />
+
+    </div>
+    <div className='relative h-[16.5rem] w-[30rem] bg-gradient-to-b from-[#6441A5] to-[#2A0845] rounded-lg pl-7 overflow-hidden' >
+     <h1 className={`text-2xl opacity-90 mt-2`}>Codemate Chat</h1>
+     <img src="build.svg" className='absolute -bottom-5 -right-14 size-[90%]' alt="" />
+
+    </div>
+    <div className='relative h-[16.5rem] w-[30rem] bg-gradient-to-b from-[#6441A5] to-[#2A0845] rounded-lg pl-7 overflow-hidden' >
+     <h1 className={`text-2xl opacity-90 mt-2`}>Codemate Chat</h1>
+     <img src="build.svg" className='absolute -bottom-5 -right-14 size-[90%]' alt="" />
+
+    </div>
+  </div>
+{/* features of products */} 
+ </div>
+    
+
+
     </div>
 </div>
 
-<div ref={productsWrapper}>
+<div ref={productsWrapper} className='-z-20 h-fit w-fit'>
   {isProds &&      
   <AnimatePresence mode="wait">
   <motion.div
@@ -675,8 +725,8 @@ if(latest >= 0.6){
      </motion.div>}
     </AnimatePresence>
      <motion.div 
-     style={{x:div3X}} className='absolute left-[30rem] h-[30vw] w-[58vw] rounded-xl text-white'>
-             <motion.div style={{x:xE}} className='h-full w-full'>
+     style={{x:div3X}} className='absolute left-[30rem] h-[30vw] w-[58vw] rounded-xl z-0 text-white'>
+             <motion.div style={{x:xE}} className='h-full w-full overflow-y-auto'>
              <CodeOverlay ref={codeOverlayRef}/> 
 
         <CodeEditor comp1={brokenComponent} comp2={fixedComponent} isFix={isFix}/> 
@@ -692,7 +742,15 @@ if(latest >= 0.6){
    
    className='relative h-[200vw] w-full bg-zinc-950'>
    
- <div className={`${montserrat.className}  text-6xl font-semibold bg-gradient-to-b from-white to-gray-300/80 bg-clip-text  text-transparent pl-10 mb-6 pt-20 pb-2 text-center`}>With our <span className='bg-gradient-to-b from-[#00BFFF] to-[#1E90FF] bg-clip-text text-transparent'>Products</span> take yourself to perfection.</div>
+ <div className={`${montserrat.className}  text-5xl font-semibold bg-gradient-to-b from-white to-gray-300/80 bg-clip-text  text-transparent pl-14 mb-6 pt-20 pr-[60rem] pb-1`}>We got<span className='bg-gradient-to-b from-[#00BFFF] to-[#1E90FF] bg-clip-text text-transparent'> Everything</span> for you.</div>
+    
+   <div className='sticky top-[39vw] z-40'> 
+        <motion.div 
+        initial={{opacity:0,filter:'blur(10px)'}}
+        whileInView={{opacity:1,filter:'blur(0px)'}}
+        transition={{delay:2,duration:0.6}}
+        className={`${montserrat.className}  text-2xl pr-[6rem] font-semibold bg-gradient-to-b from-white to-gray-300/80 bg-clip-text  text-transparent  pt-2 pb-2 w-full text-right`}>From <span className='bg-gradient-to-b from-[#00BFFF] to-[#1E90FF] bg-clip-text text-transparent text-4xl'>Web-Application</span></motion.div>
+   </div>
 
    <div className='sticky top-0   h-screen w-full overflow-x-hidden'>
        
@@ -718,7 +776,7 @@ className='relative h-full w-[40%] flex  items-center justify-center  pl-10 py-3
         <motion.div 
         style={{opacity:op1}}
         className='text-white flex flex-col gap-2'>
-          <h1 className='text-2xl'>Codemate Chat</h1>
+          <h1 className='text-2xl'>Documentation</h1>
 
           <p className='text-sm opacity-70'>
             We’re your AI coding partner, here to handle the messy parts — from stubborn bugs to broken features while You focus on your vision.
@@ -728,7 +786,7 @@ className='relative h-full w-[40%] flex  items-center justify-center  pl-10 py-3
                  <motion.div 
                  style={{opacity:op2}}
                  className='text-white flex flex-col gap-2'>
-          <h1 className='text-2xl'>Codemate Build</h1>
+          <h1 className='text-2xl'>Code Maintnance</h1>
 
           <p className='text-sm opacity-70'>
             We’re your AI coding partner, here to handle the messy parts — from stubborn bugs to broken features while You focus on your vision.
@@ -739,7 +797,7 @@ className='relative h-full w-[40%] flex  items-center justify-center  pl-10 py-3
                 <motion.div 
                 style={{opacity:op3}}
                 className='text-white flex flex-col gap-2'>
-          <h1 className='text-2xl'>Codemate Education</h1>
+          <h1 className='text-2xl'>PR Review</h1>
 
           <p className='text-sm opacity-70'>
             We’re your AI coding partner, here to handle the messy parts — from stubborn bugs to broken features while You focus on your vision.
@@ -773,88 +831,14 @@ className='relative h-full w-[40%] flex  items-center justify-center  pl-10 py-3
 
    <div ref={productRef} className='relative h-[550vh] w-full bg-zinc-950 text-white flex  flex-col'>
 
-  {/* <div className={`absolute text-white w-full flex justify-center items-center text-7xl font-light pt-14 opacity-45 whitespace-pre-wrap bg-gradient-to-b from-black to-gray-300/80 bg-clip-text text-transparent ${montserrat.className}`}>
-    <TextAnimate delay={1} duration={2} animation="blurIn" as="h1" className=' '>A New Way To Build Apps With AI</TextAnimate>
-  </div> */}
-    
-    {/* <div 
-    className="absolute top-0 text-[13rem]  pl-5 font-mono flex">
-      
-<AnimatePresence mode="wait">
-  {isRef1 && (
-    <motion.div
-      key="ref1"
-      ref={Ref1}
-      className="flex"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0, filter: 'blur(20px)' }}
-      transition={{ duration: 1 }}
-    >
-      <p>Press "R" for Review mode.</p>
-    </motion.div>
-  )}
 
-  {isRef2 && (
-    <motion.div
-      key="ref2"
-      ref={Ref2}
-      className="flex pl-[82.5vw]"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0, filter: 'blur(20px)' }}
-      transition={{ duration: 1 }}
-    >
-      <motion.h1
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.6 }}
-      >
-        0
-      </motion.h1>
-      <motion.h1
-        initial={{ opacity: 0, y: 150 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.8 }}
-      >
-        2
-      </motion.h1>
-    </motion.div>
-  )}
-
-  {isRef3 && (
-    <motion.div
-      key="ref3"
-      ref={Ref3}
-      className="flex"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0, filter: 'blur(20px)' }}
-      transition={{ duration: 1 }}
-    >
-      <motion.h1
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.6 }}
-      >
-        0
-      </motion.h1>
-      <motion.h1
-        initial={{ opacity: 0, y: 150 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.8 }}
-      >
-        3
-      </motion.h1>
-    </motion.div>
-  )}
-</AnimatePresence>
+      <div className='sticky top-[39vw] z-50'> 
+        <div className={`${montserrat.className}  text-2xl pl-[6rem] font-semibold bg-gradient-to-b from-white to-gray-300/80 bg-clip-text  text-transparent  pt-2 pb-2 w-full `}>To your<span className='bg-gradient-to-b from-[#00BFFF] to-[#1E90FF] bg-clip-text text-transparent text-4xl'> IDE</span></div>
+   </div>
 
 
-    </div> */}
 
-
- <div className={`${montserrat.className}  text-6xl font-semibold bg-gradient-to-b from-white to-gray-300/80 bg-clip-text  text-transparent pl-10 mb-6 pt-20 text-center`}>Let's see what our <span className='bg-gradient-to-b from-[#00BFFF] to-[#1E90FF] bg-clip-text text-transparent'>Extension</span> alone can do.</div>
+ <div className={`${montserrat.className}  text-5xl font-semibold bg-gradient-to-b from-white to-gray-300/80 bg-clip-text  text-transparent pr-16 mb-6 pt-20 text-right pl-[50rem] pb-1`}>Everything means <span className='bg-gradient-to-b from-[#00BFFF] to-[#1E90FF] bg-clip-text text-transparent'>Everything</span> right?</div>
 
      <motion.div 
      initial={{opacity:0,filter:'blur(50px)'}}
@@ -902,12 +886,21 @@ className='relative h-full w-[40%] flex  items-center justify-center  pl-10 py-3
       </AnimatePresence> */}
 
 
-      <div className='relative flex justify-center items-center w-[70%]'>
+      <div className='relative flex justify-center items-center w-[70%] z-20'>
 
         
       <motion.div 
       ref={feature1Ref}
-      className='relative h-[30vw] w-[58vw] opacity-80 rounded-xl flex justify-center items-center overflow-y-scroll z-50'>
+      className='relative h-[30vw] w-[58vw] opacity-80 rounded-xl flex justify-center items-center '>
+
+          
+        <motion.div
+        initial={{opacity:0,filter:'blur(20px)'}}
+        whileInView={{opacity:1,filter:'blur(0px)'}}
+        transition={{duration:1.5}}
+        
+        className='absolute h-full w-full bg-zinc-950 rounded-xl flex z-50 '></motion.div>  
+
 
         
 
@@ -916,7 +909,7 @@ className='relative h-full w-[40%] flex  items-center justify-center  pl-10 py-3
         whileInView={{opacity:1,filter:'blur(0px)'}}
         transition={{duration:1.5}}
         ref={editor2Ref}
-        className='hidden absolute h-full w-full bg-zinc-900 rounded-xl flex z-40 '></motion.div>
+        className='hidden absolute h-full w-full bg-zinc-900 rounded-xl flex z-50 '></motion.div>
 
 
         {/* <CodeOverlay ref={codeOverlayRef}/> 
@@ -1074,9 +1067,10 @@ className='relative h-full w-[40%] flex  items-center justify-center  pl-10 py-3
        className='absolute text-7xl text-nowrap'>You can do much more with just Plugin...</motion.h1> */}
       </div>
 
-        <div className='w-[30%] h-full flex justify-end pr-20 py-10 gap-10'> 
+        <div 
+        className=' w-[30%] h-full flex justify-end pr-20 py-10 gap-10 !z-[9999]'> 
 
-      <div className='w-full'>
+      <div className='w-full z-[999]'>
          <div>
           <h1 className='text-white text-6xl mb-5 mt-24 '>Debug</h1>
        <motion.span
@@ -1096,7 +1090,7 @@ className='relative h-full w-[40%] flex  items-center justify-center  pl-10 py-3
         transition={{duration:1,delay:1}}
         className='mb-10 '>
         <LoaderOne/>
-        </motion.span>  :         <button ref={debugBtnRef} onClick={handleOverlay} className='bg-[#343434] rounded-[50px] px-2 py-2 mt-10 hover:opacity-70'>
+        </motion.span>  :         <button ref={debugBtnRef} onClick={handleOverlay} className='bg-[#343434] rounded-[50px] px-2 py-2 mt-10 hover:opacity-70 z-50'>
           Debug this code
         </button>} 
         </div>
@@ -1123,7 +1117,7 @@ className='relative h-full w-[40%] flex  items-center justify-center  pl-10 py-3
 
 {/* bento */}
      <div className=' relative h-[170vh] w-full bg-zinc-950 text-white overflow-hidden'>
-   <div className={`${montserrat.className}  text-6xl font-semibold bg-gradient-to-b from-white to-gray-300/80 bg-clip-text  text-transparent pl-10 mb-6 pt-20 text-center`}>More than <span className='bg-gradient-to-b from-[#00BFFF] to-[#1E90FF] bg-clip-text text-transparent'>100k</span> users</div>
+   <div className={`${montserrat.className}  text-8xl font-semibold bg-gradient-to-b from-white to-gray-300/80 bg-clip-text  text-transparent pl-10 mb-6 pt-20 text-center pb-1`}>What<span className='bg-gradient-to-b from-[#00BFFF] to-[#1E90FF] bg-clip-text text-transparent'> else</span> we got?</div>
    
   <MagicBento 
   textAutoHide={true}
@@ -1143,13 +1137,13 @@ className='relative h-full w-[40%] flex  items-center justify-center  pl-10 py-3
 
 
 
-  <div ref={testiRef} className='relative h-[950vh] w-full bg-zinc-950'>
+  <div ref={testiRef} className='relative h-[950vh] w-full bg-zinc-950 '>
          <div className={`${montserrat.className}  text-6xl font-semibold bg-gradient-to-b from-white to-gray-300/80 bg-clip-text  text-transparent pl-10 mb-6 pt-20 text-center`}>Do not listen to us but from <span className='bg-gradient-to-b from-[#00BFFF] to-[#1E90FF] bg-clip-text text-transparent'>People</span></div>
 
    <div className=' sticky top-0   h-screen w-full overflow-x-hidden '>
        
 <div
-className='relative h-full w-full flex  items-center justify-center   pl-10 py-3'>
+className='relative h-full w-full flex  items-center justify-center   pl-10 py-3 overflow-hidden'>
 
 
      <motion.div 
@@ -1190,7 +1184,7 @@ className='relative h-full w-full flex  items-center justify-center   pl-10 py-3
 
 <div className='h-screen w-full bg-zinc-950'></div>
 
-    </>
+    </div>
   )
 }
 

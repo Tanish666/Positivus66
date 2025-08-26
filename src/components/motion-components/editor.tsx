@@ -53,8 +53,8 @@ const nextJsStructure = [
 
 
   return(
-    <div className='relative h-full w-full bg-zinc-900 z-30 rounded-xl flex'>
-       <div className='absolute h-[7%] w-full top-0 bg-[#262626] rounded-t-xl z-40 flex  gap-5 items-center border-b-[0.1px] border-opacity-10 border-white'>
+    <div className='relative h-full w-full bg-zinc-900  rounded-xl flex overflow-hidden'>
+       <div className='absolute h-[7%] w-full top-0 bg-[#262626] rounded-t-xl z-50 flex  gap-5 items-center border-b-[0.1px] border-opacity-10 border-white'>
         <div className='flex gap-2 ml-5 opacity-50'>
          <div className='size-3 rounded-full bg-white '/>
          <div className='size-3 rounded-full bg-white '/>
@@ -62,7 +62,7 @@ const nextJsStructure = [
          </div>
          
          <div className='flex gap-3 opacity-70'>
-          <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  className="icon icon-tabler icons-tabler-outline icon-tabler-git-branch"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 18m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /><path d="M7 6m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /><path d="M17 6m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /><path d="M7 8l0 8" /><path d="M9 18h6a2 2 0 0 0 2 -2v-5" /><path d="M14 14l3 -3l3 3" /></svg>
+          <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  strokeWidth="2"  strokeLinecap="round"  strokeLinejoin="round"  className="icon icon-tabler icons-tabler-outline icon-tabler-git-branch"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 18m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /><path d="M7 6m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /><path d="M17 6m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /><path d="M7 8l0 8" /><path d="M9 18h6a2 2 0 0 0 2 -2v-5" /><path d="M14 14l3 -3l3 3" /></svg>
           <h1>main</h1>
          </div>
        </div>
@@ -75,7 +75,7 @@ const nextJsStructure = [
          <div className='flex gap-3 opacity-70 text-sm'>
            <h1>LF</h1>
            <h1>UTF-8</h1>
-           <svg  xmlns="http://www.w3.org/2000/svg"  width="17"  height="17"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  className="icon icon-tabler icons-tabler-outline icon-tabler-lock-open-2"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 13a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2z" /><path d="M9 16a1 1 0 1 0 2 0a1 1 0 0 0 -2 0" /><path d="M13 11v-4a4 4 0 1 1 8 0v4" /></svg>
+           <svg  xmlns="http://www.w3.org/2000/svg"  width="17"  height="17"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  strokeWidth="2"  strokeLinecap="round"  strokeLinejoin="round"  className="icon icon-tabler icons-tabler-outline icon-tabler-lock-open-2"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 13a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2z" /><path d="M9 16a1 1 0 1 0 2 0a1 1 0 0 0 -2 0" /><path d="M13 11v-4a4 4 0 1 1 8 0v4" /></svg>
          </div>
        </div>
 
@@ -115,7 +115,7 @@ const nextJsStructure = [
      </div>
      {!isFix? 
     
-    <div className='relative h-full w-[95%] flex gap-3 py-2 overflow-y-auto'>
+    <div onClick={()=>console.log("working")} className='relative h-full w-[95%] flex gap-3 py-2 overflow-y-auto scrollbar-thin'>
 
      <div className='absolute top-8 h-[7%] w-full bg-zinc-900 z-40 border-b-[0.7px] border-white border-opacity-60'>
       <div className='flex  w-fit   gap-1 ml-4 border-b-2 border-[#00BFFF]'>
@@ -134,14 +134,14 @@ const nextJsStructure = [
       <IconAlertCircle stroke={2} color='red'/>
       </motion.div>
 
-      <div className='text-white flex flex-col ml-4 opacity-65 font-mono gap-1 overflow-y-auto '>
+      <div className='text-white flex flex-col ml-4 opacity-65 font-mono gap-1 '>
        {[...Array(19)].map((_,idx)=>(
         <span key={idx}>{idx+1}</span>
        ))} 
       </div> 
 
 
-      <div className='relative flex flex-col gap-[0.37rem] font-mono w-full'>
+      <div className='relative flex flex-col gap-[0.37rem] font-mono w-full '>
         {comp1.map((e:any,idx:number)=>(
          <div key={idx} className='relative flex'>
           {e.isError && 
