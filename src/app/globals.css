@@ -111,11 +111,33 @@ html {
   }
 }
 
-::-webkit-scrollbar {
+/* ::-webkit-scrollbar {
   display: none;
-}
+} */
 
 body {
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;     /* Firefox */
 }
+
+.white-space-pre-line {
+  white-space: pre-line;
+}
+
+.logo {
+            display: inline-block;
+            height: 100px;
+            width: 350px;
+            /* Added width to make logos of equal height and width */
+          
+            vertical-align: middle;
+            filter: grayscale(100%) brightness(0) invert(1);
+            object-fit: contain;
+            /* Ensures logos do not look stretched or shrunk */
+          }
+
+
+
+.custom-cursor {
+  cursor: url("/cursor.svg") 16 16, auto;
+}       

@@ -1,10 +1,16 @@
 'use client'
 import {motion} from 'framer-motion';
+import { useState } from 'react';
 import { IconFolderFilled,IconFolder,IconAlertCircle,IconPlus } from '@tabler/icons-react';
 import { useEffect } from 'react';
 import Lenis from 'lenis';
-export default function CodeEditor({isFix,comp1,comp2}:{isFix:boolean;comp1:any,comp2:any}){
+import { Skeleton } from '../ui/skeleton';
+export default function AutoCodeEditor({isFix,comp1}:{isFix:boolean;comp1:any}){
 
+
+
+const [isLoad,setIsLoad] = useState(false);
+const [isComplete,setIsComplete] = useState(false);
 const nextJsStructure = [
   {
     name: "app",
@@ -52,17 +58,17 @@ const nextJsStructure = [
   { name: ".gitignore" },
   { name: "README.md" }
 ];
+const loadtimer = () => {
+    setIsLoad(true);
+    setTimeout(()=>{setIsLoad(false);setIsComplete(true)},2000);
+ }   
+useEffect(()=>{
 
-      useEffect(()=>{
-        const lenis = new Lenis({
-          duration:2
-        });
-        function raf(time: any){
-         lenis.raf(time) 
-         requestAnimationFrame(raf)
-        }
-        requestAnimationFrame(raf);
-       },[]);
+
+ if(isFix){
+    loadtimer();
+ }
+},[isFix])
 
   return(
     <div className='relative h-full w-full bg-zinc-900  rounded-xl flex overflow-hidden'>
@@ -125,9 +131,8 @@ const nextJsStructure = [
         
       </div>
      </div>
-     {!isFix? 
-    
-    <div  className='relative h-full w-[95%] flex gap-3 py-2 overflow-y-auto scrollbar-thin pt-20'>
+      
+          <div  className='relative h-full w-[95%] flex gap-3 py-2 overflow-y-auto scrollbar-thin pt-20'>
 
      <div className='absolute top-8 h-[7%] w-full bg-zinc-900 z-40 border-b-[0.7px] border-white border-opacity-60'>
       <div className='flex  w-fit   gap-1 ml-4 border-b-2 border-[#00BFFF]'>
@@ -147,102 +152,71 @@ const nextJsStructure = [
       </motion.div>
 
       <div className='text-white flex flex-col ml-4 opacity-65 font-mono gap-1 '>
-       {[...Array(comp1.length)].map((_,idx)=>(
+
+       {isComplete? [...Array(comp1.length)].map((_,idx)=>(
         <span key={idx}>{idx+1}</span>
-       ))} 
+       )) : [...Array(comp1.length-2)].map((_,idx)=>(
+        <span key={idx}>{idx+1}</span>
+       )) } 
       </div> 
 
 
       <div className='relative flex flex-col gap-[0.37rem] font-mono w-full '>
-        {comp1.map((e:any,idx:number)=>(
-          idx === comp1.length - 1? 
-          
-         <div key={idx} className='relative flex'>
-          {e.isError && 
-          
-          <div className='absolute bg-red-600 w-full h-full bg-opacity-10 cursor-text'>
-          <div className='absolute h-6 w-[0.15rem] bg-red-600 rounded-3xl'/>
-          </div>
-          }
-          
-          <h1  className='w-full ml-2 cursor-text'>{e.code}</h1>
-                  <motion.img 
+      {!isComplete && comp1
+  .filter((_: any, idx: number) => idx !== 6 && idx !== 7)
+  .map((e: any, idx: number) => (
+    idx === 5?     
+    <div key={idx} className="relative flex flex-col">
+      <h1 className="w-full ml-2 cursor-text">{e.code}</h1>
+        {/* skeleton for loader */}
+        {isLoad && <motion.div 
+
+        className='w-full flex flex-col gap-2  my-2'
+        >
+        <Skeleton className='h-3 ml-2 w-[60%] rounded-sm '/>
+        <Skeleton className='h-3 ml-2 w-[70%] rounded-sm '/>
+        <Skeleton className='h-3 ml-2 w-[50%] rounded-sm '/>
+        </motion.div>}
+
+        {/* skeleton for loader */}
+    </div> :     
+     idx === comp1.length - 3? 
+    <div key={idx} className="relative flex">
+      <h1 className="w-full ml-2 cursor-text">{e.code}</h1>
+        <motion.img 
         animate={{opacity:[0,1]}}
         transition={{duration:0.7,repeat:Infinity,
         repeatDelay:0.7,  
         repeatType:'mirror'}}
         src="blinkin.png" className='ml-5  h-7 absolute   object-cover invert' alt="" />
-         </div>
-          
-          :
-         <div key={idx} className='relative flex'>
-          {e.isError && 
-          
-          <div className='absolute bg-red-600 w-full h-full bg-opacity-10 cursor-text'>
-          <div className='absolute h-6 w-[0.15rem] bg-red-600 rounded-3xl'/>
-          </div>
-          }
-          
-          <h1  className='w-full ml-2 cursor-text'>{e.code}</h1>
-         </div>          
-        ))}
+     </div>
+      :
+    <div key={idx} className="relative flex">
+      <h1 className="w-full ml-2 cursor-text">{e.code}</h1>
+    </div>
+  ))} 
+
+   {isComplete && comp1.map((e: any, idx: number) => (
+  
+     idx === comp1.length - 1? 
+    <div key={idx} className="relative flex">
+      <h1 className="w-full ml-2 cursor-text">{e.code}</h1>
+        <motion.img 
+        animate={{opacity:[0,1]}}
+        transition={{duration:0.7,repeat:Infinity,
+        repeatDelay:0.7,  
+        repeatType:'mirror'}}
+        src="blinkin.png" className='ml-5  h-7 absolute   object-cover invert' alt="" />
+     </div>
+      :
+    <div key={idx} className="relative flex">
+      <h1 className=" ml-2 cursor-text">{e.code}</h1>
+    </div>
+  ))}
+  
 
       </div>        
      </div> 
-     :
-     <div className='relative h-full  flex gap-3 py-2 w-full'>
-
-      <motion.div 
-
-      className='absolute top-5 h-10 w-40 bg-green-800 bg-opacity-15 z-20 right-0 m-5 rounded-sm flex items-center pl-3 gap-2 '>
-      <IconAlertCircle stroke={2} color='green'/>
-      <h1 className='text-mono text-sm opacity-70'>8 FIXES</h1>
-      </motion.div>
-
-      <div className='text-white flex flex-col ml-4 opacity-65 font-mono gap-1 '>
-       {[...Array(comp2.length)].map((_,idx)=>(
-        <span key={idx}>{idx+1}</span>
-       ))} 
-      </div> 
-
-
-      <div className='relative flex flex-col gap-[0.37rem] font-mono w-full'>
-        {comp2.map((e:any,idx:number)=>(
-          idx === comp2.length?          
-          <div key={idx} className='relative flex'>
-          
-          {e.isError && 
-           
-          <div className='absolute bg-green-600 w-full h-5 bg-opacity-10 cursor-text '>  
-          <div className='absolute h-5 w-[0.15rem] bg-green-600 rounded-3xl'/>
-          </div>
-          }
-          
-          <h1  className='w-full ml-2 cursor-text'>{e.code}</h1>
-          <motion.img 
-                  animate={{opacity:[0,1]}}
-                  transition={{duration:0.7,repeat:Infinity,
-                  repeatDelay:0.7,  
-                  repeatType:'mirror'}}
-                  src="blinkin.png" className='ml-5  h-7 absolute   object-cover invert' alt="" />
-         </div> 
-         :
-         <div key={idx} className='relative flex'>
-          
-          {e.isError && 
-           
-          <div className='absolute bg-green-600 w-full h-5 bg-opacity-10 cursor-text '>  
-          <div className='absolute h-5 w-[0.15rem] bg-green-600 rounded-3xl'/>
-          </div>
-          }
-          
-          <h1  className='w-full ml-2 cursor-text'>{e.code}</h1>
-         </div>
-        ))}
-      </div>        
-     </div>
-
-     }
 
     </div>
   )
