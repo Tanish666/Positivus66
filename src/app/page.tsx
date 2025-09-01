@@ -454,7 +454,7 @@ console.log(latest);
     <div className='flex  h-full w-full text-white px-[6rem] py-2 '>
     <div className='flex gap-5 justify-between items-center w-full h-full'>
     <div>
-      {!IsMascot && <img src="/Codemate.ai.svg" alt="" />}
+      {!IsMascot && <img src="/codemateLogo.svg" alt="" />}
      {IsMascot && <motion.div initial={{opacity:0,filter:'blur(20px)',x:50}} animate={{opacity:1,filter:'blur(0px)',x:0}} transition={{duration:0.5}} >
       <img src="/mascot.svg" alt="" className='size-[20%]' />
       </motion.div>}
