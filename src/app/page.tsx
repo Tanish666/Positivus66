@@ -1298,7 +1298,7 @@ className='relative h-full w-full flex  items-center justify-center   pl-10 py-3
       </div>
        </div>
 
-       <div className='text-2xl'>CodeMate.ai has revolutionized my coding workflow with accurate AI suggestions and a user-friendly interface. Highly recommended!</div>
+       <div className='text-2xl'><span className='text-[#00BFFF]'>CodeMate.ai</span> has revolutionized my coding workflow with accurate AI suggestions and a user-friendly interface. Highly recommended!</div>
 
        <div className='w-full flex justify-between'>
        </div>
@@ -1318,7 +1318,7 @@ className='relative h-full w-full flex  items-center justify-center   pl-10 py-3
       </div>
        </div>
 
-       <div className='text-2xl'>CodeMate has lots of great features. You can request code samples when stuck, or get a code review to spot issues you might miss. The Debugger is a life saver—it quickly found a bug in my code that was filling the error logs!</div>
+       <div className='text-2xl'><span className='text-[#00BFFF]'>CodeMate</span> has lots of great features. You can request code samples when stuck, or get a code review to spot issues you might miss. The Debugger is a life saver—it quickly found a bug in my code that was filling the error logs!</div>
 
        <div className='w-full flex justify-between'>
        </div>
@@ -1336,7 +1336,7 @@ className='relative h-full w-full flex  items-center justify-center   pl-10 py-3
       </div>
        </div>
 
-       <div className='text-2xl'>An excellent solution for project analysis and efficient development! I love how CodeMate can analyze an entire project, assign tasks for refactoring or code generation, and even ensure the project is covered with tests.</div>
+       <div className='text-2xl'>An excellent solution for project analysis and efficient development! I love how <span className='text-[#00BFFF]'>CodeMate</span> can analyze an entire project, assign tasks for refactoring or code generation, and even ensure the project is covered with tests.</div>
 
        <div className='w-full flex justify-between'>
        </div>
@@ -1354,7 +1354,7 @@ className='relative h-full w-full flex  items-center justify-center   pl-10 py-3
       </div>
        </div>
 
-       <div className='text-2xl'>Codemate is doing a great job with its simplicity. I can't wait to see more features they are going to release soon.</div>
+       <div className='text-2xl'><span className='text-[#00BFFF]'>Codemate</span> is doing a great job with its simplicity. I can't wait to see more features they are going to release soon.</div>
 
        <div className='w-full flex justify-between'>
        </div>
@@ -1372,7 +1372,7 @@ className='relative h-full w-full flex  items-center justify-center   pl-10 py-3
       </div>
        </div>
 
-       <div className='text-2xl'>Love this tool! It can train on the entire solution (and others), saving so much time and frustration. Unlike ChatGPT, it finds the right methods and code blocks with ease, and the ability to retain training on past solutions is phenomenal.</div>
+       <div className='text-2xl'>Love this tool! It can train on the entire solution (and others), saving so much time and frustration. <span className='text-[#00BFFF]'>Unlike ChatGPT</span>, it finds the right methods and code blocks with ease, and the ability to retain training on past solutions is phenomenal.</div>
 
        <div className='w-full flex justify-between'>
        </div>
