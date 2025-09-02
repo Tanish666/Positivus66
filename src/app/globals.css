@@ -111,9 +111,19 @@ html {
   }
 }
 
-/* ::-webkit-scrollbar {
-  display: none;
-} */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: black; /* scrollbar track background */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #3f3f46;  /* the draggable bar */
+  border-radius: 1px;
+  min-height: 60px;
+}
 
 body {
   -ms-overflow-style: none;  /* IE and Edge */
@@ -141,3 +151,5 @@ body {
 .custom-cursor {
   cursor: url("/cursor.svg") 16 16, auto;
 }       
+
+

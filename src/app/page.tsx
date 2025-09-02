@@ -299,13 +299,13 @@ const AutoCompleteComponent = [
 
 useMotionValueEvent(p1YProg, 'change', (latest) => {
   // --- Main state handling ---
-  if (latest > 0.68) {
+  if (latest > 0.6) {
     // Show Ref3 as flex, hide Ref1/Ref2, hide drawer2
     setIsRef3(true);
     setIsRef2(false);
     setIsRef1(false);
     drawer2Ref.current?.classList.add('hidden');
-  } else if (latest > 0.5) {
+  } else if (latest > 0.3) {
     // Show Ref2, hide Ref1 & Ref3, show editor2, keep drawer2 visible
     drawer2Ref.current?.classList.remove('hidden');
     setIsRef1(false);
@@ -436,8 +436,10 @@ console.log(latest);
 
 
   {/*navBar*/}
-
-  <motion.div
+<div 
+style={{zIndex:999999999999,}}
+className='fixed flex top-0 justify-center items-center w-full'>
+    <motion.div
    initial={{y:-100}}
    animate={{y:0}}
    transition={{duration:1,delay:0.5}}
@@ -445,31 +447,44 @@ console.log(latest);
   // animate={{opacity:1,filter:'blur(0px)'}}
   // transition={{duration:1,delay:7}}
   style={{background:!isNBack? 'rgba(15, 12, 12, 0.2)' : 'rgba(15, 12, 12, 0.55)',   
-        boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1)',
-        backdropFilter: 'blur(13.1px)',
-        WebkitBackdropFilter: 'blur(13.1px)',
+        boxShadow: '0 4px 25px rgba(0, 0, 0, 0.1)',
+        backdropFilter: 'blur(10px)',
+        WebkitBackdropFilter: 'blur(10px)',
         zIndex:999999999999,
         }}
-  className='fixed flex top-0 w-full bg-opacity-65 z-[9999999999]'>
-    <div className='flex  h-full w-full text-white px-[6rem] py-2 '>
-    <div className='flex gap-5 justify-between items-center w-full h-full'>
-    <div>
+  className='mt-5 w-fit bg-opacity-65 z-[9999999999] rounded-md'>
+    <div className='flex  h-full w-full text-white px-[1rem] py-2 '>
+    <div className='flex gap-[51vw]  justify-between items-center w-full h-10'>
+    <div className="h-full w-[13rem] flex justify-center overflow-hidden">
       {!IsMascot && <img src="/codemateLogo.svg" alt="" />}
-     {IsMascot && <motion.div initial={{opacity:0,filter:'blur(20px)',x:50}} animate={{opacity:1,filter:'blur(0px)',x:0}} transition={{duration:0.5}} >
-      <img src="/mascot.svg" alt="" className='size-[20%]' />
+     {IsMascot && <motion.div initial={{opacity:0,filter:'blur(20px)',x:50}} animate={{opacity:1,filter:'blur(0px)',x:-80}} transition={{duration:0.5}}>
+      <svg width="50" height="40" viewBox="0 0 153 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M131.78 150H39.4727L60.2412 110.845H152.55L131.78 150ZM39.4727 39.0674V150L0.242188 125.04V14.1074L39.4727 39.0674ZM71.7422 64C77.8173 64 82.7422 68.9249 82.7422 75C82.7422 81.0751 77.8173 86 71.7422 86C65.6671 86 60.7422 81.0751 60.7422 75C60.7422 68.9249 65.6671 64 71.7422 64ZM111.742 64C117.817 64 122.742 68.9249 122.742 75C122.742 81.0751 117.817 86 111.742 86C105.667 86 100.742 81.0751 100.742 75C100.742 68.9249 105.667 64 111.742 64ZM131.78 39.1553H39.4727L60.2412 0H152.55L131.78 39.1553Z" fill="url(#paint0_linear_2014_66)"/>
+<defs>
+<linearGradient id="paint0_linear_2014_66" x1="0.580642" y1="1.09465e-05" x2="183.357" y2="82.4837" gradientUnits="userSpaceOnUse">
+<stop stop-color="#00BFFF"/>
+<stop offset="1" stop-color="#1E90FF"/>
+</linearGradient>
+</defs>
+</svg>
+
       </motion.div>}
     
     </div>
-    <div className={`${montserrat.className} flex gap-3 text-xl  justify-center items-center cursor-pointer text-right `}>
+    <div className={`${montserrat.className} flex gap-3 text-md  justify-center items-center cursor-pointer text-right `}>
        <h1 className='flex text-center justify-center items-center opacity-65'>Products</h1>
        <h1 className='opacity-65'>Features</h1>
        <h1 className='opacity-65'>Pricing</h1>
        <button className={`${montserrat.className} px-2 py-1  bg-[#FFFFFF] text-black  rounded-sm font-semibold opacity-85`}>Get Started</button>
     </div>
+
+
     </div>
      {/* <h1 className=' p-2 bg-[#1a1a1a] border border-opacity-15 bg-opacity-25 rounded-md flex justify-center items-center'>Book a Demo</h1> */}
     </div>
     </motion.div>
+</div>
+
 {/*navBar*/}
   {/* hero section  */}
   <div className='h-screen w-full overflow-x-hidden'>
@@ -837,7 +852,7 @@ console.log(latest);
         <motion.div 
         initial={{opacity:0,filter:'blur(10px)'}}
         whileInView={{opacity:1,filter:'blur(0px)'}}
-        transition={{delay:2,duration:0.6}}
+        transition={{delay:0.2,duration:0.6}}
         className={`${montserrat.className}  text-2xl pr-[6rem] font-semibold bg-gradient-to-b from-white to-gray-300/80 bg-clip-text  text-transparent  pt-2 pb-2 w-full text-right`}>From <span className='bg-gradient-to-b from-[#00BFFF] to-[#1E90FF] bg-clip-text text-transparent text-4xl'>Web-Application</span></motion.div>
    </div>
 
@@ -1114,18 +1129,18 @@ className='relative h-full w-[40%] flex  items-center justify-center  pl-10 py-3
       </div>
 
         <div 
-        className='relative w-[34%] h-full flex justify-end pr-20 py-10 gap-10 z-50'> 
+        className='relative w-[34%] h-full flex justify-end pr-[3.5rem] py-10 gap-10 z-50'> 
 
        {isRef1 && !isRef2 && !isRef3 &&   
-      <div className='relative w-full z-[99999999]'>
+      <div className={`${montserrat.className}relative w-full z-[99999999]`}>
          <div className='z-[99999998]'>
-          <h1 className='text-white text-6xl mb-5 mt-24 z-[99999996]'>Debug</h1>
+          <h1 className={`${montserrat.className} text-white text-6xl mb-5 mt-24 z-[99999996] font-semibold`}>Debug</h1>
        <motion.span
 
        className='z-[99999997]'
        >
 
-        <p className='text-xl opacity-60 z-[99999996]'>You can do debug with our extension seamlessly, allowing you to identify and resolve issues without leaving your development environment. It provides real-time logs and clear insights, making the debugging process faster and more efficient.</p> 
+        <p className={`${montserrat.className} text-xl  z-[99999996]`}><span className='opacity-60'>An</span> <span className='text-[#00BFFF] font-semibold'>AI-Powered Debugger</span> <span className='opacity-60'>that quickly identifies errors, explains their causes, and suggests precise fixes—making it easier to resolve issues and keep development moving smoothly.</span></p> 
        </motion.span>
 
        {isLoad?    
@@ -1137,8 +1152,8 @@ className='relative h-full w-[40%] flex  items-center justify-center  pl-10 py-3
         <div className='mt-10'>
         <LoaderOne/>
         </div>
-        </motion.span>  :         <button ref={debugBtnRef} onClick={handleOverlay} className='bg-[#343434] text-lg rounded-[20px] px-2 py-2 mt-10 hover:opacity-70 z-[99999996]'>
-          Debug this code
+        </motion.span>  :         <button ref={debugBtnRef} onClick={handleOverlay} className={`${montserrat.className} bg-gradient-to-br border-y-[0.1px]  border-[#F0EAD6]/80 from-[#F0EAD6]/90  to-[#FAF9F6]/5  text-lg rounded-[25px] px-6 text-black py-2 mt-10 hover:opacity-70 z-[99999996]`}>
+          <span className='font-semibold  text-zinc-950'>Debug</span> this code
         </button>} 
         </div>
 
@@ -1149,13 +1164,13 @@ className='relative h-full w-[40%] flex  items-center justify-center  pl-10 py-3
       {isRef2 && !isRef1 && !isRef3 &&       
       <div className='relative w-full z-[99999999]'>
          <div className='z-[99999998]'>
-          <h1 className='text-white text-6xl mb-5 mt-24 z-[99999996]'>Review</h1>
+          <h1 className={`${montserrat.className} text-white text-6xl mb-5 mt-24 z-[99999996] font-semibold`}>Review</h1>
        <motion.span
 
        className='z-[99999997]'
        >
 
-        <p className='text-xl opacity-60 z-[99999996]'>You can do debug with our extension seamlessly, allowing you to identify and resolve issues without leaving your development environment. It provides real-time logs and clear insights, making the debugging process faster and more efficient.</p> 
+        <p className={`${montserrat.className} text-xl  z-[99999996]`}><span className='opacity-60'>An</span> <span className='text-[#00BFFF] font-semibold'>AI-Powered Code Reviewer</span> <span className='opacity-60'>that scans your code in real time, detects bugs and vulnerabilities, and suggests improvements for readability, performance, and best practices—helping you write cleaner, more reliable code faster.</span></p> 
        </motion.span>
 
        {isLoad?    
@@ -1165,8 +1180,8 @@ className='relative h-full w-[40%] flex  items-center justify-center  pl-10 py-3
         transition={{duration:1,delay:1}}
         className='mb-10 z-[99999996]'>
         <LoaderOne/>
-        </motion.span>  :         <button ref={debugBtnRef} onClick={handleOverlayR} className='bg-[#343434] rounded-[50px] px-2 py-2 mt-10 hover:opacity-70 z-[99999996]'>
-          Review this code
+        </motion.span>  :         <button ref={debugBtnRef} onClick={handleOverlayR} className={`${montserrat.className} bg-gradient-to-br border-y-[0.1px] border-[#F0EAD6]/80 from-[#F0EAD6]/80 to-[#FAF9F6]/10 text-lg rounded-[25px] px-6 text-black py-2 mt-10 hover:opacity-70 z-[99999996]`}>
+            <span className='font-semibold  text-zinc-950'>Review</span> this code
         </button>} 
         </div>
 
@@ -1175,13 +1190,13 @@ className='relative h-full w-[40%] flex  items-center justify-center  pl-10 py-3
       {isRef3 && !isRef1 && !isRef2 &&       
       <div className='relative w-full z-[99999999]'>
          <div className='z-[99999998]'>
-          <h1 className='text-white text-5xl mb-5 mt-24 z-[99999996]'>Auto-Complete</h1>
+          <h1 className={`${montserrat.className} text-white text-5xl mb-5 mt-24 z-[99999996] font-semibold`}>Auto-Complete</h1>
        <motion.span
 
        className='z-[99999997]'
        >
 
-        <p className='text-xl opacity-60 z-[99999996]'>You can do debug with our extension seamlessly, allowing you to identify and resolve issues without leaving your development environment. It provides real-time logs and clear insights, making the debugging process faster and more efficient.</p> 
+        <p className={`${montserrat.className} text-xl  z-[99999996]`}><span className='opacity-60'>An</span> <span className='text-[#00BFFF] font-semibold'>Intelligent Auto-Completer</span> <span className='opacity-60'>tool that predicts your next lines of code, reduces repetitive typing, and speeds up development by suggesting accurate, context-aware completions in real time.</span></p> 
        </motion.span>
 
        {isLoad?    
@@ -1191,7 +1206,7 @@ className='relative h-full w-[40%] flex  items-center justify-center  pl-10 py-3
         transition={{duration:1,delay:1}}
         className='mb-10 z-[99999996]'>
         <LoaderOne/>
-        </motion.span>  :         <div className='text-2xl  mt-10 cursor-not-allowed font-extralight z-[99999996] opacity-30'>
+        </motion.span>  :         <div className={`${montserrat.className} text-2xl  mt-10 cursor-not-allowed font-extralight z-[99999996] opacity-30`}>
         <span>Press</span> <span className='font-mono text-3xl '>"TAB"</span> <span>to auto-complete</span>
 
         
@@ -1265,18 +1280,122 @@ className='relative h-full w-full flex  items-center justify-center   pl-10 py-3
      </motion.div>
 
 
-     <div className='h-full w-full flex items-center justify-center flex-col'>
-     <motion.div className='absolute  h-[30rem] w-[40rem] bg-pink-700 rounded-3xl'></motion.div>
+     <div className={`${montserrat.className} text-white h-full w-full flex items-center justify-center flex-col`}>
+     <motion.div className='absolute  h-[30rem] w-[40rem]  rounded-3xl'></motion.div>
+     
+
      <motion.div 
      style={{y:tdiv1X}}
-     className='absolute  h-[30rem] w-[40rem] bg-white rounded-3xl'></motion.div>
+     className='absolute  h-[30rem] w-[40rem]  rounded-3xl flex justify-center items-center'>
+      <motion.div 
+      animate={{rotate:10}}
+      className='h-[70%] w-[90%] bg-[#131316] border border-[#434344] rounded-[2rem] flex flex-col items-cente px-8 py-5 gap-5'>
+       <div className='flex w-full gap-4 items-center'>
+       <div className='rounded-full bg-white size-20'><img src="https://drive.codemate.ai/ayushbansal.jpeg" alt="" className='size-20 rounded-full' /></div>
+      <div className='flex flex-col'>
+       <h1 className='font-semibold text-2xl'>Ayush Bansal</h1>
+        <p className='opacity-60'>Software Engineer-II, Amazon</p> 
+      </div>
+       </div>
+
+       <div className='text-2xl'>CodeMate.ai has revolutionized my coding workflow with accurate AI suggestions and a user-friendly interface. Highly recommended!</div>
+
+       <div className='w-full flex justify-between'>
+       </div>
+      </motion.div>
+     </motion.div>
      <motion.div
      style={{y:tdiv2X}} 
-     className='absolute  h-[30rem] w-[40rem] bg-blue-500 rounded-3xl'></motion.div>
-     <motion.div style={{y:tdiv3X}} className='absolute  h-[30rem] w-[40rem] bg-red-700 rounded-3xl'></motion.div>  
-     <motion.div style={{y:tdiv4X}} className='absolute  h-[30rem] w-[40rem] bg-purple-600 rounded-3xl'></motion.div>
-     <motion.div style={{y:tdiv5X}} className='absolute  h-[30rem] w-[40rem] bg-yellow-500 rounded-3xl'></motion.div>
-     <motion.div style={{y:tdiv6X}} className='absolute  h-[30rem] w-[40rem] bg-green-600 rounded-3xl'></motion.div>
+     className='absolute  h-[30rem] w-[40rem]  rounded-3xl flex justify-center items-center'>
+            <motion.div 
+      animate={{rotate:5}}
+      className='h-[70%] w-[90%] bg-[#131316] border border-[#434344] rounded-[2rem] flex flex-col items-cente px-8 py-5 gap-5'>
+       <div className='flex w-full gap-4 items-center'>
+       <div className='rounded-full bg-white size-20'><img src="https://drive.codemate.ai/hani.webp" alt="" className='size-20 rounded-full' /></div>
+      <div className='flex flex-col'>
+        <h1 className='font-semibold text-2xl'>Hani H.</h1>
+        <p className='opacity-60'>Founder</p> 
+      </div>
+       </div>
+
+       <div className='text-2xl'>CodeMate has lots of great features. You can request code samples when stuck, or get a code review to spot issues you might miss. The Debugger is a life saver—it quickly found a bug in my code that was filling the error logs!</div>
+
+       <div className='w-full flex justify-between'>
+       </div>
+      </motion.div>
+     </motion.div>
+     <motion.div style={{y:tdiv3X}} className='absolute  h-[30rem] w-[40rem]  rounded-3xl flex justify-center items-center'>
+      <motion.div 
+      animate={{rotate:0}}
+      className='h-[70%] w-[90%] bg-[#131316] border border-[#434344] rounded-[2rem] flex flex-col items-cente px-8 py-5 gap-5'>
+       <div className='flex w-full gap-4 items-center'>
+       <div className='rounded-full bg-white size-20'><img src="https://drive.codemate.ai/vilkho_appsumo.webp" alt="" className='size-20 rounded-full' /></div>
+      <div className='flex flex-col'>
+       <h1 className='font-semibold text-2xl'>Vilkhovskiy</h1>
+        <p className='opacity-60'>Chief Executive Officer, Softenq</p> 
+      </div>
+       </div>
+
+       <div className='text-2xl'>An excellent solution for project analysis and efficient development! I love how CodeMate can analyze an entire project, assign tasks for refactoring or code generation, and even ensure the project is covered with tests.</div>
+
+       <div className='w-full flex justify-between'>
+       </div>
+      </motion.div>
+      </motion.div>  
+     <motion.div style={{y:tdiv4X}} className='absolute  h-[30rem] w-[40rem]  rounded-3xl flex justify-center items-center'>
+            <motion.div 
+      animate={{rotate:-5}}
+      className='h-[70%] w-[90%] bg-[#131316] border border-[#434344] rounded-[2rem] flex flex-col items-cente px-8 py-5 gap-5'>
+       <div className='flex w-full gap-4 items-center'>
+       <div className='rounded-full bg-white size-20'><img src="https://i.pravatar.cc/150?u=kitty.liu" alt="" className='size-20 rounded-full' /></div>
+      <div className='flex flex-col'>
+       <h1 className='font-semibold text-2xl'>Kitty Liu</h1>
+        <p className='opacity-60'>Engineering</p> 
+      </div>
+       </div>
+
+       <div className='text-2xl'>Codemate is doing a great job with its simplicity. I can't wait to see more features they are going to release soon.</div>
+
+       <div className='w-full flex justify-between'>
+       </div>
+      </motion.div>
+     </motion.div>
+     <motion.div style={{y:tdiv5X}} className='absolute  h-[30rem] w-[40rem] rounded-3xl flex justify-center items-center'>
+                  <motion.div 
+      animate={{rotate:-10}}
+      className='h-[70%] w-[90%] bg-[#131316] border border-[#434344] rounded-[2rem] flex flex-col items-cente px-8 py-5 gap-5'>
+       <div className='flex w-full gap-4 items-center'>
+       <div className='rounded-full bg-white size-20'><img src="https://i.pravatar.cc/150?u=david.kim" alt="" className='size-20 rounded-full' /></div>
+      <div className='flex flex-col'>
+       <h1 className='font-semibold text-2xl'>Keith Price</h1>
+        <p className='opacity-60'>Backend Engineer</p> 
+      </div>
+       </div>
+
+       <div className='text-2xl'>Love this tool! It can train on the entire solution (and others), saving so much time and frustration. Unlike ChatGPT, it finds the right methods and code blocks with ease, and the ability to retain training on past solutions is phenomenal.</div>
+
+       <div className='w-full flex justify-between'>
+       </div>
+      </motion.div>
+     </motion.div>
+     {/* <motion.div style={{y:tdiv6X}} className='absolute  h-[30rem] w-[40rem]  rounded-3xl flex justify-center items-center'>
+                        <motion.div 
+      animate={{rotate:-15}}
+      className='h-[70%] w-[90%] bg-[#131316] border border-[#434344] rounded-[2rem] flex flex-col items-cente px-8 py-5 gap-5'>
+       <div className='flex w-full gap-4 items-center'>
+       <div className='rounded-full bg-white size-20'></div>
+      <div className='flex flex-col'>
+       <h1>Ayush Bansal</h1>
+        <p>Software Engineer-II, Amazon</p> 
+      </div>
+       </div>
+
+       <div className='text-2xl'>CodeMate.ai has revolutionized my coding workflow with accurate AI suggestions and a user-friendly interface. Highly recommended!</div>
+
+       <div className='w-full flex justify-between'>
+       </div>
+      </motion.div>
+     </motion.div> */}
      </div> 
 </div>
 
