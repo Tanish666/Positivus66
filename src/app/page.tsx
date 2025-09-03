@@ -475,7 +475,7 @@ className='fixed flex top-0 justify-center items-center w-full'>
   <path d="M131.78 150H39.4727L60.2412 110.845H152.55L131.78 150ZM39.4727 39.0674V150L0.242188 125.04V14.1074L39.4727 39.0674ZM131.78 39.1553H39.4727L60.2412 0H152.55L131.78 39.1553Z" 
     fill="url(#paint0_linear_2014_66)"/>
 
-<motion.g
+<motion.svg
   animate={{ translateX: [0, 0,15,15,15,15, 0], translateY: [0,12,12,-10,-10,0, 0] }}
   transition={{ duration: 7, repeat: Infinity }}
 >
@@ -487,7 +487,7 @@ className='fixed flex top-0 justify-center items-center w-full'>
     animate={{ opacity: [1, 0, 1] }}
     transition={{ duration: 0.8, repeat: Infinity,repeatDelay:2 }}
   />
-</motion.g>
+</motion.svg>
 
   <defs>
     <linearGradient id="paint0_linear_2014_66" x1="0.580642" y1="0" x2="183.357" y2="82.4837" gradientUnits="userSpaceOnUse">
