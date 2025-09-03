@@ -476,7 +476,7 @@ className='fixed flex top-0 justify-center items-center w-full'>
     fill="url(#paint0_linear_2014_66)"/>
 
 <motion.g
-  animate={{ translateX: [0, 15,15,15,0,0, 0], translateY: [0,10,10,-10,-10,-10, 0] }}
+  animate={{ translateX: [0, 0,15,15,15,15, 0], translateY: [0,12,12,-10,-10,0, 0] }}
   transition={{ duration: 7, repeat: Infinity }}
 >
   <motion.circle cx="71.7422" cy="75" r="11" fill="white"
