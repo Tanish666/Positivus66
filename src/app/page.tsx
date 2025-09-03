@@ -18,6 +18,8 @@ import { Safari } from '@/components/mockups/safari';
 import { BackgroundGradientAnimation } from '@/components/ui/background-gradient-animation';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
+import { useRouter } from 'next/navigation';
+import Footer from '@/components/footer';
 const montserrat = Montserrat({
   subsets: ['latin'],
   weight: ['400', '500', '600', '700'], // Add what you need
@@ -128,10 +130,12 @@ const AutoCompleteComponent = [
       ),
     },
   ];
+  const router = useRouter();
   const heroRef = useRef(null);
   const [d,setD] = useState(false); 
   const [r,setR] = useState(false);
   const [a,setA] = useState(false);
+  const [eyesD,setEyesD] = useState(0);
   const [IsMascot,setIsMascot] = useState(false);
   const [isNBack,setIsNBack] = useState(false);
   const [isP1,setIsP1] = useState(false);
@@ -297,6 +301,10 @@ const AutoCompleteComponent = [
     };
   }, []);
 
+
+
+
+
 useMotionValueEvent(p1YProg, 'change', (latest) => {
   // --- Main state handling ---
   if (latest > 0.6) {
@@ -344,7 +352,9 @@ useMotionValueEvent(MYProg,'change',(latest) => {
   console.log(latest);
   if(latest >= 0.027262813522355506) setIsMascot(true);
   if(latest <= 0.027262813522355506) setIsMascot(false);
-})
+});
+
+
 
   ///for new products section
 
@@ -408,6 +418,8 @@ console.log(latest);
   return () => clearTimeout(timer);
 }, []);
 
+
+
   return (
     <div style={{cursor:`url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 397 433" width="26" height="26"><path d="M40.31 32.13c-1.76-8.4 7.23-14.92 14.67-10.66l296.47 169.91c7.54 4.32 6.29 15.56-2.02 18.12L205.54 253.76c-2.23.69-4.15 2.13-5.42 4.09l-72.01 110.94c-4.83 7.44-16.25 5.3-18.07-3.38L40.31 32.13z" fill="black" stroke="white" stroke-width="25"/></svg>') 16 16, auto`}} ref={mainRef} className='bg-zinc-950' >
 
@@ -458,23 +470,37 @@ className='fixed flex top-0 justify-center items-center w-full'>
     <div className="h-full w-[13rem] flex justify-center overflow-hidden">
       {!IsMascot && <img src="/codemateLogo.svg" alt="" />}
      {IsMascot && <motion.div initial={{opacity:0,filter:'blur(20px)',x:50}} animate={{opacity:1,filter:'blur(0px)',x:-80}} transition={{duration:0.5}}>
-      <svg width="50" height="40" viewBox="0 0 153 150" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M131.78 150H39.4727L60.2412 110.845H152.55L131.78 150ZM39.4727 39.0674V150L0.242188 125.04V14.1074L39.4727 39.0674ZM71.7422 64C77.8173 64 82.7422 68.9249 82.7422 75C82.7422 81.0751 77.8173 86 71.7422 86C65.6671 86 60.7422 81.0751 60.7422 75C60.7422 68.9249 65.6671 64 71.7422 64ZM111.742 64C117.817 64 122.742 68.9249 122.742 75C122.742 81.0751 117.817 86 111.742 86C105.667 86 100.742 81.0751 100.742 75C100.742 68.9249 105.667 64 111.742 64ZM131.78 39.1553H39.4727L60.2412 0H152.55L131.78 39.1553Z" fill="url(#paint0_linear_2014_66)"/>
-<defs>
-<linearGradient id="paint0_linear_2014_66" x1="0.580642" y1="1.09465e-05" x2="183.357" y2="82.4837" gradientUnits="userSpaceOnUse">
-<stop stop-color="#00BFFF"/>
-<stop offset="1" stop-color="#1E90FF"/>
-</linearGradient>
-</defs>
+<svg width="50" height="40" viewBox="0 0 153 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+  <path d="M131.78 150H39.4727L60.2412 110.845H152.55L131.78 150ZM39.4727 39.0674V150L0.242188 125.04V14.1074L39.4727 39.0674ZM131.78 39.1553H39.4727L60.2412 0H152.55L131.78 39.1553Z" 
+    fill="url(#paint0_linear_2014_66)"/>
+
+  <motion.g animate={{y:[0,0,10,10,-10,-10,0]}} transition={{duration:7,repeat:Infinity,repeatDelay:3,repeatType:'mirror'}}>
+   <motion.g animate={{x:[0,15,15,15,15,0]}} transition={{duration:4,repeat:Infinity,repeatDelay:3,repeatType:'mirror'}}>
+    
+  <motion.circle  animate={{opacity:[1,0,1]}} transition={{repeat:Infinity,repeatType:'loop',repeatDelay:2}} cx="71.7422" cy="75" r="11" fill="white"/>
+  
+ 
+  <motion.circle  animate={{opacity:[1,0,1]}} transition={{repeat:Infinity,repeatType:'loop',repeatDelay:2}} cx="111.742" cy="75" r="11" fill="white"/>
+  </motion.g>
+  </motion.g>
+
+  <defs>
+    <linearGradient id="paint0_linear_2014_66" x1="0.580642" y1="0" x2="183.357" y2="82.4837" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#00BFFF"/>
+      <stop offset="1" stop-color="#1E90FF"/>
+    </linearGradient>
+  </defs>
 </svg>
+
 
       </motion.div>}
     
     </div>
     <div className={`${montserrat.className} flex gap-3 text-md  justify-center items-center cursor-pointer text-right `}>
-       <h1 className='flex text-center justify-center items-center opacity-65'>Products</h1>
-       <h1 className='opacity-65'>Features</h1>
-       <h1 className='opacity-65'>Pricing</h1>
+       <motion.h1 whileHover={{opacity:1}} className='flex text-center justify-center items-center opacity-65'>Products</motion.h1>
+       <motion.h1 whileHover={{opacity:1}} className='opacity-65'>Features</motion.h1>
+       <motion.h1 whileHover={{opacity:1}} onClick={()=>{router.push('pricing')}} className='opacity-65'>Pricing</motion.h1>
        <button className={`${montserrat.className} px-2 py-1  bg-[#FFFFFF] text-black  rounded-sm font-semibold opacity-85`}>Get Started</button>
     </div>
 
@@ -846,9 +872,9 @@ className='fixed flex top-0 justify-center items-center w-full'>
    
    className='relative h-[200vw] w-full bg-zinc-950'>
    
- <div className={`${montserrat.className}  text-5xl font-semibold bg-gradient-to-b from-white to-gray-300/80 bg-clip-text  text-transparent pl-14 mb-6 pt-20 pr-[60rem] pb-1`}>We got<span className='bg-gradient-to-b from-[#00BFFF] to-[#1E90FF] bg-clip-text text-transparent'> Everything</span> for you.</div>
+ <div className={`${montserrat.className}  text-5xl font-semibold bg-gradient-to-b from-white to-gray-300/80 bg-clip-text  text-transparent pl-14 mb-6 pt-20 pr-[62vw] 2xl:pr-[55vw] pb-1`}>We got<span className='bg-gradient-to-b from-[#00BFFF] to-[#1E90FF] bg-clip-text text-transparent'> Everything</span> for you.</div>
     
-   <div className='sticky top-[39vw] z-40'> 
+   <div className='sticky  panelTitle z-40'> 
         <motion.div 
         initial={{opacity:0,filter:'blur(10px)'}}
         whileInView={{opacity:1,filter:'blur(0px)'}}
@@ -936,13 +962,13 @@ className='relative h-full w-[40%] flex  items-center justify-center  pl-10 py-3
    <div ref={productRef} className='relative h-[550vh] w-full bg-zinc-950 text-white flex  flex-col'>
 
 
-      <div className='sticky top-[39vw] z-50'> 
+      <div className='sticky  panelTitle  z-50'> 
         <div className={`${montserrat.className}  text-2xl pl-[6rem] font-semibold bg-gradient-to-b from-white to-gray-300/80 bg-clip-text  text-transparent  pt-2 pb-2 w-full `}>To your<span className='bg-gradient-to-b from-[#00BFFF] to-[#1E90FF] bg-clip-text text-transparent text-4xl'> IDE</span></div>
    </div>
 
 
 
- <div className={`${montserrat.className}  text-5xl font-semibold bg-gradient-to-b from-white to-gray-300/80 bg-clip-text  text-transparent pr-16 mb-6 pt-20 text-right pl-[50rem] pb-1 z-50`}>Everything means <span className='bg-gradient-to-b from-[#00BFFF] to-[#1E90FF] bg-clip-text text-transparent'>Everything</span> right?</div>
+ <div className={`${montserrat.className}  text-5xl font-semibold bg-gradient-to-b from-white to-gray-300/80 bg-clip-text  text-transparent pr-16 mb-6 pt-20 text-right pl-[50vw] pb-1 z-50`}>Everything means <span className='bg-gradient-to-b from-[#00BFFF] to-[#1E90FF] bg-clip-text text-transparent'>Everything</span> right?</div>
 
      <motion.div 
      initial={{opacity:0,filter:'blur(50px)'}}
@@ -1022,7 +1048,7 @@ className='relative h-full w-[40%] flex  items-center justify-center  pl-10 py-3
         </motion.div>}
 
        {isRef3 &&  <motion.div
-        data-lenis-prevent
+        
         initial={{opacity:0,filter:'blur(20px)'}}
         animate={{opacity:1,filter:'blur(0px)'}}
         transition={{duration:1}}
@@ -1234,7 +1260,7 @@ className='relative h-full w-[40%] flex  items-center justify-center  pl-10 py-3
 </div>
 
 {/* bento */}
-     <div className=' relative h-[170vh] w-full bg-zinc-950 text-white overflow-hidden'>
+     {/* <div className=' relative h-[170vh] w-full bg-zinc-950 text-white overflow-hidden'>
    <div className={`${montserrat.className}  text-8xl font-semibold bg-gradient-to-b from-white to-gray-300/80 bg-clip-text  text-transparent pl-10 mb-6 pt-20 text-center pb-1`}>What<span className='bg-gradient-to-b from-[#00BFFF] to-[#1E90FF] bg-clip-text text-transparent'> else</span> we got?</div>
    
   <MagicBento 
@@ -1250,12 +1276,12 @@ className='relative h-full w-[40%] flex  items-center justify-center  pl-10 py-3
   glowColor="0, 191, 255"
 />
 
-  </div> 
+  </div>  */}
 {/* bento   */}
 
 
 
-  <div ref={testiRef} className='relative h-[950vh] w-full bg-zinc-950 '>
+  <div ref={testiRef} className='relative h-[600vh] w-full bg-zinc-950 '>
          <div className={`${montserrat.className}  text-6xl font-semibold bg-gradient-to-b from-white to-gray-300/80 bg-clip-text  text-transparent pl-10 mb-6 pt-20 text-center`}>Do not listen to us but from <span className='bg-gradient-to-b from-[#00BFFF] to-[#1E90FF] bg-clip-text text-transparent'>People</span></div>
 
    <div className=' sticky top-0   h-screen w-full overflow-x-hidden '>
@@ -1264,7 +1290,7 @@ className='relative h-full w-[40%] flex  items-center justify-center  pl-10 py-3
 className='relative h-full w-full flex  items-center justify-center   pl-10 py-3 overflow-hidden'>
 
 
-     <motion.div 
+     {/* <motion.div 
      style={{x:commentsX}}
      className={`${montserrat.className} absolute flex gap-10 text-7xl text-white font-semibold`}>
 <h1 className="whitespace-nowrap text-opacity-80">thrilled 🤩</h1>
@@ -1277,7 +1303,11 @@ className='relative h-full w-full flex  items-center justify-center   pl-10 py-3
 <h1 className="whitespace-nowrap text-opacity-80">delighted 😊</h1>
 <h1 className="whitespace-nowrap text-opacity-80">empowered 💪</h1>
 <h1 className="whitespace-nowrap text-opacity-80">fulfilled ❤️</h1>
-     </motion.div>
+     </motion.div> */}
+
+      
+        <img src="/codemateLogoB.svg" className='absolute object-fit w-[95vw] ' alt="" />
+    
 
 
      <div className={`${montserrat.className} text-white h-full w-full flex items-center justify-center flex-col`}>
@@ -1403,10 +1433,10 @@ className='relative h-full w-full flex  items-center justify-center   pl-10 py-3
      </div>
 
 
-
-<div className='h-screen w-full bg-zinc-950'></div>
-
+    <Footer/>
     </div>
+
+
   )
 }
 

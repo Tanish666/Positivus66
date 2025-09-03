@@ -53,16 +53,7 @@ const nextJsStructure = [
   { name: "README.md" }
 ];
 
-      useEffect(()=>{
-        const lenis = new Lenis({
-          duration:2
-        });
-        function raf(time: any){
-         lenis.raf(time) 
-         requestAnimationFrame(raf)
-        }
-        requestAnimationFrame(raf);
-       },[]);
+
 
   return(
     <div className='relative h-full w-full bg-zinc-900  rounded-xl flex overflow-hidden'>

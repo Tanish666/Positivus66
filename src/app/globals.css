@@ -153,3 +153,15 @@ body {
 }       
 
 
+@media (min-width: 768px) {
+  .panelTitle {
+    top: 39vw;
+  }
+}
+
+@media (min-width: 1600px) {
+  .panelTitle {
+    top: 50vw;
+  }
+}
+
