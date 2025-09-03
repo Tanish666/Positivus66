@@ -475,15 +475,19 @@ className='fixed flex top-0 justify-center items-center w-full'>
   <path d="M131.78 150H39.4727L60.2412 110.845H152.55L131.78 150ZM39.4727 39.0674V150L0.242188 125.04V14.1074L39.4727 39.0674ZM131.78 39.1553H39.4727L60.2412 0H152.55L131.78 39.1553Z" 
     fill="url(#paint0_linear_2014_66)"/>
 
-  <motion.g animate={{y:[0,0,10,10,-10,-10,0]}} transition={{duration:7,repeat:Infinity,repeatDelay:3,repeatType:'mirror'}}>
-   <motion.g animate={{x:[0,15,15,15,15,0]}} transition={{duration:4,repeat:Infinity,repeatDelay:3,repeatType:'mirror'}}>
-    
-  <motion.circle  animate={{opacity:[1,0,1]}} transition={{repeat:Infinity,repeatType:'loop',repeatDelay:2}} cx="71.7422" cy="75" r="11" fill="white"/>
-  
- 
-  <motion.circle  animate={{opacity:[1,0,1]}} transition={{repeat:Infinity,repeatType:'loop',repeatDelay:2}} cx="111.742" cy="75" r="11" fill="white"/>
-  </motion.g>
-  </motion.g>
+<motion.g
+  animate={{ translateX: [0, 15,15,15,0,0, 0], translateY: [0,10,10,-10,-10,-10, 0] }}
+  transition={{ duration: 7, repeat: Infinity }}
+>
+  <motion.circle cx="71.7422" cy="75" r="11" fill="white"
+    animate={{ opacity: [1, 0, 1] }}
+    transition={{ duration: 0.8, repeat: Infinity,repeatDelay:2 }}
+  />
+  <motion.circle cx="111.742" cy="75" r="11" fill="white"
+    animate={{ opacity: [1, 0, 1] }}
+    transition={{ duration: 0.8, repeat: Infinity,repeatDelay:2 }}
+  />
+</motion.g>
 
   <defs>
     <linearGradient id="paint0_linear_2014_66" x1="0.580642" y1="0" x2="183.357" y2="82.4837" gradientUnits="userSpaceOnUse">
