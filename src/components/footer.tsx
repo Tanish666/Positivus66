@@ -10,7 +10,7 @@ function Footer() {
         <div className="flex-1 min-w-[220px] ml-0 md:ml-8">
           <div className="flex items-center gap-2 mb-2">
             {/* Replace with your logo */}
-            <img src="/codemateLOgo.svg" alt="TechKareer Logo" className="w-50 h-10" />
+            <img src="/codemateLogo.svg" alt="codemate Logo" className="w-50 h-10" />
           </div>
           <p className="text-gray-400 mb-4 text-sm md:text-lg w-full md:w-1/2">
            Codemate AI, your smart coding partner. Review, debug, and complete code faster with AI-powered assistance.
