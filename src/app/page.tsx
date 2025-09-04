@@ -460,11 +460,11 @@ className='fixed flex top-0 justify-center items-center w-full'>
   // transition={{duration:1,delay:7}}
   style={{background:!isNBack? 'rgba(15, 12, 12, 0.2)' : 'rgba(15, 20, 20, 0.45)',   
         boxShadow: '0 4px 25px rgba(0, 0, 0, 0.1)',
-        backdropFilter: 'blur(5px)',
-        WebkitBackdropFilter: 'blur(5px)',
+        backdropFilter: 'blur(10px)',
+        WebkitBackdropFilter: 'blur(10px)',
         zIndex:999999999999,
         }}
-  className={`mt-5 w-fit bg-opacity-65 z-[9999999999] rounded-lg ${isNBack? 'border-y-[1px]   border-gray-400 border-opacity-15' : ''}`}>
+  className={`mt-5 w-fit bg-opacity-65 z-[9999999999] rounded-lg ${isNBack? 'border-y-[1px]   border-gray-400 border-opacity-10' : ''}`}>
     <div className='flex  h-full w-full text-white px-[1rem] py-2 '>
     <div className='flex gap-[51vw]  justify-between items-center w-full h-10'>
     <div className="h-full w-[13rem] flex justify-center overflow-hidden">
@@ -929,7 +929,7 @@ className='relative h-full w-[40%] flex  items-center justify-center  pl-10 py-3
         className='text-white flex flex-col gap-2'>
           <h1 className='text-2xl'>Documentation</h1>
 
-          <p className='text-lg opacity-50 w-[33rem] '>
+          <p className='text-lg opacity-50 w-[33rem] 2xl:w-[30rem] '>
           Acts as your AI coding partner by managing bugs and fixing broken features, allowing you to focus on core development.
           </p>
         </motion.div>
@@ -939,7 +939,7 @@ className='relative h-full w-[40%] flex  items-center justify-center  pl-10 py-3
                  className='text-white flex flex-col gap-2'>
           <h1 className='text-2xl'>Code Maintnance</h1>
 
-          <p className='text-lg opacity-50 w-[33rem]'>
+          <p className='text-lg opacity-50 w-[33rem] 2xl:w-[30rem]'>
             We’re your AI coding partner, here to handle the messy parts — from stubborn bugs to broken features while You focus on your vision.
           </p>
         </motion.div>
@@ -950,7 +950,7 @@ className='relative h-full w-[40%] flex  items-center justify-center  pl-10 py-3
                 className='text-white flex flex-col gap-2'>
           <h1 className='text-2xl'>PR Review</h1>
 
-          <p className='text-lg opacity-50 w-[33rem]'>
+          <p className='text-lg opacity-50 w-[33rem] 2xl:w-[30rem]'>
             Reviews pull requests to catch errors, enforce coding standards, and suggest improvements before merging.
           </p>
         </motion.div>
