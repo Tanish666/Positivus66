@@ -159,7 +159,7 @@ body {
   }
 }
 
-@media (min-width: 1280px) {
+@media (min-height: 800px) {
   .panelTitle {
     top: 50vw;
   }
