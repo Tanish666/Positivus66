@@ -699,7 +699,7 @@ className='fixed flex top-0 justify-center items-center w-full'>
          </motion.div>
          <span className={`${montserrat.className} text-4xl flex flex-col gap-2`}>
          <h1>Codemate Webapp</h1>
-         <p className='text-sm opacity-70'>This is the browser-based version of CodeMate — accessible via app.codemate.ai.</p>
+         <p className='opacity-70 text-sm'>This is the browser-based version of CodeMate — accessible via app.codemate.ai.</p>
          </span>
          </div>
          }          
@@ -716,7 +716,7 @@ className='fixed flex top-0 justify-center items-center w-full'>
          </motion.div>
          <span className={`${montserrat.className} text-4xl flex flex-col gap-2`}>
          <h1>Codemate Webapp</h1>
-         <p className='text-sm opacity-70'>This is the browser-based version of CodeMate — accessible via app.codemate.ai.</p>
+         <p className='opacity-70 text-sm'>This is the browser-based version of CodeMate — accessible via app.codemate.ai.</p>
          </span>
          </div>}  
 
@@ -732,7 +732,7 @@ className='fixed flex top-0 justify-center items-center w-full'>
          </motion.div>
          <span className={`${montserrat.className} text-4xl flex flex-col gap-2`}>
          <h1>Codemate Webapp</h1>
-         <p className='text-sm opacity-70'>This is the browser-based version of CodeMate — accessible via app.codemate.ai.</p>
+         <p className='opacity-70 text-sm'>This is the browser-based version of CodeMate — accessible via app.codemate.ai.</p>
          </span>
          </div>}        
         </AnimatePresence>
@@ -929,7 +929,7 @@ className='relative h-full w-[40%] flex  items-center justify-center  pl-10 py-3
         className='text-white flex flex-col gap-2'>
           <h1 className='text-2xl'>Documentation</h1>
 
-          <p className='text-lg opacity-50 w-[33rem] 2xl:w-[30rem] '>
+          <p className='text-lg opacity-50 w-[33rem] 2xl:w-[30rem] font-normal'>
           Acts as your AI coding partner by managing bugs and fixing broken features, allowing you to focus on core development.
           </p>
         </motion.div>
@@ -939,7 +939,7 @@ className='relative h-full w-[40%] flex  items-center justify-center  pl-10 py-3
                  className='text-white flex flex-col gap-2'>
           <h1 className='text-2xl'>Code Maintnance</h1>
 
-          <p className='text-lg opacity-50 w-[33rem] 2xl:w-[30rem]'>
+          <p className='text-lg opacity-50 w-[33rem] 2xl:w-[30rem] font-normal'>
             We’re your AI coding partner, here to handle the messy parts — from stubborn bugs to broken features while You focus on your vision.
           </p>
         </motion.div>
@@ -950,7 +950,7 @@ className='relative h-full w-[40%] flex  items-center justify-center  pl-10 py-3
                 className='text-white flex flex-col gap-2'>
           <h1 className='text-2xl'>PR Review</h1>
 
-          <p className='text-lg opacity-50 w-[33rem] 2xl:w-[30rem]'>
+          <p className='text-lg opacity-50 w-[33rem] 2xl:w-[30rem] font-normal'>
             Reviews pull requests to catch errors, enforce coding standards, and suggest improvements before merging.
           </p>
         </motion.div>
