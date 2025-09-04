@@ -458,13 +458,13 @@ className='fixed flex top-0 justify-center items-center w-full'>
   // initial={{opacity:0,filter:'blur(10px)'}}
   // animate={{opacity:1,filter:'blur(0px)'}}
   // transition={{duration:1,delay:7}}
-  style={{background:!isNBack? 'rgba(15, 12, 12, 0.2)' : 'rgba(15, 12, 12, 0.55)',   
+  style={{background:!isNBack? 'rgba(15, 12, 12, 0.2)' : 'rgba(15, 20, 20, 0.45)',   
         boxShadow: '0 4px 25px rgba(0, 0, 0, 0.1)',
-        backdropFilter: 'blur(10px)',
-        WebkitBackdropFilter: 'blur(10px)',
+        backdropFilter: 'blur(5px)',
+        WebkitBackdropFilter: 'blur(5px)',
         zIndex:999999999999,
         }}
-  className='mt-5 w-fit bg-opacity-65 z-[9999999999] rounded-md'>
+  className={`mt-5 w-fit bg-opacity-65 z-[9999999999] rounded-lg ${isNBack? 'border-y-[1px]   border-gray-400 border-opacity-15' : ''}`}>
     <div className='flex  h-full w-full text-white px-[1rem] py-2 '>
     <div className='flex gap-[51vw]  justify-between items-center w-full h-10'>
     <div className="h-full w-[13rem] flex justify-center overflow-hidden">
@@ -541,7 +541,7 @@ className='fixed flex top-0 justify-center items-center w-full'>
     <motion.div 
     // animate={{y:[120,35]}}
     // transition={{duration:1,delay:6}}    
-    className='absolute top-24 left-9 text-9xl font-semibold flex flex-col pb-1  pl-12 mt-5 z-50 '> 
+    className='absolute top-[16vh] left-[3.3vw] text-[8vw] leading-[1] font-semibold flex flex-col pb-1  pl-12 mt-5 z-50 '> 
     <div className={`${montserrat.className} `}>
      {/* {title.map((e,idx)=>(
       <motion.h1
@@ -657,13 +657,14 @@ className='fixed flex top-0 justify-center items-center w-full'>
 
 
 
-
-<div ref={prodRef} className='h-[350vh] w-full bg-zinc-950 text-white -z-10'>
+{/* scrolling bento */}
+<div ref={prodRef} className='h-[410vh] w-full bg-zinc-950 text-white -z-10 flex flex-col justify-center items-center'>
    <h1 className=' font-mono pt-8 opacity-75  text-center  text-lg'>Introducing Codemate.AI</h1>
 
    
-    <div className={`${montserrat.className} mt-4 text-6xl pr-[4rem] font-semibold bg-gradient-to-b from-white to-gray-300/80 bg-clip-text  text-transparent  pt-2 pb-2 w-full text-center `}>Your<span className='bg-gradient-to-b from-[#00BFFF] to-[#1E90FF] bg-clip-text text-transparent text-7xl'> Full-Stack</span> Coding Assistant.</div>
-    <div className='relative h-full w-full  flex flex-col'>
+    <div className={`${montserrat.className} mt-4 text-6xl  font-semibold bg-gradient-to-b from-white to-gray-300/80 bg-clip-text  text-transparent  pt-2 pb-2 w-full text-center `}>Your<span className='bg-gradient-to-b from-[#00BFFF] to-[#1E90FF] bg-clip-text text-transparent text-7xl'> Full-Stack</span> Coding Assistant.</div>
+
+    <div className='relative h-full w-full  flex flex-col justify-center items-center'>
     {/* <div className='h-[30%] w-full flex gap-10 px-10'>
        <Safari className='dark h-[27vw] w-fit' />
        <div>
@@ -672,9 +673,9 @@ className='fixed flex top-0 justify-center items-center w-full'>
        </div>
     </div> */}
 
-<div className='relative h-full w-full flex justify-center gap-5'>
+<div className='relative h-full w-full flex justify-center  gap-8 '>
       {/* section for products */}
-        <div className='sticky top-0 h-screen   flex   items-center justify-center   '>
+        <div className='sticky pt-24  top-0 h-screen flex'>
           
         
 
@@ -687,14 +688,14 @@ className='fixed flex top-0 justify-center items-center w-full'>
           <AnimatePresence mode='wait'>
 
           {!isP1 && !isP2 && 
-          <div  key={3} className="flex flex-col gap-2 pt-10">
+          <div  key={3} className="flex flex-col gap-2 ">
           <motion.div 
           key={1} 
           initial={{opacity:0,filter:"blur(30px)"}}
           animate={{opacity:1,filter:"blur(0px)"}}
            exit={{opacity:0,filter:"blur(30px)"}}
           transition={{duration:1}}
-          className='h-[33rem] w-[57rem] bg-zinc-700 rounded-lg'>
+          className='h-[70vh] w-[57vw] bg-zinc-700 rounded-lg'>
          </motion.div>
          <span className={`${montserrat.className} text-4xl flex flex-col gap-2`}>
          <h1>Codemate Webapp</h1>
@@ -704,14 +705,14 @@ className='fixed flex top-0 justify-center items-center w-full'>
          }          
           
           {isP1 && 
-          <div  key={2} className="flex flex-col gap-2 pt-10">
+          <div  key={2} className="flex flex-col gap-2 ">
           <motion.div 
          
           initial={{opacity:0,filter:"blur(30px)"}}
           animate={{opacity:1,filter:"blur(0px)"}}
            exit={{opacity:0,filter:"blur(30px)"}}
           transition={{duration:1}}
-          className='h-[33rem] w-[57rem] bg-zinc-700 rounded-lg'>
+          className='h-[70vh] w-[57vw] bg-zinc-700 rounded-lg'>
          </motion.div>
          <span className={`${montserrat.className} text-4xl flex flex-col gap-2`}>
          <h1>Codemate Webapp</h1>
@@ -720,14 +721,14 @@ className='fixed flex top-0 justify-center items-center w-full'>
          </div>}  
 
          {isP2 &&           
-         <div  key={3}  className="flex flex-col gap-2 pt-10">
+         <div  key={3}  className="flex flex-col gap-2 ">
           <motion.div 
          
           initial={{opacity:0,filter:"blur(30px)"}}
           animate={{opacity:1,filter:"blur(0px)"}}
            exit={{opacity:0,filter:"blur(30px)"}}
           transition={{duration:1}}
-          className='h-[33rem] w-[57rem]  bg-zinc-700 rounded-lg'>
+          className='h-[70vh] w-[57vw] bg-zinc-700 rounded-lg'>
          </motion.div>
          <span className={`${montserrat.className} text-4xl flex flex-col gap-2`}>
          <h1>Codemate Webapp</h1>
@@ -748,45 +749,60 @@ className='fixed flex top-0 justify-center items-center w-full'>
 
      {/* features of product */}
 
-  <div className={`h-full  flex flex-col pt-[4.2rem] gap-[3rem] items-center ${montserrat.className} `}>
+  <div className={`h-full  flex flex-col pt-24  gap-[3rem] items-center  ${montserrat.className} `}>
     
     <div>
-    <div className='relative h-[18.5rem] w-[30rem] bg-gradient-to-b from-[#243B55] to-[#141E30] rounded-lg pl-7 overflow-hidden' >
+    <div className='relative h-[45vh] w-[30vw] bg-gradient-to-b from-[#243B55] to-[#141E30] rounded-lg pl-7 overflow-hidden' >
      <h1 className={`text-2xl opacity-90 mt-2`}>Codemate Build</h1>
      <img src="build.svg" className='absolute -bottom-5 -right-14 size-[90%]' alt="" />
     </div>
     <h1 className='mt-1 text-lg font-semibold'>Introducing Build</h1>
-    <p className='opacity-65 text-sm w-[30rem]'>Your AI Coding Agent that helps you convert your prompts into working deployed applications</p>
+    <p className='opacity-65 text-sm w-[30vw]'>Your AI Coding Agent that helps you convert your prompts into working deployed applications</p>
     </div>
 
-<div>
-    <div className='relative h-[18.5rem] w-[30rem] bg-gradient-to-b from-[#6441A5] to-[#2A0845] rounded-lg pl-7 overflow-hidden' >
+    <div>
+    <div className='relative h-[45vh] w-[30vw] bg-gradient-to-b from-[#6441A5] to-[#2A0845] rounded-lg pl-7 overflow-hidden' >
      <h1 className={`text-2xl opacity-90 mt-2`}>Codemate Chat</h1>
      <img src="build.svg" className='absolute -bottom-5 -right-14 size-[90%]' alt="" />
     </div>
     <h1 className='mt-1 text-lg font-semibold'>Introducing Chat</h1>
-    <p className='opacity-65 text-sm w-[30rem]'>Your AI Coding Agent that helps you convert your prompts into working deployed applications</p>
+    <p className='opacity-65 text-sm w-[30vw]'>Your AI Coding Agent that helps you convert your prompts into working deployed applications</p>
     </div>
 
-    <div className='relative h-[18.5rem] w-[30rem] bg-gradient-to-b from-[#6441A5] to-[#2A0845] rounded-lg pl-7 overflow-hidden' >
+    <div>
+    <div className='relative h-[45vh] w-[30vw] bg-gradient-to-b from-[#6441A5] to-[#2A0845] rounded-lg pl-7 overflow-hidden' >
      <h1 className={`text-2xl opacity-90 mt-2`}>Codemate Chat</h1>
      <img src="build.svg" className='absolute -bottom-5 -right-14 size-[90%]' alt="" />
-
     </div>
-    <div className='relative h-[18.5rem] w-[30rem] bg-gradient-to-b from-[#6441A5] to-[#2A0845] rounded-lg pl-7 overflow-hidden' >
-     <h1 className={`text-2xl opacity-90 mt-2`}>Codemate Chat</h1>
-     <img src="build.svg" className='absolute -bottom-5 -right-14 size-[90%]' alt="" />
-
+    <h1 className='mt-1 text-lg font-semibold'>Introducing Chat</h1>
+    <p className='opacity-65 text-sm w-[30vw]'>Your AI Coding Agent that helps you convert your prompts into working deployed applications</p>
     </div>
-    <div className='relative h-[18.5rem] w-[30rem] bg-gradient-to-b from-[#6441A5] to-[#2A0845] rounded-lg pl-7 overflow-hidden' >
+
+    <div>
+    <div className='relative h-[45vh] w-[30vw] bg-gradient-to-b from-[#6441A5] to-[#2A0845] rounded-lg pl-7 overflow-hidden' >
      <h1 className={`text-2xl opacity-90 mt-2`}>Codemate Chat</h1>
      <img src="build.svg" className='absolute -bottom-5 -right-14 size-[90%]' alt="" />
-
     </div>
-    <div className='relative h-[18.5rem] w-[30rem] bg-gradient-to-b from-[#6441A5] to-[#2A0845] rounded-lg pl-7 overflow-hidden' >
+    <h1 className='mt-1 text-lg font-semibold'>Introducing Chat</h1>
+    <p className='opacity-65 text-sm w-[30vw]'>Your AI Coding Agent that helps you convert your prompts into working deployed applications</p>
+    </div>
+
+    <div>
+    <div className='relative h-[45vh] w-[30vw] bg-gradient-to-b from-[#6441A5] to-[#2A0845] rounded-lg pl-7 overflow-hidden' >
      <h1 className={`text-2xl opacity-90 mt-2`}>Codemate Chat</h1>
      <img src="build.svg" className='absolute -bottom-5 -right-14 size-[90%]' alt="" />
+    </div>
+    <h1 className='mt-1 text-lg font-semibold'>Introducing Chat</h1>
+    <p className='opacity-65 text-sm w-[30vw]'>Your AI Coding Agent that helps you convert your prompts into working deployed applications</p>
+    </div>
 
+    <div>
+    <div className='relative h-[45vh] w-[30vw] bg-gradient-to-b from-[#6441A5] to-[#2A0845] rounded-lg pl-7 overflow-hidden' >
+     <h1 className={`text-2xl opacity-90 mt-2`}>Codemate Chat</h1>
+     <img src="build.svg" className='absolute -bottom-5 -right-14 size-[90%]' alt="" />
+    </div>
+    <h1 className='mt-1 text-lg font-semibold'>Introducing Chat</h1>
+    <p className='opacity-65 text-sm w-[30vw]'>Your AI Coding Agent that helps you convert your prompts into working deployed applications</p>
     </div>
   </div>
 {/* features of products */} 
@@ -796,6 +812,7 @@ className='fixed flex top-0 justify-center items-center w-full'>
 
     </div>
 </div>
+{/* scrolling bento */}
 
 <div className={`${montserrat.className} h-[100vh] w-full bg-zinc-950 text-white z-50`}>
  <div className='pt-[15rem]'>
@@ -912,8 +929,8 @@ className='relative h-full w-[40%] flex  items-center justify-center  pl-10 py-3
         className='text-white flex flex-col gap-2'>
           <h1 className='text-2xl'>Documentation</h1>
 
-          <p className='text-sm opacity-70'>
-            We’re your AI coding partner, here to handle the messy parts — from stubborn bugs to broken features while You focus on your vision.
+          <p className='text-lg opacity-50 w-[33rem] '>
+          Acts as your AI coding partner by managing bugs and fixing broken features, allowing you to focus on core development.
           </p>
         </motion.div>
          
@@ -922,7 +939,7 @@ className='relative h-full w-[40%] flex  items-center justify-center  pl-10 py-3
                  className='text-white flex flex-col gap-2'>
           <h1 className='text-2xl'>Code Maintnance</h1>
 
-          <p className='text-sm opacity-70'>
+          <p className='text-lg opacity-50 w-[33rem]'>
             We’re your AI coding partner, here to handle the messy parts — from stubborn bugs to broken features while You focus on your vision.
           </p>
         </motion.div>
@@ -933,8 +950,8 @@ className='relative h-full w-[40%] flex  items-center justify-center  pl-10 py-3
                 className='text-white flex flex-col gap-2'>
           <h1 className='text-2xl'>PR Review</h1>
 
-          <p className='text-sm opacity-70'>
-            We’re your AI coding partner, here to handle the messy parts — from stubborn bugs to broken features while You focus on your vision.
+          <p className='text-lg opacity-50 w-[33rem]'>
+            Reviews pull requests to catch errors, enforce coding standards, and suggest improvements before merging.
           </p>
         </motion.div>
 
@@ -944,8 +961,8 @@ className='relative h-full w-[40%] flex  items-center justify-center  pl-10 py-3
                 className='text-white flex flex-col gap-2'>
           <h1 className='text-2xl'>Gonna help you in your shit..</h1>
 
-          <p className='text-sm opacity-70'>
-            We’re your AI coding partner, here to handle the messy parts — from stubborn bugs to broken features while You focus on your vision.
+          <p className='text-sm opacity-50 w-[33rem]'>
+            It Surely does that...
           </p>
         </motion.div>
         
@@ -1159,12 +1176,12 @@ className='relative h-full w-[40%] flex  items-center justify-center  pl-10 py-3
       </div>
 
         <div 
-        className='relative w-[34%] h-full flex justify-end pr-[3.5rem] py-10 gap-10 z-50'> 
+        className='relative w-[34%] h-full flex  justify-end pr-[3.5rem] py-10 gap-10 z-50'> 
 
        {isRef1 && !isRef2 && !isRef3 &&   
-      <div className={`${montserrat.className}relative w-full z-[99999999]`}>
+      <div className={`${montserrat.className}relative w-full z-[99999999] flex justify-center items-center h-[75vh]`}>
          <div className='z-[99999998]'>
-          <h1 className={`${montserrat.className} text-white text-6xl mb-5 mt-24 z-[99999996] font-semibold`}>Debug</h1>
+          <h1 className={`${montserrat.className} text-white text-6xl mb-5  z-[99999996] font-semibold`}>Debug</h1>
        <motion.span
 
        className='z-[99999997]'
@@ -1192,7 +1209,7 @@ className='relative h-full w-[40%] flex  items-center justify-center  pl-10 py-3
 
 
       {isRef2 && !isRef1 && !isRef3 &&       
-      <div className='relative w-full z-[99999999]'>
+      <div className='relative w-full z-[99999999] flex justify-center items-center h-[70vh]'>
          <div className='z-[99999998]'>
           <h1 className={`${montserrat.className} text-white text-6xl mb-5 mt-24 z-[99999996] font-semibold`}>Review</h1>
        <motion.span
@@ -1218,7 +1235,7 @@ className='relative h-full w-[40%] flex  items-center justify-center  pl-10 py-3
       </div>}
 
       {isRef3 && !isRef1 && !isRef2 &&       
-      <div className='relative w-full z-[99999999]'>
+      <div className='relative w-full z-[99999999] flex justify-center items-center h-[65vh]'>
          <div className='z-[99999998]'>
           <h1 className={`${montserrat.className} text-white text-5xl mb-5 mt-24 z-[99999996] font-semibold`}>Auto-Complete</h1>
        <motion.span
@@ -1310,7 +1327,7 @@ className='relative h-full w-full flex  items-center justify-center   pl-10 py-3
      </motion.div> */}
 
       
-        <img src="/codemateLogoB.svg" className='absolute object-fit w-[95vw] ' alt="" />
+        <img src="/codemateLogoB.svg" className='absolute object-fit w-[95vw] brightness-50' alt="" />
     
 
 
