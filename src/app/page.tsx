@@ -878,8 +878,7 @@ className='fixed flex top-0 justify-center items-center w-full'>
    
  <div className={`${montserrat.className}  text-5xl font-semibold bg-gradient-to-b from-white to-gray-300/80 bg-clip-text  text-transparent pl-14 mb-6 pt-20 pr-[62vw] 2xl:pr-[55vw] pb-1`}>We got<span className='bg-gradient-to-b from-[#00BFFF] to-[#1E90FF] bg-clip-text text-transparent'> Everything</span> for you.</div>
     
-   <div className='sticky top-[39vw] 
-   4xl:top-[50vw] z-40'> 
+   <div className='sticky panelTitle z-40'> 
         <motion.div 
         initial={{opacity:0,filter:'blur(10px)'}}
         whileInView={{opacity:1,filter:'blur(0px)'}}
@@ -967,8 +966,7 @@ className='relative h-full w-[40%] flex  items-center justify-center  pl-10 py-3
    <div ref={productRef} className='relative h-[550vh] w-full bg-zinc-950 text-white flex  flex-col'>
 
 
-      <div className='sticky  top-[39vw] 
-   4xl:top-[50vw]  z-50'> 
+      <div className='sticky  panelTitle  z-50'> 
         <div className={`${montserrat.className}  text-2xl pl-[6rem] font-semibold bg-gradient-to-b from-white to-gray-300/80 bg-clip-text  text-transparent  pt-2 pb-2 w-full `}>To your<span className='bg-gradient-to-b from-[#00BFFF] to-[#1E90FF] bg-clip-text text-transparent text-4xl'> IDE</span></div>
    </div>
 
