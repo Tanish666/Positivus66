@@ -467,7 +467,7 @@ className='fixed flex top-0 justify-center items-center w-full'>
   className={`mt-5 w-fit bg-opacity-65 z-[9999999999] rounded-lg ${isNBack? 'border-y-[1px]   border-gray-400 border-opacity-10' : ''}`}>
     <div className='flex  h-full w-full text-white px-[1rem] py-2 '>
     <div className='flex gap-[51vw]  justify-between items-center w-full h-10'>
-    <div className="h-full w-[13rem] flex justify-center overflow-hidden">
+    <div className="h-full w-[13vw] flex justify-center overflow-hidden">
       {!IsMascot && <img src="/codemateLogo.svg" alt="" />}
      {IsMascot && <motion.div initial={{opacity:0,filter:'blur(20px)',x:50}} animate={{opacity:1,filter:'blur(0px)',x:-80}} transition={{duration:0.5}}>
 <svg width="50" height="40" viewBox="0 0 153 150" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -502,8 +502,8 @@ className='fixed flex top-0 justify-center items-center w-full'>
     
     </div>
     <div className={`${montserrat.className} flex gap-3 text-md  justify-center items-center cursor-pointer text-right `}>
-       <motion.h1 whileHover={{opacity:1}} className='flex text-center justify-center items-center opacity-65'>Products</motion.h1>
-       <motion.h1 whileHover={{opacity:1}} className='opacity-65'>Features</motion.h1>
+       <motion.h1  whileHover={{opacity:1}} className='flex text-center justify-center items-center opacity-65'>Products</motion.h1>
+       <motion.h1 onClick={() => productShowRef.current?.scrollIntoView({ behavior: "smooth" })} whileHover={{opacity:1}} className='opacity-65'>Features</motion.h1>
        <motion.h1 whileHover={{opacity:1}} onClick={()=>{router.push('pricing')}} className='opacity-65'>Pricing</motion.h1>
        <button className={`${montserrat.className} px-2 py-1  bg-[#FFFFFF] text-black  rounded-sm font-semibold opacity-85`}>Get Started</button>
     </div>
@@ -552,11 +552,11 @@ className='fixed flex top-0 justify-center items-center w-full'>
         {e}
       </motion.h1>
      ))} */}
-      <motion.div 
+      {/* <motion.div 
       initial={{ opacity: 0, filter: "blur(10px)" }}
       animate={{ opacity: 1, filter: "blur(0px)" }}
       transition={{ duration: 1,delay:4 }}
-      className="text-sm text-nowrap flex gap-2 ml-3 text-gray-400">Build 3.0 is live. Start building.  <motion.span whileHover={{scale:1.05}} className='text-cyan-500 flex cursor-pointer  justify-center items-center'>   Explore now &gt;</motion.span></motion.div>
+      className="text-sm text-nowrap flex gap-2 ml-3 text-gray-400">Build 3.0 is live. Start building.  <motion.span whileHover={{scale:1.05}} className='text-cyan-500 flex cursor-pointer  justify-center items-center'>   Explore now &gt;</motion.span></motion.div> */}
 
      <div className=' z-50'><motion.span   initial={{ opacity: 0, filter: "blur(10px)" }}
   animate={{ opacity: 1, filter: "blur(0px)" }}
@@ -590,7 +590,7 @@ className='fixed flex top-0 justify-center items-center w-full'>
           initial={{ opacity: 0, filter: "blur(10px)" }}
           animate={{ opacity: 1, filter: "blur(0px)" }}
           transition={{ duration: 0.4,delay:1.5 }}
-          className={`flex flex-col ${montserrat.className} text-xl mt-5 opacity-60 `}>
+          className={`flex flex-col ${montserrat.className} text-[1.5vw] leading-[1] mt-5 opacity-60 `}>
         <p>Build and ship 20x faster with CodeMate IDE —</p>
         <p>Your all-in-one accelerator for the development lifecycle</p>
       </motion.div>
@@ -629,7 +629,7 @@ className='fixed flex top-0 justify-center items-center w-full'>
   
 
     </div>
-        <motion.div style={{height:shadingHeight}} className="absolute bottom-0 left-0 right-0  bg-gradient-to-b from-zinc-950/0 to-zinc-950 z-50" />
+        <motion.div style={{height:shadingHeight}} className="absolute -bottom-2 left-0 right-0  bg-gradient-to-b from-zinc-950/0 to-zinc-950 z-50" />
    </div>
    </BackgroundGradientAnimation>
    </div>
@@ -814,6 +814,8 @@ className='fixed flex top-0 justify-center items-center w-full'>
 </div>
 {/* scrolling bento */}
 
+
+{/* trusted by section */}
 <div className={`${montserrat.className} h-[100vh] w-full bg-zinc-950 text-white z-50`}>
  <div className='pt-[15rem]'>
  <h1 className='text-center text-7xl font-bold text-white  opacity-45'>Trusted By</h1>
@@ -830,6 +832,8 @@ className='fixed flex top-0 justify-center items-center w-full'>
 </div>
  </div>
 </div> 
+{/* trusted by section */}
+
 
 
 <div ref={productsWrapper} className='-z-20'>
@@ -841,7 +845,7 @@ className='fixed flex top-0 justify-center items-center w-full'>
      initial={{opacity:0,filter:'blur(20px)'}}
      animate={{opacity:1,filter:'blur(0px)'}}
      transition={{duration:0.8}}
-     className='fixed top-0 left-32 h-full w-[70%] flex items-center justify-center z-50'>
+     className='fixed top-0 left-32 h-full w-[70%] flex items-center justify-center z-[9999999]'>
 
       
       {isShowProd && <motion.div 
@@ -859,7 +863,7 @@ className='fixed flex top-0 justify-center items-center w-full'>
      exit={{opacity:0,filter:'blur(20px)'}}
      initial={{opacity:0,filter:'blur(20px)'}}
      animate={{opacity:1,filter:'blur(0px)'}}
-     className='absolute left-[30rem] h-[30vw] w-[58vw] rounded-xl '>
+     className='absolute left-[30rem] h-[30vw] w-[58vw] rounded-xl  bg-rose-900'>
       {/* <Safari url='codemate.ai' imageSrc='buildss.png' className='dark'/> */}
       
       </motion.div>}
@@ -870,14 +874,14 @@ className='fixed flex top-0 justify-center items-center w-full'>
      exit={{opacity:0,filter:'blur(20px)'}}
      initial={{opacity:0,filter:'blur(20px)'}}
      animate={{opacity:1,filter:'blur(0px)'}}
-     className='absolute left-[30rem] h-[30vw] w-[58vw] rounded-xl'>
+     className='absolute left-[30rem] h-[30vw] w-[58vw] rounded-xl bg-white'>
       {/* <Safari url='codemate.ai' className='dark object-cover object-left-top' imageSrc='eduation.png'/> */}
      </motion.div>}
 
       {!isRef2 && !isRef3 &&      
     <motion.div 
-     style={{x:div3X}} exit={{opacity:0,filter:'blur(20px)'}} key={4} className='absolute left-[30rem] h-[30vw] w-[58vw] rounded-xl  text-white '>
-             <motion.div style={{x:xE}} className='h-full w-full overflow-y-auto'>
+     style={{x:div3X}} exit={{opacity:0,filter:'blur(20px)'}} key={4} className='absolute left-[30rem] h-[30vw] w-[58vw] rounded-xl  text-white z-[99999999]'>
+             <motion.div  style={{x:xE}} className='h-full w-full overflow-y-auto'>
              <CodeOverlay ref={codeOverlayRef}/> 
 
         <CodeEditor comp1={brokenComponent} comp2={fixedComponent} isFix={isFix}/> 
@@ -893,8 +897,16 @@ className='fixed flex top-0 justify-center items-center w-full'>
    
    className='relative h-[200vw] w-full bg-zinc-950'>
    
- <div className={`${montserrat.className}  text-5xl font-semibold bg-gradient-to-b from-white to-gray-300/80 bg-clip-text  text-transparent pl-14 mb-6 pt-20 pr-[62vw] 2xl:pr-[55vw] pb-1`}>We got<span className='bg-gradient-to-b from-[#00BFFF] to-[#1E90FF] bg-clip-text text-transparent'> Everything</span> for you.</div>
-    
+ <div className={`${montserrat.className} sticky top-0 z-20  text-5xl font-semibold bg-gradient-to-b from-white to-gray-300/80 bg-clip-text  text-transparent pl-14 mb-6 pt-20 pr-[62vw] 2xl:pr-[55vw] pb-1`}>
+  <div className='relative h-full w-full bg-gradient-to-b from-white to-gray-300/80 bg-clip-text  text-transparent pb-2'>
+   <span className='z-50'> 
+   We got<span className='bg-gradient-to-b from-[#00BFFF] to-[#1E90FF] bg-clip-text text-transparent'> Everything</span> for you.</span>
+   <div className='top-0 absolute w-full h-full bg-zinc-950 -z-10'/>
+  </div>
+ </div>
+
+
+
    <div className='sticky top-[85vh] z-40'> 
         <motion.div 
         initial={{opacity:0,filter:'blur(10px)'}}
@@ -903,26 +915,26 @@ className='fixed flex top-0 justify-center items-center w-full'>
         className={`${montserrat.className}  text-2xl pr-[6rem] font-semibold bg-gradient-to-b from-white to-gray-300/80 bg-clip-text  text-transparent  pt-2 pb-2 w-full text-right`}>From <span className='bg-gradient-to-b from-[#00BFFF] to-[#1E90FF] bg-clip-text text-transparent text-4xl'>Web-Application</span></motion.div>
    </div>
 
-   <div className='sticky top-0   h-screen w-full overflow-x-hidden'>
+   <div className='sticky top-[9rem]   h-screen w-full overflow-x-hidden'>
        
 <div
-className='relative h-full w-[40%] flex  items-center justify-center  pl-10 py-3'>
+className='relative h-[75%] w-[40%] flex  items-center justify-center  pl-10 py-3'>
 
-    <div className={`relative ${montserrat.className}  text-7xl font-semibold bg-gradient-to-b from-white to-gray-300/80 bg-clip-text  text-transparent flex flex-col   h-full w-full `}>
+    <div className={`relative ${montserrat.className}  text-7xl font-semibold bg-gradient-to-b from-white to-gray-300/80 bg-clip-text  text-transparent flex flex-col   h-full w-full mt-10`}>
      
        <div className='relative h-full py-6 pl-5 flex justify-center overflow-hidden gap-5 '>
         
         <div>
         <motion.div 
         style={{y:height}}
-        className='absolute rounded-md w-[0.25rem] h-[15%]  bg-gradient-to-b from-[#00BFFF] to-[#1E90FF]  opacity-80 z-50'/>
+        className='absolute rounded-md w-[0.25rem] h-[20%]  bg-gradient-to-b from-[#00BFFF] to-[#1E90FF]  opacity-80 z-50'/>
 
        <div className='w-[0.20rem] rounded-md  h-full bg-[#1c1c1c] '/> 
        </div>
 
        <motion.div 
        style={{y:titlesX}}
-       className='h-full w-full flex flex-col gap-[17rem]'>
+       className='h-full w-full flex flex-col gap-[13rem]'>
           
         <motion.div 
         style={{opacity:op1}}
@@ -980,7 +992,7 @@ className='relative h-full w-[40%] flex  items-center justify-center  pl-10 py-3
    </div>
     {/* products showcase */}
 
-   <div ref={productRef} className='relative h-[550vh] w-full bg-zinc-950 text-white flex  flex-col'>
+   <div ref={productRef} className='relative h-[550vh] w-full bg-zinc-950 text-white flex  flex-col mb-32'>
 
 
       <div className='sticky  top-[85vh]  z-50'> 
@@ -989,7 +1001,13 @@ className='relative h-full w-[40%] flex  items-center justify-center  pl-10 py-3
 
 
 
- <div className={`${montserrat.className}  text-5xl font-semibold bg-gradient-to-b from-white to-gray-300/80 bg-clip-text  text-transparent pr-16 mb-6 pt-20 text-right pl-[50vw] pb-1 z-50`}>Everything means <span className='bg-gradient-to-b from-[#00BFFF] to-[#1E90FF] bg-clip-text text-transparent'>Everything</span> right?</div>
+ <div className={`${montserrat.className} sticky top-7  text-5xl font-semibold bg-gradient-to-b from-white to-gray-300/80 bg-clip-text  text-transparent pr-16 mb-6 pt-20 text-right pl-[50vw]  pb-1 z-[9999998]`}>
+ <div className='bg-gradient-to-b from-white to-gray-300/80 bg-clip-text  text-transparent relative h-full w-full pb-2'>
+  <span className='z-50 '>
+  Everything means <span className='bg-gradient-to-b from-[#00BFFF] to-[#1E90FF] bg-clip-text text-transparent pb-1'>Everything</span> right?</span>
+  <div className='h-full w-full absolute  z-50'/>
+ </div>
+ </div>
 
      <motion.div 
      initial={{opacity:0,filter:'blur(50px)'}}
@@ -1059,7 +1077,7 @@ className='relative h-full w-[40%] flex  items-center justify-center  pl-10 py-3
         animate={{opacity:1,filter:'blur(0px)'}}
         transition={{duration:1}}
         
-        className=' absolute h-full w-full bg-zinc-900 rounded-xl flex  opacity-100'>
+        className=' absolute h-full w-full bg-zinc-900 rounded-xl flex   opacity-100 overflow-hidden'>
 
         {isLoad2 && <div data-lenis-prevent><CodeReviewOverlay/></div>}
          
@@ -1176,18 +1194,18 @@ className='relative h-full w-[40%] flex  items-center justify-center  pl-10 py-3
       </div>
 
         <div 
-        className='relative w-[34%] h-full flex  justify-end pr-[3.5rem] py-10 gap-10 z-50'> 
+        className='relative w-[34%] h-[75%] flex  justify-end pr-[3.5rem] py-10 gap-10 z-50 mt-[10rem]'> 
 
        {isRef1 && !isRef2 && !isRef3 &&   
-      <div className={`${montserrat.className}relative w-full z-[99999999] flex justify-center items-center h-[75vh]`}>
+      <div className={`${montserrat.className}relative w-full z-[99999999]  flex justify-center items-start pt-10 h-full`}>
          <div className='z-[99999998]'>
-          <h1 className={`${montserrat.className} text-white text-6xl mb-5  z-[99999996] font-semibold`}>Debug</h1>
+          <h1 className={`${montserrat.className} text-white text-3xl mb-5  z-[99999996] font-semibold`}>Debug</h1>
        <motion.span
 
        className='z-[99999997]'
        >
 
-        <p className={`${montserrat.className} text-xl  z-[99999996]`}><span className='opacity-60'>An</span> <span className='text-[#00BFFF] font-semibold'>AI-Powered Debugger</span> <span className='opacity-60'>that quickly identifies errors, explains their causes, and suggests precise fixes—making it easier to resolve issues and keep development moving smoothly.</span></p> 
+        <p className={`${montserrat.className} text-lg  z-[99999996]`}><span className='opacity-60'>An</span> <span className='text-[#00BFFF] font-semibold'>AI-Powered Debugger</span> <span className='opacity-60'>that quickly identifies errors, explains their causes, and suggests precise fixes—making it easier to resolve issues and keep development moving smoothly.</span></p> 
        </motion.span>
 
        {isLoad?    
@@ -1209,15 +1227,15 @@ className='relative h-full w-[40%] flex  items-center justify-center  pl-10 py-3
 
 
       {isRef2 && !isRef1 && !isRef3 &&       
-      <div className='relative w-full z-[99999999] flex justify-center items-center h-[70vh]'>
+      <div className='relative w-full z-[99999999] flex justify-center items-start h-full pt-10'>
          <div className='z-[99999998]'>
-          <h1 className={`${montserrat.className} text-white text-6xl mb-5 mt-24 z-[99999996] font-semibold`}>Review</h1>
+          <h1 className={`${montserrat.className} text-white text-3xl mb-5  z-[99999996] font-semibold`}>Review</h1>
        <motion.span
 
        className='z-[99999997]'
        >
 
-        <p className={`${montserrat.className} text-xl  z-[99999996]`}><span className='opacity-60'>An</span> <span className='text-[#00BFFF] font-semibold'>AI-Powered Code Reviewer</span> <span className='opacity-60'>that scans your code in real time, detects bugs and vulnerabilities, and suggests improvements for readability, performance, and best practices—helping you write cleaner, more reliable code faster.</span></p> 
+        <p className={`${montserrat.className} text-lg  z-[99999996]`}><span className='opacity-60'>An</span> <span className='text-[#00BFFF] font-semibold'>AI-Powered Code Reviewer</span> <span className='opacity-60'>that scans your code in real time, detects bugs and vulnerabilities, and suggests improvements for readability, performance, and best practices—helping you write cleaner, more reliable code faster.</span></p> 
        </motion.span>
 
        {isLoad?    
@@ -1235,15 +1253,15 @@ className='relative h-full w-[40%] flex  items-center justify-center  pl-10 py-3
       </div>}
 
       {isRef3 && !isRef1 && !isRef2 &&       
-      <div className='relative w-full z-[99999999] flex justify-center items-center h-[65vh]'>
+      <div className='relative w-full z-[99999999] flex justify-center items-start h-full pt-10'>
          <div className='z-[99999998]'>
-          <h1 className={`${montserrat.className} text-white text-5xl mb-5 mt-24 z-[99999996] font-semibold`}>Auto-Complete</h1>
+          <h1 className={`${montserrat.className} text-white text-3xl mb-5 z-[99999996] font-semibold`}>Auto-Complete</h1>
        <motion.span
 
        className='z-[99999997]'
        >
 
-        <p className={`${montserrat.className} text-xl  z-[99999996]`}><span className='opacity-60'>An</span> <span className='text-[#00BFFF] font-semibold'>Intelligent Auto-Completer</span> <span className='opacity-60'>tool that predicts your next lines of code, reduces repetitive typing, and speeds up development by suggesting accurate, context-aware completions in real time.</span></p> 
+        <p className={`${montserrat.className} text-lg  z-[99999996]`}><span className='opacity-60'>An</span> <span className='text-[#00BFFF] font-semibold'>Intelligent Auto-Completer</span> <span className='opacity-60'>tool that predicts your next lines of code, reduces repetitive typing, and speeds up development by suggesting accurate, context-aware completions in real time.</span></p> 
        </motion.span>
 
        {isLoad?    
@@ -1300,10 +1318,10 @@ className='relative h-full w-[40%] flex  items-center justify-center  pl-10 py-3
   </div>  */}
 {/* bento   */}
 
+<div className={`${montserrat.className}  text-6xl font-semibold bg-gradient-to-b from-white to-gray-300/80 bg-clip-text  text-transparent pl-10 pt-20 text-center`}>Do not listen to us but from <span className='bg-gradient-to-b from-[#00BFFF] to-[#1E90FF] bg-clip-text text-transparent'>People</span></div>
 
+<div ref={testiRef} className='relative h-[400vh] w-full bg-zinc-950 '>
 
-  <div ref={testiRef} className='relative h-[600vh] w-full bg-zinc-950 '>
-         <div className={`${montserrat.className}  text-6xl font-semibold bg-gradient-to-b from-white to-gray-300/80 bg-clip-text  text-transparent pl-10 mb-6 pt-20 text-center`}>Do not listen to us but from <span className='bg-gradient-to-b from-[#00BFFF] to-[#1E90FF] bg-clip-text text-transparent'>People</span></div>
 
    <div className=' sticky top-0   h-screen w-full overflow-x-hidden '>
        
@@ -1599,38 +1617,47 @@ function CodeReviewOverlay(){
   <button className="px-3 py-1 bg-red-500 text-white rounded" onClick={() => setCount((prev) => prev - 1)}>-</button>
 </div>`
   return(
+    <motion.div 
+    // initial={{x:-100}}
+    className='h-full w-full flex justify-center items-center mt-1'>
       <motion.div 
        
-       initial={{opacity:0,filter:'blur(20px)'}}
-       animate={{opacity:1,filter:'blur(0px)'}}
+       initial={{opacity:0,filter:'blur(20px)',x:360}}
+       animate={{opacity:1,filter:'blur(0px)',x:0}}
        transition={{duration:1.5}}
-       className='absolute h-full w-full bg-zinc-900 z-50 rounded-xl text-white flex flex-col  p-10 overflow-y-auto'>
+       className='absolute h-[86%] rounded-l-lg w-[40%] right-0  bg-zinc-800 z-50 text-white flex flex-col  p-5 overflow-y-auto shadow-[-15px_0_20px_-3px_rgba(0,0,0,0.3)]'>
        {/* <LoaderFive text="Reviewing Inprogress..."/> */}
 
 
       {/* <TypingAnimation className='text-2xl font-mono opacity-90'> </TypingAnimation> */}
-      
+
+  <img src="logoC.svg" alt="" className='size-[10%]'/>   
+ <div className='flex gap-2 w-full'>
+  
 <TextAnimate
   animation="blurInUp"
   once={true}
   by="character"
   duration={2}
-  className={`${montserrat.className} font-semibold text-md opacity-80 mt-3 mb-3`}
+  className={`${montserrat.className} font-semibold text-sm opacity-80 mt-3 w-[90%]`}
 >
   {`Your code is perfectly valid and works as expected. — it’s a simple counter component. \n here’s some suggestions for improvements:-`}
 </TextAnimate>
-      
+</div>
       <motion.h1 
       initial={{opacity:0,filter:'blur(20px)'}}
       animate={{opacity:1,filter:'blur(0px)'}}
       transition={{duration:1,delay:2}}
-      className='mt-4 mb-4'>🔧 Possible Improvements</motion.h1>
+      className='mt-4 mb-4 font-semibold text-sm opacity-80'>🔧 Possible Improvements</motion.h1>
+
+<div className='flex flex-col gap-10'>      
+
 
       <motion.div  
       initial={{opacity:0,filter:'blur(20px)'}}
       animate={{opacity:1,filter:'blur(0px)'}}
       transition={{duration:1,delay:4}}
-      className="font-mono  text-md flex flex-col">
+      className=" text-md flex flex-col">
         <h1 className='opacity-75'>1. Prevent negative values (if that’s not desired):</h1>
         <div className='h-20 w-full bg-zinc-950 rounded-xl mt-2 mb-4'>
           <div className='ml-3 text-xs mt-1'>tsx</div>
@@ -1646,7 +1673,7 @@ function CodeReviewOverlay(){
       initial={{opacity:0,filter:'blur(20px)'}}
       animate={{opacity:1,filter:'blur(0px)'}}
       transition={{duration:1,delay:5}}
-      className="font-mono  text-md flex flex-col mt-3">
+      className=" text-md flex flex-col mt-3">
         <h1 className='opacity-75'>2. Use functional updates (best practice when updating based on the previous state):</h1>
         <div className='h-20 w-full bg-zinc-950 rounded-xl mt-2 mb-4'>
           <div className='ml-3 text-xs mt-1'>tsx</div>
@@ -1661,7 +1688,7 @@ function CodeReviewOverlay(){
             initial={{opacity:0,filter:'blur(20px)'}}
       animate={{opacity:1,filter:'blur(0px)'}}
       transition={{duration:1,delay:6}}
-      className="font-mono  text-md flex flex-col mt-3">
+      className="text-md flex flex-col mt-3">
         <h1 className='opacity-75'>3. Accessibility – Add aria-label or descriptive text for screen readers:</h1>
         <div className='h-20 w-full bg-zinc-950 rounded-xl mt-2 mb-4'>
           <div className='ml-3 text-xs mt-1'>tsx</div>
@@ -1676,7 +1703,7 @@ function CodeReviewOverlay(){
             initial={{opacity:0,filter:'blur(20px)'}}
       animate={{opacity:1,filter:'blur(0px)'}}
       transition={{duration:1,delay:7}}
-      className="font-mono  text-md flex flex-col mt-3 mb-56">
+      className="  text-md flex flex-col mt-3 mb-56">
         <h1 className='opacity-75'>4. Styling – Add some minimal Tailwind or CSS for better UI (optional):</h1>
         <div className='h-20 w-full bg-zinc-950 rounded-xl mt-2 mb-4'>
           <div className='ml-3 text-xs mt-1'>tsx</div>
@@ -1686,10 +1713,10 @@ function CodeReviewOverlay(){
           
         </div>
       </motion.div>
-
+</div>
 
        </motion.div>
-
+    </motion.div>
        
   )
 }
