@@ -5,70 +5,31 @@ import { IconFolderFilled,IconFolder,IconAlertCircle,IconPlus } from '@tabler/ic
 import { useEffect } from 'react';
 import Lenis from 'lenis';
 import { Skeleton } from '../ui/skeleton';
-export default function AutoCodeEditor({isFix,comp1}:{isFix:boolean;comp1:any}){
+export default function AutoCodeEditor({isFix,comp1,setIsFix}:{isFix:boolean;comp1:any,setIsFix:React.Dispatch<React.SetStateAction<boolean>>}){
 
 
 
 const [isLoad,setIsLoad] = useState(false);
 const [isComplete,setIsComplete] = useState(false);
-const nextJsStructure = [
-  {
-    name: "app",
-    children: [
-      { name: "layout.tsx" },
-      { name: "page.tsx" },
-    
-    ]
-  },
-  {
-    name: "components",
-    children: [
-      {
-        name: "UI",
-        children: [{ name: "Button.tsx" }]
-      }
-    ]
-  },
-  {
-    name: "public",
-    children: [
-      {
-        name: "images",
-        children: [{ name: "logo.png" }]
-      },
-      { name: "robots.txt" }
-    ]
-  },
-  {
-    name: "styles",
-    children: [{ name: "globals.css" }]
-  },
-  {
-    name: "lib",
-    children: [{ name: "utils.ts" }]
-  },
-  {
-    name: "hooks",
-    children: [{ name: "useScroll.ts" }]
-  },
-  {
-    name: "types",
-    children: [{ name: "index.d.ts" }]
-  },
-  { name: ".gitignore" },
-  { name: "README.md" }
-];
+
 const loadtimer = () => {
     setIsLoad(true);
     setTimeout(()=>{setIsLoad(false);setIsComplete(true)},2000);
  }   
 useEffect(()=>{
 
-
  if(isFix){
     loadtimer();
  }
+
+ 
 },[isFix])
+
+useEffect(() => {
+  return () => {
+    setIsFix(false); // runs only on unmount
+  };
+}, []);
 
   return(
     <div className='relative h-full w-full bg-zinc-900  rounded-xl flex overflow-hidden'>

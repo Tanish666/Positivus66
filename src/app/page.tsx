@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect, useState,useRef } from 'react'
+import React, { useEffect, useState,useRef,useMemo } from 'react'
 import { IconHome, IconMessage, IconUser } from "@tabler/icons-react";
 import { FloatingNav } from '@/components/ui/floating-navbar';
 import { IconArrowLeft,IconArrowRight,IconArrowBadgeDown } from '@tabler/icons-react';
@@ -301,8 +301,17 @@ const AutoCompleteComponent = [
     };
   }, []);
 
+  useMemo(() => {
+  if (!isRef2) {
+    setIsLoad2(false);
+  }
+}, [isRef2]);
 
-
+  useMemo(() => {
+  if (!isRef1) {
+    setIsFix(false);
+  }
+}, [isRef1]);
 
 
 useMotionValueEvent(p1YProg, 'change', (latest) => {
@@ -845,7 +854,7 @@ className='fixed flex top-0 justify-center items-center w-full'>
      initial={{opacity:0,filter:'blur(20px)'}}
      animate={{opacity:1,filter:'blur(0px)'}}
      transition={{duration:0.8}}
-     className='fixed top-0 left-32 h-full w-[70%] flex items-center justify-center z-[9999999]'>
+     className='fixed top-0 left-32 h-full w-[70%] flex items-center justify-center z-50'>
 
       
       {isShowProd && <motion.div 
@@ -880,7 +889,7 @@ className='fixed flex top-0 justify-center items-center w-full'>
 
       {!isRef2 && !isRef3 &&      
     <motion.div 
-     style={{x:div3X}} exit={{opacity:0,filter:'blur(20px)'}} key={4} className='absolute left-[30rem] h-[30vw] w-[58vw] rounded-xl  text-white z-[99999999]'>
+     style={{x:div3X}} exit={{opacity:0,filter:'blur(20px)'}} key={4} className='absolute left-[30rem] h-[30vw] w-[58vw] rounded-xl  text-white z-50'>
              <motion.div  style={{x:xE}} className='h-full w-full overflow-y-auto'>
              <CodeOverlay ref={codeOverlayRef}/> 
 
@@ -1001,9 +1010,9 @@ className='relative h-[75%] w-[40%] flex  items-center justify-center  pl-10 py-
 
 
 
- <div className={`${montserrat.className} sticky top-7  text-5xl font-semibold bg-gradient-to-b from-white to-gray-300/80 bg-clip-text  text-transparent pr-16 mb-6 pt-20 text-right pl-[50vw]  pb-1 z-[9999998]`}>
+ <div className={`${montserrat.className} sticky top-7  text-5xl font-semibold bg-gradient-to-b from-white to-gray-300/80 bg-clip-text  text-transparent pr-16 mb-6 pt-20 text-right pl-[50vw]  pb-1 z-40`}>
  <div className='bg-gradient-to-b from-white to-gray-300/80 bg-clip-text  text-transparent relative h-full w-full pb-2'>
-  <span className='z-50 '>
+  <span className='z-40'>
   Everything means <span className='bg-gradient-to-b from-[#00BFFF] to-[#1E90FF] bg-clip-text text-transparent pb-1'>Everything</span> right?</span>
   <div className='h-full w-full absolute  z-50'/>
  </div>
@@ -1076,13 +1085,13 @@ className='relative h-[75%] w-[40%] flex  items-center justify-center  pl-10 py-
         initial={{opacity:0,filter:'blur(20px)'}}
         animate={{opacity:1,filter:'blur(0px)'}}
         transition={{duration:1}}
-        
+        onAnimationStart={() => setIsAuto(false)}
         className=' absolute h-full w-full bg-zinc-900 rounded-xl flex   opacity-100 overflow-hidden'>
 
         {isLoad2 && <div data-lenis-prevent><CodeReviewOverlay/></div>}
          
         <div data-lenis-prevent className='w-full'>
-        <CodeEditor  comp1={ReviewComponent} comp2={fixedComponent} isFix={isFix}/>
+        <CodeEditor  comp1={ReviewComponent} comp2={fixedComponent} />
         </div> 
         </motion.div>}
 
@@ -1093,7 +1102,7 @@ className='relative h-[75%] w-[40%] flex  items-center justify-center  pl-10 py-
         transition={{duration:1}}
         
         className=' absolute h-full w-full bg-zinc-900 rounded-xl flex  opacity-100'>
-               <AutoCodeEditor comp1={AutoCompleteComponent}  isFix={isAuto}/>
+               <AutoCodeEditor comp1={AutoCompleteComponent} setIsFix={setIsFix} isFix={isAuto}/>
                 {/* <CodeEditor  />   */}
         </motion.div>}
 
@@ -1228,7 +1237,7 @@ className='relative h-[75%] w-[40%] flex  items-center justify-center  pl-10 py-
 
       {isRef2 && !isRef1 && !isRef3 &&       
       <div className='relative w-full z-[99999999] flex justify-center items-start h-full pt-10'>
-         <div className='z-[99999998]'>
+         <div className='z-[9999999]'>
           <h1 className={`${montserrat.className} text-white text-3xl mb-5  z-[99999996] font-semibold`}>Review</h1>
        <motion.span
 
@@ -1245,7 +1254,7 @@ className='relative h-[75%] w-[40%] flex  items-center justify-center  pl-10 py-
         transition={{duration:1,delay:1}}
         className='mb-10 z-[99999996]'>
         <LoaderOne/>
-        </motion.span>  :         <button ref={debugBtnRef} onClick={handleOverlayR} className={`${montserrat.className} bg-gradient-to-br border-y-[0.1px] border-[#F0EAD6]/80 from-[#F0EAD6]/80 to-[#FAF9F6]/10 text-lg rounded-[25px] px-6 text-black py-2 mt-10 hover:opacity-70 z-[99999996]`}>
+        </motion.span>  :         <button  onClick={handleOverlayR} className={`${montserrat.className} bg-gradient-to-br border-y-[0.1px] border-[#F0EAD6]/80 from-[#F0EAD6]/80 to-[#FAF9F6]/10 text-lg rounded-[25px] px-6 text-black py-2 mt-10 hover:opacity-70 z-[99999996]`}>
             <span className='font-semibold  text-zinc-950'>Review</span> this code
         </button>} 
         </div>

@@ -3,7 +3,7 @@ import {motion} from 'framer-motion';
 import { IconFolderFilled,IconFolder,IconAlertCircle,IconPlus } from '@tabler/icons-react';
 import { useEffect } from 'react';
 import Lenis from 'lenis';
-export default function CodeEditor({isFix,comp1,comp2}:{isFix?:boolean;comp1:any,comp2:any}){
+export default function ReviewCodeEditor({isFix,comp1,comp2}:{isFix:boolean;comp1:any,comp2:any}){
 
 const nextJsStructure = [
   {
