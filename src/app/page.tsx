@@ -3,6 +3,7 @@ import React, { useEffect, useState,useRef,useMemo } from 'react'
 import { IconHome, IconMessage, IconUser } from "@tabler/icons-react";
 import { FloatingNav } from '@/components/ui/floating-navbar';
 import { IconArrowLeft,IconArrowRight,IconArrowBadgeDown } from '@tabler/icons-react';
+import StaggeredMenu from '@/components/ui/Menu';
 import AutoCodeEditor from '@/components/motion-components/aEditor';
 import {AnimatePresence, motion,useMotionValueEvent,useScroll,useTransform} from 'framer-motion'
 import { TextAnimate } from '@/components/ui/textAnimate'
@@ -20,6 +21,7 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { useRouter } from 'next/navigation';
 import Footer from '@/components/footer';
+import { EventListeners } from '@tsparticles/engine';
 const montserrat = Montserrat({
   subsets: ['latin'],
   weight: ['400', '500', '600', '700'], // Add what you need
@@ -131,13 +133,18 @@ const AutoCompleteComponent = [
     },
   ];
   const router = useRouter();
-  const heroRef = useRef(null);
+  const heroRef = useRef<HTMLDivElement>(null);
+  const heroRef2 = useRef<HTMLDivElement>(null);
+  const footerRef = useRef<HTMLDivElement>(null);
   const [d,setD] = useState(false); 
   const [r,setR] = useState(false);
   const [a,setA] = useState(false);
-  const [eyesD,setEyesD] = useState(0);
+  const [lastScroll,setLastScroll] = useState(0);
   const [IsMascot,setIsMascot] = useState(false);
   const [isNBack,setIsNBack] = useState(false);
+  const [isMenu,setMenu] = useState(false);
+  const [isProducts,setIsProducts] = useState(false);
+   const [isArrow,setIsArrow] = useState(false);
   const [isP1,setIsP1] = useState(false);
   const [isP2,setIsP2] = useState(false);
   const [isAuto,setIsAuto] = useState(false);
@@ -248,17 +255,33 @@ const AutoCompleteComponent = [
     const xE = useTransform(WYProg,[0.3164624761083433,0.42436403710166223],[0,-516]);
 
    ///for testi
-    const tdiv1X = useTransform(testiYProg,[0,0.1],[900,0]);
-    const tdiv2X = useTransform(testiYProg,[0.1,0.3],[1500,0]);
-    const tdiv3X = useTransform(testiYProg,[0.3,0.5],[2100,0]);
-    const tdiv4X = useTransform(testiYProg,[0.5,0.7],[2700,0]);
-    const tdiv5X = useTransform(testiYProg,[0.7,0.8],[3300,0]);
-    const tdiv6X = useTransform(testiYProg,[0.8,1],[3900,0]);
+    const tdiv1X = useTransform(testiYProg,[0,0.1],[700,0]);
+    const tdiv2X = useTransform(testiYProg,[0.1,0.3],[1300,0]);
+    const tdiv3X = useTransform(testiYProg,[0.3,0.5],[1900,0]);
+    const tdiv4X = useTransform(testiYProg,[0.5,0.7],[2500,0]);
+    const tdiv5X = useTransform(testiYProg,[0.7,0.8],[3100,0]);
+    const tdiv6X = useTransform(testiYProg,[0.8,1],[3600,0]);
     const commentsX = useTransform(testiYProg,[0,1],[0,1500]);
     
    //for bento
    const scaleB = useTransform(WYProg,[0.8103453100614014,0.81325938924655],[1,1.5]);
    const xB = useTransform(WYProg,[0.8103453100614014,0.81325938924655],[0,550]);
+
+
+   ///for mobile navbar menu
+   const menuItems = [
+  { label: 'Home', ariaLabel: 'Go to home page', link: '/' },
+  { label: 'About', ariaLabel: 'Learn about us', link: '/about' },
+  { label: 'Services', ariaLabel: 'View our services', link: '/services' },
+  { label: 'Contact', ariaLabel: 'Get in touch', link: '/contact' }
+];
+
+const socialItems = [
+  { label: 'Twitter', link: 'https://twitter.com' },
+  { label: 'GitHub', link: 'https://github.com' },
+  { label: 'LinkedIn', link: 'https://linkedin.com' }
+];
+
    //for codeEditor
    function handleOverlay(){
     codeOverlayRef.current?.classList.remove('hidden');
@@ -358,7 +381,7 @@ useMotionValueEvent(p1YProg, 'change', (latest) => {
  
 ///for mascot 
 useMotionValueEvent(MYProg,'change',(latest) => {
-  console.log(latest);
+
   if(latest >= 0.027262813522355506) setIsMascot(true);
   if(latest <= 0.027262813522355506) setIsMascot(false);
 });
@@ -419,6 +442,21 @@ console.log(latest);
  if(latest <= 0.001203313524221142) setIsNBack(false);
 })
 
+useMotionValueEvent(MYProg,'change',(e)=>{
+    if( e >= lastScroll) setIsArrow(true);
+    if( e <= lastScroll) setIsArrow(false);
+    setLastScroll(e);
+});
+
+
+// mainRef.current?.addEventListener("scroll",(e:any)=>{
+//     const currentScroll = e.target.scrollTop; 
+//     // console.log(currentScroll);
+           
+//    if(currentScroll >= lastScroll) setIsArrow(true);
+//    if(currentScroll <= lastScroll) setIsArrow(false);
+//    setLastScroll(currentScroll); 
+// });
   useEffect(() => {
   const timer = setTimeout(() => {
     setIstitle(true);
@@ -428,11 +466,24 @@ console.log(latest);
 }, []);
 
 
+ ///arrow 
+function handleArrow() {
+  setIsArrow((prev) => {
+    if (prev) {
+      heroRef2?.current?.scrollIntoView({ behavior: "smooth" });
+    } else {
+      footerRef?.current?.scrollIntoView({ behavior: "smooth" });
+    }
+   // flip if that's your intention
+  });
+}
 
   return (
     <div style={{cursor:`url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 397 433" width="26" height="26"><path d="M40.31 32.13c-1.76-8.4 7.23-14.92 14.67-10.66l296.47 169.91c7.54 4.32 6.29 15.56-2.02 18.12L205.54 253.76c-2.23.69-4.15 2.13-5.42 4.09l-72.01 110.94c-4.83 7.44-16.25 5.3-18.07-3.38L40.31 32.13z" fill="black" stroke="white" stroke-width="25"/></svg>') 16 16, auto`}} ref={mainRef} className='bg-zinc-950' >
 
-
+     <motion.div onClick={handleArrow} whileTap={{scale:1}} whileHover={{scale:1.1}} className='fixed cursor-pointer flex justify-center items-center bottom-7  right-7 size-10 rounded-full bg-[#EDEADE]/90 z-[9999999999] text-black'>
+     <motion.svg animate={{rotate:!isArrow? 180 : 0}} transition={{duration:0.5}} xmlns="http://www.w3.org/2000/svg"  width={30}  height={30}  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  strokeWidth={2}  strokeLinecap="round"  strokeLinejoin="round"  className="icon icon-tabler icons-tabler-outline icon-tabler-arrow-narrow-up"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 5l0 14" /><path d="M16 9l-4 -4" /><path d="M8 9l4 -4" /></motion.svg>
+     </motion.div>
 {/* bottom blur */}
 {/* <div className='fixed h-[2%] w-full bg-gradient-to-t from-white/30 to-transparent backdrop-blur-[5px] bottom-0 z-40 opacity-100'>
 </div>
@@ -459,7 +510,7 @@ console.log(latest);
   {/*navBar*/}
 <div 
 style={{zIndex:999999999999,}}
-className='fixed flex top-0 justify-center items-center w-full'>
+className='hidden lg:flex fixed  top-0 justify-center items-center w-full'>
     <motion.div
    initial={{y:-100}}
    animate={{y:0}}
@@ -476,6 +527,7 @@ className='fixed flex top-0 justify-center items-center w-full'>
   className={`mt-5 w-fit bg-opacity-65 z-[9999999999] rounded-lg ${isNBack? 'border-y-[1px]   border-gray-400 border-opacity-10' : ''}`}>
     <div className='flex  h-full w-full text-white px-[1rem] py-2 '>
     <div className='flex gap-[51vw]  justify-between items-center w-full h-10'>
+      
     <div className="h-full w-[13vw] flex justify-center overflow-hidden">
       {!IsMascot && <img src="/codemateLogo.svg" alt="" />}
      {IsMascot && <motion.div initial={{opacity:0,filter:'blur(20px)',x:50}} animate={{opacity:1,filter:'blur(0px)',x:-80}} transition={{duration:0.5}}>
@@ -523,10 +575,170 @@ className='fixed flex top-0 justify-center items-center w-full'>
     </div>
     </motion.div>
 </div>
-
 {/*navBar*/}
+
+  {/*navBar for mobile*/}
+<div 
+style={{zIndex:999999999999,}}
+className='lg:hidden fixed flex top-0 justify-center items-center w-full'>
+    <motion.div
+   initial={{y:-100}}
+   animate={{y:0}}
+   transition={{duration:1,delay:0.5}}
+  // initial={{opacity:0,filter:'blur(10px)'}}
+  // animate={{opacity:1,filter:'blur(0px)'}}
+  // transition={{duration:1,delay:7}}
+  style={{background:!isNBack? 'rgba(15, 12, 12, 0.2)' : 'rgba(15, 20, 20, 0.45)',   
+        boxShadow: '0 4px 25px rgba(0, 0, 0, 0.1)',
+        backdropFilter: 'blur(10px)',
+        WebkitBackdropFilter: 'blur(10px)',
+        zIndex:999999999999,
+        }}
+  className={`w-full bg-opacity-65 z-[9999999999]  ${isNBack? 'border-y-[1px]   border-gray-400 border-opacity-10' : ''}`}>
+    <div className='flex  h-full w-full text-white px-[2rem] py-2 '>
+    <div className='flex justify-between w-full h-10'>
+      
+    <div className="h-full w-[30vw] flex justify-center overflow-hidden">
+       <img src="/codemateLogo.svg" alt="" />
+
+      {/* {!IsMascot && <img src="/codemateLogo.svg" alt="" />}
+     {IsMascot && <motion.div initial={{opacity:0,filter:'blur(20px)',x:50}} animate={{opacity:1,filter:'blur(0px)',x:0}} transition={{duration:0.5}}>
+<svg width="155" height="150" viewBox="0 0 53 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M131.78 150H39.4727L60.2412 110.845H152.55L131.78 150ZM39.4727 39.0674V150L0.242188 125.04V14.1074L39.4727 39.0674ZM71.7422 64C77.8173 64 82.7422 68.9249 82.7422 75C82.7422 81.0751 77.8173 86 71.7422 86C65.6671 86 60.7422 81.0751 60.7422 75C60.7422 68.9249 65.6671 64 71.7422 64ZM111.742 64C117.817 64 122.742 68.9249 122.742 75C122.742 81.0751 117.817 86 111.742 86C105.667 86 100.742 81.0751 100.742 75C100.742 68.9249 105.667 64 111.742 64ZM131.78 39.1553H39.4727L60.2412 0H152.55L131.78 39.1553Z" fill="url(#paint0_linear_2014_66)"/>
+<defs>
+<linearGradient id="paint0_linear_2014_66" x1="0.580642" y1="1.09465e-05" x2="183.357" y2="82.4837" gradientUnits="userSpaceOnUse">
+<stop stop-color="#396AFC"/>
+<stop offset="1" stop-color="#2948FF"/>
+</linearGradient>
+</defs>
+</svg>
+
+
+      </motion.div>} */}
+    
+    </div>
+
+    <div onClick={()=> setMenu(state => !state)} className={`${montserrat.className} flex gap-2 text-[4vw]  justify-center items-center cursor-pointer text-right `}>
+     Menu
+     <motion.svg  style={{ width: "5vw", height: "5vw" }} animate={{rotate: isMenu? 45 : 0}} transition={{duration:0.2}} xmlns="http://www.w3.org/2000/svg"   viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  strokeWidth="2"  strokeLinecap="round"  strokeLinejoin="round"  className="icon icon-tabler icons-tabler-outline icon-tabler-plus"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 5l0 14" /><path d="M5 12l14 0" /></motion.svg>
+    </div>
+
+
+    </div>
+     {/* <h1 className=' p-2 bg-[#1a1a1a] border border-opacity-15 bg-opacity-25 rounded-md flex justify-center items-center'>Book a Demo</h1> */}
+    </div>
+    </motion.div>
+</div>
+
+{/* mobile menu */}
+<AnimatePresence>
+  {isMenu && (
+    <div 
+       
+      className="fixed top-0 h-screen w-full left-0 z-[9999999999] flex"
+    >
+      <div className='h-full w-[70%]'>
+      <motion.div
+        key={1}
+        initial={{ x: -400 }}
+        animate={{ x: 0 }}
+        exit={{ x: -400 }}
+        transition={{ duration: 0.2 }}
+        className="absolute h-full w-[70%] bg-white"
+      />
+      <motion.div
+        key={2}
+        initial={{ x: -400 }}
+        animate={{ x: 0 }}
+        exit={{ x: -400 }}
+        transition={{ duration: 0.2, delay: 0.1 }}
+        className="absolute h-full w-[70%] bg-cyan-600 z-10"
+      />
+      <motion.div
+        key={3}
+        initial={{ x: -400 }}
+        animate={{ x: 0 }}
+        exit={{ x: -400 }}
+        transition={{ duration: 0.2, delay: 0.2 }}
+        className="absolute h-full w-[70%] bg-zinc-900 z-50"
+      >
+      <div className='relative h-full w-full'>
+      <div className='flex flex-col leading-[1] text-[8vw] pt-10 pl-5 gap-7'>
+      <motion.div whileHover={{opacity:0.6}} className='flex gap-2 cursor-pointer'><span className='MenuText'>HOME</span><p className='text-[3vw] mt-1 opacity-60 text-[#00FFFF]'>01</p></motion.div>
+      <motion.div  className='flex flex-col gap-2 cursor-pointer'>
+        <motion.div onClick={()=>setIsProducts(state => !state)} whileHover={{opacity:0.6}} className='flex gap-2'>
+        <h1 className='MenuText'>PRODUCTS</h1><p className='text-[3vw] mt-1 opacity-60 text-[#00FFFF]'>02</p>
+        </motion.div>
+    
+        {isProducts && 
+        <motion.div  initial={{ height:0,opacity:0 }} animate={{height:130,opacity:1}} transition={{duration:0.3}} className='flex flex-col text-xl gap-2 text-center opacity-80'>
+          <div className='relative border-b-2 border-white overflow-hidden'> 
+            <motion.h1  className='z-20'>Terminal</motion.h1>
+            <motion.div whileHover={{y:-50}} transition={{duration:0.8}} className='absolute h-full w-full  top-0 '>
+              <motion.div initial={{y:50}} className= 'h-full w-full rounded-t-md bg-cyan-600'>
+              <h1>Terminal</h1>
+              </motion.div>
+            </motion.div>
+          </div>
+
+
+                    <div className='relative border-b-2 border-white overflow-hidden'> 
+            <motion.h1  className='z-20'>Education</motion.h1>
+            <motion.div whileHover={{y:-50}} transition={{duration:0.8}} className='absolute h-full w-full  top-0 '>
+              <motion.div initial={{y:50}} className= 'h-full w-full rounded-t-md bg-cyan-600'>
+              <h1>Education</h1>
+              </motion.div>
+            </motion.div>
+          </div>
+                    <div className='relative border-b-2 border-white overflow-hidden'> 
+            <motion.h1  className='z-20'>Web-app</motion.h1>
+            <motion.div whileHover={{y:-50}} transition={{duration:0.8}} className='absolute h-full w-full  top-0 '>
+              <motion.div initial={{y:50}} className= 'h-full w-full rounded-t-md bg-cyan-600'>
+              <h1>Web-app</h1>
+              </motion.div>
+            </motion.div>
+          </div>
+                   <div className='relative border-b-2 border-white overflow-hidden'> 
+            <motion.h1  className='z-20'>Vs Code Extenstion</motion.h1>
+            <motion.div whileHover={{y:-50}} transition={{duration:0.8}} className='absolute h-full w-full  top-0 '>
+              <motion.div initial={{y:50}} className= 'h-full w-full rounded-t-md bg-cyan-600'>
+              <h1>VS Code Extension</h1>
+              </motion.div>
+            </motion.div>
+          </div>
+        </motion.div>  
+        }
+      </motion.div>
+      <motion.div whileHover={{opacity:0.6}} className='flex gap-2 cursor-pointer'><h1 className='MenuText'>PRICING</h1><p className='text-[3vw] mt-1 opacity-60 text-[#00FFFF]'>03</p></motion.div>
+      <motion.div whileHover={{opacity:0.6}} className='flex gap-2 cursor-pointer'><h1 className='MenuText'>GET STARTED</h1><p className='text-[3vw] mt-1 opacity-60 text-[#00FFFF]'>04</p></motion.div>
+      </div>
+       
+       <div className='absolute bottom-0 pl-5 pb-4'>
+        <h1 className='text-[5vw]  opacity-65 mb-3'>Socials</h1>
+         <div className='flex text-[5vw] gap-4 opacity-90 group'>
+          <h1 className='group-hover:opacity-20 hover:!opacity-100 hover:text-[#00BFFF]'>Insta</h1>
+          <h1 className='group-hover:opacity-20 hover:!opacity-100 hover:text-[#00BFFF]'>Twitter</h1>
+          <h1 className='group-hover:opacity-20 hover:!opacity-100 hover:text-[#00BFFF]'>Linkedin</h1>
+         </div> 
+       </div>
+
+
+       </div>       
+      </motion.div>
+    </div>
+ 
+    <div onClick={() => {setMenu(false);setIsProducts(false)}} className='h-full w-[30%]'></div>
+
+    </div>
+  )}
+</AnimatePresence>
+{/* mobile menu */}
+
+{/*navBar for mobile*/}
+
+
   {/* hero section  */}
-  <div className='h-screen w-full overflow-x-hidden'>
+  <div ref={heroRef2} className='h-[100vh] w-full overflow-x-hidden'>
   <BackgroundGradientAnimation className='w-full overflow-hidden' interactive={true} gradientBackgroundStart='rgb(9, 9, 11)' gradientBackgroundEnd='rgb(9, 9, 11)' firstColor='0, 255, 255' secondColor='30, 144, 255' thirdColor='0, 255, 255' fourthColor='255,255,255' pointerColor='30, 144, 255' size='100%'>
    <div style={{cursor:`url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 397 433" width="26" height="26"><path d="M40.31 32.13c-1.76-8.4 7.23-14.92 14.67-10.66l296.47 169.91c7.54 4.32 6.29 15.56-2.02 18.12L205.54 253.76c-2.23.69-4.15 2.13-5.42 4.09l-72.01 110.94c-4.83 7.44-16.25 5.3-18.07-3.38L40.31 32.13z" fill="black" stroke="white" stroke-width="25"/></svg>') 16 16, auto`}} ref={heroRef} className='relative h-screen w-full z-50 overflow-hidden cursor-default'>
 
@@ -550,7 +762,8 @@ className='fixed flex top-0 justify-center items-center w-full'>
     <motion.div 
     // animate={{y:[120,35]}}
     // transition={{duration:1,delay:6}}    
-    className='absolute top-[16vh] left-[3.3vw] text-[8vw] leading-[1] font-semibold flex flex-col pb-1  pl-12 mt-5 z-50 '> 
+    className='absolute top-[16vh] lg:left-[3.3vw] 
+      text-[14vw]   lg:text-[8vw] leading-[1] font-semibold flex flex-col pb-1  pl-[8vw]  lg:pl-12  mt-5 z-50 '> 
     <div className={`${montserrat.className} `}>
      {/* {title.map((e,idx)=>(
       <motion.h1
@@ -599,7 +812,7 @@ className='fixed flex top-0 justify-center items-center w-full'>
           initial={{ opacity: 0, filter: "blur(10px)" }}
           animate={{ opacity: 1, filter: "blur(0px)" }}
           transition={{ duration: 0.4,delay:1.5 }}
-          className={`flex flex-col ${montserrat.className} text-[1.5vw] leading-[1] mt-5 opacity-60 `}>
+          className={`flex flex-col ${montserrat.className} text-[2.8vw] lg:text-[1.5vw] leading-[1] mt-5 opacity-60 `}>
         <p>Build and ship 20x faster with CodeMate IDE —</p>
         <p>Your all-in-one accelerator for the development lifecycle</p>
       </motion.div>
@@ -667,11 +880,11 @@ className='fixed flex top-0 justify-center items-center w-full'>
 
 
 {/* scrolling bento */}
-<div ref={prodRef} className='h-[410vh] w-full bg-zinc-950 text-white -z-10 flex flex-col justify-center items-center'>
+<div ref={prodRef} className='h-[410vh] w-full bg-zinc-950 text-white -z-10 flex flex-col justify-center items-center '>
    <h1 className=' font-mono pt-8 opacity-75  text-center  text-lg'>Introducing Codemate.AI</h1>
 
    
-    <div className={`${montserrat.className} mt-4 text-6xl  font-semibold bg-gradient-to-b from-white to-gray-300/80 bg-clip-text  text-transparent  pt-2 pb-2 w-full text-center `}>Your<span className='bg-gradient-to-b from-[#00BFFF] to-[#1E90FF] bg-clip-text text-transparent text-7xl'> Full-Stack</span> Coding Assistant.</div>
+    <div className={`${montserrat.className} mt-4 leading-[1] text-[8vw]   lg:text-6xl  font-semibold bg-gradient-to-b from-white to-gray-300/80 bg-clip-text  text-transparent  pt-2 lg:pb-2 w-full text-center `}>Your<span className='bg-gradient-to-b from-[#00BFFF] to-[#1E90FF] bg-clip-text text-transparent  lg:text-7xl'> Full-Stack</span> Coding Assistant.</div>
 
     <div className='relative h-full w-full  flex flex-col justify-center items-center'>
     {/* <div className='h-[30%] w-full flex gap-10 px-10'>
@@ -684,7 +897,8 @@ className='fixed flex top-0 justify-center items-center w-full'>
 
 <div className='relative h-full w-full flex justify-center  gap-8 '>
       {/* section for products */}
-        <div className='sticky pt-24  top-0 h-screen flex'>
+        <div className='hidden lg:flex sticky  pt-24  top-0 h-screen
+        '>
           
         
 
@@ -758,60 +972,60 @@ className='fixed flex top-0 justify-center items-center w-full'>
 
      {/* features of product */}
 
-  <div className={`h-full  flex flex-col pt-24  gap-[3rem] items-center  ${montserrat.className} `}>
+  <div className={`h-full  flex flex-col pt-10 lg:pt-24  gap-[3rem] items-center  ${montserrat.className} `}>
     
     <div>
-    <div className='relative h-[45vh] w-[30vw] bg-gradient-to-b from-[#243B55] to-[#141E30] rounded-lg pl-7 overflow-hidden' >
+    <div className='relative h-[45vh] w-[88vw] lg:w-[30vw] bg-gradient-to-b from-[#243B55] to-[#141E30] rounded-lg pl-7 overflow-hidden' >
      <h1 className={`text-2xl opacity-90 mt-2`}>Codemate Build</h1>
      <img src="build.svg" className='absolute -bottom-5 -right-14 size-[90%]' alt="" />
     </div>
     <h1 className='mt-1 text-lg font-semibold'>Introducing Build</h1>
-    <p className='opacity-65 text-sm w-[30vw]'>Your AI Coding Agent that helps you convert your prompts into working deployed applications</p>
+    <p className='opacity-65 text-md lg:text-sm w-[88vw] lg:w-[30vw]'>Your AI Coding Agent that helps you convert your prompts into working deployed applications</p>
     </div>
 
     <div>
-    <div className='relative h-[45vh] w-[30vw] bg-gradient-to-b from-[#6441A5] to-[#2A0845] rounded-lg pl-7 overflow-hidden' >
+    <div className='relative h-[45vh] w-[88vw] lg:w-[30vw] bg-gradient-to-b from-[#6441A5] to-[#2A0845] rounded-lg pl-7 overflow-hidden' >
      <h1 className={`text-2xl opacity-90 mt-2`}>Codemate Chat</h1>
      <img src="build.svg" className='absolute -bottom-5 -right-14 size-[90%]' alt="" />
     </div>
     <h1 className='mt-1 text-lg font-semibold'>Introducing Chat</h1>
-    <p className='opacity-65 text-sm w-[30vw]'>Your AI Coding Agent that helps you convert your prompts into working deployed applications</p>
+    <p className='opacity-65 text-md lg:text-sm w-[88vw] lg:w-[30vw]'>Your AI Coding Agent that helps you convert your prompts into working deployed applications</p>
     </div>
 
     <div>
-    <div className='relative h-[45vh] w-[30vw] bg-gradient-to-b from-[#6441A5] to-[#2A0845] rounded-lg pl-7 overflow-hidden' >
+    <div className='relative h-[45vh] w-[88vw] lg:w-[30vw] bg-gradient-to-b from-[#6441A5] to-[#2A0845] rounded-lg pl-7 overflow-hidden' >
      <h1 className={`text-2xl opacity-90 mt-2`}>Codemate Chat</h1>
      <img src="build.svg" className='absolute -bottom-5 -right-14 size-[90%]' alt="" />
     </div>
     <h1 className='mt-1 text-lg font-semibold'>Introducing Chat</h1>
-    <p className='opacity-65 text-sm w-[30vw]'>Your AI Coding Agent that helps you convert your prompts into working deployed applications</p>
+    <p className='opacity-65 text-md lg:text-sm w-[88vw] lg:w-[30vw]'>Your AI Coding Agent that helps you convert your prompts into working deployed applications</p>
     </div>
 
     <div>
-    <div className='relative h-[45vh] w-[30vw] bg-gradient-to-b from-[#6441A5] to-[#2A0845] rounded-lg pl-7 overflow-hidden' >
+    <div className='relative h-[45vh] w-[88vw] lg:w-[30vw] bg-gradient-to-b from-[#6441A5] to-[#2A0845] rounded-lg pl-7 overflow-hidden' >
      <h1 className={`text-2xl opacity-90 mt-2`}>Codemate Chat</h1>
      <img src="build.svg" className='absolute -bottom-5 -right-14 size-[90%]' alt="" />
     </div>
     <h1 className='mt-1 text-lg font-semibold'>Introducing Chat</h1>
-    <p className='opacity-65 text-sm w-[30vw]'>Your AI Coding Agent that helps you convert your prompts into working deployed applications</p>
+    <p className='opacity-65 text-md lg:text-sm w-[88vw] lg:w-[30vw]'>Your AI Coding Agent that helps you convert your prompts into working deployed applications</p>
     </div>
 
     <div>
-    <div className='relative h-[45vh] w-[30vw] bg-gradient-to-b from-[#6441A5] to-[#2A0845] rounded-lg pl-7 overflow-hidden' >
+    <div className='relative h-[45vh] w-[88vw] lg:w-[30vw] bg-gradient-to-b from-[#6441A5] to-[#2A0845] rounded-lg pl-7 overflow-hidden' >
      <h1 className={`text-2xl opacity-90 mt-2`}>Codemate Chat</h1>
      <img src="build.svg" className='absolute -bottom-5 -right-14 size-[90%]' alt="" />
     </div>
     <h1 className='mt-1 text-lg font-semibold'>Introducing Chat</h1>
-    <p className='opacity-65 text-sm w-[30vw]'>Your AI Coding Agent that helps you convert your prompts into working deployed applications</p>
+    <p className='opacity-65 text-md lg:text-sm w-[88vw] lg:w-[30vw]'>Your AI Coding Agent that helps you convert your prompts into working deployed applications</p>
     </div>
 
     <div>
-    <div className='relative h-[45vh] w-[30vw] bg-gradient-to-b from-[#6441A5] to-[#2A0845] rounded-lg pl-7 overflow-hidden' >
+    <div className='relative h-[45vh] w-[88vw] lg:w-[30vw] bg-gradient-to-b from-[#6441A5] to-[#2A0845] rounded-lg pl-7 overflow-hidden' >
      <h1 className={`text-2xl opacity-90 mt-2`}>Codemate Chat</h1>
      <img src="build.svg" className='absolute -bottom-5 -right-14 size-[90%]' alt="" />
     </div>
     <h1 className='mt-1 text-lg font-semibold'>Introducing Chat</h1>
-    <p className='opacity-65 text-sm w-[30vw]'>Your AI Coding Agent that helps you convert your prompts into working deployed applications</p>
+    <p className='opacity-65 text-md lg:text-sm w-[88vw] lg:w-[30vw]'>Your AI Coding Agent that helps you convert your prompts into working deployed applications</p>
     </div>
   </div>
 {/* features of products */} 
@@ -845,7 +1059,7 @@ className='fixed flex top-0 justify-center items-center w-full'>
 
 
 
-<div ref={productsWrapper} className='-z-20'>
+<div ref={productsWrapper} className='hidden lg:block -z-20'>
   {isProds &&      
   <AnimatePresence mode="wait">
   <motion.div
@@ -1480,8 +1694,9 @@ className='relative h-full w-full flex  items-center justify-center   pl-10 py-3
    </div>
      </div>
 
-
+     <div ref={footerRef}>
     <Footer/>
+    </div>
     </div>
 
 
