@@ -474,7 +474,7 @@ function handleArrow() {
     } else {
       footerRef?.current?.scrollIntoView({ behavior: "smooth" });
     }
-   // flip if that's your intention
+    return !prev; // flip if that's your intention
   });
 }
 
