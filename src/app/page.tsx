@@ -671,8 +671,8 @@ className='lg:hidden fixed flex top-0 justify-center items-center w-full'>
         </motion.div>
     
         {isProducts && 
-        <motion.div  initial={{ height:0,opacity:0 }} animate={{height:130,opacity:1}} transition={{duration:0.3}} className='flex flex-col text-xl gap-2 text-center opacity-80'>
-          <div className='relative border-b-2 border-white overflow-hidden'> 
+        <motion.div  initial={{ height:0,opacity:0 }} animate={{height:130,opacity:1}} transition={{duration:0.3}} className='flex flex-col text-xl gap-2 text-center opacity-70'>
+          <div className='relative border-b-[1px] border-white overflow-hidden'> 
             <motion.h1  className='z-20'>Terminal</motion.h1>
             <motion.div whileHover={{y:-50}} transition={{duration:0.8}} className='absolute h-full w-full  top-0 '>
               <motion.div initial={{y:50}} className= 'h-full w-full rounded-t-md bg-cyan-600'>
@@ -682,7 +682,7 @@ className='lg:hidden fixed flex top-0 justify-center items-center w-full'>
           </div>
 
 
-                    <div className='relative border-b-2 border-white overflow-hidden'> 
+                    <div className='relative border-b-[1px] border-white overflow-hidden'> 
             <motion.h1  className='z-20'>Education</motion.h1>
             <motion.div whileHover={{y:-50}} transition={{duration:0.8}} className='absolute h-full w-full  top-0 '>
               <motion.div initial={{y:50}} className= 'h-full w-full rounded-t-md bg-cyan-600'>
@@ -690,7 +690,7 @@ className='lg:hidden fixed flex top-0 justify-center items-center w-full'>
               </motion.div>
             </motion.div>
           </div>
-                    <div className='relative border-b-2 border-white overflow-hidden'> 
+                    <div className='relative border-b-[1px] border-white overflow-hidden'> 
             <motion.h1  className='z-20'>Web-app</motion.h1>
             <motion.div whileHover={{y:-50}} transition={{duration:0.8}} className='absolute h-full w-full  top-0 '>
               <motion.div initial={{y:50}} className= 'h-full w-full rounded-t-md bg-cyan-600'>
@@ -698,7 +698,7 @@ className='lg:hidden fixed flex top-0 justify-center items-center w-full'>
               </motion.div>
             </motion.div>
           </div>
-                   <div className='relative border-b-2 border-white overflow-hidden'> 
+                   <div className='relative border-b-[1px] border-white overflow-hidden'> 
             <motion.h1  className='z-20'>Vs Code Extenstion</motion.h1>
             <motion.div whileHover={{y:-50}} transition={{duration:0.8}} className='absolute h-full w-full  top-0 '>
               <motion.div initial={{y:50}} className= 'h-full w-full rounded-t-md bg-cyan-600'>
@@ -713,7 +713,7 @@ className='lg:hidden fixed flex top-0 justify-center items-center w-full'>
       <motion.div whileHover={{opacity:0.6}} className='flex gap-2 cursor-pointer'><h1 className='MenuText'>GET STARTED</h1><p className='text-[3vw] mt-1 opacity-60 text-[#00FFFF]'>04</p></motion.div>
       </div>
        
-       <div className='absolute bottom-0 pl-5 pb-4'>
+       <div className='absolute bottom-0 pl-5 pb-8'>
         <h1 className='text-[5vw]  opacity-65 mb-3'>Socials</h1>
          <div className='flex text-[5vw] gap-4 opacity-90 group'>
           <h1 className='group-hover:opacity-20 hover:!opacity-100 hover:text-[#00BFFF]'>Insta</h1>
@@ -1039,8 +1039,8 @@ className='lg:hidden fixed flex top-0 justify-center items-center w-full'>
 
 
 {/* trusted by section */}
-<div className={`${montserrat.className} h-[100vh] w-full bg-zinc-950 text-white z-50`}>
- <div className='pt-[15rem]'>
+<div className={`${montserrat.className} h-[70vh] lg:h-[100vh] w-full bg-zinc-950 text-white z-50`}>
+ <div className='lg:pt-[15rem]'>
  <h1 className='text-center text-7xl font-bold text-white  opacity-45'>Trusted By</h1>
  <p className='text-center mt-2 text-xl opacity-30'>The Developers from the well known orgs around the globe</p>
      
@@ -1521,6 +1521,87 @@ className='relative h-[75%] w-[40%] flex  items-center justify-center  pl-10 py-
 
 </div>
 
+<div className='lg:hidden'>
+
+ <div className='w-full py-10 overflow-hidden'>
+   <div className={`${montserrat.className}   z-20 leading-[1]  text-[7.7vw] font-semibold bg-gradient-to-b from-white to-gray-300/80 bg-clip-text  text-transparent  mb-6 pt-20 2xl:pr-[55vw] pb-1`}>
+  <div className='relative h-full w-full bg-gradient-to-b from-white to-gray-300/80 bg-clip-text  text-transparent pb-2 text-center pr-2 pl-[5vw]'>
+   <span className='z-50'> 
+   We got<span className='bg-gradient-to-b from-[#00BFFF] to-[#1E90FF] bg-clip-text text-transparent'> Everything</span> for you.</span>
+   <div className='top-0 absolute w-full h-full bg-zinc-950 -z-10'/>
+  </div>
+ </div>
+ 
+ <div className='flex pl-16 gap-5'>
+   <div className='flex flex-col gap-2'>
+   <div className='h-[30vh] w-[65vw] bg-zinc-600'></div>
+   <h1 className='font-bold text-2xl'>Documentation</h1>
+   <p className='w-[65vw] text-sm'>Acts as your AI coding partner by managing bugs and fixing broken features, allowing you to focus core development</p>
+   </div>
+
+
+   <div className='flex flex-col gap-2'>
+   <div className='h-[30vh] w-[65vw] bg-rose-700'></div>
+   <h1 className='font-bold text-2xl'>Documentation</h1>
+   <p className='w-[65vw] text-sm'>Acts as your AI coding partner by managing bugs and fixing broken features, allowing you to focus core development</p>
+   </div>
+
+   <div className='flex flex-col gap-2'>
+   <div className='h-[30vh] w-[65vw] bg-white'></div>
+   <h1 className='font-bold text-2xl'>Documentation</h1>
+   <p className='w-[65vw] text-sm'>Acts as your AI coding partner by managing bugs and fixing broken features, allowing you to focus core development</p>
+   </div>
+ </div>
+  
+    <div className='text-right mt-10 mr-10 z-40'> 
+        <motion.div 
+        initial={{opacity:0,filter:'blur(10px)'}}
+        whileInView={{opacity:1,filter:'blur(0px)'}}
+        transition={{delay:0.2,duration:0.6}}
+        className={`${montserrat.className}  text-[4vw]  font-semibold bg-gradient-to-b from-white to-gray-300/80 bg-clip-text  text-transparent  pt-2 pb-2 w-full text-right`}>From <span className='bg-gradient-to-b from-[#00BFFF] to-[#1E90FF] bg-clip-text text-transparent '>Web-Application</span></motion.div>
+   </div>
+  
+
+
+ </div>
+
+
+ <div className=' w-full py-10'>
+   <div className={`${montserrat.className}   z-20 leading-[1]  text-[7.7vw] font-semibold bg-gradient-to-b from-white to-gray-300/80 bg-clip-text  text-transparent   mb-6 pt-20 2xl:pr-[55vw] pb-1`}>
+  <div className='relative h-full w-full bg-gradient-to-b from-white to-gray-300/80 bg-clip-text  text-transparent pb-2 text-center '>
+   <span className='z-50'> 
+   Everthing means<span className='bg-gradient-to-b from-[#00BFFF] to-[#1E90FF] bg-clip-text text-transparent'> Everything</span> right?</span>
+   <div className='top-0 absolute w-full h-full bg-zinc-950 -z-10'/>
+  </div>
+ </div>
+ 
+ <div className='flex justify-center  gap-5'>
+   <div className='flex flex-col gap-2'>
+   <div className='h-[25vh] w-[85vw] bg-zinc-600 rounded-xl'></div>
+   <h1 className='font-semibold text-2xl'>VS Code Extension</h1>
+
+   </div>
+
+
+
+
+
+ </div>
+  
+    <div className='text-left mt-10 ml-10 z-40'> 
+        <motion.div 
+        initial={{opacity:0,filter:'blur(10px)'}}
+        whileInView={{opacity:1,filter:'blur(0px)'}}
+        transition={{delay:0.2,duration:0.6}}
+        className={`${montserrat.className}  text-[5vw]  font-semibold bg-gradient-to-b from-white to-gray-300/80 bg-clip-text  text-transparent  pt-2 pb-2 w-full text-left`}>To your <span className='bg-gradient-to-b from-[#00BFFF] to-[#1E90FF] bg-clip-text text-transparent '>IDE</span></motion.div>
+   </div>
+  
+
+
+ </div>
+</div>
+
+
 {/* bento */}
      {/* <div className=' relative h-[170vh] w-full bg-zinc-950 text-white overflow-hidden'>
    <div className={`${montserrat.className}  text-8xl font-semibold bg-gradient-to-b from-white to-gray-300/80 bg-clip-text  text-transparent pl-10 mb-6 pt-20 text-center pb-1`}>What<span className='bg-gradient-to-b from-[#00BFFF] to-[#1E90FF] bg-clip-text text-transparent'> else</span> we got?</div>
@@ -1541,7 +1622,7 @@ className='relative h-[75%] w-[40%] flex  items-center justify-center  pl-10 py-
   </div>  */}
 {/* bento   */}
 
-<div className={`${montserrat.className}  text-6xl font-semibold bg-gradient-to-b from-white to-gray-300/80 bg-clip-text  text-transparent pl-10 pt-20 text-center`}>Do not listen to us but from <span className='bg-gradient-to-b from-[#00BFFF] to-[#1E90FF] bg-clip-text text-transparent'>People</span></div>
+<div className={`${montserrat.className} leading-[1] text-[10vw]  lg:text-6xl font-semibold bg-gradient-to-b from-white to-gray-300/80 bg-clip-text  text-transparent lg:pl-10 pt-20 text-center`}>Do not listen to us but from <span className='bg-gradient-to-b  from-[#00BFFF] to-[#1E90FF] bg-clip-text text-transparent'>People</span></div>
 
 <div ref={testiRef} className='relative h-[400vh] w-full bg-zinc-950 '>
 
@@ -1549,7 +1630,7 @@ className='relative h-[75%] w-[40%] flex  items-center justify-center  pl-10 py-
    <div className=' sticky top-0   h-screen w-full overflow-x-hidden '>
        
 <div
-className='relative h-full w-full flex  items-center justify-center   pl-10 py-3 overflow-hidden'>
+className='relative h-full w-full flex  items-center justify-center    py-3 overflow-hidden'>
 
 
      {/* <motion.div 
@@ -1578,10 +1659,10 @@ className='relative h-full w-full flex  items-center justify-center   pl-10 py-3
 
      <motion.div 
      style={{y:tdiv1X}}
-     className='absolute  h-[30rem] w-[40rem]  rounded-3xl flex justify-center items-center'>
+     className='absolute h-[35vh] w-[90vw]  lg:h-[30rem] lg:w-[40rem]  rounded-3xl flex justify-center items-center'>
       <motion.div 
       animate={{rotate:10}}
-      className='h-[70%] w-[90%] bg-[#131316] border border-[#434344] rounded-[2rem] flex flex-col items-cente px-8 py-5 gap-5'>
+      className='h-[70%] w-[90%] bg-[#131316] border border-[#434344] rounded-[2rem] flex flex-col items-center px-5 lg:px-8 py-5 gap-5'>
        <div className='flex w-full gap-4 items-center'>
        <div className='rounded-full bg-white size-20'><img src="https://drive.codemate.ai/ayushbansal.jpeg" alt="" className='size-20 rounded-full' /></div>
       <div className='flex flex-col'>
@@ -1590,7 +1671,7 @@ className='relative h-full w-full flex  items-center justify-center   pl-10 py-3
       </div>
        </div>
 
-       <div className='text-2xl'><span className='text-[#00BFFF]'>CodeMate.ai</span> has revolutionized my coding workflow with accurate AI suggestions and a user-friendly interface. Highly recommended!</div>
+       <div className='leading-[1.1] text-[3vw] lg:text-2xl'><span className='text-[#00BFFF]'>CodeMate.ai</span> has revolutionized my coding workflow with accurate AI suggestions and a user-friendly interface. Highly recommended!</div>
 
        <div className='w-full flex justify-between'>
        </div>
@@ -1598,10 +1679,10 @@ className='relative h-full w-full flex  items-center justify-center   pl-10 py-3
      </motion.div>
      <motion.div
      style={{y:tdiv2X}} 
-     className='absolute  h-[30rem] w-[40rem]  rounded-3xl flex justify-center items-center'>
+     className='absolute  h-[35vh] w-[90vw]  lg:h-[30rem] lg:w-[40rem]  rounded-3xl flex justify-center items-center'>
             <motion.div 
       animate={{rotate:5}}
-      className='h-[70%] w-[90%] bg-[#131316] border border-[#434344] rounded-[2rem] flex flex-col items-cente px-8 py-5 gap-5'>
+      className='h-[70%] w-[90%] bg-[#131316] border border-[#434344] rounded-[2rem] flex flex-col items-cente px-5 lg:px-8 py-5 gap-5'>
        <div className='flex w-full gap-4 items-center'>
        <div className='rounded-full bg-white size-20'><img src="https://drive.codemate.ai/hani.webp" alt="" className='size-20 rounded-full' /></div>
       <div className='flex flex-col'>
@@ -1610,16 +1691,16 @@ className='relative h-full w-full flex  items-center justify-center   pl-10 py-3
       </div>
        </div>
 
-       <div className='text-2xl'><span className='text-[#00BFFF]'>CodeMate</span> has lots of great features. You can request code samples when stuck, or get a code review to spot issues you might miss. The Debugger is a life saver—it quickly found a bug in my code that was filling the error logs!</div>
+       <div className='leading-[1.1] text-[3vw] lg:text-2xl'><span className='text-[#00BFFF]'>CodeMate</span> has lots of great features. You can request code samples when stuck, or get a code review to spot issues you might miss. The Debugger is a life saver—it quickly found a bug in my code that was filling the error logs!</div>
 
        <div className='w-full flex justify-between'>
        </div>
       </motion.div>
      </motion.div>
-     <motion.div style={{y:tdiv3X}} className='absolute  h-[30rem] w-[40rem]  rounded-3xl flex justify-center items-center'>
+     <motion.div style={{y:tdiv3X}} className='absolute h-[35vh] w-[90vw]  lg:h-[30rem] lg:w-[40rem] rounded-3xl flex justify-center items-center'>
       <motion.div 
       animate={{rotate:0}}
-      className='h-[70%] w-[90%] bg-[#131316] border border-[#434344] rounded-[2rem] flex flex-col items-cente px-8 py-5 gap-5'>
+      className='h-[70%] w-[90%] bg-[#131316] border border-[#434344] rounded-[2rem] flex flex-col items-cente px-5 lg:px-8 py-5 gap-5'>
        <div className='flex w-full gap-4 items-center'>
        <div className='rounded-full bg-white size-20'><img src="https://drive.codemate.ai/vilkho_appsumo.webp" alt="" className='size-20 rounded-full' /></div>
       <div className='flex flex-col'>
@@ -1628,16 +1709,16 @@ className='relative h-full w-full flex  items-center justify-center   pl-10 py-3
       </div>
        </div>
 
-       <div className='text-2xl'>An excellent solution for project analysis and efficient development! I love how <span className='text-[#00BFFF]'>CodeMate</span> can analyze an entire project, assign tasks for refactoring or code generation, and even ensure the project is covered with tests.</div>
+       <div className='leading-[1.1] text-[3vw] lg:text-2xl'>An excellent solution for project analysis and efficient development! I love how <span className='text-[#00BFFF]'>CodeMate</span> can analyze an entire project, assign tasks for refactoring or code generation, and even ensure the project is covered with tests.</div>
 
        <div className='w-full flex justify-between'>
        </div>
       </motion.div>
       </motion.div>  
-     <motion.div style={{y:tdiv4X}} className='absolute  h-[30rem] w-[40rem]  rounded-3xl flex justify-center items-center'>
+     <motion.div style={{y:tdiv4X}} className='absolute  h-[35vh] w-[90vw]  lg:h-[30rem] lg:w-[40rem] rounded-3xl flex justify-center items-center'>
             <motion.div 
       animate={{rotate:-5}}
-      className='h-[70%] w-[90%] bg-[#131316] border border-[#434344] rounded-[2rem] flex flex-col items-cente px-8 py-5 gap-5'>
+      className='h-[70%] w-[90%] bg-[#131316] border border-[#434344] rounded-[2rem] flex flex-col items-cente px-5 lg:px-8 py-5 gap-5'>
        <div className='flex w-full gap-4 items-center'>
        <div className='rounded-full bg-white size-20'><img src="https://i.pravatar.cc/150?u=kitty.liu" alt="" className='size-20 rounded-full' /></div>
       <div className='flex flex-col'>
@@ -1646,16 +1727,16 @@ className='relative h-full w-full flex  items-center justify-center   pl-10 py-3
       </div>
        </div>
 
-       <div className='text-2xl'><span className='text-[#00BFFF]'>Codemate</span> is doing a great job with its simplicity. I can't wait to see more features they are going to release soon.</div>
+       <div className='leading-[1.1] text-[4vw] lg:text-2xl'><span className='text-[#00BFFF]'>Codemate</span> is doing a great job with its simplicity. I can't wait to see more features they are going to release soon.</div>
 
        <div className='w-full flex justify-between'>
        </div>
       </motion.div>
      </motion.div>
-     <motion.div style={{y:tdiv5X}} className='absolute  h-[30rem] w-[40rem] rounded-3xl flex justify-center items-center'>
+     <motion.div style={{y:tdiv5X}} className='absolute  h-[35vh] w-[90vw]  lg:h-[30rem] lg:w-[40rem] rounded-3xl flex justify-center items-center'>
                   <motion.div 
       animate={{rotate:-10}}
-      className='h-[70%] w-[90%] bg-[#131316] border border-[#434344] rounded-[2rem] flex flex-col items-cente px-8 py-5 gap-5'>
+      className='h-[70%] w-[90%] bg-[#131316] border border-[#434344] rounded-[2rem] flex flex-col items-cente px-5 lg:px-8 py-5 gap-5'>
        <div className='flex w-full gap-4 items-center'>
        <div className='rounded-full bg-white size-20'><img src="https://i.pravatar.cc/150?u=david.kim" alt="" className='size-20 rounded-full' /></div>
       <div className='flex flex-col'>
@@ -1664,7 +1745,7 @@ className='relative h-full w-full flex  items-center justify-center   pl-10 py-3
       </div>
        </div>
 
-       <div className='text-2xl'>Love this tool! It can train on the entire solution (and others), saving so much time and frustration. <span className='text-[#00BFFF]'>Unlike ChatGPT</span>, it finds the right methods and code blocks with ease, and the ability to retain training on past solutions is phenomenal.</div>
+       <div className='leading-[1.1] text-[3vw] lg:text-2xl'>Love this tool! It can train on the entire solution (and others), saving so much time and frustration. <span className='text-[#00BFFF]'>Unlike ChatGPT</span>, it finds the right methods and code blocks with ease, and the ability to retain training on past solutions is phenomenal.</div>
 
        <div className='w-full flex justify-between'>
        </div>
