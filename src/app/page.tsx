@@ -570,7 +570,7 @@ className='hidden lg:flex fixed  top-0 justify-center items-center w-full'>
       </motion.div>}
     
     </div>
-    <div className={`${montserrat.className} relative flex flex-col gap-3 text-md  justify-center items-center cursor-pointer text-right `}>
+    <div className={`${montserrat.className} relative flex flex-col gap-3 text-md  justify-center items-center cursor-pointer text-right z-50`}>
       <span className=' flex gap-3 justify-center items-center z-50'>
        <motion.h1 onClick={()=>setIsProducts(state=>!state)}  whileHover={{opacity:1}} animate={{y:isProducts? 55 : 0 ,x:isProducts? 15 : 0,scale:isProducts? 1.15 : 1}} transition={{duration:0.2}} className='flex text-center justify-center items-center opacity-65 z-50'>Products</motion.h1>
        <motion.h1 onClick={() => productShowRef.current?.scrollIntoView({ behavior: "smooth" })} whileHover={{opacity:1}} className='opacity-65'>Features</motion.h1>
@@ -593,6 +593,9 @@ className='hidden lg:flex fixed  top-0 justify-center items-center w-full'>
         }
     </div>
 
+        {isProducts && 
+        <div onClick={()=>setIsProducts(false)} className='fixed h-screen w-full z-40'/>
+        }
 
     </div>
      {/* <h1 className=' p-2 bg-[#1a1a1a] border border-opacity-15 bg-opacity-25 rounded-md flex justify-center items-center'>Book a Demo</h1> */}
