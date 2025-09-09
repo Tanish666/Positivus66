@@ -136,6 +136,7 @@ const AutoCompleteComponent = [
   const heroRef = useRef<HTMLDivElement>(null);
   const heroRef2 = useRef<HTMLDivElement>(null);
   const footerRef = useRef<HTMLDivElement>(null);
+  const MFRef = useRef<HTMLDivElement>(null);
   const [d,setD] = useState(false); 
   const [r,setR] = useState(false);
   const [a,setA] = useState(false);
@@ -212,6 +213,10 @@ const AutoCompleteComponent = [
       target:mainRef,
       offset:['start start','end start']
     });
+    const {scrollYProgress:MFYProg} = useScroll({
+      target:MFRef,
+      offset:['start start','end start']
+    });
     const feature1Scale = useTransform(p1YProg,[0,0.7],[1.2,1.1]);
     const featureTitleY = useTransform(p1YProg,[0,0.9],[0,-500]);
     const featureTitleOpacity = useTransform(p1YProg,[0,0.4],[1,0]);
@@ -234,6 +239,9 @@ const AutoCompleteComponent = [
     const op2 = useTransform(PShowYProg,[0.2,0.3,0.6],[0.2,1,0]);
     const op3 = useTransform(PShowYProg,[0.4,0.5,0.8],[0.2,1,0]);
     const op4 = useTransform(PShowYProg,[0.6,0.8],[0.2,1]);
+
+    ///for mobile feature section
+    const mx = useTransform(MFYProg,[0,1],[0,-1200]);
 
     ///for code editor
     const barY = useTransform(p1YProg,[0,1],["0%","100%"]);
@@ -1523,7 +1531,8 @@ className='relative h-[75%] w-[40%] flex  items-center justify-center  pl-10 py-
 
 <div className='lg:hidden'>
 
- <div className='w-full py-10 overflow-hidden'>
+<div ref={MFRef} className='h-[200vh]'>
+<div className='sticky top-0 w-full py-10 overflow-hidden'>
    <div className={`${montserrat.className}   z-20 leading-[1]  text-[7.7vw] font-semibold bg-gradient-to-b from-white to-gray-300/80 bg-clip-text  text-transparent  mb-6 pt-20 2xl:pr-[55vw] pb-1`}>
   <div className='relative h-full w-full bg-gradient-to-b from-white to-gray-300/80 bg-clip-text  text-transparent pb-2 text-center pr-2 pl-[5vw]'>
    <span className='z-50'> 
@@ -1532,7 +1541,7 @@ className='relative h-[75%] w-[40%] flex  items-center justify-center  pl-10 py-
   </div>
  </div>
  
- <div className='flex pl-16 gap-5'>
+ <motion.div style={{x:mx}} className='flex pl-16 gap-5'>
    <div className='flex flex-col gap-2'>
    <div className='h-[30vh] w-[65vw] bg-zinc-600'></div>
    <h1 className='font-bold text-2xl'>Documentation</h1>
@@ -1551,7 +1560,7 @@ className='relative h-[75%] w-[40%] flex  items-center justify-center  pl-10 py-
    <h1 className='font-bold text-2xl'>Documentation</h1>
    <p className='w-[65vw] text-sm'>Acts as your AI coding partner by managing bugs and fixing broken features, allowing you to focus core development</p>
    </div>
- </div>
+ </motion.div>
   
     <div className='text-right mt-10 mr-10 z-40'> 
         <motion.div 
@@ -1560,7 +1569,7 @@ className='relative h-[75%] w-[40%] flex  items-center justify-center  pl-10 py-
         transition={{delay:0.2,duration:0.6}}
         className={`${montserrat.className}  text-[4vw]  font-semibold bg-gradient-to-b from-white to-gray-300/80 bg-clip-text  text-transparent  pt-2 pb-2 w-full text-right`}>From <span className='bg-gradient-to-b from-[#00BFFF] to-[#1E90FF] bg-clip-text text-transparent '>Web-Application</span></motion.div>
    </div>
-  
+  </div>
 
 
  </div>
