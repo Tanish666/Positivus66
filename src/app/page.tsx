@@ -320,6 +320,7 @@ const socialItems = [
  useEffect(() => {
     const handleKeyDown = (event:any) => {
     if(event.key === "Tab"){
+      event.preventDefault();
       setIsAuto(true);
     }
     }
