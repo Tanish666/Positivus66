@@ -570,11 +570,27 @@ className='hidden lg:flex fixed  top-0 justify-center items-center w-full'>
       </motion.div>}
     
     </div>
-    <div className={`${montserrat.className} flex gap-3 text-md  justify-center items-center cursor-pointer text-right `}>
-       <motion.h1  whileHover={{opacity:1}} className='flex text-center justify-center items-center opacity-65'>Products</motion.h1>
+    <div className={`${montserrat.className} relative flex flex-col gap-3 text-md  justify-center items-center cursor-pointer text-right `}>
+      <span className=' flex gap-3 justify-center items-center z-50'>
+       <motion.h1 onClick={()=>setIsProducts(state=>!state)}  whileHover={{opacity:1}} animate={{y:isProducts? 55 : 0 ,x:isProducts? 15 : 0,scale:isProducts? 1.15 : 1}} transition={{duration:0.2}} className='flex text-center justify-center items-center opacity-65 z-50'>Products</motion.h1>
        <motion.h1 onClick={() => productShowRef.current?.scrollIntoView({ behavior: "smooth" })} whileHover={{opacity:1}} className='opacity-65'>Features</motion.h1>
-       <motion.h1 whileHover={{opacity:1}} onClick={()=>{router.push('pricing')}} className='opacity-65'>Pricing</motion.h1>
+       <motion.h1 whileHover={{opacity:1}}  onClick={()=>{router.push('pricing')}} className='opacity-65'>Pricing</motion.h1>
        <button className={`${montserrat.className} px-2 py-1  bg-[#FFFFFF] text-black  rounded-sm font-semibold opacity-85`}>Get Started</button>
+       </span>
+
+      {isProducts &&  
+       <motion.div 
+        initial={{scale:0}}
+        animate={{scale:1}}
+        transition={{duration:0.5}}
+        style={{ 
+        boxShadow: '0 14px 25px rgba(0, 0, 0, 0.1)',
+        backdropFilter: 'blur(50px)',
+        WebkitBackdropFilter: 'blur(50px)'
+        }} className='absolute h-32 w-full mt-[12.4rem] rounded-md -z-10 bg-zinc-900 bg-opacity-95'>
+
+       </motion.div>
+        }
     </div>
 
 
@@ -820,7 +836,7 @@ className='lg:hidden fixed flex top-0 justify-center items-center w-full'>
           initial={{ opacity: 0, filter: "blur(10px)" }}
           animate={{ opacity: 1, filter: "blur(0px)" }}
           transition={{ duration: 0.4,delay:1.5 }}
-          className={`flex flex-col ${montserrat.className} text-[2.8vw] lg:text-[1.5vw] leading-[1] mt-5 opacity-60 `}>
+          className={`flex flex-col ${montserrat.className} text-[2.8vw] lg:text-[1.5vw] gap-1 leading-[1.] mt-5 opacity-60 `}>
         <p>Build and ship 20x faster with CodeMate IDE —</p>
         <p>Your all-in-one accelerator for the development lifecycle</p>
       </motion.div>
@@ -828,9 +844,9 @@ className='lg:hidden fixed flex top-0 justify-center items-center w-full'>
           initial={{ opacity: 0, filter: "blur(10px)",y:100 }}
           animate={{ opacity: 1, filter: "blur(0px)",y:0 }}
           transition={{ duration: 1,delay:0.5}} className={`${montserrat.className} flex gap-5 text-sm mt-10`}>
-      <button className='px-4 py-3  bg-black text-white border border-white rounded-sm bg-opacity-90 text-opacity-60'>GET Extension</button>
+      <button className='px-4 py-3  bg-black text-white  rounded-sm bg-opacity-90 text-opacity-60'>GET Extension</button>
       <button 
-      className='px-4 py-3  bg-[#FFFFFF] text-black border border-black rounded-sm   opacity-80'>Book a demo</button>
+      className='px-4 py-3  bg-[#FFFFFF] text-black  rounded-sm   opacity-80'>Book a demo</button>
       </motion.div>
      </motion.div>
    
@@ -1529,6 +1545,7 @@ className='relative h-[75%] w-[40%] flex  items-center justify-center  pl-10 py-
 
 </div>
 
+{/* for mobile */}
 <div className='lg:hidden'>
 
 <div ref={MFRef} className='h-[200vh]'>
@@ -1609,7 +1626,7 @@ className='relative h-[75%] w-[40%] flex  items-center justify-center  pl-10 py-
 
  </div>
 </div>
-
+{/* for mobile */}
 
 {/* bento */}
      {/* <div className=' relative h-[170vh] w-full bg-zinc-950 text-white overflow-hidden'>
