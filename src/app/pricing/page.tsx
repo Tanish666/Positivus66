@@ -3,9 +3,11 @@ import React, { useRef, useState } from 'react'
 import {motion, useMotionValueEvent, useScroll} from 'framer-motion'
 import { useRouter } from 'next/navigation'
 import Footer from '@/components/footer';
+import { ShineBorder } from '@/components/ui/shainingBoader';
 function Page() {
   const router = useRouter();
   const ref = useRef(null);
+  const [oneTimePlan,setOneTimePlan] = useState(false);
   const [isPlan1,setIsPlan1] = useState(true);
    const [isPlan2,setIsPlan2] = useState(false);
     const [isPlan3,setIsPlan3] = useState(false);
@@ -94,10 +96,8 @@ className='fixed flex top-0 justify-center items-center w-full'>
       </motion.div>}
     
     </div>
-    <div className={`flex gap-3 text-md  justify-center items-center cursor-pointer text-right `}>
-       <motion.h1 whileHover={{opacity:1}} className='flex text-center justify-center items-center opacity-65'>Products</motion.h1>
-       <motion.h1 whileHover={{opacity:1}} className='opacity-65'>Features</motion.h1>
-       <motion.h1 whileHover={{opacity:1}} onClick={()=>{router.push('pricing')}} className='opacity-65'>Pricing</motion.h1>
+    <div className={`flex gap-5 text-md  justify-center items-center cursor-pointer text-right `}>
+       <motion.h1 whileHover={{opacity:1}} className='flex text-center justify-center items-center opacity-65 gap-1'><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  className="icon icon-tabler icons-tabler-outline icon-tabler-arrow-narrow-left"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l14 0" /><path d="M5 12l4 4" /><path d="M5 12l4 -4" /></svg>Back</motion.h1>
        <button className={` px-2 py-1  bg-[#FFFFFF] text-black  rounded-sm font-semibold opacity-85`}>Get Started</button>
     </div>
 
@@ -108,26 +108,34 @@ className='fixed flex top-0 justify-center items-center w-full'>
     </motion.div>
 </div>
      {/* navbar */}
+
       <div className='flex flex-col'>
         <h1 className='text-5xl text-center pt-24 pb-1 font-bold bg-gradient-to-b from-white to-gray-300/80 bg-clip-text  text-transparent '>Let's <span className='bg-gradient-to-b from-[#00BFFF] to-[#1E90FF] bg-clip-text text-transparent text-6xl'>Upgrade</span> your vision</h1>
         <p className='text-center text-xl mt-1 opacity-60'>Choose a plan which feels right for you.</p>
       </div>
         
        <div className='flex justify-center  mt-10 mb-10'>
-        <div className='relative border-[3px] border-zinc-500 text-xl px-5 py-2 rounded-full flex gap-5  items-center'>
+        <div className='relative border-[3px] border-zinc-500 text-xl px-5 py-2 rounded-full flex gap-5  items-center '>
         <motion.div initial={{x:-5.5,width:'6rem',color:'black'}} animate={ isPlan1? {x:-5.5,width:'6rem'} : isPlan2? {x:92,width:'5rem'} : {x:176,width:'7rem'} } transition={{duration:0.5}} className='absolute h-9  rounded-full bg-gradient-to-b from-[#00BFFF] to-[#1E90FF]'/>  
         <h1 onClick={()=> handleCurrPlan(1)} className={`${isPlan1? 'text-black font-semibold' : 'text-white'} z-20 text-black cursor-pointer`}>Monthly</h1>
         <h1 onClick={()=> handleCurrPlan(2)} className={`${isPlan2? 'text-black font-semibold' : 'text-white'} z-20 text-black cursor-pointer`}>Yearly</h1>
         <h1 onClick={()=> handleCurrPlan(3)} className={`${isPlan3? 'text-black font-semibold' : 'text-white'} z-20 text-black cursor-pointer`}>One-time</h1>
         </div>
        </div>
+         
+         {isPlan1 && 
+         <MonthlyPlans/>
+         } 
 
-       <div className='flex justify-center gap-10 mt-4 mb-20'>
-        <div className='h-[30rem] w-[20rem] bg-white'></div>
-        <div className='h-[30rem] w-[20rem] bg-white'></div>
-        <div className='h-[30rem] w-[20rem] bg-white'></div>  
-      </div>  
+        {isPlan2 && 
+         <YearlyPlans/>
+         } 
 
+        {isPlan3 && <OneTimePlans/>}
+        
+        {isPlan3 && 
+        <ComparePlans/>
+        }
         <Footer/>
 
     </div>
@@ -135,3 +143,1092 @@ className='fixed flex top-0 justify-center items-center w-full'>
 }
 
 export default Page
+
+
+
+function YearlyPlans() {
+  return(
+       <div className='flex justify-center  gap-10 mt-4 mb-20'>
+
+        <div className='relative h-[30rem] w-[23rem] bg-zinc-900 rounded-2xl  mt-[3rem]'>
+          
+          <ShineBorder shineColor={["#00BFFF", "#1E90FF","#00FFFF"]} borderWidth={1.5} className='rounded-2xl'/>
+          
+           <div className='pl-5 pt-5'> 
+          <h1 className='text-3xl font-semibold text-left mb-1'>Pro Plan</h1>
+          <p className='opacity-70'>For individual developers and freelancers</p>
+          <div className='text-4xl font-bold mt-5'>$17<span className='text-sm opacity-80 font-normal text-cyan-400'>/ Monthly</span></div>
+         
+          <div className='flex flex-col gap-2 mt-10 '>
+          <h1 className='text-xl font-semibold'>Includes</h1>
+          
+         <div className="flex flex-col gap-2 opacity-75">
+  <div className="flex gap-1 items-center">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="w-6 h-6 shrink-0 opacity-80 text-gray-400"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 7a5 5 0 1 1 -4.995 5.217l-.005 -.217l.005 -.217a5 5 0 0 1 4.995 -4.783z" />
+    </svg>
+    <span>Debug, Review and Refactor Code.</span>
+  </div>
+
+  <div className="flex gap-1 items-center">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="w-6 h-6 shrink-0 opacity-80 text-gray-400"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 7a5 5 0 1 1 -4.995 5.217l-.005 -.217l.005 -.217a5 5 0 0 1 4.995 -4.783z" />
+    </svg>
+    <span>Unlimited internet seaches.</span>
+  </div>
+
+  <div className="flex gap-1 items-center">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="w-6 h-6 shrink-0 opacity-80 text-gray-400"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 7a5 5 0 1 1 -4.995 5.217l-.005 -.217l.005 -.217a5 5 0 0 1 4.995 -4.783z" />
+    </svg>
+    <span>Codemate Assistant Access.</span>
+  </div>
+
+  <div className="flex gap-1 items-center">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="w-6 h-6 shrink-0 opacity-80 text-gray-400"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 7a5 5 0 1 1 -4.995 5.217l-.005 -.217l.005 -.217a5 5 0 0 1 4.995 -4.783z" />
+    </svg>
+    <span>Search & Chat with Documentation & Codebases.</span>
+  </div>
+
+  <div className="flex gap-1 items-center">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="w-6 h-6 shrink-0 opacity-80 text-gray-400"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 7a5 5 0 1 1 -4.995 5.217l-.005 -.217l.005 -.217a5 5 0 0 1 4.995 -4.783z" />
+    </svg>
+    <span>Generate Unit/Functional Test cases.</span>
+  </div>
+         </div>
+         </div>
+         </div>
+
+
+          <div className='absolute bottom-5 w-full px-5'>
+          <motion.button whileHover={{scale:1.01}} className='bg-white/85  flex justify-center items-center w-full py-1 rounded-md text-black font-bold'> 
+          Subscribe
+         </motion.button>
+         </div>
+        </div>
+
+                <div className='relative h-[33rem] w-[23rem] bg-zinc-900 rounded-2xl '>
+          
+          <ShineBorder shineColor={["#00BFFF", "#1E90FF","#00FFFF"]} borderWidth={1.5} className='rounded-2xl'/>
+           
+           <div className='pl-5 pt-5'>
+          <h1 className='text-3xl font-semibold text-left mb-1'>Teams Plan</h1>
+          <p className='opacity-70'>For development in teams and startups</p>
+          <div className='text-4xl font-bold mt-5'>$31<span className='text-sm opacity-80 font-normal text-cyan-400'>/ Monthly</span></div>
+         
+          <div className='flex flex-col gap-2 mt-10 '>
+          <h1 className='text-xl font-semibold'>Everything in Pro, plus</h1>
+          
+          <div className="flex flex-col gap-2 opacity-75">
+  <div className="flex gap-1 items-center">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="w-6 h-6 shrink-0 opacity-80 text-gray-400"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 7a5 5 0 1 1 -4.995 5.217l-.005 -.217l.005 -.217a5 5 0 0 1 4.995 -4.783z" />
+    </svg>
+    <span>Collaborative Knowledge Base Sharing.</span>
+  </div>
+
+  <div className="flex gap-1 items-center">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="w-6 h-6 shrink-0 opacity-80 text-gray-400"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 7a5 5 0 1 1 -4.995 5.217l-.005 -.217l.005 -.217a5 5 0 0 1 4.995 -4.783z" />
+    </svg>
+    <span>Bring your own key.</span>
+  </div>
+
+  <div className="flex gap-1 items-center">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="w-6 h-6 shrink-0 opacity-80 text-gray-400"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 7a5 5 0 1 1 -4.995 5.217l-.005 -.217l.005 -.217a5 5 0 0 1 4.995 -4.783z" />
+    </svg>
+    <span>Advanced ML models.</span>
+  </div>
+
+  <div className="flex gap-1 items-center">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="w-6 h-6 shrink-0 opacity-80 text-gray-400"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 7a5 5 0 1 1 -4.995 5.217l-.005 -.217l.005 -.217a5 5 0 0 1 4.995 -4.783z" />
+    </svg>
+    <span>Seat Management.</span>
+  </div>
+
+  <div className="flex gap-1 items-center">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="w-6 h-6 shrink-0 opacity-80 text-gray-400"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 7a5 5 0 1 1 -4.995 5.217l-.005 -.217l.005 -.217a5 5 0 0 1 4.995 -4.783z" />
+    </svg>
+    <span>Automated PR reviews.</span>
+  </div>
+          </div>
+        
+
+
+          </div>
+          </div>
+          <div className='absolute bottom-5 w-full px-5'>
+          <motion.button whileHover={{scale:1.01}} className='bg-white/85  flex justify-center items-center w-full py-1 rounded-md text-black font-bold'> 
+          Subscribe
+         </motion.button>
+         </div>
+        </div>
+                <div className='relative h-[30rem] w-[23rem] bg-zinc-900 rounded-2xl  mt-[3rem]'>
+           
+          <ShineBorder shineColor={["#00BFFF", "#1E90FF","#00FFFF"]} borderWidth={1.5} className='rounded-2xl'/>
+       
+
+       <div className='pl-5 pt-5'>
+          <h1 className='text-3xl font-semibold text-left mb-1'>Organisation</h1>
+          <p className='opacity-70'>For SMBs and Enterprises</p>
+          <div className='text-4xl font-bold mt-5 '>Let's Talk</div>
+         
+          <div className='flex flex-col gap-2 mt-10 '>
+          <h1 className='text-xl font-semibold'>Everything in Teams, plus</h1>
+          
+           <div className="flex flex-col gap-2 opacity-75">
+  <div className="flex gap-1 items-center">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="w-6 h-6 shrink-0 opacity-80 text-gray-400"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 7a5 5 0 1 1 -4.995 5.217l-.005 -.217l.005 -.217a5 5 0 0 1 4.995 -4.783z" />
+    </svg>
+    <span>Dedicated Account Manager.</span>
+  </div>
+
+  <div className="flex gap-1 items-center">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="w-6 h-6 shrink-0 opacity-80 text-gray-400"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 7a5 5 0 1 1 -4.995 5.217l-.005 -.217l.005 -.217a5 5 0 0 1 4.995 -4.783z" />
+    </svg>
+    <span>On-premises Deployment.</span>
+  </div>
+
+  <div className="flex gap-1 items-center">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="w-6 h-6 shrink-0 opacity-80 text-gray-400"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 7a5 5 0 1 1 -4.995 5.217l-.005 -.217l.005 -.217a5 5 0 0 1 4.995 -4.783z" />
+    </svg>
+    <span>Custom fine-tuned models.</span>
+  </div>
+
+  <div className="flex gap-1 items-center">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="w-6 h-6 shrink-0 opacity-80 text-gray-400"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 7a5 5 0 1 1 -4.995 5.217l-.005 -.217l.005 -.217a5 5 0 0 1 4.995 -4.783z" />
+    </svg>
+    <span>Search & Chat with Documentation & Codebases.</span>
+  </div>
+
+  <div className="flex gap-1 items-center">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="w-6 h-6 shrink-0 opacity-80 text-gray-400"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 7a5 5 0 1 1 -4.995 5.217l-.005 -.217l.005 -.217a5 5 0 0 1 4.995 -4.783z" />
+    </svg>
+    <span>Priority Support.</span>
+  </div>
+           </div>
+        </div>
+
+
+          </div>
+
+          <div className='absolute bottom-5 w-full px-5'>
+          <motion.button whileHover={{scale:1.01}} className='bg-white/85  flex justify-center items-center w-full py-1 rounded-md text-black font-bold'> 
+          Contact Us
+         </motion.button>
+         </div>
+        </div>  
+      </div>  
+  )
+}
+
+function MonthlyPlans() {
+  return(
+       <div className='flex justify-center  gap-10 mt-4 mb-20'>
+
+        <div className='relative h-[30rem] w-[23rem] bg-zinc-900 rounded-2xl  mt-[3rem]'>
+          
+          <ShineBorder shineColor={["#00BFFF", "#1E90FF","#00FFFF"]} borderWidth={1.5} className='rounded-2xl'/>
+          
+           <div className='pl-5 pt-5'> 
+          <h1 className='text-3xl font-semibold text-left mb-1'>Pro Plan</h1>
+          <p className='opacity-70'>For individual developers and freelancers</p>
+          <div className='text-4xl font-bold mt-5'>$20<span className='text-sm opacity-80 font-normal text-cyan-400'>/ Monthly</span></div>
+         
+          <div className='flex flex-col gap-2 mt-10 '>
+          <h1 className='text-xl font-semibold'>Includes</h1>
+          
+         <div className="flex flex-col gap-2 opacity-75">
+  <div className="flex gap-1 items-center">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="w-6 h-6 shrink-0 opacity-80 text-gray-400"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 7a5 5 0 1 1 -4.995 5.217l-.005 -.217l.005 -.217a5 5 0 0 1 4.995 -4.783z" />
+    </svg>
+    <span>Debug, Review and Refactor Code.</span>
+  </div>
+
+  <div className="flex gap-1 items-center">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="w-6 h-6 shrink-0 opacity-80 text-gray-400"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 7a5 5 0 1 1 -4.995 5.217l-.005 -.217l.005 -.217a5 5 0 0 1 4.995 -4.783z" />
+    </svg>
+    <span>Unlimited internet seaches.</span>
+  </div>
+
+  <div className="flex gap-1 items-center">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="w-6 h-6 shrink-0 opacity-80 text-gray-400"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 7a5 5 0 1 1 -4.995 5.217l-.005 -.217l.005 -.217a5 5 0 0 1 4.995 -4.783z" />
+    </svg>
+    <span>Codemate Assistant Access.</span>
+  </div>
+
+  <div className="flex gap-1 items-center">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="w-6 h-6 shrink-0 opacity-80 text-gray-400"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 7a5 5 0 1 1 -4.995 5.217l-.005 -.217l.005 -.217a5 5 0 0 1 4.995 -4.783z" />
+    </svg>
+    <span>Search & Chat with Documentation & Codebases.</span>
+  </div>
+
+  <div className="flex gap-1 items-center">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="w-6 h-6 shrink-0 opacity-80 text-gray-400"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 7a5 5 0 1 1 -4.995 5.217l-.005 -.217l.005 -.217a5 5 0 0 1 4.995 -4.783z" />
+    </svg>
+    <span>Generate Unit/Functional Test cases.</span>
+  </div>
+         </div>
+         </div>
+         </div>
+
+
+          <div className='absolute bottom-5 w-full px-5'>
+          <motion.button whileHover={{scale:1.01}} className='bg-white/85  flex justify-center items-center w-full py-1 rounded-md text-black font-bold'> 
+          Subscribe
+         </motion.button>
+         </div>
+        </div>
+
+                <div className='relative h-[33rem] w-[23rem] bg-zinc-900 rounded-2xl '>
+          
+          <ShineBorder shineColor={["#00BFFF", "#1E90FF","#00FFFF"]} borderWidth={1.5} className='rounded-2xl'/>
+           
+           <div className='pl-5 pt-5'>
+          <h1 className='text-3xl font-semibold text-left mb-1'>Teams Plan</h1>
+          <p className='opacity-70'>For development in teams and startups</p>
+          <div className='text-4xl font-bold mt-5'>$37<span className='text-sm opacity-80 font-normal text-cyan-400'>/ Monthly</span></div>
+         
+          <div className='flex flex-col gap-2 mt-10 '>
+          <h1 className='text-xl font-semibold'>Everything in Pro, plus</h1>
+          
+          <div className="flex flex-col gap-2 opacity-75">
+  <div className="flex gap-1 items-center">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="w-6 h-6 shrink-0 opacity-80 text-gray-400"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 7a5 5 0 1 1 -4.995 5.217l-.005 -.217l.005 -.217a5 5 0 0 1 4.995 -4.783z" />
+    </svg>
+    <span>Collaborative Knowledge Base Sharing.</span>
+  </div>
+
+  <div className="flex gap-1 items-center">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="w-6 h-6 shrink-0 opacity-80 text-gray-400"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 7a5 5 0 1 1 -4.995 5.217l-.005 -.217l.005 -.217a5 5 0 0 1 4.995 -4.783z" />
+    </svg>
+    <span>Bring your own key.</span>
+  </div>
+
+  <div className="flex gap-1 items-center">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="w-6 h-6 shrink-0 opacity-80 text-gray-400"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 7a5 5 0 1 1 -4.995 5.217l-.005 -.217l.005 -.217a5 5 0 0 1 4.995 -4.783z" />
+    </svg>
+    <span>Advanced ML models.</span>
+  </div>
+
+  <div className="flex gap-1 items-center">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="w-6 h-6 shrink-0 opacity-80 text-gray-400"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 7a5 5 0 1 1 -4.995 5.217l-.005 -.217l.005 -.217a5 5 0 0 1 4.995 -4.783z" />
+    </svg>
+    <span>Seat Management.</span>
+  </div>
+
+  <div className="flex gap-1 items-center">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="w-6 h-6 shrink-0 opacity-80 text-gray-400"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 7a5 5 0 1 1 -4.995 5.217l-.005 -.217l.005 -.217a5 5 0 0 1 4.995 -4.783z" />
+    </svg>
+    <span>Automated PR reviews.</span>
+  </div>
+          </div>
+        
+
+
+          </div>
+          </div>
+          <div className='absolute bottom-5 w-full px-5'>
+          <motion.button whileHover={{scale:1.01}} className='bg-white/85  flex justify-center items-center w-full py-1 rounded-md text-black font-bold'> 
+          Subscribe
+         </motion.button>
+         </div>
+        </div>
+                <div className='relative h-[30rem] w-[23rem] bg-zinc-900 rounded-2xl  mt-[3rem]'>
+           
+          <ShineBorder shineColor={["#00BFFF", "#1E90FF","#00FFFF"]} borderWidth={1.5} className='rounded-2xl'/>
+       
+
+       <div className='pl-5 pt-5'>
+          <h1 className='text-3xl font-semibold text-left mb-1'>Organisation</h1>
+          <p className='opacity-70'>For SMBs and Enterprises</p>
+          <div className='text-4xl font-bold mt-5 '>Let's Talk</div>
+         
+          <div className='flex flex-col gap-2 mt-10 '>
+          <h1 className='text-xl font-semibold'>Everything in Teams, plus</h1>
+          
+           <div className="flex flex-col gap-2 opacity-75">
+  <div className="flex gap-1 items-center">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="w-6 h-6 shrink-0 opacity-80 text-gray-400"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 7a5 5 0 1 1 -4.995 5.217l-.005 -.217l.005 -.217a5 5 0 0 1 4.995 -4.783z" />
+    </svg>
+    <span>Dedicated Account Manager.</span>
+  </div>
+
+  <div className="flex gap-1 items-center">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="w-6 h-6 shrink-0 opacity-80 text-gray-400"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 7a5 5 0 1 1 -4.995 5.217l-.005 -.217l.005 -.217a5 5 0 0 1 4.995 -4.783z" />
+    </svg>
+    <span>On-premises Deployment.</span>
+  </div>
+
+  <div className="flex gap-1 items-center">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="w-6 h-6 shrink-0 opacity-80 text-gray-400"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 7a5 5 0 1 1 -4.995 5.217l-.005 -.217l.005 -.217a5 5 0 0 1 4.995 -4.783z" />
+    </svg>
+    <span>Custom fine-tuned models.</span>
+  </div>
+
+  <div className="flex gap-1 items-center">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="w-6 h-6 shrink-0 opacity-80 text-gray-400"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 7a5 5 0 1 1 -4.995 5.217l-.005 -.217l.005 -.217a5 5 0 0 1 4.995 -4.783z" />
+    </svg>
+    <span>Search & Chat with Documentation & Codebases.</span>
+  </div>
+
+  <div className="flex gap-1 items-center">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="w-6 h-6 shrink-0 opacity-80 text-gray-400"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 7a5 5 0 1 1 -4.995 5.217l-.005 -.217l.005 -.217a5 5 0 0 1 4.995 -4.783z" />
+    </svg>
+    <span>Priority Support.</span>
+  </div>
+           </div>
+        </div>
+
+
+          </div>
+
+          <div className='absolute bottom-5 w-full px-5'>
+          <motion.button whileHover={{scale:1.01}} className='bg-white/85  flex justify-center items-center w-full py-1 rounded-md text-black font-bold'> 
+          Contact Us
+         </motion.button>
+         </div>
+        </div>  
+      </div>  
+  )
+}
+
+function OneTimePlans() {
+  return(
+       <div className='flex justify-center  gap-10 mt-4 mb-20'>
+
+        <div className='relative h-[30rem] w-[23rem] bg-zinc-900 rounded-2xl  mt-[3rem]'>
+          
+          <ShineBorder shineColor={["#00BFFF", "#1E90FF","#00FFFF"]} borderWidth={1.5} className='rounded-2xl'/>
+          
+           <div className='pl-5 pt-5'> 
+          <h1 className='text-3xl font-semibold text-left mb-1'>Tier Plan 1</h1>
+          <p className='opacity-70'>For solo developers and Programming Enthusiasts</p>
+          <div className='text-4xl font-bold mt-5'>$59<span className='text-sm opacity-80 font-normal text-cyan-400'></span></div>
+         
+          <div className='flex flex-col gap-2 mt-4'>
+          <h1 className='text-xl font-semibold'>Includes</h1>
+          
+         <div className="flex flex-col gap-2 opacity-75">
+  <div className="flex gap-1 items-center">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="w-6 h-6 shrink-0 opacity-80 text-gray-400"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 7a5 5 0 1 1 -4.995 5.217l-.005 -.217l.005 -.217a5 5 0 0 1 4.995 -4.783z" />
+    </svg>
+    <span>1 seat.</span>
+  </div>
+
+  <div className="flex gap-1 items-center">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="w-6 h-6 shrink-0 opacity-80 text-gray-400"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 7a5 5 0 1 1 -4.995 5.217l-.005 -.217l.005 -.217a5 5 0 0 1 4.995 -4.783z" />
+    </svg>
+    <span>60,000 total tokens per month.</span>
+  </div>
+
+  <div className="flex gap-1 items-center">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="w-6 h-6 shrink-0 opacity-80 text-gray-400"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 7a5 5 0 1 1 -4.995 5.217l-.005 -.217l.005 -.217a5 5 0 0 1 4.995 -4.783z" />
+    </svg>
+    <span>5 total knowledge bases.</span>
+  </div>
+
+  <div className="flex gap-1 items-center">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="w-6 h-6 shrink-0 opacity-80 text-gray-400"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 7a5 5 0 1 1 -4.995 5.217l-.005 -.217l.005 -.217a5 5 0 0 1 4.995 -4.783z" />
+    </svg>
+    <span>1GB total storage space.</span>
+  </div>
+
+  <div className="flex gap-1 items-center">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="w-6 h-6 shrink-0 opacity-80 text-gray-400"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 7a5 5 0 1 1 -4.995 5.217l-.005 -.217l.005 -.217a5 5 0 0 1 4.995 -4.783z" />
+    </svg>
+    <span>250 internet searches per month.</span>
+  </div>
+
+    <div className="flex gap-1 items-center">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="w-6 h-6 shrink-0 opacity-80 text-gray-400"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 7a5 5 0 1 1 -4.995 5.217l-.005 -.217l.005 -.217a5 5 0 0 1 4.995 -4.783z" />
+    </svg>
+    <span>Github Integration(s).</span>
+  </div>
+         </div>
+         </div>
+         </div>
+
+
+          <div className='absolute bottom-5 w-full px-5'>
+          <motion.button whileHover={{scale:1.01}} className='bg-white/85  flex justify-center items-center w-full py-1 rounded-md text-black font-bold'> 
+          Buy Now
+         </motion.button>
+         </div>
+        </div>
+
+        <div className='relative h-[33rem] w-[23rem] bg-zinc-900 rounded-2xl  '>
+          
+          <ShineBorder shineColor={["#00BFFF", "#1E90FF","#00FFFF"]} borderWidth={1.5} className='rounded-2xl'/>
+          
+           <div className='px-5 pt-5'> 
+          <h1 className='text-3xl font-semibold text-left mb-1'>Tier Plan 2</h1>
+          <p className='opacity-70'>For Professional developers and freelancers</p>
+          <div className='text-4xl font-bold mt-5'>$169<span className='text-sm opacity-80 font-normal text-cyan-400'></span></div>
+         
+          <div className='flex flex-col gap-2 mt-4'>
+          <h1 className='text-xl font-semibold'>Includes</h1>
+          
+         <div className="flex flex-col gap-2 opacity-75">
+  <div className="flex gap-1 items-center">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="w-6 h-6 shrink-0 opacity-80 text-gray-400"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 7a5 5 0 1 1 -4.995 5.217l-.005 -.217l.005 -.217a5 5 0 0 1 4.995 -4.783z" />
+    </svg>
+    <span>1 seat.</span>
+  </div>
+
+  <div className="flex gap-1 items-center">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="w-6 h-6 shrink-0 opacity-80 text-gray-400"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 7a5 5 0 1 1 -4.995 5.217l-.005 -.217l.005 -.217a5 5 0 0 1 4.995 -4.783z" />
+    </svg>
+    <span>175,000 total tokens per month</span>
+  </div>
+
+  <div className="flex gap-1 items-center">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="w-6 h-6 shrink-0 opacity-80 text-gray-400"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 7a5 5 0 1 1 -4.995 5.217l-.005 -.217l.005 -.217a5 5 0 0 1 4.995 -4.783z" />
+    </svg>
+    <span>10 total knowledge bases.</span>
+  </div>
+
+  <div className="flex gap-1 items-center">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="w-6 h-6 shrink-0 opacity-80 text-gray-400"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 7a5 5 0 1 1 -4.995 5.217l-.005 -.217l.005 -.217a5 5 0 0 1 4.995 -4.783z" />
+    </svg>
+    <span>3GB total storage space.</span>
+  </div>
+
+  <div className="flex gap-1 items-center">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="w-6 h-6 shrink-0 opacity-80 text-gray-400"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 7a5 5 0 1 1 -4.995 5.217l-.005 -.217l.005 -.217a5 5 0 0 1 4.995 -4.783z" />
+    </svg>
+    <span>500 internet searches per month.</span>
+  </div>
+
+    <div className="flex gap-1 items-center">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="w-6 h-6 shrink-0 opacity-80 text-gray-400"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 7a5 5 0 1 1 -4.995 5.217l-.005 -.217l.005 -.217a5 5 0 0 1 4.995 -4.783z" />
+    </svg>
+    <span>Codebase + Github + URL Integration(s).</span>
+  </div>
+         </div>
+         </div>
+         </div>
+
+
+          <div className='absolute bottom-5 w-full px-5'>
+          <motion.button whileHover={{scale:1.01}} className='bg-white/85  flex justify-center items-center w-full py-1 rounded-md text-black font-bold'> 
+          Buy Now
+         </motion.button>
+         </div>
+        </div>
+        <div className='relative h-[30rem]  w-[23rem] bg-zinc-900 rounded-2xl  mt-[3rem]'>
+          
+          <ShineBorder shineColor={["#00BFFF", "#1E90FF","#00FFFF"]} borderWidth={1.5} className='rounded-2xl'/>
+          
+           <div className='px-5 pt-5'> 
+          <h1 className='text-3xl font-semibold text-left mb-1'>Tier Plan 3</h1>
+          <p className='opacity-70'>For development teams and agencies</p>
+          <div className='text-4xl font-bold mt-5'>$299<span className='text-sm opacity-80 font-normal text-cyan-400'></span></div>
+         
+          <div className='flex flex-col gap-2 mt-4'>
+          <h1 className='text-xl font-semibold'>Includes</h1>
+          
+         <div className="flex flex-col gap-2 opacity-75">
+  <div className="flex gap-1 items-center">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="w-6 h-6 shrink-0 opacity-80 text-gray-400"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 7a5 5 0 1 1 -4.995 5.217l-.005 -.217l.005 -.217a5 5 0 0 1 4.995 -4.783z" />
+    </svg>
+    <span>5 seats.</span>
+  </div>
+
+  <div className="flex gap-1 items-center">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="w-6 h-6 shrink-0 opacity-80 text-gray-400"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 7a5 5 0 1 1 -4.995 5.217l-.005 -.217l.005 -.217a5 5 0 0 1 4.995 -4.783z" />
+    </svg>
+    <span>750,000 total tokens per month.</span>
+  </div>
+
+  <div className="flex gap-1 items-center">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="w-6 h-6 shrink-0 opacity-80 text-gray-400"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 7a5 5 0 1 1 -4.995 5.217l-.005 -.217l.005 -.217a5 5 0 0 1 4.995 -4.783z" />
+    </svg>
+    <span>20 total knowledge bases.</span>
+  </div>
+
+  <div className="flex gap-1 items-center">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="w-6 h-6 shrink-0 opacity-80 text-gray-400"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 7a5 5 0 1 1 -4.995 5.217l-.005 -.217l.005 -.217a5 5 0 0 1 4.995 -4.783z" />
+    </svg>
+    <span>6GB total storage space.</span>
+  </div>
+
+  <div className="flex gap-1 items-center">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="w-6 h-6 shrink-0 opacity-80 text-gray-400"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 7a5 5 0 1 1 -4.995 5.217l-.005 -.217l.005 -.217a5 5 0 0 1 4.995 -4.783z" />
+    </svg>
+    <span>Unlimited internet searches per month.</span>
+  </div>
+
+    <div className="flex gap-1 items-center">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="w-6 h-6 shrink-0 opacity-80 text-gray-400"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 7a5 5 0 1 1 -4.995 5.217l-.005 -.217l.005 -.217a5 5 0 0 1 4.995 -4.783z" />
+    </svg>
+    <span className='text-sm'>Codebase + Github + URL Integration(s).</span>
+  </div>
+         </div>
+         </div>
+         </div>
+
+
+          <div className='absolute bottom-5 w-full px-5'>
+          <motion.button whileHover={{scale:1.01}} className='bg-white/85  flex justify-center items-center w-full py-1 rounded-md text-black font-bold'> 
+          Buy Now
+         </motion.button>
+         </div>
+        </div>
+      </div>  
+  )
+}
+
+
+function ComparePlans(){
+  return(
+    <div className='pb-10 w-full flex flex-col items-center'>
+     <div className='w-full flex justify-between border-b-[1px] border-gray-500 border-opacity-35 h-[8rem] px-10 py-10'>
+      <h1 className='text-5xl font-semibold mb-2'><span className='bg-gradient-to-b from-[#00BFFF] to-[#1E90FF] bg-clip-text text-transparent'>Compare</span> Plans</h1>
+
+      <div className='flex gap-[3.7rem] text-2xl'>
+      <div className='flex flex-col justify-center items-center gap-2'>
+        <h1 className='font-semibold'>Tier 1 Plan</h1>
+        <p className='text-xl opacity-75'>$59</p>
+      </div>
+      <div className='flex flex-col justify-center items-center gap-2'>
+        <h1 className='font-semibold'>Tier 2 Plan</h1>
+        <p className='text-xl opacity-75'>$169</p>
+      </div>
+      <div className='flex flex-col justify-center items-center gap-2'>
+        <h1 className='font-semibold'>Tier 3 Plan</h1>
+         <p className='text-xl opacity-75'>$299</p>
+      </div>
+      <div className='flex flex-col justify-center items-center gap-2'>
+        <h1 className='font-semibold'>Tier 4 Plan</h1>
+         <p className='text-xl opacity-75'>$579</p>
+      </div>
+      <div className='flex flex-col justify-center items-center gap-2'>
+        <h1 className='font-semibold'>Tier 5 Plan</h1>
+         <p className='text-xl opacity-75'>$999</p>
+      </div>
+      </div>
+     </div>
+
+      <div className='w-full flex justify-between border-b-[1px] border-gray-500 border-opacity-35 h-[8rem] px-10 py-10'>
+      <h1 className='text-xl font-semibold w-[15rem] text-center'>Seats</h1>
+      <div className='flex gap-16 text-lg'>
+      <div className='flex flex-col justify-center items-center gap-2 w-[7.8rem]'>
+        <h1>1 Seat</h1>
+      </div>
+      <div className='flex flex-col justify-center items-center gap-2 w-[7.8rem]'>
+        <h1>1 Seat</h1>
+      </div>
+      <div className='flex flex-col justify-center items-center gap-2 w-[7.8rem]'>
+        <h1>5 Seats</h1>
+      </div>
+      <div className='flex flex-col justify-center items-center gap-2 w-[7.8rem]'>
+        <h1>15 Seats</h1>
+      </div>
+            <div className='flex flex-col justify-center items-center gap-2 w-[7.8rem]'>
+        <h1>Unlimited</h1>
+      </div>
+      </div>
+     </div>
+
+            <div className='w-full flex justify-between border-b-[1px] border-gray-500 border-opacity-35 h-[8rem] px-10 py-10'>
+      <h1 className='text-xl font-semibold w-[15rem] text-center'>Tokens</h1>
+      <div className='flex gap-16 text-lg'>
+      <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
+        <h1>60,000/month</h1>
+      </div>
+      <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
+        <h1>175,000/month</h1>
+      </div>
+      <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
+        <h1>750,000/month</h1>
+      </div>
+      <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
+        <h1>3,750,000/month</h1>
+      </div>
+            <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
+        <h1>20,000,000/month</h1>
+      </div>
+      </div>
+     </div>
+
+      <div className='w-full flex justify-between border-b-[1px] border-gray-500 border-opacity-35 h-[8rem] px-10 py-10'>
+      <h1 className='text-xl font-semibold w-[15rem] text-center'>Knowledge bases</h1>
+      <div className='flex gap-16 text-lg'>
+      <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
+        <h1>5 Total</h1>
+      </div>
+      <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
+        <h1>10 Total</h1>
+      </div>
+      <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
+        <h1>20 Total</h1>
+      </div>
+      <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
+        <h1>40 Total</h1>
+      </div>
+            <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
+        <h1>Unlimited</h1>
+      </div>
+      </div>
+     </div>
+
+      <div className='w-full flex justify-between border-b-[1px] border-gray-500 border-opacity-35 h-[8rem] px-10 py-10'>
+      <h1 className='text-xl font-semibold w-[15rem] text-center'>Storage space</h1>
+      <div className='flex gap-16 text-lg'>
+      <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
+        <h1>1GB</h1>
+      </div>
+      <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
+        <h1>3GB</h1>
+      </div>
+      <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
+        <h1>6GB</h1>
+      </div>
+      <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
+        <h1>15GB</h1>
+      </div>
+            <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
+        <h1>35GB</h1>
+      </div>
+      </div>
+     </div> 
+
+      <div className='w-full flex justify-between border-b-[1px] border-gray-500 border-opacity-35 h-[8rem] px-10 py-10'>
+      <h1 className='text-xl font-semibold w-[15rem] text-center'>Internet Searches</h1>
+      <div className='flex gap-16 text-lg'>
+      <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
+        <h1>250/month</h1>
+      </div>
+      <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
+        <h1>500/month</h1>
+      </div>
+      <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
+        <h1>Unlimited</h1>
+      </div>
+      <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
+        <h1>Unlimited</h1>
+      </div>
+            <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
+        <h1>Unlimited</h1>
+      </div>
+      </div>
+     </div>  
+
+      <div className='w-full flex justify-between border-b-[1px] border-gray-500 border-opacity-35 h-[8rem] px-10 py-10'>
+      <h1 className='text-xl font-semibold w-[15rem] text-center'>Integrations</h1>
+      <div className='flex gap-16 text-lg'>
+      <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
+        <h1>Github</h1>
+      </div>
+      <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
+        <h1>Codebase + Github + URL</h1>
+      </div>
+      <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
+        <h1>Codebase + Github + URL</h1>
+      </div>
+      <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
+        <h1>All Supported</h1>
+      </div>
+            <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
+        <h1>All Supported</h1>
+      </div>
+      </div>
+     </div>
+
+            <div className='w-full flex justify-between border-b-[1px] border-gray-500 border-opacity-35 h-[8rem] px-10 py-10'>
+      <h1 className='text-xl font-semibold w-[15rem] text-center'>Own API Key</h1>
+      <div className='flex gap-16 text-lg'>
+      <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
+        <h1>N/A</h1>
+      </div>
+      <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
+        <h1>N/A</h1>
+      </div>
+      <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
+        <h1>Available</h1>
+      </div>
+      <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
+        <h1>Available</h1>
+      </div>
+            <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
+        <h1>Available</h1>
+      </div>
+      </div>
+     </div>
+
+      <div className='w-full flex justify-between border-b-[1px] border-gray-500 border-opacity-35 h-[8rem] px-10 py-10'>
+      <h1 className='text-xl font-semibold w-[15rem] text-center'>Knowledge Base Sharing</h1>
+      <div className='flex gap-16 text-lg'>
+      <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
+        <h1>N/A</h1>
+      </div>
+      <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
+        <h1>N/A</h1>
+      </div>
+      <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
+        <h1>Available</h1>
+      </div>
+      <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
+        <h1>Available</h1>
+      </div>
+            <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
+        <h1>Available</h1>
+      </div>
+      </div>
+     </div>
+
+           <div className='w-full flex justify-between border-b-[1px] border-gray-500 border-opacity-35 h-[8rem] px-10 py-10'>
+      <h1 className='text-xl font-semibold w-[15rem] text-center'>Seat Management</h1>
+      <div className='flex gap-16 text-lg'>
+      <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
+        <h1>N/A</h1>
+      </div>
+      <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
+        <h1>N/A</h1>
+      </div>
+      <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
+        <h1>Available</h1>
+      </div>
+      <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
+        <h1>Available</h1>
+      </div>
+            <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
+        <h1>Available</h1>
+      </div>
+      </div>
+     </div>
+    </div>
+  )
+}

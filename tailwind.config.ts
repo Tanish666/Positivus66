@@ -13,6 +13,7 @@ export default {
         'preserve-3d': 'preserve-3d',
       },
 	   animation: {
+		shine: 'shine var(--duration) infinite linear',
         first: "moveVertical 30s ease infinite",
         second: "moveInCircle 20s reverse infinite",
         third: "moveInCircle 40s linear infinite",
@@ -70,6 +71,11 @@ export default {
   			sm: 'calc(var(--radius) - 4px)'
   		},
  keyframes: {
+	    shine: {
+          '0%': { backgroundPosition: '0% 0%' },
+          '50%': { backgroundPosition: '100% 100%' },
+          '100%': { backgroundPosition: '0% 0%' }
+        },
         moveHorizontal: {
           "0%": {
             transform: "translateX(-50%) translateY(-10%)",
@@ -108,3 +114,4 @@ export default {
   },
   plugins: [require("tailwindcss-animate")],
 } satisfies Config;
+
