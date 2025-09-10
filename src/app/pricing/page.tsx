@@ -61,7 +61,7 @@ className='fixed flex top-0 justify-center items-center w-full'>
         }}
   className={`mt-5 w-fit bg-opacity-65 z-[9999999999] rounded-lg border-y-[1px]   border-gray-400 border-opacity-10`}>
     <div className='flex  h-full w-full text-white px-[1rem] py-2 '>
-    <div className='flex gap-[51vw]  justify-between items-center w-full h-10'>
+    <div className='flex gap-[61vw]  justify-between items-center w-full h-10'>
     <div className="h-full w-[13rem] flex justify-center overflow-hidden">
       {!IsMascot && <img src="/codemateLogo.svg" alt="" />}
      {IsMascot && <motion.div initial={{opacity:0,filter:'blur(20px)',x:50}} animate={{opacity:1,filter:'blur(0px)',x:-80}} transition={{duration:0.5}}>
@@ -97,7 +97,7 @@ className='fixed flex top-0 justify-center items-center w-full'>
     
     </div>
     <div className={`flex gap-5 text-md  justify-center items-center cursor-pointer text-right `}>
-       <motion.h1 whileHover={{opacity:1}} className='flex text-center justify-center items-center opacity-65 gap-1'><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  className="icon icon-tabler icons-tabler-outline icon-tabler-arrow-narrow-left"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l14 0" /><path d="M5 12l4 4" /><path d="M5 12l4 -4" /></svg>Back</motion.h1>
+       <motion.h1 onClick={()=> router.push("/")} whileHover={{opacity:1}} className='flex text-center justify-center items-center opacity-65 gap-1'><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  className="icon icon-tabler icons-tabler-outline icon-tabler-arrow-narrow-left"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l14 0" /><path d="M5 12l4 4" /><path d="M5 12l4 -4" /></svg>Back</motion.h1>
        <button className={` px-2 py-1  bg-[#FFFFFF] text-black  rounded-sm font-semibold opacity-85`}>Get Started</button>
     </div>
 
@@ -246,7 +246,7 @@ function YearlyPlans() {
            <div className='pl-5 pt-5'>
           <h1 className='text-3xl font-semibold text-left mb-1'>Teams Plan</h1>
           <p className='opacity-70'>For development in teams and startups</p>
-          <div className='text-4xl font-bold mt-5'>$31<span className='text-sm opacity-80 font-normal text-cyan-400'>/ Monthly</span></div>
+          <div className='text-4xl font-bold mt-5'>$31<span className='text-sm opacity-80 font-normal text-cyan-400'> / Monthly</span></div>
          
           <div className='flex flex-col gap-2 mt-10 '>
           <h1 className='text-xl font-semibold'>Everything in Pro, plus</h1>
