@@ -22,7 +22,7 @@ export default function RootLayout({
         <title>rough work</title>
       </head>
       <body
-        className= {`${montserrat.className} antialiased bg-zinc-950 text-white`}
+        className= {`${montserrat.className} antialiased bg-zinc-950 text-white dark`}
       >
         <Provider store={store}>
         {children}

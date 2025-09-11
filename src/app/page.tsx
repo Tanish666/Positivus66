@@ -144,6 +144,7 @@ const AutoCompleteComponent = [
   const [IsMascot,setIsMascot] = useState(false);
   const [isNBack,setIsNBack] = useState(false);
   const [isMenu,setMenu] = useState(false);
+  const [isArrowV,setIsArrowV] = useState(false);
   const [isProducts,setIsProducts] = useState(false);
    const [isArrow,setIsArrow] = useState(false);
   const [isP1,setIsP1] = useState(false);
@@ -429,7 +430,8 @@ useMotionValueEvent(WYProg,'change',(lastest) => {
 
 ////for new prods
 useMotionValueEvent(PYProg,'change',(latest) => {
-console.log(latest);
+if(latest > 0) setIsArrowV(true);
+if(latest <= 0) setIsArrowV(false);
 if(latest <= 0.15){ 
   setIsP1(false);
   setIsP2(false);
@@ -446,7 +448,7 @@ if(latest >= 0.45){
 
 // for main div events
 useMotionValueEvent(MYProg,'change',(latest) => {
-console.log(latest);
+
  if(latest >= 0.001203313524221142) setIsNBack(true);
  if(latest <= 0.001203313524221142) setIsNBack(false);
 })
@@ -478,7 +480,7 @@ useMotionValueEvent(MYProg,'change',(e)=>{
  ///arrow 
 function handleArrow() {
   setIsArrow((prev) => {
-    if (prev) {
+    if (!prev) {
       heroRef2?.current?.scrollIntoView({ behavior: "smooth" });
     } else {
       footerRef?.current?.scrollIntoView({ behavior: "smooth" });
@@ -490,9 +492,18 @@ function handleArrow() {
   return (
     <div style={{cursor:`url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 397 433" width="26" height="26"><path d="M40.31 32.13c-1.76-8.4 7.23-14.92 14.67-10.66l296.47 169.91c7.54 4.32 6.29 15.56-2.02 18.12L205.54 253.76c-2.23.69-4.15 2.13-5.42 4.09l-72.01 110.94c-4.83 7.44-16.25 5.3-18.07-3.38L40.31 32.13z" fill="black" stroke="white" stroke-width="25"/></svg>') 16 16, auto`}} ref={mainRef} className='bg-zinc-950' >
 
-     <motion.div onClick={handleArrow} whileTap={{scale:1}} whileHover={{scale:1.1}} className='fixed cursor-pointer flex justify-center items-center bottom-7  right-7 size-10 rounded-full bg-[#EDEADE]/90 z-[9999999999] text-black'>
-     <motion.svg animate={{rotate:!isArrow? 180 : 0}} transition={{duration:0.5}} xmlns="http://www.w3.org/2000/svg"  width={30}  height={30}  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  strokeWidth={2}  strokeLinecap="round"  strokeLinejoin="round"  className="icon icon-tabler icons-tabler-outline icon-tabler-arrow-narrow-up"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 5l0 14" /><path d="M16 9l-4 -4" /><path d="M8 9l4 -4" /></motion.svg>
+
+     {/* arrow for going to hero section */}
+     <AnimatePresence>
+    {isArrowV && 
+    <motion.div initial={{opacity:0,filter:'blur(20px)'}} animate={{opacity:1,filter:'blur(0px)'}} exit={{opacity:0,filter:'blur(20px)'}} transition={{duration:1}} className="fixed bottom-7 right-7 z-[9999999999]">
+     <motion.div  onClick={handleArrow} whileTap={{scale:1}} whileHover={{scale:1.1}}  className='hidden lg:flex cursor-pointer  justify-center items-center  size-10 rounded-full bg-[#EDEADE]/90  text-black'>
+     <motion.svg animate={{rotate:isArrow? 180 : 0}} transition={{duration:0.5}} xmlns="http://www.w3.org/2000/svg"  width={30}  height={30}  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  strokeWidth={2}  strokeLinecap="round"  strokeLinejoin="round"  className="icon icon-tabler icons-tabler-outline icon-tabler-arrow-narrow-up"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 5l0 14" /><path d="M16 9l-4 -4" /><path d="M8 9l4 -4" /></motion.svg>
      </motion.div>
+     </motion.div>
+     }
+     </AnimatePresence>
+     {/* arrow for going to hero section */}
 {/* bottom blur */}
 {/* <div className='fixed h-[2%] w-full bg-gradient-to-t from-white/30 to-transparent backdrop-blur-[5px] bottom-0 z-40 opacity-100'>
 </div>
@@ -1067,20 +1078,52 @@ className='lg:hidden fixed flex top-0 justify-center items-center w-full'>
 
 
 {/* trusted by section */}
-<div className={`${montserrat.className} h-[70vh] lg:h-[100vh] w-full bg-zinc-950 text-white z-50`}>
- <div className='lg:pt-[15rem]'>
- <h1 className='text-center text-7xl font-bold text-white  opacity-45'>Trusted By</h1>
- <p className='text-center mt-2 text-xl opacity-30'>The Developers from the well known orgs around the globe</p>
+<div className={`${montserrat.className} lg:pb-32 pb-20  w-full bg-zinc-950 text-white z-50`}>
+ <div className=' lg:pt-[15rem]'>
+ <h1 className='text-center text-[10vw] lg:text-7xl font-bold text-white  opacity-45'>Trusted By</h1>
+ <p className='text-center mt-2  lg:text-xl opacity-30'>The Developers from the well known orgs around the globe</p>
      
-     <div className="grid grid-cols-3 place-items-center justify-items-center px-32 mt-10  h-full opacity-30 gap-10">
-      <img src="https://drive.codemate.ai/Amazon.png" alt="Amazon" className="logo" />
-      <img src="https://drive.codemate.ai/atlassian.png" alt="Atlassian" className="logo" />
-      <img src="https://drive.codemate.ai/innovacer.png" alt="Innovacer" className="logo" />
-      <img src="https://drive.codemate.ai/FamPay.png" alt="FamPay" className="logo" />
-      <img src="https://drive.codemate.ai/paypal.png" alt="Paypal" className="logo" />
-      <img src="https://drive.codemate.ai/adobe.png" alt="Adobe" className="logo" />
-      
-</div>
+     
+     <div className='flex flex-col justify-center items-center w-full'>
+      <div className='flex lg:gap-10 justify-center items-center mt-4'>
+       <img src='paytm.svg' className='object-fit w-[30vw] lg:w-[20vw]'/>
+       <img src='amazon.svg' className='object-fit w-[30vw] lg:w-[20vw]'/>
+       <img src='fampay.svg' className='object-fit w-[30vw] lg:w-[20vw]'/>
+      </div>
+      <div className='flex gap-4'>
+        <img src='inno.svg' className='object-fit w-[35vw] lg:w-[25vw]]'/>
+        <img src='atl.svg' className='object-fit w-[35vw] lg:w-[25vw]'/>
+      </div>
+     </div>
+
+ </div>
+
+
+ <div className='flex flex-col w-full lg:flex-row gap-10 justify-center items-center lg:gap-32 mt-10 lg:mt-16'>
+  <div className='h-[22vh] w-[50vw] lg:size-[20rem]'>
+    <div className='h-[90%] w-[90%] bg-zinc-900'>
+    </div>
+    <div>
+      <h1 className='text-3xl font-semibold'>Header</h1>
+      <p className='text-sm opacity-70'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor atque aliquid id. Consectetur, dolorum quaerat sunt repellendus.</p>
+    </div>
+  </div>
+  <div className='h-[22vh] w-[50vw] lg:size-[20rem]'>
+    <div className='h-[90%] w-[90%] bg-zinc-900'>
+    </div>
+    <div>
+      <h1 className='text-3xl font-semibold'>Header</h1>
+      <p className='text-sm opacity-70'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor atque aliquid id. Consectetur, dolorum quaerat sunt repellendus.</p>
+    </div>
+  </div>
+  <div className='h-[22vh] w-[50vw] lg:size-[20rem]'>
+    <div className='h-[90%] w-[90%] bg-zinc-900'>
+    </div>
+    <div>
+      <h1 className='text-3xl font-semibold'>Header</h1>
+      <p className='text-sm opacity-70'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor atque aliquid id. Consectetur, dolorum quaerat sunt repellendus.</p>
+    </div>
+  </div>
  </div>
 </div> 
 {/* trusted by section */}

@@ -4,6 +4,11 @@ import {motion, useMotionValueEvent, useScroll} from 'framer-motion'
 import { useRouter } from 'next/navigation'
 import Footer from '@/components/footer';
 import { ShineBorder } from '@/components/ui/shainingBoader';
+import {   Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent, } from '@/components/ui/accordion';
+  import { ChevronUp } from 'lucide-react';
 function Page() {
   const router = useRouter();
   const ref = useRef(null);
@@ -45,7 +50,7 @@ function Page() {
      {/* navbar */}
 <div 
 style={{zIndex:999999999999,}}
-className='fixed flex top-0 justify-center items-center w-full'>
+className='hidden lg:flex  fixed  top-0 justify-center items-center w-full'>
     <motion.div
    initial={{y:-100}}
    animate={{y:0}}
@@ -59,9 +64,9 @@ className='fixed flex top-0 justify-center items-center w-full'>
         WebkitBackdropFilter: 'blur(5px)',
         zIndex:999999999999,
         }}
-  className={`mt-5 w-fit bg-opacity-65 z-[9999999999] rounded-lg border-y-[1px]   border-gray-400 border-opacity-10`}>
+  className={`mt-5 w-[90%]  bg-opacity-65 z-[9999999999] rounded-lg border-y-[1px]   border-gray-400 border-opacity-10`}>
     <div className='flex  h-full w-full text-white px-[1rem] py-2 '>
-    <div className='flex gap-[61vw]  justify-between items-center w-full h-10'>
+    <div className='flex   justify-between items-center w-full h-10'>
     <div className="h-full w-[13rem] flex justify-center overflow-hidden">
       {!IsMascot && <img src="/codemateLogo.svg" alt="" />}
      {IsMascot && <motion.div initial={{opacity:0,filter:'blur(20px)',x:50}} animate={{opacity:1,filter:'blur(0px)',x:-80}} transition={{duration:0.5}}>
@@ -109,6 +114,44 @@ className='fixed flex top-0 justify-center items-center w-full'>
 </div>
      {/* navbar */}
 
+     {/* mobile Navbar */}
+     <div 
+style={{zIndex:999999999999,}}
+className='lg:hidden fixed flex top-0 justify-center items-center w-full'>
+    <motion.div
+   initial={{y:-100}}
+   animate={{y:0}}
+   transition={{duration:1,delay:0.5}}
+  // initial={{opacity:0,filter:'blur(10px)'}}
+  // animate={{opacity:1,filter:'blur(0px)'}}
+  // transition={{duration:1,delay:7}}
+  style={{background: 'rgba(15, 20, 20, 0.45)',   
+        boxShadow: '0 4px 25px rgba(0, 0, 0, 0.1)',
+        backdropFilter: 'blur(5px)',
+        WebkitBackdropFilter: 'blur(5px)',
+        zIndex:999999999999,
+        }}
+  className={`mt-5 w-[90%]  bg-opacity-65 z-[9999999999] rounded-lg border-y-[1px]   border-gray-400 border-opacity-10`}>
+    <div className='flex  h-full w-full text-white px-[1rem] py-2 '>
+    <div className='flex   justify-between items-center w-full h-10'>
+    <div className="h-full w-[25vw] flex justify-center overflow-hidden">
+      <img src="/codemateLogo.svg" alt="" />
+
+    
+    </div>
+    <div className={`flex gap-5 text-md  justify-center items-center cursor-pointer text-right `}>
+       <motion.h1 onClick={()=> router.push("/")} whileHover={{opacity:1}} className='flex text-center justify-center items-center opacity-65 gap-1'><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  className="icon icon-tabler icons-tabler-outline icon-tabler-arrow-narrow-left"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l14 0" /><path d="M5 12l4 4" /><path d="M5 12l4 -4" /></svg>Back</motion.h1>
+       <button className={` px-2 py-1  bg-[#FFFFFF] text-black text-sm rounded-sm font-semibold opacity-85`}>Get Started</button>
+    </div>
+
+
+    </div>
+     {/* <h1 className=' p-2 bg-[#1a1a1a] border border-opacity-15 bg-opacity-25 rounded-md flex justify-center items-center'>Book a Demo</h1> */}
+    </div>
+    </motion.div>
+</div>
+ {/* mobile responsivess */}
+
       <div className='flex flex-col'>
         <h1 className='text-5xl text-center pt-24 pb-1 font-bold bg-gradient-to-b from-white to-gray-300/80 bg-clip-text  text-transparent '>Let's <span className='bg-gradient-to-b from-[#00BFFF] to-[#1E90FF] bg-clip-text text-transparent text-6xl'>Upgrade</span> your vision</h1>
         <p className='text-center text-xl mt-1 opacity-60'>Choose a plan which feels right for you.</p>
@@ -129,12 +172,24 @@ className='fixed flex top-0 justify-center items-center w-full'>
 
         {isPlan2 && 
          <YearlyPlans/>
-         } 
-
+         }
+        {isPlan1 && 
+        <div> 
+        <ComparePlans2/>
+        <ComparePlans2Mobile/>
+        </div>} 
+        {isPlan2 && 
+        <div> 
+        <ComparePlans2/>
+        <ComparePlans2Mobile/>
+        </div>} 
         {isPlan3 && <OneTimePlans/>}
         
         {isPlan3 && 
+        <div>
         <ComparePlans/>
+        <ComparePlansMobile/>
+        </div>
         }
         <Footer/>
 
@@ -148,14 +203,14 @@ export default Page
 
 function YearlyPlans() {
   return(
-       <div className='flex justify-center  gap-10 mt-4 mb-20'>
+       <div className='flex-col  flex  lg:flex-row  justify-center items-center  gap-10 mt-4 mb-20'>
 
         <div className='relative h-[30rem] w-[23rem] bg-zinc-900 rounded-2xl  mt-[3rem]'>
           
           <ShineBorder shineColor={["#00BFFF", "#1E90FF","#00FFFF"]} borderWidth={1.5} className='rounded-2xl'/>
           
            <div className='pl-5 pt-5'> 
-          <h1 className='text-3xl font-semibold text-left mb-1'>Pro Plan</h1>
+          <span className='bg-gradient-to-b from-[#00BFFF] to-[#1E90FF] bg-clip-text text-transparent text-4xl font-semibold mb-1'>Pro Plan</span>
           <p className='opacity-70'>For individual developers and freelancers</p>
           <div className='text-4xl font-bold mt-5'>$17<span className='text-sm opacity-80 font-normal text-cyan-400'>/ Monthly</span></div>
          
@@ -244,7 +299,7 @@ function YearlyPlans() {
           <ShineBorder shineColor={["#00BFFF", "#1E90FF","#00FFFF"]} borderWidth={1.5} className='rounded-2xl'/>
            
            <div className='pl-5 pt-5'>
-          <h1 className='text-3xl font-semibold text-left mb-1'>Teams Plan</h1>
+          <span className='bg-gradient-to-b from-[#00BFFF] to-[#1E90FF] bg-clip-text text-transparent text-4xl font-semibold mb-1'>Teams Plan</span>
           <p className='opacity-70'>For development in teams and startups</p>
           <div className='text-4xl font-bold mt-5'>$31<span className='text-sm opacity-80 font-normal text-cyan-400'> / Monthly</span></div>
          
@@ -328,13 +383,13 @@ function YearlyPlans() {
          </motion.button>
          </div>
         </div>
-                <div className='relative h-[30rem] w-[23rem] bg-zinc-900 rounded-2xl  mt-[3rem]'>
+                <div className='relative h-[30rem] w-[23rem] bg-zinc-900 rounded-2xl  lg:mt-[3rem]'>
            
           <ShineBorder shineColor={["#00BFFF", "#1E90FF","#00FFFF"]} borderWidth={1.5} className='rounded-2xl'/>
        
 
        <div className='pl-5 pt-5'>
-          <h1 className='text-3xl font-semibold text-left mb-1'>Organisation</h1>
+        <span className='bg-gradient-to-b from-[#00BFFF] to-[#1E90FF] bg-clip-text text-transparent text-4xl font-semibold mb-1'>Orgnisation</span>
           <p className='opacity-70'>For SMBs and Enterprises</p>
           <div className='text-4xl font-bold mt-5 '>Let's Talk</div>
          
@@ -424,14 +479,14 @@ function YearlyPlans() {
 
 function MonthlyPlans() {
   return(
-       <div className='flex justify-center  gap-10 mt-4 mb-20'>
+       <div className='flex-col  flex  lg:flex-row justify-center items-center gap-10 mt-4 mb-20'>
 
         <div className='relative h-[30rem] w-[23rem] bg-zinc-900 rounded-2xl  mt-[3rem]'>
           
           <ShineBorder shineColor={["#00BFFF", "#1E90FF","#00FFFF"]} borderWidth={1.5} className='rounded-2xl'/>
           
            <div className='pl-5 pt-5'> 
-          <h1 className='text-3xl font-semibold text-left mb-1'>Pro Plan</h1>
+          <span className='bg-gradient-to-b from-[#00BFFF] to-[#1E90FF] bg-clip-text text-transparent text-4xl font-semibold mb-1'>Pro Plan</span>
           <p className='opacity-70'>For individual developers and freelancers</p>
           <div className='text-4xl font-bold mt-5'>$20<span className='text-sm opacity-80 font-normal text-cyan-400'>/ Monthly</span></div>
          
@@ -520,7 +575,7 @@ function MonthlyPlans() {
           <ShineBorder shineColor={["#00BFFF", "#1E90FF","#00FFFF"]} borderWidth={1.5} className='rounded-2xl'/>
            
            <div className='pl-5 pt-5'>
-          <h1 className='text-3xl font-semibold text-left mb-1'>Teams Plan</h1>
+          <span className='bg-gradient-to-b from-[#00BFFF] to-[#1E90FF] bg-clip-text text-transparent text-4xl font-semibold mb-1'>Teams Plan</span>
           <p className='opacity-70'>For development in teams and startups</p>
           <div className='text-4xl font-bold mt-5'>$37<span className='text-sm opacity-80 font-normal text-cyan-400'>/ Monthly</span></div>
          
@@ -604,13 +659,13 @@ function MonthlyPlans() {
          </motion.button>
          </div>
         </div>
-                <div className='relative h-[30rem] w-[23rem] bg-zinc-900 rounded-2xl  mt-[3rem]'>
+                <div className='relative h-[30rem] w-[23rem] bg-zinc-900 rounded-2xl  lg:mt-[3rem]'>
            
           <ShineBorder shineColor={["#00BFFF", "#1E90FF","#00FFFF"]} borderWidth={1.5} className='rounded-2xl'/>
        
 
        <div className='pl-5 pt-5'>
-          <h1 className='text-3xl font-semibold text-left mb-1'>Organisation</h1>
+       <span className='bg-gradient-to-b from-[#00BFFF] to-[#1E90FF] bg-clip-text text-transparent text-4xl font-semibold mb-1'>Orgnisation</span>
           <p className='opacity-70'>For SMBs and Enterprises</p>
           <div className='text-4xl font-bold mt-5 '>Let's Talk</div>
          
@@ -700,14 +755,14 @@ function MonthlyPlans() {
 
 function OneTimePlans() {
   return(
-       <div className='flex justify-center  gap-10 mt-4 mb-20'>
+       <div className='flex-col  flex  lg:flex-row justify-center items-center gap-10 mt-4 mb-20'>
 
         <div className='relative h-[30rem] w-[23rem] bg-zinc-900 rounded-2xl  mt-[3rem]'>
           
           <ShineBorder shineColor={["#00BFFF", "#1E90FF","#00FFFF"]} borderWidth={1.5} className='rounded-2xl'/>
           
            <div className='pl-5 pt-5'> 
-          <h1 className='text-3xl font-semibold text-left mb-1'>Tier Plan 1</h1>
+           <span className='bg-gradient-to-b from-[#00BFFF] to-[#1E90FF] bg-clip-text text-transparent text-4xl font-semibold mb-1'>Tier Plan 1</span>
           <p className='opacity-70'>For solo developers and Programming Enthusiasts</p>
           <div className='text-4xl font-bold mt-5'>$59<span className='text-sm opacity-80 font-normal text-cyan-400'></span></div>
          
@@ -809,7 +864,7 @@ function OneTimePlans() {
           <ShineBorder shineColor={["#00BFFF", "#1E90FF","#00FFFF"]} borderWidth={1.5} className='rounded-2xl'/>
           
            <div className='px-5 pt-5'> 
-          <h1 className='text-3xl font-semibold text-left mb-1'>Tier Plan 2</h1>
+           <span className='bg-gradient-to-b from-[#00BFFF] to-[#1E90FF] bg-clip-text text-transparent text-4xl font-semibold mb-1'>Tier Plan 2</span>
           <p className='opacity-70'>For Professional developers and freelancers</p>
           <div className='text-4xl font-bold mt-5'>$169<span className='text-sm opacity-80 font-normal text-cyan-400'></span></div>
          
@@ -905,12 +960,12 @@ function OneTimePlans() {
          </motion.button>
          </div>
         </div>
-        <div className='relative h-[30rem]  w-[23rem] bg-zinc-900 rounded-2xl  mt-[3rem]'>
+        <div className='relative h-[30rem]  w-[23rem] bg-zinc-900 rounded-2xl  lg:marker:mt-[3rem]'>
           
           <ShineBorder shineColor={["#00BFFF", "#1E90FF","#00FFFF"]} borderWidth={1.5} className='rounded-2xl'/>
           
            <div className='px-5 pt-5'> 
-          <h1 className='text-3xl font-semibold text-left mb-1'>Tier Plan 3</h1>
+            <span className='bg-gradient-to-b from-[#00BFFF] to-[#1E90FF] bg-clip-text text-transparent text-4xl font-semibold mb-1'>Tier Plan 3</span>
           <p className='opacity-70'>For development teams and agencies</p>
           <div className='text-4xl font-bold mt-5'>$299<span className='text-sm opacity-80 font-normal text-cyan-400'></span></div>
          
@@ -1013,7 +1068,7 @@ function OneTimePlans() {
 
 function ComparePlans(){
   return(
-    <div className='pb-10 w-full flex flex-col items-center'>
+    <div className='hidden lg:flex pb-10 w-full  flex-col items-center'>
      <div className='w-full flex justify-between border-b-[1px] border-gray-500 border-opacity-35 h-[8rem] px-10 py-10'>
       <h1 className='text-5xl font-semibold mb-2'><span className='bg-gradient-to-b from-[#00BFFF] to-[#1E90FF] bg-clip-text text-transparent'>Compare</span> Plans</h1>
 
@@ -1229,6 +1284,619 @@ function ComparePlans(){
       </div>
       </div>
      </div>
+    </div>
+  )
+}
+
+function ComparePlans2(){
+  return(
+    <div className='hidden lg:flex pb-10 w-full  flex-col items-center'>
+     <div className='w-[80%] flex justify-between border-b-[1px] border-gray-500 border-opacity-35 h-[8rem] px-10 py-10'>
+      <h1 className='text-5xl font-semibold mb-2'><span className='bg-gradient-to-b from-[#00BFFF] to-[#1E90FF] bg-clip-text text-transparent'>Compare</span> Plans</h1>
+
+      <div className='flex gap-[3.7rem] text-2xl'>
+      <div className='flex flex-col justify-center items-center gap-2'>
+        <h1 className='font-semibold'>Pro Plan</h1>
+        
+      </div>
+      <div className='flex flex-col justify-center items-center gap-2'>
+        <h1 className='font-semibold'>Teams Plan</h1>
+        
+      </div>
+      </div>
+     </div>
+
+      <div className='w-[80%] flex justify-between border-b-[1px] border-gray-500 border-opacity-35 h-[8rem] px-10 py-10'>
+      <h1 className='text-xl font-semibold w-[15rem] text-center'>Seats Management</h1>
+      <div className='flex gap-16 text-lg'>
+
+
+      <div className='flex flex-col justify-center items-center gap-2 w-[7.8rem]'>
+        <h1>Not Included</h1>
+      </div>
+      <div className='flex flex-col justify-center items-center gap-2 w-[7.8rem]'>
+        <h1>Included</h1>
+      </div>
+
+      </div>
+     </div>
+
+
+      <div className='w-[80%] flex justify-between border-b-[1px] border-gray-500 border-opacity-35 h-[8rem] px-10 py-10'>
+      <h1 className='text-xl font-semibold w-[15rem] text-center'>Knowledge base Sharing</h1>
+      <div className='flex gap-16 text-lg'>
+      <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
+        <h1>Not Included</h1>
+      </div>
+      <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
+        <h1>Included</h1>
+      </div>
+      </div>
+     </div>
+
+      <div className='w-[80%] flex justify-between border-b-[1px] border-gray-500 border-opacity-35 h-[8rem] px-10 py-10'>
+      <h1 className='text-xl font-semibold w-[15rem] text-center'>Advance ML Model</h1>
+      <div className='flex gap-16 text-lg'>
+      <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
+        <h1>Not Included</h1>
+      </div>
+      <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
+        <h1>Included</h1>
+      </div>
+      </div>
+     </div> 
+
+      <div className='w-[80%] flex justify-between border-b-[1px] border-gray-500 border-opacity-35 h-[8rem] px-10 py-10'>
+      <h1 className='text-xl font-semibold w-[15rem] text-center'>Automated PR Review</h1>
+      <div className='flex gap-16 text-lg'>
+      <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
+        <h1>Not Included</h1>
+      </div>
+      <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
+        <h1>Included</h1>
+      </div>
+      </div>
+     </div>  
+
+
+            <div className='w-[80%] flex justify-between border-b-[1px] border-gray-500 border-opacity-35 h-[8rem] px-10 py-10'>
+      <h1 className='text-xl font-semibold w-[15rem] text-center'>Own API Key</h1>
+      <div className='flex gap-16 text-lg'>
+      <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
+        <h1>Not Included</h1>
+      </div>
+      <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
+        <h1>Included</h1>
+      </div>
+      </div>
+     </div>
+
+      <div className='w-[80%] flex justify-between border-b-[1px] border-gray-500 border-opacity-35 h-[8rem] px-10 py-10'>
+      <h1 className='text-xl font-semibold w-[15rem] text-center'>Debug, Review and Refactor Code.</h1>
+      <div className='flex gap-16 text-lg'>
+      <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
+        <h1>Included</h1>
+      </div>
+      <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
+        <h1>Included</h1>
+      </div>
+      </div>
+     </div>
+
+           <div className='w-[80%] flex justify-between border-b-[1px] border-gray-500 border-opacity-35 h-[8rem] px-10 py-10'>
+      <h1 className='text-xl font-semibold w-[15rem] text-center'>Internet Search.</h1>
+      <div className='flex gap-16 text-lg'>
+      <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
+        <h1>Unlimited</h1>
+      </div>
+      <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
+        <h1>Unlimited</h1>
+      </div>
+      </div>
+     </div>
+
+      <div className='w-[80%] flex justify-between border-b-[1px] border-gray-500 border-opacity-35 h-[8rem] px-10 py-10'>
+      <h1 className='text-xl font-semibold w-[15rem] text-center'>Search & Chat with Documentation & Codebases.</h1>
+      <div className='flex gap-16 text-lg'>
+      <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
+        <h1>Included</h1>
+      </div>
+      <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
+        <h1>Included</h1>
+      </div>
+      </div>
+     </div>
+
+      <div className='w-[80%] flex justify-between border-b-[1px] border-gray-500 border-opacity-35 h-[8rem] px-10 py-10'>
+      <h1 className='text-xl font-semibold w-[15rem] text-center'>Generate Unit/Functional Test cases.</h1>
+      <div className='flex gap-16 text-lg'>
+      <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
+        <h1>Included</h1>
+      </div>
+      <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
+        <h1>Included</h1>
+      </div>
+      </div>
+     </div>
+
+    </div>
+  )
+}
+
+function ComparePlans2Mobile(){
+    return(
+    <div className='pb-10 w-full lg:hidden flex flex-col items-center'>
+     <div className='w-fullflex justify-between  h-[8rem] px-10 py-[20vw]'>
+      <h1 className='text-[10vw] font-semibold mb-2 text-center'><span className='bg-gradient-to-b from-[#00BFFF] to-[#1E90FF] bg-clip-text text-transparent'>Compare</span> Plans</h1>
+
+      {/* <div className='flex gap-[3.7rem] text-2xl'>
+      <div className='flex flex-col justify-center items-center gap-2'>
+        <h1 className='font-semibold'>Pro Plan</h1>
+        
+      </div>
+      <div className='flex flex-col justify-center items-center gap-2'>
+        <h1 className='font-semibold'>Teams Plan</h1>
+        
+      </div>
+      </div> */}
+     </div>
+
+      <Accordion className='flex w-[90%] flex-col  gap-3'
+      transition={{ duration: 0.2, ease: 'easeInOut' }}>
+
+
+      <AccordionItem value='Seats Management' className='border-b-[1px] pb-3'>
+        <AccordionTrigger className='w-full py-0.5 text-left text-zinc-950 dark:text-zinc-50 font-semibold'>
+          Seats Management
+        </AccordionTrigger>
+        <AccordionContent className='mt-4 pb-5'>
+
+               <div className='flex flex-col w-full justify-between gap-8 '>
+                <div className='flex w-full justify-between border-b-[1px] pb-5'>
+                  <h1 className='text-xl'>Pro Plan</h1>
+                  <p className='opacity-80'>Not Included</p>
+                </div>
+                  <div className='flex w-full justify-between'>
+                  <h1 className='text-xl'>Team Plan</h1>
+                  <p className='opacity-80'>Included</p>
+                </div>
+               </div>
+        </AccordionContent>
+      </AccordionItem>
+
+      <AccordionItem value='Knowledge base Sharing' className='border-b-[1px] pb-3'>
+        <AccordionTrigger className='w-full py-0.5 text-left text-zinc-950 dark:text-zinc-50 font-semibold'>
+          Knowledge base Sharing
+        </AccordionTrigger>
+        <AccordionContent className='mt-4 pb-5'>
+
+               <div className='flex flex-col w-full justify-between gap-8 '>
+                <div className='flex w-full justify-between border-b-[1px] pb-5'>
+                  <h1 className='text-xl'>Pro Plan</h1>
+                  <p className='opacity-80'>Not Included</p>
+                </div>
+                  <div className='flex w-full justify-between'>
+                  <h1 className='text-xl'>Team Plan</h1>
+                  <p className='opacity-80'>Included</p>
+                </div>
+               </div>
+        </AccordionContent>
+      </AccordionItem>
+
+      <AccordionItem value='Advance ML Model' className='border-b-[1px] pb-3'>
+        <AccordionTrigger className='w-full py-0.5 text-left text-zinc-950 dark:text-zinc-50 font-semibold'>
+          Advance ML Model
+        </AccordionTrigger>
+        <AccordionContent className='mt-4 pb-5'>
+
+               <div className='flex flex-col w-full justify-between gap-8 '>
+                <div className='flex w-full justify-between border-b-[1px] pb-5'>
+                  <h1 className='text-xl'>Pro Plan</h1>
+                  <p className='opacity-80'>Not Included</p>
+                </div>
+                  <div className='flex w-full justify-between'>
+                  <h1 className='text-xl'>Team Plan</h1>
+                  <p className='opacity-80'>Included</p>
+                </div>
+               </div>
+        </AccordionContent>
+      </AccordionItem>      
+
+      <AccordionItem value='Own API Key' className='border-b-[1px] pb-3'>
+        <AccordionTrigger className='w-full py-0.5 text-left text-zinc-950 dark:text-zinc-50 font-semibold'>
+          Own API Key
+        </AccordionTrigger>
+        <AccordionContent className='mt-4 pb-5'>
+
+               <div className='flex flex-col w-full justify-between gap-8 '>
+                <div className='flex w-full justify-between border-b-[1px] pb-5'>
+                  <h1 className='text-xl'>Pro Plan</h1>
+                  <p className='opacity-80'>Not Included</p>
+                </div>
+                  <div className='flex w-full justify-between'>
+                  <h1 className='text-xl'>Team Plan</h1>
+                  <p className='opacity-80'>Included</p>
+                </div>
+               </div>
+        </AccordionContent>
+      </AccordionItem>    
+
+      <AccordionItem value='Debug, Review and Refactor Code' className='border-b-[1px] pb-3'>
+        <AccordionTrigger className='w-full py-0.5 text-left text-zinc-950 dark:text-zinc-50 font-semibold'>
+          Debug, Review and Refactor Code
+        </AccordionTrigger>
+        <AccordionContent className='mt-4 pb-5'>
+
+               <div className='flex flex-col w-full justify-between gap-8 '>
+                <div className='flex w-full justify-between border-b-[1px] pb-5'>
+                  <h1 className='text-xl'>Pro Plan</h1>
+                  <p className='opacity-80'>Included</p>
+                </div>
+                  <div className='flex w-full justify-between'>
+                  <h1 className='text-xl'>Team Plan</h1>
+                  <p className='opacity-80'>Included</p>
+                </div>
+               </div>
+        </AccordionContent>
+      </AccordionItem>
+         
+      <AccordionItem value='Internet Search' className='border-b-[1px] pb-3'>
+        <AccordionTrigger className='w-full py-0.5 text-left text-zinc-950 dark:text-zinc-50 font-semibold'>
+          Internet Search
+        </AccordionTrigger>
+        <AccordionContent className='mt-4 pb-5'>
+
+               <div className='flex flex-col w-full justify-between gap-8 '>
+                <div className='flex w-full justify-between border-b-[1px] pb-5'>
+                  <h1 className='text-xl'>Pro Plan</h1>
+                  <p className='opacity-80'>Included</p>
+                </div>
+                  <div className='flex w-full justify-between'>
+                  <h1 className='text-xl'>Team Plan</h1>
+                  <p className='opacity-80'>Included</p>
+                </div>
+               </div>
+        </AccordionContent>
+      </AccordionItem>
+
+      <AccordionItem value='Search & Chat with Documentation & Codebases' className='border-b-[1px] pb-3'>
+        <AccordionTrigger className='w-full py-0.5 text-left text-zinc-950 dark:text-zinc-50 font-semibold'>
+          Search & Chat with Documentation & Codebases
+        </AccordionTrigger>
+        <AccordionContent className='mt-4 pb-5'>
+
+               <div className='flex flex-col w-full justify-between gap-8 '>
+                <div className='flex w-full justify-between border-b-[1px] pb-5'>
+                  <h1 className='text-xl'>Pro Plan</h1>
+                  <p className='opacity-80'>Included</p>
+                </div>
+                  <div className='flex w-full justify-between'>
+                  <h1 className='text-xl'>Team Plan</h1>
+                  <p className='opacity-80'>Included</p>
+                </div>
+               </div>
+        </AccordionContent>
+      </AccordionItem>
+
+      <AccordionItem value='Generate Unit/Functional Test cases' className='border-b-[1px] pb-3'>
+        <AccordionTrigger className='w-full py-0.5 text-left text-zinc-950 dark:text-zinc-50 font-semibold'>
+          Generate Unit/Functional Test cases
+        </AccordionTrigger>
+        <AccordionContent className='mt-4 pb-5'>
+
+               <div className='flex flex-col w-full justify-between gap-8 '>
+                <div className='flex w-full justify-between border-b-[1px] pb-5'>
+                  <h1 className='text-xl'>Pro Plan</h1>
+                  <p className='opacity-80'>Included</p>
+                </div>
+                  <div className='flex w-full justify-between'>
+                  <h1 className='text-xl'>Team Plan</h1>
+                  <p className='opacity-80'>Included</p>
+                </div>
+               </div>
+        </AccordionContent>
+      </AccordionItem>    
+
+     </Accordion>
+    </div>
+  )
+}
+
+function ComparePlansMobile(){
+    return(
+    <div className='pb-10 w-full lg:hidden flex flex-col items-center'>
+     <div className='w-fullflex justify-between  h-[8rem] px-10 py-[20vw]'>
+      <h1 className='text-[10vw] font-semibold mb-2 text-center'><span className='bg-gradient-to-b from-[#00BFFF] to-[#1E90FF] bg-clip-text text-transparent'>Compare</span> Plans</h1>
+
+      {/* <div className='flex gap-[3.7rem] text-2xl'>
+      <div className='flex flex-col justify-center items-center gap-2'>
+        <h1 className='font-semibold'>Pro Plan</h1>
+        
+      </div>
+      <div className='flex flex-col justify-center items-center gap-2'>
+        <h1 className='font-semibold'>Teams Plan</h1>
+        
+      </div>
+      </div> */}
+     </div>
+
+      <Accordion className='flex w-[90%] flex-col  gap-3'
+      transition={{ duration: 0.2, ease: 'easeInOut' }}>
+
+
+      <AccordionItem value='Seats' className='border-b-[1px] pb-3'>
+        <AccordionTrigger className='w-full py-0.5 text-left text-zinc-950 dark:text-zinc-50 font-semibold'>
+          Seats
+        </AccordionTrigger>
+        <AccordionContent className='mt-4 pb-5'>
+
+               <div className='flex flex-col w-full justify-between gap-8 '>
+                <div className='flex w-full justify-between border-b-[1px] pb-3'>
+                  <h1 className='text-xl'>Tier 1</h1>
+                  <p className='opacity-80'>1 Seat</p>
+                </div>
+                  <div className='flex w-full justify-between border-b-[1px] pb-3'>
+                  <h1 className='text-xl'>Tier 2</h1>
+                  <p className='opacity-80'>1 Seat</p>
+                </div>
+                  <div className='flex w-full justify-between border-b-[1px] pb-3'>
+                  <h1 className='text-xl'>Tier 3</h1>
+                  <p className='opacity-80'>5 Seats</p>
+                </div>
+                  <div className='flex w-full justify-between border-b-[1px] pb-3'>
+                  <h1 className='text-xl'>Tier 4</h1>
+                  <p className='opacity-80'>15 Seats</p>
+                </div>
+                  <div className='flex w-full justify-between '>
+                  <h1 className='text-xl'>Tier 5</h1>
+                  <p className='opacity-80'>Unlimited</p>
+                </div>
+               </div>
+        </AccordionContent>
+      </AccordionItem>
+
+      <AccordionItem value='Tokens' className='border-b-[1px] pb-3'>
+        <AccordionTrigger className='w-full py-0.5 text-left text-zinc-950 dark:text-zinc-50 font-semibold'>
+          Tokens
+        </AccordionTrigger>
+        <AccordionContent className='mt-4 pb-5'>
+
+               <div className='flex flex-col w-full justify-between gap-8 '>
+                <div className='flex w-full justify-between border-b-[1px] pb-3'>
+                  <h1 className='text-xl'>Tier 1</h1>
+                  <p className='opacity-80'>60,000/month</p>
+                </div>
+                  <div className='flex w-full justify-between border-b-[1px] pb-3'>
+                  <h1 className='text-xl'>Tier 2</h1>
+                  <p className='opacity-80'>175,000/month</p>
+                </div>
+                  <div className='flex w-full justify-between border-b-[1px] pb-3'>
+                  <h1 className='text-xl'>Tier 3</h1>
+                  <p className='opacity-80'>750,000/month</p>
+                </div>
+                  <div className='flex w-full justify-between border-b-[1px] pb-3'>
+                  <h1 className='text-xl'>Tier 4</h1>
+                  <p className='opacity-80'>3,750,000/month</p>
+                </div>
+                  <div className='flex w-full justify-between '>
+                  <h1 className='text-xl'>Tier 5</h1>
+                  <p className='opacity-80'>20,000,000/month</p>
+                </div>
+               </div>
+        </AccordionContent>
+      </AccordionItem>
+
+      <AccordionItem value='Knowledge bases' className='border-b-[1px] pb-3'>
+        <AccordionTrigger className='w-full py-0.5 text-left text-zinc-950 dark:text-zinc-50 font-semibold'>
+          Knowledge bases
+        </AccordionTrigger>
+        <AccordionContent className='mt-4 pb-5'>
+               <div className='flex flex-col w-full justify-between gap-8 '>
+                <div className='flex w-full justify-between border-b-[1px] pb-3'>
+                  <h1 className='text-xl'>Tier 1</h1>
+                  <p className='opacity-80'>5 Total</p>
+                </div>
+                  <div className='flex w-full justify-between border-b-[1px] pb-3'>
+                  <h1 className='text-xl'>Tier 2</h1>
+                  <p className='opacity-80'>10 Total</p>
+                </div>
+                  <div className='flex w-full justify-between border-b-[1px] pb-3'>
+                  <h1 className='text-xl'>Tier 3</h1>
+                  <p className='opacity-80'>20 Total</p>
+                </div>
+                  <div className='flex w-full justify-between border-b-[1px] pb-3'>
+                  <h1 className='text-xl'>Tier 4</h1>
+                  <p className='opacity-80'>40 Total</p>
+                </div>
+                  <div className='flex w-full justify-between '>
+                  <h1 className='text-xl'>Tier 5</h1>
+                  <p className='opacity-80'>Unlimited</p>
+                </div>
+               </div>
+        </AccordionContent>
+      </AccordionItem>      
+
+      <AccordionItem value='Storage space' className='border-b-[1px] pb-3'>
+        <AccordionTrigger className='w-full py-0.5 text-left text-zinc-950 dark:text-zinc-50 font-semibold'>
+          Storage space
+        </AccordionTrigger>
+        <AccordionContent className='mt-4 pb-5'>
+               <div className='flex flex-col w-full justify-between gap-8 '>
+                <div className='flex w-full justify-between border-b-[1px] pb-3'>
+                  <h1 className='text-xl'>Tier 1</h1>
+                  <p className='opacity-80'>1GB</p>
+                </div>
+                  <div className='flex w-full justify-between border-b-[1px] pb-3'>
+                  <h1 className='text-xl'>Tier 2</h1>
+                  <p className='opacity-80'>3GB</p>
+                </div>
+                  <div className='flex w-full justify-between border-b-[1px] pb-3'>
+                  <h1 className='text-xl'>Tier 3</h1>
+                  <p className='opacity-80'>6GB</p>
+                </div>
+                  <div className='flex w-full justify-between border-b-[1px] pb-3'>
+                  <h1 className='text-xl'>Tier 4</h1>
+                  <p className='opacity-80'>15GB</p>
+                </div>
+                  <div className='flex w-full justify-between '>
+                  <h1 className='text-xl'>Tier 5</h1>
+                  <p className='opacity-80'>35GB</p>
+                </div>
+               </div>
+        </AccordionContent>
+      </AccordionItem>    
+
+      <AccordionItem value='Debug, Review and Refactor Code' className='border-b-[1px] pb-3'>
+        <AccordionTrigger className='w-full py-0.5 text-left text-zinc-950 dark:text-zinc-50 font-semibold'>
+          Internet Searches
+        </AccordionTrigger>
+        <AccordionContent className='mt-4 pb-5'>
+               <div className='flex flex-col w-full justify-between gap-8 '>
+                <div className='flex w-full justify-between border-b-[1px] pb-3'>
+                  <h1 className='text-xl'>Tier 1</h1>
+                  <p className='opacity-80'>250/month</p>
+                </div>
+                  <div className='flex w-full justify-between border-b-[1px] pb-3'>
+                  <h1 className='text-xl'>Tier 2</h1>
+                  <p className='opacity-80'>500/month</p>
+                </div>
+                  <div className='flex w-full justify-between border-b-[1px] pb-3'>
+                  <h1 className='text-xl'>Tier 3</h1>
+                  <p className='opacity-80'>Unlimited</p>
+                </div>
+                  <div className='flex w-full justify-between border-b-[1px] pb-3'>
+                  <h1 className='text-xl'>Tier 4</h1>
+                  <p className='opacity-80'>Unlimited</p>
+                </div>
+                  <div className='flex w-full justify-between '>
+                  <h1 className='text-xl'>Tier 5</h1>
+                  <p className='opacity-80'>Unlimited</p>
+                </div>
+               </div>
+        </AccordionContent>
+      </AccordionItem>
+         
+      <AccordionItem value='Integrations' className='border-b-[1px] pb-3'>
+        <AccordionTrigger className='w-full py-0.5 text-left text-zinc-950 dark:text-zinc-50 font-semibold'>
+          Integrations
+        </AccordionTrigger>
+        <AccordionContent className='mt-4 pb-5'>
+               <div className='flex flex-col w-full justify-between gap-8 '>
+                <div className='flex w-full justify-between border-b-[1px] pb-3'>
+                  <h1 className='text-xl'>Tier 1</h1>
+                  <p className='opacity-80'>Github</p>
+                </div>
+                  <div className='flex w-full justify-between border-b-[1px] pb-3'>
+                  <h1 className='text-xl'>Tier 2</h1>
+                  <p className='opacity-80'>Codebase + Github + URL</p>
+                </div>
+                  <div className='flex w-full justify-between border-b-[1px] pb-3'>
+                  <h1 className='text-xl'>Tier 3</h1>
+                  <p className='opacity-80'>Codebase + Github + URL</p>
+                </div>
+                  <div className='flex w-full justify-between border-b-[1px] pb-3'>
+                  <h1 className='text-xl'>Tier 4</h1>
+                  <p className='opacity-80'>All Supported</p>
+                </div>
+                  <div className='flex w-full justify-between '>
+                  <h1 className='text-xl'>Tier 5</h1>
+                  <p className='opacity-80'>All Supported</p>
+                </div>
+               </div>
+        </AccordionContent>
+      </AccordionItem>
+
+      <AccordionItem value='Own API Key' className='border-b-[1px] pb-3'>
+        <AccordionTrigger className='w-full py-0.5 text-left text-zinc-950 dark:text-zinc-50 font-semibold'>
+          Own API Key
+        </AccordionTrigger>
+        <AccordionContent className='mt-4 pb-5'>
+               <div className='flex flex-col w-full justify-between gap-8 '>
+                <div className='flex w-full justify-between border-b-[1px] pb-3'>
+                  <h1 className='text-xl'>Tier 1</h1>
+                  <p className='opacity-80'>N/A</p>
+                </div>
+                  <div className='flex w-full justify-between border-b-[1px] pb-3'>
+                  <h1 className='text-xl'>Tier 2</h1>
+                  <p className='opacity-80'>N/A</p>
+                </div>
+                  <div className='flex w-full justify-between border-b-[1px] pb-3'>
+                  <h1 className='text-xl'>Tier 3</h1>
+                  <p className='opacity-80'>Available</p>
+                </div>
+                  <div className='flex w-full justify-between border-b-[1px] pb-3'>
+                  <h1 className='text-xl'>Tier 4</h1>
+                  <p className='opacity-80'>Available</p>
+                </div>
+                  <div className='flex w-full justify-between '>
+                  <h1 className='text-xl'>Tier 5</h1>
+                  <p className='opacity-80'>Available</p>
+                </div>
+               </div>
+        </AccordionContent>
+      </AccordionItem>
+
+      <AccordionItem value='Knowledge Base Sharing' className='border-b-[1px] pb-3'>
+        <AccordionTrigger className='w-full py-0.5 text-left text-zinc-950 dark:text-zinc-50 font-semibold'>
+          Knowledge Base Sharing
+        </AccordionTrigger>
+        <AccordionContent className='mt-4 pb-5'>
+               <div className='flex flex-col w-full justify-between gap-8 '>
+                <div className='flex w-full justify-between border-b-[1px] pb-3'>
+                  <h1 className='text-xl'>Tier 1</h1>
+                  <p className='opacity-80'>N/A</p>
+                </div>
+                  <div className='flex w-full justify-between border-b-[1px] pb-3'>
+                  <h1 className='text-xl'>Tier 2</h1>
+                  <p className='opacity-80'>N/A</p>
+                </div>
+                  <div className='flex w-full justify-between border-b-[1px] pb-3'>
+                  <h1 className='text-xl'>Tier 3</h1>
+                  <p className='opacity-80'>Available</p>
+                </div>
+                  <div className='flex w-full justify-between border-b-[1px] pb-3'>
+                  <h1 className='text-xl'>Tier 4</h1>
+                  <p className='opacity-80'>Available</p>
+                </div>
+                  <div className='flex w-full justify-between '>
+                  <h1 className='text-xl'>Tier 5</h1>
+                  <p className='opacity-80'>Available</p>
+                </div>
+               </div>
+        </AccordionContent>
+      </AccordionItem>
+
+      <AccordionItem value='Seat Management' className='border-b-[1px] pb-3'>
+        <AccordionTrigger className='w-full py-0.5 text-left text-zinc-950 dark:text-zinc-50 font-semibold'>
+          Seat Management
+        </AccordionTrigger>
+        <AccordionContent className='mt-4 pb-5'>
+               <div className='flex flex-col w-full justify-between gap-8 '>
+                <div className='flex w-full justify-between border-b-[1px] pb-3'>
+                  <h1 className='text-xl'>Tier 1</h1>
+                  <p className='opacity-80'>N/A</p>
+                </div>
+                  <div className='flex w-full justify-between border-b-[1px] pb-3'>
+                  <h1 className='text-xl'>Tier 2</h1>
+                  <p className='opacity-80'>N/A</p>
+                </div>
+                  <div className='flex w-full justify-between border-b-[1px] pb-3'>
+                  <h1 className='text-xl'>Tier 3</h1>
+                  <p className='opacity-80'>Available</p>
+                </div>
+                  <div className='flex w-full justify-between border-b-[1px] pb-3'>
+                  <h1 className='text-xl'>Tier 4</h1>
+                  <p className='opacity-80'>Available</p>
+                </div>
+                  <div className='flex w-full justify-between '>
+                  <h1 className='text-xl'>Tier 5</h1>
+                  <p className='opacity-80'>Available</p>
+                </div>
+               </div>
+        </AccordionContent>
+      </AccordionItem>
+      
+     </Accordion>
     </div>
   )
 }
