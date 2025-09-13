@@ -1059,7 +1059,7 @@ function OneTimePlans() {
     <span>
     {isTier3 && "5 seats." }
     {isTier4 && "15 seats." }  
-    {isTier5 && "Unlimited" }
+    {isTier5 && "Unlimited seats" }
     </span>
   </div>
 
