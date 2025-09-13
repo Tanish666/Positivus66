@@ -9,6 +9,8 @@ import {
 } from 'motion/react';
 import { cn } from '@/lib/utils';
 import React, { createContext, useContext, useState, ReactNode } from 'react';
+import { ChevronUp } from 'lucide-react';
+
 
 export type AccordionContextType = {
   expandedValue: React.Key | null;
@@ -137,19 +139,34 @@ function AccordionTrigger({
   ...props
 }: AccordionTriggerProps) {
   const { toggleItem, expandedValue } = useAccordion();
+  const [isArrow,setIsArrow] = useState(false);
   const value = (props as { value?: React.Key }).value;
   const isExpanded = value === expandedValue;
 
+   
+   
   return (
-    <button
-      onClick={() => value !== undefined && toggleItem(value)}
-      aria-expanded={isExpanded}
-      type='button'
-      className={cn('group', className)}
-      {...(isExpanded ? { 'data-expanded': '' } : {'data-closed': ''})}
-    >
-      {children}
-    </button>
+   <button
+  onClick={() => {
+  if (value !== undefined) {
+    toggleItem(value);
+    setIsArrow((state) => !state);
+  }
+}}
+  aria-expanded={isExpanded}
+  type="button"
+  className={cn("group flex gap-3 justify-between items-center", className)}
+  {...(isExpanded ? { "data-expanded": "" } : { "data-closed": "" })}
+>
+  {children}
+  <motion.span
+  animate={{rotate:isArrow?180:0}}
+  >
+  <ChevronUp
+    className="h-4 w-4 shrink-0 grow-0 text-zinc-950 transition-transform duration-200 group-data-expanded:-rotate-180 dark:text-zinc-50"
+  />
+  </motion.span>
+   </button>
   );
 }
 

@@ -22,6 +22,7 @@ import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { useRouter } from 'next/navigation';
 import Footer from '@/components/footer';
 import { EventListeners } from '@tsparticles/engine';
+import VideoEmbed from '@/components/video';
 const montserrat = Montserrat({
   subsets: ['latin'],
   weight: ['400', '500', '600', '700'], // Add what you need
@@ -748,7 +749,7 @@ className='lg:hidden fixed flex top-0 justify-center items-center w-full'>
         </motion.div>  
         }
       </motion.div>
-      <motion.div whileHover={{opacity:0.6}} className='flex gap-2 cursor-pointer'><h1 className='MenuText'>PRICING</h1><p className='text-[3vw] mt-1 opacity-60 text-[#00FFFF]'>03</p></motion.div>
+      <motion.div  onClick={()=> router.push('/pricing')} whileHover={{opacity:0.6}} className='flex gap-2 cursor-pointer'><h1 className='MenuText'>PRICING</h1><p className='text-[3vw] mt-1 opacity-60 text-[#00FFFF]'>03</p></motion.div>
       <motion.div whileHover={{opacity:0.6}} className='flex gap-2 cursor-pointer'><h1 className='MenuText'>GET STARTED</h1><p className='text-[3vw] mt-1 opacity-60 text-[#00FFFF]'>04</p></motion.div>
       </div>
        
@@ -958,6 +959,7 @@ className='lg:hidden fixed flex top-0 justify-center items-center w-full'>
            exit={{opacity:0,filter:"blur(30px)"}}
           transition={{duration:1}}
           className='h-[70vh] w-[57vw] bg-zinc-700 rounded-lg'>
+            <VideoEmbed/>
          </motion.div>
          <span className={`${montserrat.className} text-4xl flex flex-col gap-2`}>
          <h1>Codemate Webapp</h1>
@@ -975,6 +977,7 @@ className='lg:hidden fixed flex top-0 justify-center items-center w-full'>
            exit={{opacity:0,filter:"blur(30px)"}}
           transition={{duration:1}}
           className='h-[70vh] w-[57vw] bg-zinc-700 rounded-lg'>
+            <VideoEmbed/>
          </motion.div>
          <span className={`${montserrat.className} text-4xl flex flex-col gap-2`}>
          <h1>Codemate Webapp</h1>
@@ -991,6 +994,7 @@ className='lg:hidden fixed flex top-0 justify-center items-center w-full'>
            exit={{opacity:0,filter:"blur(30px)"}}
           transition={{duration:1}}
           className='h-[70vh] w-[57vw] bg-zinc-700 rounded-lg'>
+            <VideoEmbed/>
          </motion.div>
          <span className={`${montserrat.className} text-4xl flex flex-col gap-2`}>
          <h1>Codemate Webapp</h1>
@@ -1100,30 +1104,30 @@ className='lg:hidden fixed flex top-0 justify-center items-center w-full'>
 
 
  <div className='flex flex-col w-full lg:flex-row gap-10 justify-center items-center lg:gap-32 mt-10 lg:mt-16'>
-  <div className='h-[22vh] w-[50vw] lg:size-[20rem]'>
-    <div className='h-[90%] w-[90%] bg-zinc-900'>
+  <div className='h-[22vh] w-[50vw] lg:size-[13rem]'>
+
+    <img src="https://i.ibb.co/4P5tStk/Group-3.png" loading="lazy"
+                          sizes="(max-width: 479px) 100vw, (max-width: 991px) 90vw, 27vw"
+                          srcSet="https://i.ibb.co/4P5tStk/Group-3.png 500w, https://i.ibb.co/4P5tStk/Group-3.png 1216w"
+                          alt="Illustration of timeline" className="object-fit opacity-55 h-full w-full" />    
+      <p className='text-sm opacity-70 mt-3 '>Buy back your time to become 20x more productive</p>
     </div>
-    <div>
-      <h1 className='text-3xl font-semibold'>Header</h1>
-      <p className='text-sm opacity-70'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor atque aliquid id. Consectetur, dolorum quaerat sunt repellendus.</p>
+  <div className='h-[22vh] w-[50vw] lg:size-[13rem]'>
+
+    <img src="https://i.ibb.co/4JHWs19/Group-2.png" loading="lazy"
+                          sizes="(max-width: 479px) 100vw, (max-width: 991px) 90vw, 27vw"
+                          srcSet="https://i.ibb.co/4JHWs19/Group-2.png 500w, https://i.ibb.co/4JHWs19/Group-2.png 1216w"
+                          alt="Illustration of timeline" className="object-fit opacity-55 h-full w-full" />    
+      <p className='text-sm opacity-70 mt-3 '>Buy back your time to become 20x more productive</p>
     </div>
-  </div>
-  <div className='h-[22vh] w-[50vw] lg:size-[20rem]'>
-    <div className='h-[90%] w-[90%] bg-zinc-900'>
+  <div className='h-[22vh] w-[50vw] lg:size-[13rem]'>
+
+    <img src="https://i.ibb.co/4JsRRn5/Group-4.png" loading="lazy"
+                          sizes="(max-width: 479px) 100vw, (max-width: 991px) 90vw, 27vw"
+                          srcSet="https://i.ibb.co/4JsRRn5/Group-4.png 500w, https://i.ibb.co/4JsRRn5/Group-4.png 1216w"
+                          alt="Illustration of timeline" className="object-fit opacity-55 h-full w-full" />    
+      <p className='text-sm opacity-70 mt-3 '>Buy back your time to become 20x more productive</p>
     </div>
-    <div>
-      <h1 className='text-3xl font-semibold'>Header</h1>
-      <p className='text-sm opacity-70'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor atque aliquid id. Consectetur, dolorum quaerat sunt repellendus.</p>
-    </div>
-  </div>
-  <div className='h-[22vh] w-[50vw] lg:size-[20rem]'>
-    <div className='h-[90%] w-[90%] bg-zinc-900'>
-    </div>
-    <div>
-      <h1 className='text-3xl font-semibold'>Header</h1>
-      <p className='text-sm opacity-70'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor atque aliquid id. Consectetur, dolorum quaerat sunt repellendus.</p>
-    </div>
-  </div>
  </div>
 </div> 
 {/* trusted by section */}
@@ -1149,6 +1153,7 @@ className='lg:hidden fixed flex top-0 justify-center items-center w-full'>
      animate={{opacity:1,filter:'blur(0px)'}}
       className='absolute left-[30rem] h-[30vw] w-[58vw] rounded-xl bg-zinc-900'>
         {/* <Safari url='codemate.ai' imageSrc='chatss.png' className='dark'/> */}
+        <img src="https://drive.codemate.ai/playground.gif" className='w-full h-full object-fit rounded-xl' alt="" />
         </motion.div>}
      
        {isShowProd &&      <motion.div 
@@ -1159,8 +1164,8 @@ className='lg:hidden fixed flex top-0 justify-center items-center w-full'>
      animate={{opacity:1,filter:'blur(0px)'}}
      className='absolute left-[30rem] h-[30vw] w-[58vw] rounded-xl  bg-rose-900'>
       {/* <Safari url='codemate.ai' imageSrc='buildss.png' className='dark'/> */}
-      
-      </motion.div>}
+      <img src="https://drive.codemate.ai/debug-code.gif" className='w-full h-full object-fit rounded-xl' alt="" />
+      </motion.div>}  
 
      {isShowProd && <motion.div
      key={3}
@@ -1169,9 +1174,11 @@ className='lg:hidden fixed flex top-0 justify-center items-center w-full'>
      initial={{opacity:0,filter:'blur(20px)'}}
      animate={{opacity:1,filter:'blur(0px)'}}
      className='absolute left-[30rem] h-[30vw] w-[58vw] rounded-xl bg-white'>
-      {/* <Safari url='codemate.ai' className='dark object-cover object-left-top' imageSrc='eduation.png'/> */}
+      {/* <Safari url='codemate.ai' className='dark object-cover 
+      object-left-top' imageSrc='eduation.png'/> */}
+      <img src="https://drive.codemate.ai/review-code.gif" className='w-full h-full object-fit rounded-xl' alt="" />
      </motion.div>}
-
+        
       {!isRef2 && !isRef3 &&      
     <motion.div 
      style={{x:div3X}} exit={{opacity:0,filter:'blur(20px)'}} key={4} className='absolute left-[30rem] h-[30vw] w-[58vw] rounded-xl  text-white z-50'>

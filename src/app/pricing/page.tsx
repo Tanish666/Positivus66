@@ -754,6 +754,29 @@ function MonthlyPlans() {
 }
 
 function OneTimePlans() {
+  const [isDrawer,setIsDrawer] = useState(false);
+  const [isTier3,setIsTier3] = useState(true);
+  const [isTier4,setIsTier4] = useState(false);
+  const [isTier5,setIsTier5] = useState(false);
+
+  function handleTier(e:number){
+    if(e === 3 ){
+      setIsTier4(false);
+      setIsTier5(false);
+      setIsTier3(true);
+    }
+    if(e === 4 ){
+      setIsTier3(false);
+      setIsTier5(false);
+      setIsTier4(true);
+    }
+    if(e === 5 ){
+      setIsTier4(false);
+      setIsTier3(false);
+      setIsTier5(true);
+    }
+    setIsDrawer(false);
+  } 
   return(
        <div className='flex-col  flex  lg:flex-row justify-center items-center gap-10 mt-4 mb-20'>
 
@@ -960,14 +983,64 @@ function OneTimePlans() {
          </motion.button>
          </div>
         </div>
-        <div className='relative h-[30rem]  w-[23rem] bg-zinc-900 rounded-2xl  lg:marker:mt-[3rem]'>
+        <div className='relative h-[30rem]  w-[23rem] bg-zinc-900 rounded-2xl  lg:mt-[3rem]'>
           
           <ShineBorder shineColor={["#00BFFF", "#1E90FF","#00FFFF"]} borderWidth={1.5} className='rounded-2xl'/>
           
+          {isDrawer && 
+           <motion.div
+           initial={{height:0}} 
+           animate={{height:100}}
+           transition={{duration:0.3}}
+           className='absolute top-16 right-[9rem] h-20 w-[13rem]  bg-zinc-800 z-50 rounded-b-lg px-2 pt-2 flex flex-col gap-2 items-center justify-center overflow-hidden'>
+            {!isTier3 && 
+            <motion.h1 
+            onClick={()=>handleTier(3)}
+            whileHover={{opacity:1}} className='opacity-70 text-xl border-b-[1px] border-zinc-700 w-full text-center cursor-pointer pb-2 flex justify-center items-center'>Tier Plan 3</motion.h1>}
+
+            {!isTier4 && 
+            <motion.h1 
+            onClick={()=>handleTier(4)}
+            whileHover={{opacity:1}} className='opacity-70 text-xl border-b-[1px] border-zinc-700 w-full text-center cursor-pointer pb-2  flex justify-center items-center'>Tier Plan 4</motion.h1>}
+
+            {!isTier5 && 
+            <motion.h1 
+            onClick={()=>handleTier(5)}
+            whileHover={{opacity:1}}
+            className='opacity-70 text-xl border-b-[1px]  w-full text-center cursor-pointer pb-2  flex justify-center items-center'>Tier Plan 5</motion.h1>}
+           </motion.div>}
+
            <div className='px-5 pt-5'> 
-            <span className='bg-gradient-to-b from-[#00BFFF] to-[#1E90FF] bg-clip-text text-transparent text-4xl font-semibold mb-1'>Tier Plan 3</span>
+            <motion.span
+            onClick={()=>setIsDrawer(state => !state)}
+            className='cursor-pointer relative bg-gradient-to-b from-[#00BFFF] to-[#1E90FF] bg-clip-text text-transparent text-4xl font-semibold mb-1 flex items-center gap-2 w-fit'>
+              {isTier3 && 
+              "Tier Plan 3" }  
+              {isTier4 && 
+              "Tier Plan 4" }
+              {isTier5 && 
+              "Tier Plan 5" }    
+            <motion.span
+            whileHover={{opacity:1}}
+            animate={{rotate:isDrawer? 180 : 0}}
+            >  
+            <ChevronUp
+                className="size-6 shrink-0 grow-0 text-zinc-950 transition-transform -rotate-180 dark:text-zinc-50 cursor-pointer"
+              />
+              </motion.span>
+              
+
+
+              </motion.span>
           <p className='opacity-70'>For development teams and agencies</p>
-          <div className='text-4xl font-bold mt-5'>$299<span className='text-sm opacity-80 font-normal text-cyan-400'></span></div>
+          <div className='text-4xl font-bold mt-5'>
+            {isTier3 && 
+              "$299" }  
+            {isTier4 && 
+              "$579" }  
+            {isTier5 && 
+              "$999" }    
+            <span className='text-sm opacity-80 font-normal text-cyan-400'></span></div>
          
           <div className='flex flex-col gap-2 mt-4'>
           <h1 className='text-xl font-semibold'>Includes</h1>
@@ -983,7 +1056,11 @@ function OneTimePlans() {
       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
       <path d="M12 7a5 5 0 1 1 -4.995 5.217l-.005 -.217l.005 -.217a5 5 0 0 1 4.995 -4.783z" />
     </svg>
-    <span>5 seats.</span>
+    <span>
+    {isTier3 && "5 seats." }
+    {isTier4 && "15 seats." }  
+    {isTier5 && "Unlimited" }
+    </span>
   </div>
 
   <div className="flex gap-1 items-center">
@@ -996,7 +1073,11 @@ function OneTimePlans() {
       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
       <path d="M12 7a5 5 0 1 1 -4.995 5.217l-.005 -.217l.005 -.217a5 5 0 0 1 4.995 -4.783z" />
     </svg>
-    <span>750,000 total tokens per month.</span>
+    <span>
+      {isTier3 && "750,000 total tokens per month." }
+      {isTier4 && "3,750,000 total tokens per month." }
+      {isTier5 && "20,000,000 total tokens per month." }
+    </span>
   </div>
 
   <div className="flex gap-1 items-center">
@@ -1009,7 +1090,11 @@ function OneTimePlans() {
       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
       <path d="M12 7a5 5 0 1 1 -4.995 5.217l-.005 -.217l.005 -.217a5 5 0 0 1 4.995 -4.783z" />
     </svg>
-    <span>20 total knowledge bases.</span>
+    <span>
+      {isTier3 && "20 total knowledge bases." }
+      {isTier4 && "60 total knowledge bases." } 
+      {isTier5 && "Unlimited knowledge bases." }
+    </span>
   </div>
 
   <div className="flex gap-1 items-center">
@@ -1022,7 +1107,11 @@ function OneTimePlans() {
       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
       <path d="M12 7a5 5 0 1 1 -4.995 5.217l-.005 -.217l.005 -.217a5 5 0 0 1 4.995 -4.783z" />
     </svg>
-    <span>6GB total storage space.</span>
+    <span>
+      {isTier3 && "6GB total storage space." }
+      {isTier4 && "15GB total storage space." } 
+      {isTier5 && "35GB total storage space." }
+    </span>
   </div>
 
   <div className="flex gap-1 items-center">
@@ -1048,13 +1137,17 @@ function OneTimePlans() {
       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
       <path d="M12 7a5 5 0 1 1 -4.995 5.217l-.005 -.217l.005 -.217a5 5 0 0 1 4.995 -4.783z" />
     </svg>
-    <span className='text-sm'>Codebase + Github + URL Integration(s).</span>
+    <span className='text-sm'>
+      {isTier3 && "Codebase + Github + URL Integration(s)." }
+      {isTier4 && "All Integrations Supported." }
+      {isTier5 && "All Integrations Supported." }
+    </span>
   </div>
          </div>
          </div>
          </div>
 
-
+      
           <div className='absolute bottom-5 w-full px-5'>
           <motion.button whileHover={{scale:1.01}} className='bg-white/85  flex justify-center items-center w-full py-1 rounded-md text-black font-bold'> 
           Buy Now
@@ -1075,28 +1168,28 @@ function ComparePlans(){
       <div className='flex gap-[3.7rem] text-2xl'>
       <div className='flex flex-col justify-center items-center gap-2'>
         <h1 className='font-semibold'>Tier 1 Plan</h1>
-        <p className='text-xl opacity-75'>$59</p>
+        <p className='text-xl opacity-35'>$59</p>
       </div>
       <div className='flex flex-col justify-center items-center gap-2'>
         <h1 className='font-semibold'>Tier 2 Plan</h1>
-        <p className='text-xl opacity-75'>$169</p>
+        <p className='text-xl opacity-35'>$169</p>
       </div>
       <div className='flex flex-col justify-center items-center gap-2'>
         <h1 className='font-semibold'>Tier 3 Plan</h1>
-         <p className='text-xl opacity-75'>$299</p>
+         <p className='text-xl opacity-35'>$299</p>
       </div>
       <div className='flex flex-col justify-center items-center gap-2'>
         <h1 className='font-semibold'>Tier 4 Plan</h1>
-         <p className='text-xl opacity-75'>$579</p>
+         <p className='text-xl opacity-35'>$579</p>
       </div>
       <div className='flex flex-col justify-center items-center gap-2'>
         <h1 className='font-semibold'>Tier 5 Plan</h1>
-         <p className='text-xl opacity-75'>$999</p>
+         <p className='text-xl opacity-35'>$999</p>
       </div>
       </div>
      </div>
 
-      <div className='w-full flex justify-between border-b-[1px] border-gray-500 border-opacity-35 h-[8rem] px-10 py-10'>
+      <div className='w-full flex justify-between border-b-[1px] border-gray-500 border-opacity-35  px-10 py-5 items-center'>
       <h1 className='text-xl font-semibold w-[15rem] text-center'>Seats</h1>
       <div className='flex gap-16 text-lg'>
       <div className='flex flex-col justify-center items-center gap-2 w-[7.8rem]'>
@@ -1117,7 +1210,7 @@ function ComparePlans(){
       </div>
      </div>
 
-            <div className='w-full flex justify-between border-b-[1px] border-gray-500 border-opacity-35 h-[8rem] px-10 py-10'>
+            <div className='w-full flex justify-between border-b-[1px] border-gray-500 border-opacity-35  px-10 py-5 items-center'>
       <h1 className='text-xl font-semibold w-[15rem] text-center'>Tokens</h1>
       <div className='flex gap-16 text-lg'>
       <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
@@ -1138,7 +1231,7 @@ function ComparePlans(){
       </div>
      </div>
 
-      <div className='w-full flex justify-between border-b-[1px] border-gray-500 border-opacity-35 h-[8rem] px-10 py-10'>
+      <div className='w-full flex justify-between border-b-[1px] border-gray-500 border-opacity-35  px-10 py-5 items-center'>
       <h1 className='text-xl font-semibold w-[15rem] text-center'>Knowledge bases</h1>
       <div className='flex gap-16 text-lg'>
       <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
@@ -1159,7 +1252,7 @@ function ComparePlans(){
       </div>
      </div>
 
-      <div className='w-full flex justify-between border-b-[1px] border-gray-500 border-opacity-35 h-[8rem] px-10 py-10'>
+      <div className='w-full flex justify-between border-b-[1px] border-gray-500 border-opacity-35  px-10 py-5 items-center'>
       <h1 className='text-xl font-semibold w-[15rem] text-center'>Storage space</h1>
       <div className='flex gap-16 text-lg'>
       <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
@@ -1180,7 +1273,7 @@ function ComparePlans(){
       </div>
      </div> 
 
-      <div className='w-full flex justify-between border-b-[1px] border-gray-500 border-opacity-35 h-[8rem] px-10 py-10'>
+      <div className='w-full flex justify-between border-b-[1px] border-gray-500 border-opacity-35  px-10 py-5 items-center'>
       <h1 className='text-xl font-semibold w-[15rem] text-center'>Internet Searches</h1>
       <div className='flex gap-16 text-lg'>
       <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
@@ -1201,7 +1294,7 @@ function ComparePlans(){
       </div>
      </div>  
 
-      <div className='w-full flex justify-between border-b-[1px] border-gray-500 border-opacity-35 h-[8rem] px-10 py-10'>
+      <div className='w-full flex justify-between border-b-[1px] border-gray-500 border-opacity-35  px-10 py-5 items-center'>
       <h1 className='text-xl font-semibold w-[15rem] text-center'>Integrations</h1>
       <div className='flex gap-16 text-lg'>
       <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
@@ -1222,65 +1315,65 @@ function ComparePlans(){
       </div>
      </div>
 
-            <div className='w-full flex justify-between border-b-[1px] border-gray-500 border-opacity-35 h-[8rem] px-10 py-10'>
+            <div className='w-full flex justify-between border-b-[1px] border-gray-500 border-opacity-35 px-10 py-5 items-center'>
       <h1 className='text-xl font-semibold w-[15rem] text-center'>Own API Key</h1>
       <div className='flex gap-16 text-lg'>
       <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
-        <h1>N/A</h1>
+                       <svg  xmlns="http://www.w3.org/2000/svg"  width={36}  height={36}  viewBox="0 0 24 24"  fill="currentColor"  className="icon icon-tabler icons-tabler-filled icon-tabler-circle-x"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M17 3.34a10 10 0 1 1 -14.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 14.995 -8.336zm-6.489 5.8a1 1 0 0 0 -1.218 1.567l1.292 1.293l-1.292 1.293l-.083 .094a1 1 0 0 0 1.497 1.32l1.293 -1.292l1.293 1.292l.094 .083a1 1 0 0 0 1.32 -1.497l-1.292 -1.293l1.292 -1.293l.083 -.094a1 1 0 0 0 -1.497 -1.32l-1.293 1.292l-1.293 -1.292l-.094 -.083z" /></svg>
       </div>
       <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
-        <h1>N/A</h1>
+                       <svg  xmlns="http://www.w3.org/2000/svg"  width={36}  height={36}  viewBox="0 0 24 24"  fill="currentColor"  className="icon icon-tabler icons-tabler-filled icon-tabler-circle-x"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M17 3.34a10 10 0 1 1 -14.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 14.995 -8.336zm-6.489 5.8a1 1 0 0 0 -1.218 1.567l1.292 1.293l-1.292 1.293l-.083 .094a1 1 0 0 0 1.497 1.32l1.293 -1.292l1.293 1.292l.094 .083a1 1 0 0 0 1.32 -1.497l-1.292 -1.293l1.292 -1.293l.083 -.094a1 1 0 0 0 -1.497 -1.32l-1.293 1.292l-1.293 -1.292l-.094 -.083z" /></svg>
       </div>
       <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
-        <h1>Available</h1>
+        <img src='/tick.svg' className='object-fit size-[48%]'/>
       </div>
       <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
-        <h1>Available</h1>
+        <img src='/tick.svg' className='object-fit size-[48%]'/>
       </div>
             <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
-        <h1>Available</h1>
+        <img src='/tick.svg' className='object-fit size-[48%]'/>
       </div>
       </div>
      </div>
 
-      <div className='w-full flex justify-between border-b-[1px] border-gray-500 border-opacity-35 h-[8rem] px-10 py-10'>
+      <div className='w-full flex justify-between border-b-[1px] border-gray-500 border-opacity-35 px-10 py-5 items-center'>
       <h1 className='text-xl font-semibold w-[15rem] text-center'>Knowledge Base Sharing</h1>
       <div className='flex gap-16 text-lg'>
       <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
-        <h1>N/A</h1>
+                       <svg  xmlns="http://www.w3.org/2000/svg"  width={36}  height={36}  viewBox="0 0 24 24"  fill="currentColor"  className="icon icon-tabler icons-tabler-filled icon-tabler-circle-x"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M17 3.34a10 10 0 1 1 -14.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 14.995 -8.336zm-6.489 5.8a1 1 0 0 0 -1.218 1.567l1.292 1.293l-1.292 1.293l-.083 .094a1 1 0 0 0 1.497 1.32l1.293 -1.292l1.293 1.292l.094 .083a1 1 0 0 0 1.32 -1.497l-1.292 -1.293l1.292 -1.293l.083 -.094a1 1 0 0 0 -1.497 -1.32l-1.293 1.292l-1.293 -1.292l-.094 -.083z" /></svg>
       </div>
       <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
-        <h1>N/A</h1>
+                       <svg  xmlns="http://www.w3.org/2000/svg"  width={36}  height={36}  viewBox="0 0 24 24"  fill="currentColor"  className="icon icon-tabler icons-tabler-filled icon-tabler-circle-x"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M17 3.34a10 10 0 1 1 -14.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 14.995 -8.336zm-6.489 5.8a1 1 0 0 0 -1.218 1.567l1.292 1.293l-1.292 1.293l-.083 .094a1 1 0 0 0 1.497 1.32l1.293 -1.292l1.293 1.292l.094 .083a1 1 0 0 0 1.32 -1.497l-1.292 -1.293l1.292 -1.293l.083 -.094a1 1 0 0 0 -1.497 -1.32l-1.293 1.292l-1.293 -1.292l-.094 -.083z" /></svg>
       </div>
       <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
-        <h1>Available</h1>
+        <img src='/tick.svg' className='object-fit size-[48%]'/>
       </div>
       <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
-        <h1>Available</h1>
+        <img src='/tick.svg' className='object-fit size-[48%]'/>
       </div>
             <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
-        <h1>Available</h1>
+        <img src='/tick.svg' className='object-fit size-[48%]'/>
       </div>
       </div>
      </div>
 
-           <div className='w-full flex justify-between border-b-[1px] border-gray-500 border-opacity-35 h-[8rem] px-10 py-10'>
+           <div className='w-full flex justify-between border-b-[1px] border-gray-500 border-opacity-35 px-10 py-5 items-center'>
       <h1 className='text-xl font-semibold w-[15rem] text-center'>Seat Management</h1>
       <div className='flex gap-16 text-lg'>
       <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
-        <h1>N/A</h1>
+                       <svg  xmlns="http://www.w3.org/2000/svg"  width={36}  height={36}  viewBox="0 0 24 24"  fill="currentColor"  className="icon icon-tabler icons-tabler-filled icon-tabler-circle-x"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M17 3.34a10 10 0 1 1 -14.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 14.995 -8.336zm-6.489 5.8a1 1 0 0 0 -1.218 1.567l1.292 1.293l-1.292 1.293l-.083 .094a1 1 0 0 0 1.497 1.32l1.293 -1.292l1.293 1.292l.094 .083a1 1 0 0 0 1.32 -1.497l-1.292 -1.293l1.292 -1.293l.083 -.094a1 1 0 0 0 -1.497 -1.32l-1.293 1.292l-1.293 -1.292l-.094 -.083z" /></svg>
       </div>
       <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
-        <h1>N/A</h1>
+                       <svg  xmlns="http://www.w3.org/2000/svg"  width={36}  height={36}  viewBox="0 0 24 24"  fill="currentColor"  className="icon icon-tabler icons-tabler-filled icon-tabler-circle-x"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M17 3.34a10 10 0 1 1 -14.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 14.995 -8.336zm-6.489 5.8a1 1 0 0 0 -1.218 1.567l1.292 1.293l-1.292 1.293l-.083 .094a1 1 0 0 0 1.497 1.32l1.293 -1.292l1.293 1.292l.094 .083a1 1 0 0 0 1.32 -1.497l-1.292 -1.293l1.292 -1.293l.083 -.094a1 1 0 0 0 -1.497 -1.32l-1.293 1.292l-1.293 -1.292l-.094 -.083z" /></svg>
       </div>
       <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
-        <h1>Available</h1>
+        <img src='/tick.svg' className='object-fit size-[48%]'/>
       </div>
       <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
-        <h1>Available</h1>
+        <img src='/tick.svg' className='object-fit size-[48%]'/>
       </div>
             <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
-        <h1>Available</h1>
+        <img src='/tick.svg' className='object-fit size-[48%]'/>
       </div>
       </div>
      </div>
@@ -1291,7 +1384,7 @@ function ComparePlans(){
 function ComparePlans2(){
   return(
     <div className='hidden lg:flex pb-10 w-full  flex-col items-center'>
-     <div className='w-[80%] flex justify-between border-b-[1px] border-gray-500 border-opacity-35 h-[8rem] px-10 py-10'>
+     <div className='w-[80%] flex justify-between border-b-[1px] border-gray-500 border-opacity-35 h-[8rem] px-10 py-10 items-center'>
       <h1 className='text-5xl font-semibold mb-2'><span className='bg-gradient-to-b from-[#00BFFF] to-[#1E90FF] bg-clip-text text-transparent'>Compare</span> Plans</h1>
 
       <div className='flex gap-[3.7rem] text-2xl'>
@@ -1306,84 +1399,85 @@ function ComparePlans2(){
       </div>
      </div>
 
-      <div className='w-[80%] flex justify-between border-b-[1px] border-gray-500 border-opacity-35 h-[8rem] px-10 py-10'>
+      <div className='w-[80%] flex justify-between border-b-[1px] border-gray-500 border-opacity-35  px-10  items-center'>
       <h1 className='text-xl font-semibold w-[15rem] text-center'>Seats Management</h1>
       <div className='flex gap-16 text-lg'>
 
 
       <div className='flex flex-col justify-center items-center gap-2 w-[7.8rem]'>
-        <h1>Not Included</h1>
+               <svg  xmlns="http://www.w3.org/2000/svg"  width={36}  height={36}  viewBox="0 0 24 24"  fill="currentColor"  className="icon icon-tabler icons-tabler-filled icon-tabler-circle-x"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M17 3.34a10 10 0 1 1 -14.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 14.995 -8.336zm-6.489 5.8a1 1 0 0 0 -1.218 1.567l1.292 1.293l-1.292 1.293l-.083 .094a1 1 0 0 0 1.497 1.32l1.293 -1.292l1.293 1.292l.094 .083a1 1 0 0 0 1.32 -1.497l-1.292 -1.293l1.292 -1.293l.083 -.094a1 1 0 0 0 -1.497 -1.32l-1.293 1.292l-1.293 -1.292l-.094 -.083z" /></svg>
       </div>
       <div className='flex flex-col justify-center items-center gap-2 w-[7.8rem]'>
-        <h1>Included</h1>
+        <img src='/tick.svg' className='object-fit size-[48%]'/>
       </div>
 
       </div>
      </div>
 
 
-      <div className='w-[80%] flex justify-between border-b-[1px] border-gray-500 border-opacity-35 h-[8rem] px-10 py-10'>
+      <div className='w-[80%] flex justify-between border-b-[1px] border-gray-500 border-opacity-35  px-10 py-3 items-center'>
       <h1 className='text-xl font-semibold w-[15rem] text-center'>Knowledge base Sharing</h1>
       <div className='flex gap-16 text-lg'>
       <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
-        <h1>Not Included</h1>
+       <svg  xmlns="http://www.w3.org/2000/svg"  width={36}  height={36}  viewBox="0 0 24 24"  fill="currentColor"  className="icon icon-tabler icons-tabler-filled icon-tabler-circle-x"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M17 3.34a10 10 0 1 1 -14.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 14.995 -8.336zm-6.489 5.8a1 1 0 0 0 -1.218 1.567l1.292 1.293l-1.292 1.293l-.083 .094a1 1 0 0 0 1.497 1.32l1.293 -1.292l1.293 1.292l.094 .083a1 1 0 0 0 1.32 -1.497l-1.292 -1.293l1.292 -1.293l.083 -.094a1 1 0 0 0 -1.497 -1.32l-1.293 1.292l-1.293 -1.292l-.094 -.083z" /></svg>
       </div>
       <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
-        <h1>Included</h1>
+        {/* <h1>Included</h1> */}
+        <img src='/tick.svg' className='object-fit size-[48%]'/>
       </div>
       </div>
      </div>
 
-      <div className='w-[80%] flex justify-between border-b-[1px] border-gray-500 border-opacity-35 h-[8rem] px-10 py-10'>
+      <div className='w-[80%] flex justify-between border-b-[1px] border-gray-500 border-opacity-35  px-10  items-center'>
       <h1 className='text-xl font-semibold w-[15rem] text-center'>Advance ML Model</h1>
       <div className='flex gap-16 text-lg'>
       <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
-        <h1>Not Included</h1>
+               <svg  xmlns="http://www.w3.org/2000/svg"  width={36}  height={36}  viewBox="0 0 24 24"  fill="currentColor"  className="icon icon-tabler icons-tabler-filled icon-tabler-circle-x"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M17 3.34a10 10 0 1 1 -14.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 14.995 -8.336zm-6.489 5.8a1 1 0 0 0 -1.218 1.567l1.292 1.293l-1.292 1.293l-.083 .094a1 1 0 0 0 1.497 1.32l1.293 -1.292l1.293 1.292l.094 .083a1 1 0 0 0 1.32 -1.497l-1.292 -1.293l1.292 -1.293l.083 -.094a1 1 0 0 0 -1.497 -1.32l-1.293 1.292l-1.293 -1.292l-.094 -.083z" /></svg>
       </div>
       <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
-        <h1>Included</h1>
+          <img src='/tick.svg' className='object-fit size-[48%]'/>
       </div>
       </div>
      </div> 
 
-      <div className='w-[80%] flex justify-between border-b-[1px] border-gray-500 border-opacity-35 h-[8rem] px-10 py-10'>
+      <div className='w-[80%] flex justify-between border-b-[1px] border-gray-500 border-opacity-35  px-10  items-center'>
       <h1 className='text-xl font-semibold w-[15rem] text-center'>Automated PR Review</h1>
       <div className='flex gap-16 text-lg'>
       <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
-        <h1>Not Included</h1>
+                       <svg  xmlns="http://www.w3.org/2000/svg"  width={36}  height={36}  viewBox="0 0 24 24"  fill="currentColor"  className="icon icon-tabler icons-tabler-filled icon-tabler-circle-x"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M17 3.34a10 10 0 1 1 -14.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 14.995 -8.336zm-6.489 5.8a1 1 0 0 0 -1.218 1.567l1.292 1.293l-1.292 1.293l-.083 .094a1 1 0 0 0 1.497 1.32l1.293 -1.292l1.293 1.292l.094 .083a1 1 0 0 0 1.32 -1.497l-1.292 -1.293l1.292 -1.293l.083 -.094a1 1 0 0 0 -1.497 -1.32l-1.293 1.292l-1.293 -1.292l-.094 -.083z" /></svg>
       </div>
       <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
-        <h1>Included</h1>
+          <img src='/tick.svg' className='object-fit size-[48%]'/>
       </div>
       </div>
      </div>  
 
 
-            <div className='w-[80%] flex justify-between border-b-[1px] border-gray-500 border-opacity-35 h-[8rem] px-10 py-10'>
+            <div className='w-[80%] flex justify-between border-b-[1px] border-gray-500 border-opacity-35 px-10  items-center'>
       <h1 className='text-xl font-semibold w-[15rem] text-center'>Own API Key</h1>
       <div className='flex gap-16 text-lg'>
       <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
-        <h1>Not Included</h1>
+                       <svg  xmlns="http://www.w3.org/2000/svg"  width={36}  height={36}  viewBox="0 0 24 24"  fill="currentColor"  className="icon icon-tabler icons-tabler-filled icon-tabler-circle-x"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M17 3.34a10 10 0 1 1 -14.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 14.995 -8.336zm-6.489 5.8a1 1 0 0 0 -1.218 1.567l1.292 1.293l-1.292 1.293l-.083 .094a1 1 0 0 0 1.497 1.32l1.293 -1.292l1.293 1.292l.094 .083a1 1 0 0 0 1.32 -1.497l-1.292 -1.293l1.292 -1.293l.083 -.094a1 1 0 0 0 -1.497 -1.32l-1.293 1.292l-1.293 -1.292l-.094 -.083z" /></svg>
       </div>
       <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
-        <h1>Included</h1>
+        <img src='/tick.svg' className='object-fit size-[48%]'/>
       </div>
       </div>
      </div>
 
-      <div className='w-[80%] flex justify-between border-b-[1px] border-gray-500 border-opacity-35 h-[8rem] px-10 py-10'>
+      <div className='w-[80%] flex justify-between border-b-[1px] border-gray-500 border-opacity-35 px-10 py-3 items-center'>
       <h1 className='text-xl font-semibold w-[15rem] text-center'>Debug, Review and Refactor Code.</h1>
       <div className='flex gap-16 text-lg'>
       <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
-        <h1>Included</h1>
+        <img src='/tick.svg' className='object-fit size-[48%]'/>
       </div>
       <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
-        <h1>Included</h1>
+        <img src='/tick.svg' className='object-fit size-[48%]'/>
       </div>
       </div>
      </div>
 
-           <div className='w-[80%] flex justify-between border-b-[1px] border-gray-500 border-opacity-35 h-[8rem] px-10 py-10'>
+           <div className='w-[80%] flex justify-between border-b-[1px] border-gray-500 border-opacity-35  px-10 py-3 items-center'>
       <h1 className='text-xl font-semibold w-[15rem] text-center'>Internet Search.</h1>
       <div className='flex gap-16 text-lg'>
       <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
@@ -1395,26 +1489,26 @@ function ComparePlans2(){
       </div>
      </div>
 
-      <div className='w-[80%] flex justify-between border-b-[1px] border-gray-500 border-opacity-35 h-[8rem] px-10 py-10'>
+      <div className='w-[80%] flex justify-between border-b-[1px] border-gray-500 border-opacity-35  px-10 py-3  items-center'>
       <h1 className='text-xl font-semibold w-[15rem] text-center'>Search & Chat with Documentation & Codebases.</h1>
       <div className='flex gap-16 text-lg'>
       <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
-        <h1>Included</h1>
+        <img src='/tick.svg' className='object-fit size-[48%]'/>
       </div>
       <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
-        <h1>Included</h1>
+        <img src='/tick.svg' className='object-fit size-[48%]'/>
       </div>
       </div>
      </div>
 
-      <div className='w-[80%] flex justify-between border-b-[1px] border-gray-500 border-opacity-35 h-[8rem] px-10 py-10'>
+      <div className='w-[80%] flex justify-between border-b-[1px] border-gray-500 border-opacity-35  px-10 py-3 items-center'>
       <h1 className='text-xl font-semibold w-[15rem] text-center'>Generate Unit/Functional Test cases.</h1>
       <div className='flex gap-16 text-lg'>
       <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
-        <h1>Included</h1>
+        <img src='/tick.svg' className='object-fit size-[48%]'/>
       </div>
       <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
-        <h1>Included</h1>
+        <img src='/tick.svg' className='object-fit size-[48%]'/>
       </div>
       </div>
      </div>
