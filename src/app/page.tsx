@@ -950,7 +950,6 @@ className='lg:hidden fixed flex top-0 justify-center items-center w-full'>
           
           <AnimatePresence mode='wait'>
 
-          {!isP1 && !isP2 && 
           <div  key={3} className="flex flex-col gap-2 ">
           <motion.div 
           key={1} 
@@ -958,7 +957,25 @@ className='lg:hidden fixed flex top-0 justify-center items-center w-full'>
           animate={{opacity:1,filter:"blur(0px)"}}
            exit={{opacity:0,filter:"blur(30px)"}}
           transition={{duration:1}}
-          className='h-[70vh] w-[57vw] bg-zinc-700 rounded-lg'>
+          className='h-[70vh] w-[57vw] rounded-lg'>
+            <VideoEmbed/>
+         </motion.div>
+         <span className={`${montserrat.className} text-4xl flex flex-col gap-2 mt-3`}>
+         <h1>Codemate Webapp</h1>
+         <p className='opacity-70 text-sm'>This is the browser-based version of CodeMate — accessible via app.codemate.ai.</p>
+         </span>
+         </div>
+    
+
+          {/* {!isP1 && !isP2 && 
+          <div  key={3} className="flex flex-col gap-2 ">
+          <motion.div 
+          key={1} 
+          initial={{opacity:0,filter:"blur(30px)"}}
+          animate={{opacity:1,filter:"blur(0px)"}}
+           exit={{opacity:0,filter:"blur(30px)"}}
+          transition={{duration:1}}
+          className='h-[70vh] w-[57vw] rounded-lg'>
             <VideoEmbed/>
          </motion.div>
          <span className={`${montserrat.className} text-4xl flex flex-col gap-2`}>
@@ -976,7 +993,7 @@ className='lg:hidden fixed flex top-0 justify-center items-center w-full'>
           animate={{opacity:1,filter:"blur(0px)"}}
            exit={{opacity:0,filter:"blur(30px)"}}
           transition={{duration:1}}
-          className='h-[70vh] w-[57vw] bg-zinc-700 rounded-lg'>
+          className='h-[70vh] w-[57vw]  rounded-lg'>
             <VideoEmbed/>
          </motion.div>
          <span className={`${montserrat.className} text-4xl flex flex-col gap-2`}>
@@ -993,14 +1010,14 @@ className='lg:hidden fixed flex top-0 justify-center items-center w-full'>
           animate={{opacity:1,filter:"blur(0px)"}}
            exit={{opacity:0,filter:"blur(30px)"}}
           transition={{duration:1}}
-          className='h-[70vh] w-[57vw] bg-zinc-700 rounded-lg'>
+          className='h-[70vh] w-[57vw]  rounded-lg'>
             <VideoEmbed/>
          </motion.div>
          <span className={`${montserrat.className} text-4xl flex flex-col gap-2`}>
          <h1>Codemate Webapp</h1>
          <p className='opacity-70 text-sm'>This is the browser-based version of CodeMate — accessible via app.codemate.ai.</p>
          </span>
-         </div>}        
+         </div>}         */}
         </AnimatePresence>
        </motion.div>
        <motion.div 
@@ -1110,7 +1127,7 @@ className='lg:hidden fixed flex top-0 justify-center items-center w-full'>
                           sizes="(max-width: 479px) 100vw, (max-width: 991px) 90vw, 27vw"
                           srcSet="https://i.ibb.co/4P5tStk/Group-3.png 500w, https://i.ibb.co/4P5tStk/Group-3.png 1216w"
                           alt="Illustration of timeline" className="object-fit opacity-55 h-full w-full" />    
-      <p className='text-sm opacity-70 mt-3 '>Buy back your time to become 20x more productive</p>
+      <p className='text-sm opacity-70 mt-3 text-center'>Buy back your time to become 20x more productive</p>
     </div>
   <div className='h-[22vh] w-[50vw] lg:size-[13rem]'>
 
@@ -1118,7 +1135,7 @@ className='lg:hidden fixed flex top-0 justify-center items-center w-full'>
                           sizes="(max-width: 479px) 100vw, (max-width: 991px) 90vw, 27vw"
                           srcSet="https://i.ibb.co/4JHWs19/Group-2.png 500w, https://i.ibb.co/4JHWs19/Group-2.png 1216w"
                           alt="Illustration of timeline" className="object-fit opacity-55 h-full w-full" />    
-      <p className='text-sm opacity-70 mt-3 '>Buy back your time to become 20x more productive</p>
+      <p className='text-sm opacity-70 mt-3 text-center'>Buy back your time to become 20x more productive</p>
     </div>
   <div className='h-[22vh] w-[50vw] lg:size-[13rem]'>
 
@@ -1126,7 +1143,7 @@ className='lg:hidden fixed flex top-0 justify-center items-center w-full'>
                           sizes="(max-width: 479px) 100vw, (max-width: 991px) 90vw, 27vw"
                           srcSet="https://i.ibb.co/4JsRRn5/Group-4.png 500w, https://i.ibb.co/4JsRRn5/Group-4.png 1216w"
                           alt="Illustration of timeline" className="object-fit opacity-55 h-full w-full" />    
-      <p className='text-sm opacity-70 mt-3 '>Buy back your time to become 20x more productive</p>
+      <p className='text-sm opacity-70 mt-3 text-center'>Buy back your time to become 20x more productive</p>
     </div>
  </div>
 </div> 

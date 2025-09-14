@@ -160,7 +160,8 @@ function AccordionTrigger({
 >
   {children}
   <motion.span
-  animate={{rotate:isArrow?180:0}}
+  initial={{rotate:180}}
+  animate={{rotate:!isArrow?180:0}}
   >
   <ChevronUp
     className="h-4 w-4 shrink-0 grow-0 text-zinc-950 transition-transform duration-200 group-data-expanded:-rotate-180 dark:text-zinc-50"

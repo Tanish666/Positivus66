@@ -1,22 +1,22 @@
 export default function VideoEmbed() {
   return (
-    <div className="w-full flex justify-center">
+    <div className="w-full h-full flex justify-center">
       <div
-        className="w-full flex justify-center items-center"
+        className="w-full flex h-full justify-center items-center"
         style={{
           maxWidth: "1300px",
-          aspectRatio: "16 / 9",
+
           overflow: "hidden",
           borderRadius: "12px",
           boxShadow: "0 4px 6px rgba(0,0,0,0.1)",
         }}
       >
         <div
-          className="flex justify-center items-center"
+          className="flex h-full  justify-center items-center"
           style={{
             position: "relative",
             width: "100%",
-            height: 0,
+            height: "100%",
             paddingBottom: "56.25%",
           }}
         >
