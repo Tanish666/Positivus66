@@ -203,9 +203,9 @@ export default Page
 
 function YearlyPlans() {
   return(
-       <div className='flex-col  flex  lg:flex-row  justify-center items-center  gap-10 mt-4 mb-20'>
+       <div className='flex-col  flex  lg:flex-row  justify-center items-center  gap-10 mt-4 mb-20 '>
 
-        <div className='relative h-[30rem] w-[23rem] bg-zinc-900 rounded-2xl  mt-[3rem]'>
+        <div className='relative h-[30rem] w-[21.5rem] sm:w-[23rem] bg-zinc-900 rounded-2xl  mt-[3rem]'>
           
           <ShineBorder shineColor={["#00BFFF", "#1E90FF","#00FFFF"]} borderWidth={1.5} className='rounded-2xl'/>
           
@@ -294,7 +294,7 @@ function YearlyPlans() {
          </div>
         </div>
 
-                <div className='relative h-[33rem] w-[23rem] bg-zinc-900 rounded-2xl '>
+                <div className='relative h-[33rem] w-[21.5rem] sm:w-[23rem] bg-zinc-900 rounded-2xl '>
           
           <ShineBorder shineColor={["#00BFFF", "#1E90FF","#00FFFF"]} borderWidth={1.5} className='rounded-2xl'/>
            
@@ -383,7 +383,7 @@ function YearlyPlans() {
          </motion.button>
          </div>
         </div>
-                <div className='relative h-[30rem] w-[23rem] bg-zinc-900 rounded-2xl  lg:mt-[3rem]'>
+                <div className='relative h-[30rem] w-[21.5rem] sm:w-[23rem] bg-zinc-900 rounded-2xl  lg:mt-[3rem]'>
            
           <ShineBorder shineColor={["#00BFFF", "#1E90FF","#00FFFF"]} borderWidth={1.5} className='rounded-2xl'/>
        
@@ -481,7 +481,7 @@ function MonthlyPlans() {
   return(
        <div className='flex-col  flex  lg:flex-row justify-center items-center gap-10 mt-4 mb-20'>
 
-        <div className='relative h-[30rem] w-[23rem] bg-zinc-900 rounded-2xl  mt-[3rem]'>
+        <div className='relative h-[30rem] w-[21.5rem] sm:w-[23rem] bg-zinc-900 rounded-2xl  mt-[3rem]'>
           
           <ShineBorder shineColor={["#00BFFF", "#1E90FF","#00FFFF"]} borderWidth={1.5} className='rounded-2xl'/>
           
@@ -570,7 +570,7 @@ function MonthlyPlans() {
          </div>
         </div>
 
-                <div className='relative h-[33rem] w-[23rem] bg-zinc-900 rounded-2xl '>
+                <div className='relative h-[33rem] w-[21.5rem] sm:w-[23rem] bg-zinc-900 rounded-2xl '>
           
           <ShineBorder shineColor={["#00BFFF", "#1E90FF","#00FFFF"]} borderWidth={1.5} className='rounded-2xl'/>
            
@@ -659,7 +659,7 @@ function MonthlyPlans() {
          </motion.button>
          </div>
         </div>
-                <div className='relative h-[30rem] w-[23rem] bg-zinc-900 rounded-2xl  lg:mt-[3rem]'>
+                <div className='relative h-[30rem] w-[21.5rem] sm:w-[23rem] bg-zinc-900 rounded-2xl  lg:mt-[3rem]'>
            
           <ShineBorder shineColor={["#00BFFF", "#1E90FF","#00FFFF"]} borderWidth={1.5} className='rounded-2xl'/>
        
@@ -780,7 +780,7 @@ function OneTimePlans() {
   return(
        <div className='flex-col  flex  lg:flex-row justify-center items-center gap-10 mt-4 mb-20'>
 
-        <div className='relative h-[30rem] w-[23rem] bg-zinc-900 rounded-2xl  mt-[3rem]'>
+        <div className='relative h-[30rem] w-[21.5rem] sm:w-[23rem] bg-zinc-900 rounded-2xl  mt-[3rem]'>
           
           <ShineBorder shineColor={["#00BFFF", "#1E90FF","#00FFFF"]} borderWidth={1.5} className='rounded-2xl'/>
           
@@ -882,7 +882,7 @@ function OneTimePlans() {
          </div>
         </div>
 
-        <div className='relative h-[33rem] w-[23rem] bg-zinc-900 rounded-2xl  '>
+        <div className='relative h-[33rem] w-[21.5rem] sm:w-[23rem] bg-zinc-900 rounded-2xl  '>
           
           <ShineBorder shineColor={["#00BFFF", "#1E90FF","#00FFFF"]} borderWidth={1.5} className='rounded-2xl'/>
           
@@ -983,7 +983,7 @@ function OneTimePlans() {
          </motion.button>
          </div>
         </div>
-        <div className='relative h-[30rem]  w-[23rem] bg-zinc-900 rounded-2xl  lg:mt-[3rem]'>
+        <div className='relative h-[30rem]  w-[21.5rem] sm:w-[23rem] bg-zinc-900 rounded-2xl  lg:mt-[3rem]'>
           
           <ShineBorder shineColor={["#00BFFF", "#1E90FF","#00FFFF"]} borderWidth={1.5} className='rounded-2xl'/>
           
@@ -992,7 +992,7 @@ function OneTimePlans() {
            initial={{height:0}} 
            animate={{height:100}}
            transition={{duration:0.3}}
-           className='absolute top-16 right-[9rem] h-20 w-[13rem]  bg-zinc-800 z-50 rounded-b-lg px-2 pt-2 flex flex-col gap-2 items-center justify-center overflow-hidden'>
+           className='absolute top-16 right-[7.5rem] sm:right-[9rem] h-20 w-[13rem]  bg-zinc-800 z-50 rounded-b-lg px-2 pt-2 flex flex-col gap-2 items-center justify-center overflow-hidden'>
             {!isTier3 && 
             <motion.h1 
             onClick={()=>handleTier(3)}
@@ -1296,8 +1296,8 @@ function ComparePlans(){
 
       <div className='w-full flex justify-between border-b-[1px] border-gray-500 border-opacity-35  px-10 py-5 items-center'>
       <h1 className='text-xl font-semibold w-[15rem] text-center'>Integrations</h1>
-      <div className='flex gap-16 text-lg'>
-      <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
+      <div className='flex gap-[3.7rem] text-lg'>
+      <div className='flex flex-col justify-center items-center gap-2 w-[9rem]'>
         <h1>Github</h1>
       </div>
       <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
@@ -1307,10 +1307,10 @@ function ComparePlans(){
         <h1>Codebase + Github + URL</h1>
       </div>
       <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
-        <h1>All Supported</h1>
+        <h1 className='text-center'>All Supported</h1>
       </div>
             <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
-        <h1>All Supported</h1>
+        <h1 className='text-center'>All Supported</h1>
       </div>
       </div>
      </div>
