@@ -14,7 +14,7 @@ import CodeEditor from '@/components/motion-components/editor'
 import { LoaderFive, LoaderOne } from '@/components/ui/loader';
 import { TypingAnimation,AnimatedSpan } from '@/components/ui/terminal';
 import { ProgressiveBlur } from '@/components/ui/blurBT';
-import { X } from 'lucide-react';
+import { LoaderCircle, Truck, X } from 'lucide-react';
 import { Safari } from '@/components/mockups/safari';
 import { BackgroundGradientAnimation } from '@/components/ui/background-gradient-animation';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
@@ -23,6 +23,8 @@ import { useRouter } from 'next/navigation';
 import Footer from '@/components/footer';
 import { EventListeners } from '@tsparticles/engine';
 import VideoEmbed from '@/components/video';
+import ReviewCodeEditor from '@/components/motion-components/rEditor';
+import { isError } from 'postcss/lib/css-syntax-error';
 const montserrat = Montserrat({
   subsets: ['latin'],
   weight: ['400', '500', '600', '700'], // Add what you need
@@ -83,6 +85,28 @@ const fixedComponent = [
   { code: "    </div>", isError: false },
   { code: "  )", isError: true },
   { code: "}", isError: false },
+];
+
+
+const AfterReviewComponent = [
+  { code: "import { useState } from 'react'",  },
+  { code: "export default function Counter() {", },
+  { code: "const [count, setCount] = useState(0)",  },
+  { code: "  return (", },
+  { code: " <div className='flex items-center gap-4'>",isError:true},
+  { code: " <h2 className='text-xl font-bold'>Count: {count}</h2>",isError:true },
+  {code: ""}, 
+  { code: " <button aria-label='Increase count'  className='px-3 py-1", isError:true},
+  { code: "bg-green-500 text-white rounded'",isError:true},
+  { code:"onClick={() => setCount((prev) => prev + 1)}>+</button>",isError:true},
+  { code:""},
+  { code: "<button aria-label='Decrease count' className='px-3",isError:true },
+  { code:"py-1 bg-green-500 text-white rounded'",isError:true},
+  { code:" onClick={() => setCount((prev) => Math.max(prev - 1, 0))}>-</button>",isError:true},
+  { code:""},
+  { code: "    </div>",},
+  { code: "  )",},
+  { code: "}",},
 ];
 
 const ReviewComponent = [
@@ -154,6 +178,8 @@ const AutoCompleteComponent = [
   const [isShowProd,setIsShowProd] = useState(true);
   const [isProds , setIsProds] = useState(false);
   const [isFix,setIsFix] = useState(false);
+  const [isFix2,setIsFix2] = useState(false);
+  const [reviewBtn,setReviewBtn] = useState(true);
   const [isRef1,setIsRef1] = useState(false);
   const [isRef2,setIsRef2] = useState(false);
   const [isRef3,setIsRef3] = useState(false);
@@ -311,13 +337,9 @@ const socialItems = [
     },16500);
 
    }
-   
    function handleOverlayR(){
-    codeOverlayRef2.current?.classList.remove('hidden');
-    setTimeout(()=>{
-      debugBtnRef.current?.classList.add('hidden');
-    },16500);
      setIsLoad2(true);
+     setReviewBtn(false);
    }
  useEffect(() => {
     const handleKeyDown = (event:any) => {
@@ -1397,10 +1419,12 @@ className='relative h-[75%] w-[40%] flex  items-center justify-center  pl-10 py-
         onAnimationStart={() => setIsAuto(false)}
         className=' absolute h-full w-full bg-zinc-900 rounded-xl flex   opacity-100 overflow-hidden'>
 
-        {isLoad2 && <div data-lenis-prevent><CodeReviewOverlay/></div>}
-         
+        <AnimatePresence>
+        {isLoad2 && <div data-lenis-prevent><CodeReviewOverlay setIsFix={setIsFix2} setIsLoad2={setIsLoad2}/></div>}
+        </AnimatePresence>
+
         <div data-lenis-prevent className='w-full'>
-        <CodeEditor  comp1={ReviewComponent} comp2={fixedComponent} />
+        <ReviewCodeEditor isFix={isFix2}  comp1={ReviewComponent} comp2={AfterReviewComponent} />
         </div> 
         </motion.div>}
 
@@ -1556,16 +1580,19 @@ className='relative h-[75%] w-[40%] flex  items-center justify-center  pl-10 py-
         <p className={`${montserrat.className} text-lg  z-[99999996]`}><span className='opacity-60'>An</span> <span className='text-[#00BFFF] font-semibold'>AI-Powered Code Reviewer</span> <span className='opacity-60'>that scans your code in real time, detects bugs and vulnerabilities, and suggests improvements for readability, performance, and best practices—helping you write cleaner, more reliable code faster.</span></p> 
        </motion.span>
 
-       {isLoad?    
+       {/* {isLoad?    
         <motion.span 
         initial={{opacity:0,filter:'blur(20px)'}}
         whileInView={{opacity:1,filter:'blur(0px)'}}
         transition={{duration:1,delay:1}}
         className='mb-10 z-[99999996]'>
         <LoaderOne/>
-        </motion.span>  :         <button  onClick={handleOverlayR} className={`${montserrat.className} bg-gradient-to-br border-y-[0.1px] border-[#F0EAD6]/80 from-[#F0EAD6]/80 to-[#FAF9F6]/10 text-lg rounded-[25px] px-6 text-black py-2 mt-10 hover:opacity-70 z-[99999996]`}>
+        </motion.span>  :         }  */}
+        <AnimatePresence>
+        {reviewBtn &&  <motion.button exit={{opacity:0,filter:'blur(20px)'}} transition={{duration:0.5}}  onClick={handleOverlayR} className={`${montserrat.className} bg-gradient-to-br border-y-[0.1px] border-[#F0EAD6]/80 from-[#F0EAD6]/80 to-[#FAF9F6]/10 text-lg rounded-[25px] px-6 text-black py-2 mt-10 hover:opacity-70 z-[99999996]`}>
             <span className='font-semibold  text-zinc-950'>Review</span> this code
-        </button>} 
+        </motion.button>}
+        </AnimatePresence>
         </div>
 
       </div>}
@@ -2003,7 +2030,10 @@ function CodeOverlay({ref}:{ref:React.RefObject<HTMLDivElement>}){
   )
 }
 
-function CodeReviewOverlay(){
+function CodeReviewOverlay({setIsFix,setIsLoad2}:{setIsFix:React.Dispatch<React.SetStateAction<boolean>>,setIsLoad2:React.Dispatch<React.SetStateAction<boolean>>})
+{
+  const [isLoad,setIsLoad] = useState(false);
+   
   const code1 = `<button onClick={() => setCount(count + 1)}>+</button>
 <button onClick={() => setCount((prev) => Math.max(prev - 1, 0))}>-</button>`
 
@@ -2018,6 +2048,15 @@ function CodeReviewOverlay(){
   <button className="px-3 py-1 bg-green-500 text-white rounded" onClick={() => setCount((prev) => prev + 1)}>+</button>
   <button className="px-3 py-1 bg-red-500 text-white rounded" onClick={() => setCount((prev) => prev - 1)}>-</button>
 </div>`
+
+function handleChange(){
+  setIsLoad(true);
+  setTimeout(() => {
+    setIsLoad(false);
+    setIsFix(true);
+    setIsLoad2(false);
+  }, 2000);
+}
   return(
     <motion.div 
     // initial={{x:-100}}
@@ -2027,6 +2066,7 @@ function CodeReviewOverlay(){
        initial={{opacity:0,filter:'blur(20px)',x:360}}
        animate={{opacity:1,filter:'blur(0px)',x:0}}
        transition={{duration:1.5}}
+       exit={{opacity:0,filter:'blur(20px)',x:360}}
        className='absolute h-[86%] rounded-l-lg w-[40%] right-0  bg-zinc-800 z-50 text-white flex flex-col  p-5 overflow-y-auto shadow-[-15px_0_20px_-3px_rgba(0,0,0,0.3)]'>
        {/* <LoaderFive text="Reviewing Inprogress..."/> */}
 
@@ -2052,7 +2092,7 @@ function CodeReviewOverlay(){
       transition={{duration:1,delay:2}}
       className='mt-4 mb-4 font-semibold text-sm opacity-80'>🔧 Possible Improvements</motion.h1>
 
-<div className='flex flex-col gap-10'>      
+<div className='relative flex flex-col gap-10'>      
 
 
       <motion.div  
@@ -2105,7 +2145,7 @@ function CodeReviewOverlay(){
             initial={{opacity:0,filter:'blur(20px)'}}
       animate={{opacity:1,filter:'blur(0px)'}}
       transition={{duration:1,delay:7}}
-      className="  text-md flex flex-col mt-3 mb-56">
+      className="  text-md flex flex-col mt-3 mb-32">
         <h1 className='opacity-75'>4. Styling – Add some minimal Tailwind or CSS for better UI (optional):</h1>
         <div className='h-20 w-full bg-zinc-950 rounded-xl mt-2 mb-4'>
           <div className='ml-3 text-xs mt-1'>tsx</div>
@@ -2114,6 +2154,19 @@ function CodeReviewOverlay(){
             </SyntaxHighlighter>
           
         </div>
+      </motion.div>
+
+      <motion.div 
+      initial={{opacity:0,filter:'blur(20px)'}}
+      animate={{opacity:1,filter:'blur(0px)'}}
+      transition={{duration:1,delay:7}}
+      className="absolute text-md bottom-0 w-full flex justify-center items-center">
+           {isLoad? 
+           <span className='mb-3'>
+           <LoaderOne/>
+           </span> 
+             :
+           <button onClick={handleChange} className='bg-white text-black font-semibold px-3 py-1 rounded-full w-full'>Make changes</button>} 
       </motion.div>
 </div>
 

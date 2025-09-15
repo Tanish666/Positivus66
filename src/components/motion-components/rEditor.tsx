@@ -181,16 +181,9 @@ const nextJsStructure = [
       </div>        
      </div> 
      :
-     <div className='relative h-full  flex gap-3 py-2 w-full'>
+     <div className='relative h-full w-[95%] flex gap-3 py-2 overflow-y-auto scrollbar-thin pt-10'>
 
-      <motion.div 
-
-      className='absolute top-5 h-10 w-40 bg-green-800 bg-opacity-15 z-20 right-0 m-5 rounded-sm flex items-center pl-3 gap-2 '>
-      <IconAlertCircle stroke={2} color='green'/>
-      <h1 className='text-mono text-sm opacity-70'>8 FIXES</h1>
-      </motion.div>
-
-      <div className='text-white flex flex-col ml-4 opacity-65 font-mono gap-1 '>
+      <div className='text-white flex flex-col  ml-4 opacity-65 font-mono gap-[0.21rem] '>
        {[...Array(comp2.length)].map((_,idx)=>(
         <span key={idx}>{idx+1}</span>
        ))} 
@@ -222,8 +215,8 @@ const nextJsStructure = [
           
           {e.isError && 
            
-          <div className='absolute bg-green-600 w-full h-5 bg-opacity-10 cursor-text '>  
-          <div className='absolute h-5 w-[0.15rem] bg-green-600 rounded-3xl'/>
+          <div className='absolute bg-white w-full h-6 bg-opacity-10 cursor-text '>  
+          <div className='absolute h-6 w-[0.15rem] bg-white rounded-3xl'/>
           </div>
           }
           
