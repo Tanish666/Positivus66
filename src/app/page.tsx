@@ -2164,7 +2164,7 @@ function handleChange(){
            <LoaderOne/>
            </span> 
              :
-           <button onClick={handleChange} className='bg-white text-black font-semibold px-3 py-1 rounded-full w-full'>Make changes</button>} 
+           <motion.button whileHover={{opacity:0.7}} onClick={handleChange} className='bg-white text-black font-semibold px-3 py-1 rounded-full w-full'>Make changes</motion.button>} 
       </motion.div>
 </div>
 
