@@ -13,18 +13,16 @@ import { Montserrat } from 'next/font/google';
 import CodeEditor from '@/components/motion-components/editor'
 import { LoaderFive, LoaderOne } from '@/components/ui/loader';
 import { TypingAnimation,AnimatedSpan } from '@/components/ui/terminal';
-import { ProgressiveBlur } from '@/components/ui/blurBT';
-import { LoaderCircle, Truck, X } from 'lucide-react';
-import { Safari } from '@/components/mockups/safari';
+
 import { BackgroundGradientAnimation } from '@/components/ui/background-gradient-animation';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { useRouter } from 'next/navigation';
 import Footer from '@/components/footer';
-import { EventListeners } from '@tsparticles/engine';
+
 import VideoEmbed from '@/components/video';
 import ReviewCodeEditor from '@/components/motion-components/rEditor';
-import { isError } from 'postcss/lib/css-syntax-error';
+
 const montserrat = Montserrat({
   subsets: ['latin'],
   weight: ['400', '500', '600', '700'], // Add what you need
