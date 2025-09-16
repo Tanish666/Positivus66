@@ -1141,7 +1141,7 @@ className='lg:hidden fixed flex top-0 justify-center items-center w-full'>
 
 
  <div className='flex flex-col w-full lg:flex-row gap-10 justify-center items-center lg:gap-32 mt-10 lg:mt-16'>
-  <div className='h-[22vh] w-[50vw] lg:size-[13rem]'>
+  <div className=' w-[50vw] lg:size-[13rem]'>
 
     <img src="https://i.ibb.co/4P5tStk/Group-3.png" loading="lazy"
                           sizes="(max-width: 479px) 100vw, (max-width: 991px) 90vw, 27vw"
@@ -1149,7 +1149,7 @@ className='lg:hidden fixed flex top-0 justify-center items-center w-full'>
                           alt="Illustration of timeline" className="object-fit opacity-55 h-full w-full" />    
       <p className='text-sm opacity-70 mt-3 text-center'>Buy back your time to become 20x more productive</p>
     </div>
-  <div className='h-[22vh] w-[50vw] lg:size-[13rem]'>
+  <div className=' w-[50vw] lg:size-[13rem]'>
 
     <img src="https://i.ibb.co/4JHWs19/Group-2.png" loading="lazy"
                           sizes="(max-width: 479px) 100vw, (max-width: 991px) 90vw, 27vw"
@@ -1157,7 +1157,7 @@ className='lg:hidden fixed flex top-0 justify-center items-center w-full'>
                           alt="Illustration of timeline" className="object-fit opacity-55 h-full w-full" />    
       <p className='text-sm opacity-70 mt-3 text-center'>Buy back your time to become 20x more productive</p>
     </div>
-  <div className='h-[22vh] w-[50vw] lg:size-[13rem]'>
+  <div className=' w-[50vw] lg:size-[13rem]'>
 
     <img src="https://i.ibb.co/4JsRRn5/Group-4.png" loading="lazy"
                           sizes="(max-width: 479px) 100vw, (max-width: 991px) 90vw, 27vw"
