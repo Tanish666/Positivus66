@@ -159,7 +159,7 @@ className='lg:hidden fixed flex top-0 justify-center items-center w-full'>
         
        <div className='flex justify-center  mt-10 mb-10'>
         <div className='relative border-[3px] border-zinc-500 text-xl px-5 py-2 rounded-full flex gap-5  items-center '>
-        <motion.div initial={{x:-5.5,width:'6rem',color:'black'}} animate={ isPlan1? {x:-5.5,width:'6rem'} : isPlan2? {x:92,width:'5rem'} : {x:176,width:'7rem'} } transition={{duration:0.5}} className='absolute h-9  rounded-2xl bg-gradient-to-b from-[#00BFFF] to-[#1E90FF]'/>  
+        <motion.div initial={{x:-5.5,width:'6rem',color:'black'}} animate={ isPlan1? {x:-9,width:'6.3rem'} : isPlan2? {x:92,width:'5rem'} : {x:176,width:'7rem'} } transition={{duration:0.5}} className='absolute h-9  rounded-3xl bg-gradient-to-b from-[#00BFFF] to-[#1E90FF]'/>  
         <h1 onClick={()=> handleCurrPlan(1)} className={`${isPlan1? 'text-black font-semibold' : 'text-white'} z-20 text-black cursor-pointer`}>Monthly</h1>
         <h1 onClick={()=> handleCurrPlan(2)} className={`${isPlan2? 'text-black font-semibold' : 'text-white'} z-20 text-black cursor-pointer`}>Yearly</h1>
         <h1 onClick={()=> handleCurrPlan(3)} className={`${isPlan3? 'text-black font-semibold' : 'text-white'} z-20 text-black cursor-pointer`}>One-time</h1>
@@ -1189,9 +1189,11 @@ function ComparePlans(){
       </div>
       </div>
      </div>
-
-      <div className='w-full flex justify-between border-b-[1px] border-gray-500 border-opacity-35  px-10 py-5 items-center'>
-      <h1 className='text-xl font-semibold w-[15rem] text-center'>Seats</h1>
+     
+    <div className='w-full'> 
+  
+      <div className='w-full flex justify-between border-b-[1px] border-gray-500 border-opacity-35  px-10 py-3 items-center'>
+      <h1 className='text-xl font-semibold w-[15rem] text-left  pl-[2rem]'>Seats</h1>
       <div className='flex gap-16 text-lg'>
       <div className='flex flex-col justify-center items-center gap-2 w-[7.8rem]'>
         <h1>1 Seat</h1>
@@ -1211,8 +1213,8 @@ function ComparePlans(){
       </div>
      </div>
 
-            <div className='w-full flex justify-between border-b-[1px] border-gray-500 border-opacity-35  px-10 py-5 items-center'>
-      <h1 className='text-xl font-semibold w-[15rem] text-center'>Tokens</h1>
+            <div className='w-full flex justify-between border-b-[1px] border-gray-500 border-opacity-35  px-10 py-3 items-center'>
+      <h1 className='text-xl font-semibold w-[15rem] text-left   pl-[2rem]'>Tokens</h1>
       <div className='flex gap-16 text-lg'>
       <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
         <h1>60,000/month</h1>
@@ -1232,8 +1234,8 @@ function ComparePlans(){
       </div>
      </div>
 
-      <div className='w-full flex justify-between border-b-[1px] border-gray-500 border-opacity-35  px-10 py-5 items-center'>
-      <h1 className='text-xl font-semibold w-[15rem] text-center'>Knowledge bases</h1>
+      <div className='w-full flex justify-between border-b-[1px] border-gray-500 border-opacity-35  px-10 py-3 items-center'>
+      <h1 className='text-xl font-semibold  text-left  pl-[2rem]'>Knowledge bases</h1>
       <div className='flex gap-16 text-lg'>
       <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
         <h1>5 Total</h1>
@@ -1253,8 +1255,8 @@ function ComparePlans(){
       </div>
      </div>
 
-      <div className='w-full flex justify-between border-b-[1px] border-gray-500 border-opacity-35  px-10 py-5 items-center'>
-      <h1 className='text-xl font-semibold w-[15rem] text-center'>Storage space</h1>
+      <div className='w-full flex justify-between border-b-[1px] border-gray-500 border-opacity-35  px-10 py-3 items-center'>
+      <h1 className='text-xl font-semibold w-[15rem] text-left  pl-[2rem]'>Storage space</h1>
       <div className='flex gap-16 text-lg'>
       <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
         <h1>1GB</h1>
@@ -1274,8 +1276,8 @@ function ComparePlans(){
       </div>
      </div> 
 
-      <div className='w-full flex justify-between border-b-[1px] border-gray-500 border-opacity-35  px-10 py-5 items-center'>
-      <h1 className='text-xl font-semibold w-[15rem] text-center'>Internet Searches</h1>
+      <div className='w-full flex justify-between border-b-[1px] border-gray-500 border-opacity-35  px-10 py-3 items-center'>
+      <h1 className='text-xl font-semibold  text-left  pl-[2rem]'>Internet Searches</h1>
       <div className='flex gap-16 text-lg'>
       <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
         <h1>250/month</h1>
@@ -1295,8 +1297,8 @@ function ComparePlans(){
       </div>
      </div>  
 
-      <div className='w-full flex justify-between border-b-[1px] border-gray-500 border-opacity-35  px-10 py-5 items-center'>
-      <h1 className='text-xl font-semibold w-[15rem] text-center'>Integrations</h1>
+      <div className='w-full flex justify-between border-b-[1px] border-gray-500 border-opacity-35  px-10 py-3 items-center'>
+      <h1 className='text-xl font-semibold w-[15rem] text-left pl-[2rem]'>Integrations</h1>
       <div className='flex gap-[3.7rem] text-lg'>
       <div className='flex flex-col justify-center items-center gap-2 w-[9rem]'>
         <h1>Github</h1>
@@ -1316,8 +1318,8 @@ function ComparePlans(){
       </div>
      </div>
 
-            <div className='w-full flex justify-between border-b-[1px] border-gray-500 border-opacity-35 px-10 py-5 items-center'>
-      <h1 className='text-xl font-semibold w-[15rem] text-center'>Own API Key</h1>
+            <div className='w-full flex justify-between border-b-[1px] border-gray-500 border-opacity-35 px-10 py-3 items-center'>
+      <h1 className='text-xl font-semibold w-[15rem] text-leftr pl-[2rem]'>Own API Key</h1>
       <div className='flex gap-16 text-lg'>
       <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
                        <svg  xmlns="http://www.w3.org/2000/svg"  width={36}  height={36}  viewBox="0 0 24 24"  fill="currentColor"  className="icon icon-tabler icons-tabler-filled icon-tabler-circle-x"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M17 3.34a10 10 0 1 1 -14.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 14.995 -8.336zm-6.489 5.8a1 1 0 0 0 -1.218 1.567l1.292 1.293l-1.292 1.293l-.083 .094a1 1 0 0 0 1.497 1.32l1.293 -1.292l1.293 1.292l.094 .083a1 1 0 0 0 1.32 -1.497l-1.292 -1.293l1.292 -1.293l.083 -.094a1 1 0 0 0 -1.497 -1.32l-1.293 1.292l-1.293 -1.292l-.094 -.083z" /></svg>
@@ -1337,8 +1339,8 @@ function ComparePlans(){
       </div>
      </div>
 
-      <div className='w-full flex justify-between border-b-[1px] border-gray-500 border-opacity-35 px-10 py-5 items-center'>
-      <h1 className='text-xl font-semibold w-[15rem] text-center'>Knowledge Base Sharing</h1>
+      <div className='w-full flex justify-between border-b-[1px] border-gray-500 border-opacity-35 px-10 py-3 items-center'>
+      <h1 className='text-xl font-semibold  text-left pl-[2rem]'>Knowledge Base Sharing</h1>
       <div className='flex gap-16 text-lg'>
       <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
                        <svg  xmlns="http://www.w3.org/2000/svg"  width={36}  height={36}  viewBox="0 0 24 24"  fill="currentColor"  className="icon icon-tabler icons-tabler-filled icon-tabler-circle-x"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M17 3.34a10 10 0 1 1 -14.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 14.995 -8.336zm-6.489 5.8a1 1 0 0 0 -1.218 1.567l1.292 1.293l-1.292 1.293l-.083 .094a1 1 0 0 0 1.497 1.32l1.293 -1.292l1.293 1.292l.094 .083a1 1 0 0 0 1.32 -1.497l-1.292 -1.293l1.292 -1.293l.083 -.094a1 1 0 0 0 -1.497 -1.32l-1.293 1.292l-1.293 -1.292l-.094 -.083z" /></svg>
@@ -1358,8 +1360,8 @@ function ComparePlans(){
       </div>
      </div>
 
-           <div className='w-full flex justify-between border-b-[1px] border-gray-500 border-opacity-35 px-10 py-5 items-center'>
-      <h1 className='text-xl font-semibold w-[15rem] text-center'>Seat Management</h1>
+           <div className='w-full flex justify-between border-b-[1px] border-gray-500 border-opacity-35 px-10 py-3 items-center'>
+      <h1 className='text-xl font-semibold w-[15rem] text-left pl-[2rem]'>Seat Management</h1>
       <div className='flex gap-16 text-lg'>
       <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
                        <svg  xmlns="http://www.w3.org/2000/svg"  width={36}  height={36}  viewBox="0 0 24 24"  fill="currentColor"  className="icon icon-tabler icons-tabler-filled icon-tabler-circle-x"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M17 3.34a10 10 0 1 1 -14.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 14.995 -8.336zm-6.489 5.8a1 1 0 0 0 -1.218 1.567l1.292 1.293l-1.292 1.293l-.083 .094a1 1 0 0 0 1.497 1.32l1.293 -1.292l1.293 1.292l.094 .083a1 1 0 0 0 1.32 -1.497l-1.292 -1.293l1.292 -1.293l.083 -.094a1 1 0 0 0 -1.497 -1.32l-1.293 1.292l-1.293 -1.292l-.094 -.083z" /></svg>
@@ -1377,6 +1379,7 @@ function ComparePlans(){
         <img src='/tick.svg' className='object-fit size-[48%]'/>
       </div>
       </div>
+     </div>
      </div>
     </div>
   )
@@ -1401,7 +1404,7 @@ function ComparePlans2(){
      </div>
 
       <div className='w-[80%] flex justify-between border-b-[1px] border-gray-500 border-opacity-35  px-10  items-center'>
-      <h1 className='text-xl font-semibold w-[15rem] text-center'>Seats Management</h1>
+      <h1 className='text-xl font-semibold w-[15rem] text-left'>Seats Management</h1>
       <div className='flex gap-16 text-lg'>
 
 
@@ -1416,8 +1419,8 @@ function ComparePlans2(){
      </div>
 
 
-      <div className='w-[80%] flex justify-between border-b-[1px] border-gray-500 border-opacity-35  px-10 py-3 items-center'>
-      <h1 className='text-xl font-semibold w-[15rem] text-center'>Knowledge base Sharing</h1>
+      <div className='w-[80%] flex justify-between border-b-[1px] border-gray-500 border-opacity-35  px-10 items-center'>
+      <h1 className='text-xl font-semibold w-[20rem] text-left'>Knowledge base Sharing</h1>
       <div className='flex gap-16 text-lg'>
       <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
        <svg  xmlns="http://www.w3.org/2000/svg"  width={36}  height={36}  viewBox="0 0 24 24"  fill="currentColor"  className="icon icon-tabler icons-tabler-filled icon-tabler-circle-x"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M17 3.34a10 10 0 1 1 -14.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 14.995 -8.336zm-6.489 5.8a1 1 0 0 0 -1.218 1.567l1.292 1.293l-1.292 1.293l-.083 .094a1 1 0 0 0 1.497 1.32l1.293 -1.292l1.293 1.292l.094 .083a1 1 0 0 0 1.32 -1.497l-1.292 -1.293l1.292 -1.293l.083 -.094a1 1 0 0 0 -1.497 -1.32l-1.293 1.292l-1.293 -1.292l-.094 -.083z" /></svg>
@@ -1430,7 +1433,7 @@ function ComparePlans2(){
      </div>
 
       <div className='w-[80%] flex justify-between border-b-[1px] border-gray-500 border-opacity-35  px-10  items-center'>
-      <h1 className='text-xl font-semibold w-[15rem] text-center'>Advance ML Model</h1>
+      <h1 className='text-xl font-semibold  text-left'>Advance ML Model</h1>
       <div className='flex gap-16 text-lg'>
       <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
                <svg  xmlns="http://www.w3.org/2000/svg"  width={36}  height={36}  viewBox="0 0 24 24"  fill="currentColor"  className="icon icon-tabler icons-tabler-filled icon-tabler-circle-x"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M17 3.34a10 10 0 1 1 -14.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 14.995 -8.336zm-6.489 5.8a1 1 0 0 0 -1.218 1.567l1.292 1.293l-1.292 1.293l-.083 .094a1 1 0 0 0 1.497 1.32l1.293 -1.292l1.293 1.292l.094 .083a1 1 0 0 0 1.32 -1.497l-1.292 -1.293l1.292 -1.293l.083 -.094a1 1 0 0 0 -1.497 -1.32l-1.293 1.292l-1.293 -1.292l-.094 -.083z" /></svg>
@@ -1442,7 +1445,7 @@ function ComparePlans2(){
      </div> 
 
       <div className='w-[80%] flex justify-between border-b-[1px] border-gray-500 border-opacity-35  px-10  items-center'>
-      <h1 className='text-xl font-semibold w-[15rem] text-center'>Automated PR Review</h1>
+      <h1 className='text-xl font-semibold w-[15rem] text-left'>Automated PR Review</h1>
       <div className='flex gap-16 text-lg'>
       <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
                        <svg  xmlns="http://www.w3.org/2000/svg"  width={36}  height={36}  viewBox="0 0 24 24"  fill="currentColor"  className="icon icon-tabler icons-tabler-filled icon-tabler-circle-x"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M17 3.34a10 10 0 1 1 -14.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 14.995 -8.336zm-6.489 5.8a1 1 0 0 0 -1.218 1.567l1.292 1.293l-1.292 1.293l-.083 .094a1 1 0 0 0 1.497 1.32l1.293 -1.292l1.293 1.292l.094 .083a1 1 0 0 0 1.32 -1.497l-1.292 -1.293l1.292 -1.293l.083 -.094a1 1 0 0 0 -1.497 -1.32l-1.293 1.292l-1.293 -1.292l-.094 -.083z" /></svg>
@@ -1455,7 +1458,7 @@ function ComparePlans2(){
 
 
             <div className='w-[80%] flex justify-between border-b-[1px] border-gray-500 border-opacity-35 px-10  items-center'>
-      <h1 className='text-xl font-semibold w-[15rem] text-center'>Own API Key</h1>
+      <h1 className='text-xl font-semibold w-[15rem] text-left'>Own API Key</h1>
       <div className='flex gap-16 text-lg'>
       <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
                        <svg  xmlns="http://www.w3.org/2000/svg"  width={36}  height={36}  viewBox="0 0 24 24"  fill="currentColor"  className="icon icon-tabler icons-tabler-filled icon-tabler-circle-x"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M17 3.34a10 10 0 1 1 -14.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 14.995 -8.336zm-6.489 5.8a1 1 0 0 0 -1.218 1.567l1.292 1.293l-1.292 1.293l-.083 .094a1 1 0 0 0 1.497 1.32l1.293 -1.292l1.293 1.292l.094 .083a1 1 0 0 0 1.32 -1.497l-1.292 -1.293l1.292 -1.293l.083 -.094a1 1 0 0 0 -1.497 -1.32l-1.293 1.292l-1.293 -1.292l-.094 -.083z" /></svg>
@@ -1466,8 +1469,8 @@ function ComparePlans2(){
       </div>
      </div>
 
-      <div className='w-[80%] flex justify-between border-b-[1px] border-gray-500 border-opacity-35 px-10 py-3 items-center'>
-      <h1 className='text-xl font-semibold w-[15rem] text-center'>Debug, Review and Refactor Code.</h1>
+      <div className='w-[80%] flex justify-between border-b-[1px] border-gray-500 border-opacity-35 px-10  items-center'>
+      <h1 className='text-xl font-semibold  text-left'>Debug, Review and Refactor Code.</h1>
       <div className='flex gap-16 text-lg'>
       <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
         <img src='/tick.svg' className='object-fit size-[48%]'/>
@@ -1479,7 +1482,7 @@ function ComparePlans2(){
      </div>
 
            <div className='w-[80%] flex justify-between border-b-[1px] border-gray-500 border-opacity-35  px-10 py-3 items-center'>
-      <h1 className='text-xl font-semibold w-[15rem] text-center'>Internet Search.</h1>
+      <h1 className='text-xl font-semibold w-[15rem] text-left'>Internet Search.</h1>
       <div className='flex gap-16 text-lg'>
       <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
         <h1>Unlimited</h1>
@@ -1490,8 +1493,8 @@ function ComparePlans2(){
       </div>
      </div>
 
-      <div className='w-[80%] flex justify-between border-b-[1px] border-gray-500 border-opacity-35  px-10 py-3  items-center'>
-      <h1 className='text-xl font-semibold w-[15rem] text-center'>Search & Chat with Documentation & Codebases.</h1>
+      <div className='w-[80%] flex justify-between border-b-[1px] border-gray-500 border-opacity-35  px-10  items-center'>
+      <h1 className='text-xl font-semibold  text-left'>Search & Chat with Documentation & Codebases.</h1>
       <div className='flex gap-16 text-lg'>
       <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
         <img src='/tick.svg' className='object-fit size-[48%]'/>
@@ -1502,8 +1505,8 @@ function ComparePlans2(){
       </div>
      </div>
 
-      <div className='w-[80%] flex justify-between border-b-[1px] border-gray-500 border-opacity-35  px-10 py-3 items-center'>
-      <h1 className='text-xl font-semibold w-[15rem] text-center'>Generate Unit/Functional Test cases.</h1>
+      <div className='w-[80%] flex justify-between border-b-[1px] border-gray-500 border-opacity-35  px-10  items-center'>
+      <h1 className='text-xl font-semibold  text-left'>Generate Unit/Functional Test cases.</h1>
       <div className='flex gap-16 text-lg'>
       <div className='flex flex-col justify-center items-center gap-2 w-[7.7rem]'>
         <img src='/tick.svg' className='object-fit size-[48%]'/>
@@ -1521,8 +1524,8 @@ function ComparePlans2(){
 function ComparePlans2Mobile(){
     return(
     <div className='pb-10 w-full lg:hidden flex flex-col items-center'>
-     <div className='w-fullflex justify-between  h-[8rem] px-10 py-[20vw]'>
-      <h1 className='text-[10vw] font-semibold mb-2 text-center'><span className='bg-gradient-to-b from-[#00BFFF] to-[#1E90FF] bg-clip-text text-transparent'>Compare</span> Plans</h1>
+     <div className='w-full flex justify-between mb-4'>
+      <h1 className='text-[10vw] w-full  font-semibold text-center'><span className='bg-gradient-to-b from-[#00BFFF] to-[#1E90FF] bg-clip-text text-transparent'>Compare</span> Plans</h1>
 
       {/* <div className='flex gap-[3.7rem] text-2xl'>
       <div className='flex flex-col justify-center items-center gap-2'>
@@ -1700,8 +1703,8 @@ function ComparePlans2Mobile(){
 function ComparePlansMobile(){
     return(
     <div className='pb-10 w-full lg:hidden flex flex-col items-center'>
-     <div className='w-fullflex justify-between  h-[8rem] px-10 py-[20vw]'>
-      <h1 className='text-[10vw] font-semibold mb-2 text-center'><span className='bg-gradient-to-b from-[#00BFFF] to-[#1E90FF] bg-clip-text text-transparent'>Compare</span> Plans</h1>
+     <div className='w-fullflex justify-between mb-4'>
+      <h1 className='text-[10vw] font-semibold  text-center'><span className='bg-gradient-to-b from-[#00BFFF] to-[#1E90FF] bg-clip-text text-transparent'>Compare</span> Plans</h1>
 
       {/* <div className='flex gap-[3.7rem] text-2xl'>
       <div className='flex flex-col justify-center items-center gap-2'>

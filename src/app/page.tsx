@@ -506,7 +506,7 @@ function handleArrow() {
     } else {
       footerRef?.current?.scrollIntoView({ behavior: "smooth" });
     }
-    return !prev; // flip if that's your intention
+    return !prev; // flip state each time
   });
 }
 
@@ -525,6 +525,8 @@ function handleArrow() {
      }
      </AnimatePresence>
      {/* arrow for going to hero section */}
+
+     
 {/* bottom blur */}
 {/* <div className='fixed h-[2%] w-full bg-gradient-to-t from-white/30 to-transparent backdrop-blur-[5px] bottom-0 z-40 opacity-100'>
 </div>
@@ -605,7 +607,7 @@ className='hidden lg:flex fixed  top-0 justify-center items-center w-full'>
     </div>
     <div className={`${montserrat.className} relative flex flex-col gap-3 text-md  justify-center items-center cursor-pointer text-right z-50`}>
       <span className=' flex gap-3 justify-center items-center z-50'>
-       <motion.h1 onClick={()=>setIsProducts(state=>!state)}  whileHover={{opacity:1}} animate={{y:isProducts? 55 : 0 ,x:isProducts? 15 : 0,scale:isProducts? 1.15 : 1}} transition={{duration:0.2}} className='flex text-center justify-center items-center opacity-65 z-50'>Products</motion.h1>
+       <motion.h1 onClick={()=>setIsProducts(state=>!state)}  whileHover={{opacity:1}} animate={{y:isProducts? 55 : 0 ,x:isProducts? 15 : 0,scale:isProducts? 1.20 : 1,opacity:isProducts? 1 : ''}} transition={{duration:0.2}} className={`flex text-center justify-center items-center opacity-65 z-50 ${isProducts? 'font-semibold' : ''}`}>Products</motion.h1>
        <motion.h1 onClick={() => productShowRef.current?.scrollIntoView({ behavior: "smooth" })} whileHover={{opacity:1}} className='opacity-65'>Features</motion.h1>
        <motion.h1 whileHover={{opacity:1}}  onClick={()=>{router.push('pricing')}} className='opacity-65'>Pricing</motion.h1>
        <button className={`${montserrat.className} px-2 py-1  bg-[#FFFFFF] text-black  rounded-sm font-semibold opacity-85`}>Get Started</button>
@@ -620,8 +622,25 @@ className='hidden lg:flex fixed  top-0 justify-center items-center w-full'>
         boxShadow: '0 14px 25px rgba(0, 0, 0, 0.1)',
         backdropFilter: 'blur(50px)',
         WebkitBackdropFilter: 'blur(50px)'
-        }} className='absolute h-32 w-full mt-[12.4rem] rounded-md -z-10 bg-zinc-900 bg-opacity-95'>
-
+        }} className='absolute h-32 w-[80%] mt-[12.4rem] left-0 rounded-md -z-10 bg-zinc-900 bg-opacity-95'>
+        <div className="mt-10 px-5 flex flex-col gap-2">
+        <div className='flex justify-between w-full'> 
+          <span className="flex justify-center items-center gap-2"><h1>Terminal</h1><div className="size-7 bg-white/25 rounded-full bg-opacity-90 flex justify-center items-center">
+          <motion.svg initial={{rotate:50,opacity:0.7}} xmlns="http://www.w3.org/2000/svg"  width={20}  height={20}  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  strokeWidth={2}  strokeLinecap="round"  strokeLinejoin="round"  className="icon icon-tabler icons-tabler-outline icon-tabler-arrow-narrow-up"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 5l0 14" /><path d="M16 9l-4 -4" /><path d="M8 9l4 -4" /></motion.svg>
+          </div></span>
+          <span className="flex justify-center items-center gap-2"><h1>Education</h1><div className="size-7 bg-white/25 rounded-full bg-opacity-90 flex justify-center items-center">
+          <motion.svg initial={{rotate:50,opacity:0.7}} xmlns="http://www.w3.org/2000/svg"  width={20}  height={20}  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  strokeWidth={2}  strokeLinecap="round"  strokeLinejoin="round"  className="icon icon-tabler icons-tabler-outline icon-tabler-arrow-narrow-up"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 5l0 14" /><path d="M16 9l-4 -4" /><path d="M8 9l4 -4" /></motion.svg>
+          </div></span>
+        </div>
+          <div className='flex justify-between w-full'> 
+          <span className="flex justify-center items-center gap-2"><h1>IDE</h1><div className="size-7 bg-white/25 rounded-full bg-opacity-90 flex justify-center items-center">
+          <motion.svg initial={{rotate:50,opacity:0.7}} xmlns="http://www.w3.org/2000/svg"  width={20}  height={20}  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  strokeWidth={2}  strokeLinecap="round"  strokeLinejoin="round"  className="icon icon-tabler icons-tabler-outline icon-tabler-arrow-narrow-up"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 5l0 14" /><path d="M16 9l-4 -4" /><path d="M8 9l4 -4" /></motion.svg>
+          </div></span>
+          <span className="flex justify-center items-center gap-2"><h1>Web-App</h1><div className="size-7 bg-white/25 rounded-full bg-opacity-90 flex justify-center items-center">
+          <motion.svg initial={{rotate:50,opacity:0.7}} xmlns="http://www.w3.org/2000/svg"  width={20}  height={20}  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  strokeWidth={2}  strokeLinecap="round"  strokeLinejoin="round"  className="icon icon-tabler icons-tabler-outline icon-tabler-arrow-narrow-up"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 5l0 14" /><path d="M16 9l-4 -4" /><path d="M8 9l4 -4" /></motion.svg>
+          </div></span>
+        </div>
+        </div>
        </motion.div>
         }
     </div>
