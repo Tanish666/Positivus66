@@ -1718,7 +1718,9 @@ className='relative h-[75%] w-[40%] flex  items-center justify-center  pl-10 py-
  
  <div className='flex justify-center  gap-5'>
    <div className='flex flex-col gap-2'>
-   <div className='h-[25vh] w-[85vw] bg-zinc-600 rounded-xl'></div>
+   <div className='h-[25vh] w-[85vw] bg-zinc-600 rounded-xl overflow-hidden'>
+    <VideoEmbed/>
+   </div>
    <h1 className='font-semibold text-2xl'>VS Code Extension</h1>
 
    </div>
