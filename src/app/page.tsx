@@ -1805,12 +1805,12 @@ className='relative h-full w-full flex  items-center justify-center    py-3 over
      className='absolute h-[35vh] w-[90vw]  lg:h-[30rem] lg:w-[40rem]  rounded-3xl flex justify-center items-center'>
       <motion.div 
       animate={{rotate:10}}
-      className='h-[70%] w-[90%] bg-[#131316] border border-[#434344] rounded-[2rem] flex flex-col items-center px-5 lg:px-8 py-5 gap-5'>
+      className='h-[70%] w-[99%] lg:w-[90%] bg-[#131316] border border-[#434344] rounded-[2rem] flex flex-col items-center px-5 lg:px-8 py-5 gap-5'>
        <div className='flex w-full gap-4 items-center'>
        <div className='rounded-full bg-white size-20'><img src="https://drive.codemate.ai/ayushbansal.jpeg" alt="" className='size-20 rounded-full' /></div>
       <div className='flex flex-col'>
        <h1 className='font-semibold text-2xl'>Ayush Bansal</h1>
-        <p className='opacity-60'>Software Engineer-II, Amazon</p> 
+        <p className='opacity-60 text-sm lg:text-md'>Software Engineer-II, Amazon</p> 
       </div>
        </div>
 
@@ -1825,7 +1825,7 @@ className='relative h-full w-full flex  items-center justify-center    py-3 over
      className='absolute  h-[35vh] w-[90vw]  lg:h-[30rem] lg:w-[40rem]  rounded-3xl flex justify-center items-center'>
             <motion.div 
       animate={{rotate:5}}
-      className='h-[70%] w-[90%] bg-[#131316] border border-[#434344] rounded-[2rem] flex flex-col items-cente px-5 lg:px-8 py-5 gap-5'>
+      className='h-[70%] w-[99%] lg:w-[90%] bg-[#131316] border border-[#434344] rounded-[2rem] flex flex-col items-cente px-5 lg:px-8 py-5 gap-5'>
        <div className='flex w-full gap-4 items-center'>
        <div className='rounded-full bg-white size-20'><img src="https://drive.codemate.ai/hani.webp" alt="" className='size-20 rounded-full' /></div>
       <div className='flex flex-col'>
@@ -1843,12 +1843,12 @@ className='relative h-full w-full flex  items-center justify-center    py-3 over
      <motion.div style={{y:tdiv3X}} className='absolute h-[35vh] w-[90vw]  lg:h-[30rem] lg:w-[40rem] rounded-3xl flex justify-center items-center'>
       <motion.div 
       animate={{rotate:0}}
-      className='h-[70%] w-[90%] bg-[#131316] border border-[#434344] rounded-[2rem] flex flex-col items-cente px-5 lg:px-8 py-5 gap-5'>
+      className='h-[70%] w-[99%] lg:w-[90%] bg-[#131316] border border-[#434344] rounded-[2rem] flex flex-col items-cente px-5 lg:px-8 py-5 gap-5'>
        <div className='flex w-full gap-4 items-center'>
        <div className='rounded-full bg-white size-20'><img src="https://drive.codemate.ai/vilkho_appsumo.webp" alt="" className='size-20 rounded-full' /></div>
-      <div className='flex flex-col'>
-       <h1 className='font-semibold text-2xl'>Vilkhovskiy</h1>
-        <p className='opacity-60'>Chief Executive Officer, Softenq</p> 
+      <div className='flex flex-col w-[50%]'>
+       <h1 className='font-semibold text-xl lg:text-2xl'>Vilkhovskiy</h1>
+        <p className='opacity-60 text-sm lg:text-md '>Chief Executive Officer, Softenq</p> 
       </div>
        </div>
 
@@ -1861,7 +1861,7 @@ className='relative h-full w-full flex  items-center justify-center    py-3 over
      <motion.div style={{y:tdiv4X}} className='absolute  h-[35vh] w-[90vw]  lg:h-[30rem] lg:w-[40rem] rounded-3xl flex justify-center items-center'>
             <motion.div 
       animate={{rotate:-5}}
-      className='h-[70%] w-[90%] bg-[#131316] border border-[#434344] rounded-[2rem] flex flex-col items-cente px-5 lg:px-8 py-5 gap-5'>
+      className='h-[70%] w-[99%] lg:w-[90%] bg-[#131316] border border-[#434344] rounded-[2rem] flex flex-col items-cente px-5 lg:px-8 py-5 gap-5'>
        <div className='flex w-full gap-4 items-center'>
        <div className='rounded-full bg-white size-20'><img src="https://i.pravatar.cc/150?u=kitty.liu" alt="" className='size-20 rounded-full' /></div>
       <div className='flex flex-col'>
@@ -1879,7 +1879,7 @@ className='relative h-full w-full flex  items-center justify-center    py-3 over
      <motion.div style={{y:tdiv5X}} className='absolute  h-[35vh] w-[90vw]  lg:h-[30rem] lg:w-[40rem] rounded-3xl flex justify-center items-center'>
                   <motion.div 
       animate={{rotate:-10}}
-      className='h-[70%] w-[90%] bg-[#131316] border border-[#434344] rounded-[2rem] flex flex-col items-cente px-5 lg:px-8 py-5 gap-5'>
+      className='h-[70%] w-[99%] lg:w-[90%] bg-[#131316] border border-[#434344] rounded-[2rem] flex flex-col items-cente px-5 lg:px-8 py-5 gap-5'>
        <div className='flex w-full gap-4 items-center'>
        <div className='rounded-full bg-white size-20'><img src="https://i.pravatar.cc/150?u=david.kim" alt="" className='size-20 rounded-full' /></div>
       <div className='flex flex-col'>

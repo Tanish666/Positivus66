@@ -19,7 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="">
       <head>
-        <title>rough work</title>
+        <title>CodeMate AI | Your Professional And Secured AI Pair Programmer</title>
       </head>
       <body
         className= {`${montserrat.className} antialiased bg-zinc-950 text-white dark`}
