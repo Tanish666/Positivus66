@@ -1731,12 +1731,12 @@ className='relative h-[75%] w-[40%] flex  items-center justify-center  pl-10 py-
 <h1 className="bg-gradient-to-b from-[#00BFFF] to-[#1E90FF] bg-clip-text text-transparent text-4xl font-semibold ">
 For Enterprises
 </h1>
-<div className='text-7xl  flex flex-col gap-1 font-semibold'>
+<div className='text-6xl  flex flex-col gap-1 font-semibold'>
 <h1 >Empower your team</h1>
 <h1>and succeed as a business</h1>
 </div>
 
-<div className='relative flex justify-center items-center mt-10 w-full'>
+<div className='relative flex justify-center items-center mt-20 w-full'>
   <div 
   style={{background:!isNBack? 'rgba(15, 12, 12, 0.2)' : 'rgba(15, 20, 20, 0.45)',   
         boxShadow: '0 4px 25px rgba(0, 0, 0, 0.1)',
@@ -1770,17 +1770,46 @@ With the time savings Codemate unlocks, developers are empowered to focus on wha
 </div>
 
 <div className='w-full flex justify-center items-center gap-2 mt-10 '>
-  <div className='h-[35.5rem] w-[50rem] bg-white rounded-2xl flex justify-center items-center'>
-  <h1 className='text-black text-center'>Aynchronize your codebase in knowledge bases with help of codemate.</h1>  
-  
+  <div className='h-[35.5rem] w-[50rem] rounded-2xl flex flex-col justify-center items-center border-x-[1px] border-white border-opacity-20 px-3'
+  style={{background:!isNBack? 'rgba(15, 12, 12, 0.2)' : 'rgba(15, 20, 20, 0.45)',   
+        boxShadow: '0 4px 25px rgba(0, 0, 0, 0.1)',
+        backdropFilter: 'blur(10px)',
+        WebkitBackdropFilter: 'blur(10px)',
+        zIndex:99999,
+        }}
+  >
+  <h1 className='text-left text-xl font-semibold '>Streamline and synchronize your codebase across knowledge bases with Codemate.</h1>  
+  <p className='text-sm opacity-50'>
+    Codemate helps you streamline and synchronize your codebase across knowledge bases, ensuring consistency, reducing redundancy, and enabling your team to focus on innovation and faster delivery.
+  </p>
   </div> 
 
   <div className='flex flex-col gap-2'>
-   <div className='h-[17.5rem] w-[50rem] bg-white rounded-2xl flex justify-center items-center'>
-      <h1 className='text-black text-center'>Run it on your environment.</h1>
+   <div className='h-[17.5rem] w-[50rem] rounded-2xl flex flex-col justify-center  border-x-[1px] border-white border-opacity-20 px-3'
+     style={{background:!isNBack? 'rgba(15, 12, 12, 0.2)' : 'rgba(15, 20, 20, 0.45)',   
+        boxShadow: '0 4px 25px rgba(0, 0, 0, 0.1)',
+        backdropFilter: 'blur(10px)',
+        WebkitBackdropFilter: 'blur(10px)',
+        zIndex:99999,
+        }}
+   >
+      <h1 className=' text-left text-xl font-semibold'>Run it seamlessly in your environment with Codemate.</h1>
+        <p className='text-sm opacity-50'>
+Run it seamlessly in your environment with Codemate, ensuring smooth integration with your existing workflows. Codemate adapts to your setup, minimizing disruption while maximizing efficiency, so your team can maintain focus on delivering quality code without added complexity.
+  </p>
    </div>
-   <div className='h-[17.5rem] w-[50rem] bg-white rounded-2xl flex justify-center items-center'>
-          <h1 className='text-black text-center'>Fullstack nature can help non developers and developers.</h1>
+   <div className='h-[17.5rem] w-[50rem] rounded-2xl flex flex-col justify-center  border-x-[1px] border-white border-opacity-20 px-3'
+     style={{background:!isNBack? 'rgba(15, 12, 12, 0.2)' : 'rgba(15, 20, 20, 0.45)',   
+        boxShadow: '0 4px 25px rgba(0, 0, 0, 0.1)',
+        backdropFilter: 'blur(10px)',
+        WebkitBackdropFilter: 'blur(10px)',
+        zIndex:99999,
+        }}
+   >
+      <h1 className=' text-left text-xl font-semibold'>Codemate’s full-stack nature empowers both developers and non-developers to collaborate effortlessly.</h1>
+        <p className='text-sm opacity-50'>
+Codemate’s full-stack nature bridges the gap between developers and non-developers, enabling seamless collaboration, simplifying workflows, and boosting productivity across projects.
+  </p>
    </div>
   </div>
 </div>
