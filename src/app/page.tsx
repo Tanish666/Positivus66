@@ -1074,57 +1074,87 @@ className='lg:hidden fixed flex top-0 justify-center items-center w-full'>
   <div className={`h-full  flex flex-col pt-10 lg:pt-24  gap-[3rem] items-center  ${montserrat.className} `}>
     
     <div>
-    <div className='relative h-[45vh] w-[88vw] lg:w-[30vw] bg-gradient-to-b from-[#243B55] to-[#141E30] rounded-lg pl-7 overflow-hidden' >
-     <h1 className={`text-2xl opacity-90 mt-2`}>Codemate Build</h1>
-     <img src="build.svg" className='absolute -bottom-5 -right-14 size-[90%]' alt="" />
+    <div className='relative h-[33vh] lg:h-[20rem] w-[88vw] lg:w-[30vw]   overflow-hidden' >
+     
+     <div className='absolute bottom-0 h-[70%] w-full bg-gradient-to-b from-[#141E30]/90 to-[#000000]/20  rounded-t-[3rem] border-x-[1px] border-zinc-600'/>
+    
+
+     <div className="absolute -bottom-14 lg:-bottom-[3rem]  w-full  flex items-center justify-center shadow-2xl">
+     <img src="chat.svg" className='object-fit size-[90%] shadow-2xl'  alt="" />
+     </div>
+    </div>
+    <h1 className='mt-1 text-lg font-semibold'>Introducing Chat</h1>
+    <p className='opacity-65 text-sm lg:text-sm w-[88vw] lg:w-[30vw]'>Your AI Coding Agent that helps you convert your prompts into working deployed applications</p>
+    </div>
+
+    <div>
+    <div className='relative h-[33vh] lg:h-[20rem] w-[88vw] lg:w-[30vw]   overflow-hidden' >
+     
+     <div className='absolute bottom-0 h-[70%] w-full bg-gradient-to-b from-[#141E30]/90 to-[#000000]/20  rounded-t-[3rem] border-x-[1px] border-zinc-600'/>
+    
+
+     <div className="absolute -bottom-14 lg:-bottom-[3rem]  w-full  flex items-center justify-center shadow-2xl">
+     <img src="build2.svg" className='object-fit size-[90%] shadow-2xl'  alt="" />
+     </div>
     </div>
     <h1 className='mt-1 text-lg font-semibold'>Introducing Build</h1>
-    <p className='opacity-65 text-md lg:text-sm w-[88vw] lg:w-[30vw]'>Your AI Coding Agent that helps you convert your prompts into working deployed applications</p>
+    <p className='opacity-65 text-sm lg:text-sm w-[88vw] lg:w-[30vw]'>Your AI Coding Agent that helps you convert your prompts into working deployed applications</p>
     </div>
 
     <div>
-    <div className='relative h-[45vh] w-[88vw] lg:w-[30vw] bg-gradient-to-b from-[#6441A5] to-[#2A0845] rounded-lg pl-7 overflow-hidden' >
-     <h1 className={`text-2xl opacity-90 mt-2`}>Codemate Chat</h1>
-     <img src="build.svg" className='absolute -bottom-5 -right-14 size-[90%]' alt="" />
+    <div className='relative h-[33vh] lg:h-[20rem] w-[88vw] lg:w-[30vw]   overflow-hidden' >
+     
+     <div className='absolute bottom-0 h-[70%] w-full bg-gradient-to-b from-[#141E30]/90 to-[#000000]/20  rounded-t-[3rem] border-x-[1px] border-zinc-600'/>
+    
+
+     <div className="absolute -bottom-14 lg:-bottom-[3rem]  w-full  flex items-center justify-center shadow-2xl">
+     <img src="eduD.svg" className='object-fit size-[90%] shadow-2xl'  alt="" />
+     </div>
     </div>
-    <h1 className='mt-1 text-lg font-semibold'>Introducing Chat</h1>
-    <p className='opacity-65 text-md lg:text-sm w-[88vw] lg:w-[30vw]'>Your AI Coding Agent that helps you convert your prompts into working deployed applications</p>
+    <h1 className='mt-1 text-lg font-semibold'>Introducing Education</h1>
+    <p className='opacity-65 text-sm lg:text-sm w-[88vw] lg:w-[30vw]'>Your AI Coding Agent that helps you convert your prompts into working deployed applications</p>
     </div>
 
     <div>
-    <div className='relative h-[45vh] w-[88vw] lg:w-[30vw] bg-gradient-to-b from-[#6441A5] to-[#2A0845] rounded-lg pl-7 overflow-hidden' >
-     <h1 className={`text-2xl opacity-90 mt-2`}>Codemate Chat</h1>
-     <img src="build.svg" className='absolute -bottom-5 -right-14 size-[90%]' alt="" />
+    <div className='relative h-[33vh] lg:h-[20rem] w-[88vw] lg:w-[30vw]   overflow-hidden' >
+     
+     <div className='absolute bottom-0 h-[70%] w-full bg-gradient-to-b from-[#141E30]/90 to-[#000000]/20  rounded-t-[3rem] border-x-[1px] border-zinc-600'/>
+    
+
+     <div className="absolute -bottom-14 lg:-bottom-[3rem]  w-full  flex items-center justify-center shadow-2xl">
+     <img src="eduA.svg" className='object-fit size-[90%] shadow-2xl'  alt="" />
+     </div>
     </div>
-    <h1 className='mt-1 text-lg font-semibold'>Introducing Chat</h1>
-    <p className='opacity-65 text-md lg:text-sm w-[88vw] lg:w-[30vw]'>Your AI Coding Agent that helps you convert your prompts into working deployed applications</p>
+    <h1 className='mt-1 text-lg font-semibold'>Introducing Education</h1>
+    <p className='opacity-65 text-sm lg:text-sm w-[88vw] lg:w-[30vw]'>Your AI Coding Agent that helps you convert your prompts into working deployed applications</p>
     </div>
 
     <div>
-    <div className='relative h-[45vh] w-[88vw] lg:w-[30vw] bg-gradient-to-b from-[#6441A5] to-[#2A0845] rounded-lg pl-7 overflow-hidden' >
-     <h1 className={`text-2xl opacity-90 mt-2`}>Codemate Chat</h1>
-     <img src="build.svg" className='absolute -bottom-5 -right-14 size-[90%]' alt="" />
+    <div className='relative h-[33vh] lg:h-[20rem] w-[88vw] lg:w-[30vw]   overflow-hidden' >
+     
+     <div className='absolute bottom-0 h-[70%] w-full bg-gradient-to-b from-[#141E30]/90 to-[#000000]/20  rounded-t-[3rem] border-x-[1px] border-zinc-600'/>
+    
+
+     <div className="absolute -bottom-14 lg:-bottom-[3rem]  w-full  flex items-center justify-center shadow-2xl">
+     <img src="chat.svg" className='object-fit size-[90%] shadow-2xl'  alt="" />
+     </div>
     </div>
     <h1 className='mt-1 text-lg font-semibold'>Introducing Chat</h1>
-    <p className='opacity-65 text-md lg:text-sm w-[88vw] lg:w-[30vw]'>Your AI Coding Agent that helps you convert your prompts into working deployed applications</p>
+    <p className='opacity-65 text-sm lg:text-sm w-[88vw] lg:w-[30vw]'>Your AI Coding Agent that helps you convert your prompts into working deployed applications</p>
     </div>
 
     <div>
-    <div className='relative h-[45vh] w-[88vw] lg:w-[30vw] bg-gradient-to-b from-[#6441A5] to-[#2A0845] rounded-lg pl-7 overflow-hidden' >
-     <h1 className={`text-2xl opacity-90 mt-2`}>Codemate Chat</h1>
-     <img src="build.svg" className='absolute -bottom-5 -right-14 size-[90%]' alt="" />
-    </div>
-    <h1 className='mt-1 text-lg font-semibold'>Introducing Chat</h1>
-    <p className='opacity-65 text-md lg:text-sm w-[88vw] lg:w-[30vw]'>Your AI Coding Agent that helps you convert your prompts into working deployed applications</p>
-    </div>
+    <div className='relative h-[33vh] lg:h-[20rem] w-[88vw] lg:w-[30vw]   overflow-hidden' >
+     
+     <div className='absolute bottom-0 h-[70%] w-full bg-gradient-to-b from-[#141E30]/90 to-[#000000]/20  rounded-t-[3rem] border-x-[1px] border-zinc-600'/>
+    
 
-    <div>
-    <div className='relative h-[45vh] w-[88vw] lg:w-[30vw] bg-gradient-to-b from-[#6441A5] to-[#2A0845] rounded-lg pl-7 overflow-hidden' >
-     <h1 className={`text-2xl opacity-90 mt-2`}>Codemate Chat</h1>
-     <img src="build.svg" className='absolute -bottom-5 -right-14 size-[90%]' alt="" />
+     <div className="absolute -bottom-14 lg:-bottom-[3rem]  w-full  flex items-center justify-center shadow-2xl">
+     <img src="chat.svg" className='object-fit size-[90%] shadow-2xl'  alt="" />
+     </div>
     </div>
     <h1 className='mt-1 text-lg font-semibold'>Introducing Chat</h1>
-    <p className='opacity-65 text-md lg:text-sm w-[88vw] lg:w-[30vw]'>Your AI Coding Agent that helps you convert your prompts into working deployed applications</p>
+    <p className='opacity-65 text-sm lg:text-sm w-[88vw] lg:w-[30vw]'>Your AI Coding Agent that helps you convert your prompts into working deployed applications</p>
     </div>
   </div>
 {/* features of products */} 
@@ -1162,27 +1192,18 @@ className='lg:hidden fixed flex top-0 justify-center items-center w-full'>
  <div className='flex flex-col w-full lg:flex-row gap-10 justify-center items-center lg:gap-32 mt-10 lg:mt-16'>
   <div className=' w-[50vw] lg:size-[13rem]'>
 
-    <img src="https://i.ibb.co/4P5tStk/Group-3.png" loading="lazy"
-                          sizes="(max-width: 479px) 100vw, (max-width: 991px) 90vw, 27vw"
-                          srcSet="https://i.ibb.co/4P5tStk/Group-3.png 500w, https://i.ibb.co/4P5tStk/Group-3.png 1216w"
-                          alt="Illustration of timeline" className="object-fit opacity-55 h-full w-full" />    
-      <p className='text-sm opacity-70 mt-3 text-center'>Buy back your time to become 20x more productive</p>
+      <h1 className="text-8xl text-center w-full font-semibold opacity-70">55%</h1>   
+      <p className='text-sm opacity-70 mt-3 text-center'>Faster coding</p>
     </div>
   <div className=' w-[50vw] lg:size-[13rem]'>
 
-    <img src="https://i.ibb.co/4JHWs19/Group-2.png" loading="lazy"
-                          sizes="(max-width: 479px) 100vw, (max-width: 991px) 90vw, 27vw"
-                          srcSet="https://i.ibb.co/4JHWs19/Group-2.png 500w, https://i.ibb.co/4JHWs19/Group-2.png 1216w"
-                          alt="Illustration of timeline" className="object-fit opacity-55 h-full w-full" />    
-      <p className='text-sm opacity-70 mt-3 text-center'>Buy back your time to become 20x more productive</p>
+      <h1 className="text-8xl text-center w-full font-semibold opacity-70">39%</h1>   
+      <p className='text-sm opacity-70 mt-3 text-center'>Improvement in code quality</p>
     </div>
   <div className=' w-[50vw] lg:size-[13rem]'>
 
-    <img src="https://i.ibb.co/4JsRRn5/Group-4.png" loading="lazy"
-                          sizes="(max-width: 479px) 100vw, (max-width: 991px) 90vw, 27vw"
-                          srcSet="https://i.ibb.co/4JsRRn5/Group-4.png 500w, https://i.ibb.co/4JsRRn5/Group-4.png 1216w"
-                          alt="Illustration of timeline" className="object-fit opacity-55 h-full w-full" />    
-      <p className='text-sm opacity-70 mt-3 text-center'>Buy back your time to become 20x more productive</p>
+         <h1 className="text-8xl text-center w-full font-semibold opacity-70">68%</h1>   
+      <p className='text-sm opacity-70 mt-3 text-center'>Had a positive experience</p>
     </div>
  </div>
 </div> 
