@@ -1786,7 +1786,11 @@ With the time savings Codemate unlocks, developers are empowered to focus on wha
   </div>
 </div>
 
-
+<div className='text-2xl  flex flex-col gap-1 font-semibold mt-20 opacity-70'>
+  <h1>Explore more reasons for your business</h1>
+  <h1>to invest in Codemate tools</h1>
+</div>
+<div className='mt-5 bg-white w-fit p-2 text-black rounded-3xl font-semibold'>Book a call</div>
 </div>
 {/* enterprises section */}
   
