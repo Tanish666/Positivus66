@@ -1736,7 +1736,7 @@ For Enterprises
 <h1>and succeed as a business</h1>
 </div>
 
-<div className='flex justify-center items-center mt-10'>
+<div className='relative flex justify-center items-center mt-10 w-full'>
   <div 
   style={{background:!isNBack? 'rgba(15, 12, 12, 0.2)' : 'rgba(15, 20, 20, 0.45)',   
         boxShadow: '0 4px 25px rgba(0, 0, 0, 0.1)',
@@ -1744,7 +1744,7 @@ For Enterprises
         WebkitBackdropFilter: 'blur(10px)',
         zIndex:99999,
         }}
-  className='relative h-[40rem] w-[80%] rounded-[4rem] px-10'>
+  className='relative h-[40rem] w-[80%] rounded-[4rem] px-10 border-y-[1px]  border-white border-opacity-50'>
       <h1 className="bg-gradient-to-b from-[#00BFFF] to-[#1E90FF] bg-clip-text text-transparent text-left text-9xl font-semibold mt-5">
 “
 </h1>
@@ -1759,8 +1759,7 @@ With the time savings Codemate unlocks, developers are empowered to focus on wha
 </div>
   </div>
   
-  
-   
+  <motion.img initial={{scale:1,y:100}} src="gl.png" alt=""  className="absolute   "/>
 
 </div>
 
@@ -1786,11 +1785,11 @@ With the time savings Codemate unlocks, developers are empowered to focus on wha
   </div>
 </div>
 
-<div className='text-2xl  flex flex-col gap-1 font-semibold mt-20 opacity-70'>
+<div className='text-2xl  flex flex-col gap-1 font-semibold mt-10 opacity-70'>
   <h1>Explore more reasons for your business</h1>
   <h1>to invest in Codemate tools</h1>
 </div>
-<div className='mt-5 bg-white w-fit p-2 text-black rounded-3xl font-semibold'>Book a call</div>
+<div className='mt-5 bg-white w-fit px-3 py-2 text-black rounded-full font-semibold '>Book a call</div>
 </div>
 {/* enterprises section */}
   
