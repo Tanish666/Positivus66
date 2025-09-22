@@ -1167,47 +1167,7 @@ className='lg:hidden fixed flex top-0 justify-center items-center w-full'>
 {/* scrolling bento */}
 
 
-{/* trusted by section */}
-<div className={`${montserrat.className} lg:pb-32 pb-20  w-full bg-zinc-950 text-white z-50`}>
- <div className=' lg:pt-[15rem]'>
- <h1 className='text-center text-[10vw] lg:text-7xl font-bold text-white  opacity-45'>Trusted By</h1>
- <p className='text-center mt-2  lg:text-xl opacity-30'>The Developers from the well known orgs around the globe</p>
-     
-     
-     <div className='flex flex-col justify-center items-center w-full'>
-      <div className='flex lg:gap-10 justify-center items-center mt-4'>
-       <img src='paytm.svg' className='object-fit w-[30vw] lg:w-[20vw]'/>
-       <img src='amazon.svg' className='object-fit w-[30vw] lg:w-[20vw]'/>
-       <img src='fampay.svg' className='object-fit w-[30vw] lg:w-[20vw]'/>
-      </div>
-      <div className='flex gap-4'>
-        <img src='inno.svg' className='object-fit w-[35vw] lg:w-[25vw]]'/>
-        <img src='atl.svg' className='object-fit w-[35vw] lg:w-[25vw]'/>
-      </div>
-     </div>
 
- </div>
-
-
- <div className='flex flex-col w-full lg:flex-row gap-10 justify-center items-center lg:gap-32 mt-10 lg:mt-16'>
-  <div className=' w-[50vw] lg:size-[13rem]'>
-
-      <h1 className="text-8xl text-center w-full font-semibold opacity-70">55%</h1>   
-      <p className='text-sm opacity-70 mt-3 text-center'>Faster coding</p>
-    </div>
-  <div className=' w-[50vw] lg:size-[13rem]'>
-
-      <h1 className="text-8xl text-center w-full font-semibold opacity-70">39%</h1>   
-      <p className='text-sm opacity-70 mt-3 text-center'>Improvement in code quality</p>
-    </div>
-  <div className=' w-[50vw] lg:size-[13rem]'>
-
-         <h1 className="text-8xl text-center w-full font-semibold opacity-70">68%</h1>   
-      <p className='text-sm opacity-70 mt-3 text-center'>Had a positive experience</p>
-    </div>
- </div>
-</div> 
-{/* trusted by section */}
 
 
 
@@ -1765,6 +1725,115 @@ className='relative h-[75%] w-[40%] flex  items-center justify-center  pl-10 py-
  </div>
 </div>
 {/* for mobile */}
+
+{/* enterprises section  */}
+<div className=' w-full pt-16 px-14'>
+<h1 className="bg-gradient-to-b from-[#00BFFF] to-[#1E90FF] bg-clip-text text-transparent text-4xl font-semibold ">
+For Enterprises
+</h1>
+<div className='text-7xl  flex flex-col gap-1 font-semibold'>
+<h1 >Empower your team</h1>
+<h1>and succeed as a business</h1>
+</div>
+
+<div className='flex justify-center items-center mt-10'>
+  <div 
+  style={{background:!isNBack? 'rgba(15, 12, 12, 0.2)' : 'rgba(15, 20, 20, 0.45)',   
+        boxShadow: '0 4px 25px rgba(0, 0, 0, 0.1)',
+        backdropFilter: 'blur(10px)',
+        WebkitBackdropFilter: 'blur(10px)',
+        zIndex:99999,
+        }}
+  className='relative h-[40rem] w-[80%] rounded-[4rem] px-10'>
+      <h1 className="bg-gradient-to-b from-[#00BFFF] to-[#1E90FF] bg-clip-text text-transparent text-left text-9xl font-semibold mt-5">
+“
+</h1>
+<div className='text-5xl font-semibold'>
+With the time savings Codemate unlocks, developers are empowered to focus on what they enjoy most  <span className='opacity-50'>— solving complex problems, driving innovation, and experimenting with new ideas.</span>
+</div>
+
+
+<div className='absolute bottom-10'>
+  <h1 className='font-semibold'>Ayush Singhal</h1>
+  <p className='opacity-50'>Founder of Codemate</p>
+</div>
+  </div>
+  
+  
+   
+
+</div>
+
+
+<div className='text-5xl  flex flex-col gap-1 font-semibold mt-20 opacity-70'>
+<h1 >Solutions that scales</h1>
+<h1>with you</h1>
+</div>
+
+<div className='w-full flex justify-center items-center gap-2 mt-10 '>
+  <div className='h-[35.5rem] w-[50rem] bg-white rounded-2xl flex justify-center items-center'>
+  <h1 className='text-black text-center'>Aynchronize your codebase in knowledge bases with help of codemate.</h1>  
+  
+  </div> 
+
+  <div className='flex flex-col gap-2'>
+   <div className='h-[17.5rem] w-[50rem] bg-white rounded-2xl flex justify-center items-center'>
+      <h1 className='text-black text-center'>Run it on your environment.</h1>
+   </div>
+   <div className='h-[17.5rem] w-[50rem] bg-white rounded-2xl flex justify-center items-center'>
+          <h1 className='text-black text-center'>Fullstack nature can help non developers and developers.</h1>
+   </div>
+  </div>
+</div>
+
+
+</div>
+{/* enterprises section */}
+  
+
+
+{/* trusted by section */}
+<div className={`${montserrat.className} lg:pb-32 pb-20  w-full bg-zinc-950 text-white z-50`}>
+ <div className=' lg:pt-[15rem]'>
+ <h1 className='text-center text-[10vw] lg:text-7xl font-bold text-white  opacity-45'>Trusted By</h1>
+ <p className='text-center mt-2  lg:text-xl opacity-30'>The Developers from the well known orgs around the globe</p>
+     
+     
+     <div className='flex flex-col justify-center items-center w-full'>
+      <div className='flex lg:gap-10 justify-center items-center mt-4'>
+       <img src='paytm.svg' className='object-fit w-[30vw] lg:w-[20vw]'/>
+       <img src='amazon.svg' className='object-fit w-[30vw] lg:w-[20vw]'/>
+       <img src='fampay.svg' className='object-fit w-[30vw] lg:w-[20vw]'/>
+      </div>
+      <div className='flex gap-4'>
+        <img src='inno.svg' className='object-fit w-[35vw] lg:w-[25vw]]'/>
+        <img src='atl.svg' className='object-fit w-[35vw] lg:w-[25vw]'/>
+      </div>
+     </div>
+
+ </div>
+
+
+ <div className='flex flex-col w-full lg:flex-row gap-10 justify-center items-center lg:gap-32 mt-10 lg:mt-16'>
+  <div className=' w-[50vw] lg:size-[13rem]'>
+
+      <h1 className="text-8xl text-center w-full font-semibold opacity-70">55%</h1>   
+      <p className='text-sm opacity-70 mt-3 text-center'>Faster coding</p>
+    </div>
+  <div className=' w-[50vw] lg:size-[13rem]'>
+
+      <h1 className="text-8xl text-center w-full font-semibold opacity-70">39%</h1>   
+      <p className='text-sm opacity-70 mt-3 text-center'>Improvement in code quality</p>
+    </div>
+  <div className=' w-[50vw] lg:size-[13rem]'>
+
+         <h1 className="text-8xl text-center w-full font-semibold opacity-70">68%</h1>   
+      <p className='text-sm opacity-70 mt-3 text-center'>Had a positive experience</p>
+    </div>
+ </div>
+</div> 
+{/* trusted by section */}
+
 
 {/* bento */}
      {/* <div className=' relative h-[170vh] w-full bg-zinc-950 text-white overflow-hidden'>
