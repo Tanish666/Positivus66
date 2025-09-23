@@ -1731,17 +1731,17 @@ className='relative h-[75%] w-[40%] flex  items-center justify-center  pl-10 py-
 <h1 className="bg-gradient-to-b from-[#00BFFF] to-[#1E90FF] bg-clip-text text-transparent lg:text-4xl font-semibold ">
 For Enterprises
 </h1>
-<div className='text-[6vw] lg:text-6xl  flex flex-col lg:gap-1 font-semibold'>
-<h1 >Empower your team</h1>
-<h1>and succeed as a business</h1>
+<div className='text-[6vw] lg:text-6xl flex flex-col lg:gap-1 font-semibold bg-gradient-to-b from-white to-gray-400 bg-clip-text text-transparent pb-1'>
+<h1>Inspire your people</h1>
+<h1>and grow with purpose</h1>
 </div>
 
 <div className='relative flex justify-center items-center mt-20 w-full'>
   <div 
   style={{background:!isNBack? 'rgba(15, 12, 12, 0.2)' : 'rgba(15, 20, 20, 0.45)',   
         boxShadow: '0 4px 25px rgba(0, 0, 0, 0.1)',
-        backdropFilter: 'blur(10px)',
-        WebkitBackdropFilter: 'blur(10px)',
+        backdropFilter: 'blur(12px)',
+        WebkitBackdropFilter: 'blur(12px)',
         zIndex:99999,
         }}
   className='relative  h-[60vh]  lg:h-[40rem] lg:w-[80%] rounded-[4rem] px-10 border-y-[1px]  border-white border-opacity-50'>
@@ -1749,7 +1749,7 @@ For Enterprises
 “
 </h1>
 <div className='lg:text-5xl font-semibold'>
-With the time savings Codemate unlocks, developers are empowered to focus on what they enjoy most  <span className='opacity-50'>— solving complex problems, driving innovation, and experimenting with new ideas.</span>
+Through the insights Codemate provides, teams are inspired to achieve what truly matters <span className='opacity-50'>— building impactful solutions, shaping future growth, and delivering measurable value.</span>
 </div>
 
 
@@ -1773,7 +1773,7 @@ With the time savings Codemate unlocks, developers are empowered to focus on wha
 </div>
 
 <div className='w-full flex flex-col lg:flex-row  justify-center items-center gap-5  lg:gap-2 mt-10 '>
-  <div className='h-[35vh] lg:h-[25.5rem] lg:w-[50vw] rounded-2xl flex flex-col justify-center gap-2 items-center border-x-[1px] border-white border-opacity-20 px-3'
+  <div className='relative h-[35vh] lg:h-[25.5rem] lg:w-[50vw] rounded-2xl flex flex-col justify-center gap-2 items-center border-x-[1px] border-white border-opacity-20 px-3'
   style={{background:!isNBack? 'rgba(15, 12, 12, 0.2)' : 'rgba(15, 20, 20, 0.45)',   
         boxShadow: '0 4px 25px rgba(0, 0, 0, 0.1)',
         backdropFilter: 'blur(10px)',
@@ -1781,14 +1781,15 @@ With the time savings Codemate unlocks, developers are empowered to focus on wha
         zIndex:99999,
         }}
   >
-  <h1 className='text-left text-xl lg:text-2xl font-semibold '>Streamline and synchronize your codebase across knowledge bases with Codemate.</h1>  
+  <h1 className='text-left text-[4vw] lg:text-2xl font-semibold mt-14 lg:mt-0  bg-gradient-to-b from-white to-gray-400 bg-clip-text text-transparent'>Streamline and synchronize your codebase across knowledge bases with Codemate.</h1>  
   <p className='text-sm opacity-50'>
     Codemate helps you streamline and synchronize your codebase across knowledge bases, ensuring consistency, reducing redundancy, and enabling your team to focus on innovation and faster delivery.
   </p>
+  <motion.img initial={{scale:1.2}} src="streamline.svg" alt=""  className="absolute top-2 left-3 lg:top-14 lg:left-4 brightness-90 "/>
   </div> 
 
   <div className='flex flex-col gap-5  lg:gap-2'>
-   <div className='h-[35vh] lg:h-[12.5rem] lg:w-[50vw] rounded-2xl flex flex-col gap-2 justify-center  border-x-[1px] border-white border-opacity-20 px-3'
+   <div className='relative h-[35vh] lg:h-[12.5rem] lg:w-[50vw] rounded-2xl flex flex-col gap-2 justify-center  border-x-[1px] border-white border-opacity-20 px-3'
      style={{background:!isNBack? 'rgba(15, 12, 12, 0.2)' : 'rgba(15, 20, 20, 0.45)',   
         boxShadow: '0 4px 25px rgba(0, 0, 0, 0.1)',
         backdropFilter: 'blur(10px)',
@@ -1796,12 +1797,13 @@ With the time savings Codemate unlocks, developers are empowered to focus on wha
         zIndex:99999,
         }}
    >
-      <h1 className=' text-left text-xl lg:text-2xl font-semibold'>Run it seamlessly in your environment with Codemate.</h1>
+      <h1 className=' text-left text-[4vw] lg:text-2xl font-semibold mt-14  bg-gradient-to-b from-white to-gray-400 bg-clip-text text-transparent'>Run it seamlessly in your environment with Codemate.</h1>
         <p className='text-sm opacity-50'>
 Run it seamlessly in your environment with Codemate, ensuring smooth integration with your existing workflows. Codemate adapts to your setup, minimizing disruption while maximizing efficiency, so your team can maintain focus on delivering quality code without added complexity.
   </p>
+    <motion.img initial={{scale:1}} src="codebase.svg" alt=""  className="absolute top-2 left-3 brightness-90"/>
    </div>
-   <div className='h-[35vh] lg:h-[12.5rem] lg:w-[50vw] rounded-2xl flex flex-col justify-center  border-x-[1px] border-white border-opacity-20 gap-2 px-3'
+   <div className='relative h-[35vh] lg:h-[12.5rem] lg:w-[50vw] rounded-2xl flex flex-col justify-center  border-x-[1px] border-white border-opacity-20 gap-2 px-3'
      style={{background:!isNBack? 'rgba(15, 12, 12, 0.2)' : 'rgba(15, 20, 20, 0.45)',   
         boxShadow: '0 4px 25px rgba(0, 0, 0, 0.1)',
         backdropFilter: 'blur(10px)',
@@ -1809,10 +1811,11 @@ Run it seamlessly in your environment with Codemate, ensuring smooth integration
         zIndex:99999,
         }}
    >
-      <h1 className=' text-left text-xl lg:text-2xl font-semibold'>Codemate’s full-stack nature empowers both developers and non-developers to collaborate effortlessly.</h1>
+      <h1 className=' text-left text-[4vw] lg:text-2xl font-semibold mt-14  bg-gradient-to-b from-white to-gray-400 bg-clip-text text-transparent'>Codemate’s full-stack nature empowers both developers and non-developers to collaborate effortlessly.</h1>
         <p className='text-sm opacity-50'>
 Codemate’s full-stack nature bridges the gap between developers and non-developers, enabling seamless collaboration, simplifying workflows, and boosting productivity across projects.
   </p>
+      <motion.img initial={{scale:1}} src="empowers.svg" alt=""  className="absolute top-2 left-2 brightness-90"/>
    </div>
   </div>
 </div>
@@ -1917,7 +1920,7 @@ className='relative h-full w-full flex  items-center justify-center    py-3 over
      </motion.div> */}
 
       
-        <img src="/codemateLogoB.svg" className='absolute object-fit w-[95vw] brightness-50' alt="" />
+        <img src="/codemateLogoB.svg" className='absolute object-fit w-[95vw] brightness-[0.6]' alt="" />
     
 
 
