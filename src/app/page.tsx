@@ -1850,7 +1850,7 @@ Run it seamlessly in your environment with Codemate, ensuring smooth integration
         <p className='text-xs lg:text-sm opacity-50'>
 Codemate’s full-stack nature bridges the gap between developers and non-developers, enabling seamless collaboration, simplifying workflows, and boosting productivity across projects.
   </p>
-      <motion.img initial={{scale:1}} src="icon3.svg" alt=""  className="object-fit absolute top-5 left-2 lg:left-0 brightness-90 size-[20%]"/>
+      <motion.img initial={{scale:1}} src="e3.svg" alt=""  className="object-fit absolute top-5 left-2 lg:left-0 brightness-90 size-[20%]"/>
    </div>
   </div>
 </div>
