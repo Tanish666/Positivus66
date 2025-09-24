@@ -1214,7 +1214,7 @@ className='lg:hidden fixed flex top-0 justify-center items-center w-full'>
       className='absolute left-[30rem] h-[30vw] w-[58vw] rounded-xl bg-zinc-900 overflow-hidden'>
         {/* <Safari url='codemate.ai' imageSrc='chatss.png' className='dark'/> */}
         {/* <img src="https://drive.codemate.ai/playground.gif" className='w-full h-full object-fit rounded-xl' alt="" /> */}
-        <motion.video autoPlay loop muted playsInline initial={{scale:1.025}} className='h-full w-full rounded-xl ' src='termvid.mp4'></motion.video>
+        <motion.video autoPlay loop muted playsInline initial={{scale:1.025}} className='h-full w-full rounded-xl ' src='prR.mp4'></motion.video>
         </motion.div>}
      
        {isShowProd &&      <motion.div 
@@ -1223,9 +1223,9 @@ className='lg:hidden fixed flex top-0 justify-center items-center w-full'>
      exit={{opacity:0,filter:'blur(20px)'}}
      initial={{opacity:0,filter:'blur(20px)'}}
      animate={{opacity:1,filter:'blur(0px)'}}
-     className='absolute left-[30rem] h-[30vw] w-[58vw] rounded-xl  bg-rose-900'>
+     className='absolute left-[30rem] h-[30vw] w-[58vw] rounded-xl bg-zinc-950 overflow-hidden'>
       {/* <Safari url='codemate.ai' imageSrc='buildss.png' className='dark'/> */}
-      <img src="https://drive.codemate.ai/debug-code.gif" className='w-full h-full object-fit rounded-xl' alt="" />
+        <motion.video autoPlay loop muted playsInline initial={{scale:1.05}} className='h-full w-full rounded-xl ' src='doc.mp4'></motion.video>
       </motion.div>}  
 
      {isShowProd && <motion.div
