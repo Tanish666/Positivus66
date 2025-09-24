@@ -1685,26 +1685,28 @@ className='relative h-[75%] w-[40%] flex  items-center justify-center  pl-10 py-
  
  <motion.div style={{x:mx}} className='flex pl-16 gap-5'>
    <div className='flex flex-col gap-2'>
-   <div className='h-[30vh] w-[65vw] bg-zinc-600'></div>
-   <h1 className='font-bold text-2xl'>PR Review</h1>
-   <p className='w-[65vw] text-sm'>Acts as your AI coding partner by managing bugs and fixing broken features, allowing you to focus core development</p>
+   <div className='h-[28vh] w-[95vw] bg-zinc-600 overflow-hidden rounded-xl'>
+    <img src="https://drive.codemate.ai/debug-code.gif" alt="" className='h-full w-full'/>
+   </div>
+   <h1 className='font-bold text-2xl'>Debug</h1>
+   <p className='w-full text-sm opacity-70'>Your AI debugger that identifies and resolves errors quickly, so you can keep building without interruptions.</p>
    </div>
 
 
    <div className='flex flex-col gap-2'>
-   <div className='h-[30vh] w-[65vw] bg-rose-700'></div>
-   <h1 className='font-bold text-2xl'>Documentation</h1>
-   <p className='w-[65vw] text-sm'>Acts as your AI coding partner by managing bugs and fixing broken features, allowing you to focus core development</p>
+      <div className='h-[28vh] w-[95vw] bg-zinc-600 overflow-hidden rounded-xl'>
+    <img src="https://drive.codemate.ai/review-code.gif" alt="" className='h-full w-full'/>
+   </div>
+   <h1 className='font-bold text-2xl'>Review</h1>
+   <p className='w-full text-sm opacity-70'>Your AI reviewer that ensures cleaner, more reliable code so you can ship with confidence.</p>
    </div>
 
    <div className='flex flex-col gap-2'>
-   <div className='h-[30vh] w-[65vw] bg-white'>
-    <video src='termvid.mp4' className='h-full w-full'>
-
-    </video>
+      <div className='h-[28vh] w-[95vw] bg-zinc-600 overflow-hidden rounded-xl'>
+    <img src="https://drive.codemate.ai/optimise-code.gif" alt="" className='h-full w-full'/>
    </div>
-   <h1 className='font-bold text-2xl'>Terminal</h1>
-   <p className='w-[65vw] text-sm'>Acts as your AI coding partner by managing bugs and fixing broken features, allowing you to focus core development</p>
+   <h1 className='font-bold text-2xl'>Optimize</h1>
+   <p className='w-full text-sm opacity-70'>Your AI optimizer that refactors and enhances code performance so you can deliver faster, smoother applications.</p>
    </div>
  </motion.div>
   
@@ -1713,7 +1715,7 @@ className='relative h-[75%] w-[40%] flex  items-center justify-center  pl-10 py-
         initial={{opacity:0,filter:'blur(10px)'}}
         whileInView={{opacity:1,filter:'blur(0px)'}}
         transition={{delay:0.2,duration:0.6}}
-        className={`${montserrat.className}  text-[4vw]  font-semibold bg-gradient-to-b from-white to-gray-300/80 bg-clip-text  text-transparent  pt-2 pb-2 w-full text-right`}>From <span className='bg-gradient-to-b from-[#00BFFF] to-[#1E90FF] bg-clip-text text-transparent '>Web-Application</span></motion.div>
+        className={`${montserrat.className}  text-[4vw]  font-semibold bg-gradient-to-b from-white to-gray-300/80 bg-clip-text  text-transparent  pt-2 pb-2 w-full text-right`}>From your <span className='bg-gradient-to-b from-[#00BFFF] to-[#1E90FF] bg-clip-text text-transparent text-2xl'>IDE</span></motion.div>
    </div>
   </div>
 
@@ -1735,7 +1737,7 @@ className='relative h-[75%] w-[40%] flex  items-center justify-center  pl-10 py-
    <div className='h-[25vh] w-[85vw] bg-zinc-600 rounded-xl overflow-hidden'>
     <VideoEmbed/>
    </div>
-   <h1 className='font-semibold text-2xl'>VS Code Extension</h1>
+  
 
    </div>
 
@@ -1750,7 +1752,7 @@ className='relative h-[75%] w-[40%] flex  items-center justify-center  pl-10 py-
         initial={{opacity:0,filter:'blur(10px)'}}
         whileInView={{opacity:1,filter:'blur(0px)'}}
         transition={{delay:0.2,duration:0.6}}
-        className={`${montserrat.className}  text-[5vw]  font-semibold bg-gradient-to-b from-white to-gray-300/80 bg-clip-text  text-transparent  pt-2 pb-2 w-full text-left`}>To your <span className='bg-gradient-to-b from-[#00BFFF] to-[#1E90FF] bg-clip-text text-transparent '>IDE</span></motion.div>
+        className={`${montserrat.className}  text-[5vw]  font-semibold bg-gradient-to-b from-white to-gray-300/80 bg-clip-text  text-transparent  pt-2 pb-2 w-full text-left`}>To<span className='bg-gradient-to-b from-[#00BFFF] to-[#1E90FF] bg-clip-text text-transparent text-2xl'>Web-App</span></motion.div>
    </div>
   
 
@@ -1967,7 +1969,7 @@ className='relative h-full w-full flex  items-center justify-center    py-3 over
 
      <motion.div 
      style={{y:tdiv1X}}
-     className='absolute h-[35vh] w-[90vw]  lg:h-[30rem] lg:w-[40rem]  rounded-3xl flex justify-center items-center'>
+     className='absolute h-[38vh] w-[90vw]  lg:h-[30rem] lg:w-[40rem]  rounded-3xl flex justify-center items-center'>
       <motion.div 
       animate={{rotate:10}}
       className='h-[70%] w-[99%] lg:w-[90%] bg-[#131316] border border-[#434344] rounded-[2rem] flex flex-col items-center px-5 lg:px-8 py-5 gap-5'>
@@ -1979,7 +1981,7 @@ className='relative h-full w-full flex  items-center justify-center    py-3 over
       </div>
        </div>
 
-       <div className='leading-[1.1] text-[3vw] lg:text-2xl'><span className='text-[#00BFFF]'>CodeMate.ai</span> has revolutionized my coding workflow with accurate AI suggestions and a user-friendly interface. Highly recommended!</div>
+       <div className='leading-[1.1] text-[3.7vw] lg:text-2xl'><span className='text-[#00BFFF]'>CodeMate.ai</span> has revolutionized my coding workflow with accurate AI suggestions and a user-friendly interface. Highly recommended!</div>
 
        <div className='w-full flex justify-between'>
        </div>
@@ -1987,7 +1989,7 @@ className='relative h-full w-full flex  items-center justify-center    py-3 over
      </motion.div>
      <motion.div
      style={{y:tdiv2X}} 
-     className='absolute  h-[35vh] w-[90vw]  lg:h-[30rem] lg:w-[40rem]  rounded-3xl flex justify-center items-center'>
+     className='absolute  h-[38vh] w-[90vw]  lg:h-[30rem] lg:w-[40rem]  rounded-3xl flex justify-center items-center'>
             <motion.div 
       animate={{rotate:5}}
       className='h-[70%] w-[99%] lg:w-[90%] bg-[#131316] border border-[#434344] rounded-[2rem] flex flex-col items-cente px-5 lg:px-8 py-5 gap-5'>
@@ -1999,13 +2001,13 @@ className='relative h-full w-full flex  items-center justify-center    py-3 over
       </div>
        </div>
 
-       <div className='leading-[1.1] text-[3vw] lg:text-2xl'><span className='text-[#00BFFF]'>CodeMate</span> has lots of great features. You can request code samples when stuck, or get a code review to spot issues you might miss. The Debugger is a life saver—it quickly found a bug in my code that was filling the error logs!</div>
+       <div className='leading-[1.1] text-[3.3vw] lg:text-2xl'><span className='text-[#00BFFF]'>CodeMate</span> has lots of great features. You can request code samples when stuck, or get a code review to spot issues you might miss. The Debugger is a life saver—it quickly found a bug in my code that was filling the error logs!</div>
 
        <div className='w-full flex justify-between'>
        </div>
       </motion.div>
      </motion.div>
-     <motion.div style={{y:tdiv3X}} className='absolute h-[35vh] w-[90vw]  lg:h-[30rem] lg:w-[40rem] rounded-3xl flex justify-center items-center'>
+     <motion.div style={{y:tdiv3X}} className='absolute h-[38vh] w-[90vw]  lg:h-[30rem] lg:w-[40rem] rounded-3xl flex justify-center items-center'>
       <motion.div 
       animate={{rotate:0}}
       className='h-[70%] w-[99%] lg:w-[90%] bg-[#131316] border border-[#434344] rounded-[2rem] flex flex-col items-cente px-5 lg:px-8 py-5 gap-5'>
@@ -2017,13 +2019,13 @@ className='relative h-full w-full flex  items-center justify-center    py-3 over
       </div>
        </div>
 
-       <div className='leading-[1.1] text-[3vw] lg:text-2xl'>An excellent solution for project analysis and efficient development! I love how <span className='text-[#00BFFF]'>CodeMate</span> can analyze an entire project, assign tasks for refactoring or code generation, and even ensure the project is covered with tests.</div>
+       <div className='leading-[1.1] text-[3.3vw] lg:text-2xl'>An excellent solution for project analysis and efficient development! I love how <span className='text-[#00BFFF]'>CodeMate</span> can analyze an entire project, assign tasks for refactoring or code generation, and even ensure the project is covered with tests.</div>
 
        <div className='w-full flex justify-between'>
        </div>
       </motion.div>
       </motion.div>  
-     <motion.div style={{y:tdiv4X}} className='absolute  h-[35vh] w-[90vw]  lg:h-[30rem] lg:w-[40rem] rounded-3xl flex justify-center items-center'>
+     <motion.div style={{y:tdiv4X}} className='absolute  h-[38vh] w-[90vw]  lg:h-[30rem] lg:w-[40rem] rounded-3xl flex justify-center items-center'>
             <motion.div 
       animate={{rotate:-5}}
       className='h-[70%] w-[99%] lg:w-[90%] bg-[#131316] border border-[#434344] rounded-[2rem] flex flex-col items-cente px-5 lg:px-8 py-5 gap-5'>
@@ -2041,7 +2043,7 @@ className='relative h-full w-full flex  items-center justify-center    py-3 over
        </div>
       </motion.div>
      </motion.div>
-     <motion.div style={{y:tdiv5X}} className='absolute  h-[35vh] w-[90vw]  lg:h-[30rem] lg:w-[40rem] rounded-3xl flex justify-center items-center'>
+     <motion.div style={{y:tdiv5X}} className='absolute  h-[38vh] w-[90vw]  lg:h-[30rem] lg:w-[40rem] rounded-3xl flex justify-center items-center'>
                   <motion.div 
       animate={{rotate:-10}}
       className='h-[70%] w-[99%] lg:w-[90%] bg-[#131316] border border-[#434344] rounded-[2rem] flex flex-col items-cente px-5 lg:px-8 py-5 gap-5'>
@@ -2053,7 +2055,7 @@ className='relative h-full w-full flex  items-center justify-center    py-3 over
       </div>
        </div>
 
-       <div className='leading-[1.1] text-[3vw] lg:text-2xl'>Love this tool! It can train on the entire solution (and others), saving so much time and frustration. <span className='text-[#00BFFF]'>Unlike ChatGPT</span>, it finds the right methods and code blocks with ease, and the ability to retain training on past solutions is phenomenal.</div>
+       <div className='leading-[1.1] text-[3.1vw] lg:text-2xl'>Love this tool! It can train on the entire solution (and others), saving so much time and frustration. <span className='text-[#00BFFF]'>Unlike ChatGPT</span>, it finds the right methods and code blocks with ease, and the ability to retain training on past solutions is phenomenal.</div>
 
        <div className='w-full flex justify-between'>
        </div>
