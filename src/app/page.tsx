@@ -1107,7 +1107,7 @@ className='lg:hidden fixed flex top-0 justify-center items-center w-full'>
      </div>
     </div>
     <h1 className='mt-1 text-lg font-semibold'>Introducing Chat</h1>
-    <p className='opacity-65 text-sm lg:text-sm w-[88vw] lg:w-[30vw]'>Your AI Coding Agent that helps you convert your prompts into working deployed applications</p>
+    <p className='opacity-65 text-sm lg:text-sm w-[88vw] lg:w-[30vw]'>Codemate Chat turns your prompts into working code, helping you build faster.</p>
     </div>
 
     <div>
@@ -1121,7 +1121,7 @@ className='lg:hidden fixed flex top-0 justify-center items-center w-full'>
      </div>
     </div>
     <h1 className='mt-1 text-lg font-semibold'>Introducing Build</h1>
-    <p className='opacity-65 text-sm lg:text-sm w-[88vw] lg:w-[30vw]'>Your AI Coding Agent that helps you convert your prompts into working deployed applications</p>
+    <p className='opacity-65 text-sm lg:text-sm w-[88vw] lg:w-[30vw]'>Codemate Build turns your prompts into working, deployable applications.</p>
     </div>
 
     <div>
@@ -1135,7 +1135,7 @@ className='lg:hidden fixed flex top-0 justify-center items-center w-full'>
      </div>
     </div>
     <h1 className='mt-1 text-lg font-semibold'>Introducing Education</h1>
-    <p className='opacity-65 text-sm lg:text-sm w-[88vw] lg:w-[30vw]'>Your AI Coding Agent that helps you convert your prompts into working deployed applications</p>
+    <p className='opacity-65 text-sm lg:text-sm w-[88vw] lg:w-[30vw]'>Smart, AI-powered classroom management made easy.</p>
     </div>
 
     <div>
@@ -1149,10 +1149,24 @@ className='lg:hidden fixed flex top-0 justify-center items-center w-full'>
      </div>
     </div>
     <h1 className='mt-1 text-lg font-semibold'>Introducing Education</h1>
-    <p className='opacity-65 text-sm lg:text-sm w-[88vw] lg:w-[30vw]'>Your AI Coding Agent that helps you convert your prompts into working deployed applications</p>
+    <p className='opacity-65 text-sm lg:text-sm w-[88vw] lg:w-[30vw]'>Codemate Education is your AI-powered classroom for managing courses, assignments, and learning.</p>
     </div>
 
     <div>
+    <div className='relative h-[33vh] lg:h-[20rem] w-[88vw] lg:w-[30vw]   overflow-hidden' >
+     
+     <div className='absolute bottom-0 h-[70%] w-full bg-gradient-to-b from-[#141E30]/90 to-[#000000]/20  rounded-t-[3rem] border-x-[1px] border-zinc-600'/>
+    
+
+     <div className="absolute -bottom-14 lg:-bottom-[3rem]  w-full  flex items-center justify-center shadow-2xl">
+     <img src="term.svg" className='object-fit size-[90%] shadow-2xl'  alt="" />
+     </div>
+    </div>
+    <h1 className='mt-1 text-lg font-semibold'>Introducing Terminal</h1>
+    <p className='opacity-65 text-sm lg:text-sm w-[88vw] lg:w-[30vw]'>Run code and scripts instantly with AI-powered terminal.</p>
+    </div>
+
+    {/* <div>
     <div className='relative h-[33vh] lg:h-[20rem] w-[88vw] lg:w-[30vw]   overflow-hidden' >
      
      <div className='absolute bottom-0 h-[70%] w-full bg-gradient-to-b from-[#141E30]/90 to-[#000000]/20  rounded-t-[3rem] border-x-[1px] border-zinc-600'/>
@@ -1164,21 +1178,7 @@ className='lg:hidden fixed flex top-0 justify-center items-center w-full'>
     </div>
     <h1 className='mt-1 text-lg font-semibold'>Introducing Chat</h1>
     <p className='opacity-65 text-sm lg:text-sm w-[88vw] lg:w-[30vw]'>Your AI Coding Agent that helps you convert your prompts into working deployed applications</p>
-    </div>
-
-    <div>
-    <div className='relative h-[33vh] lg:h-[20rem] w-[88vw] lg:w-[30vw]   overflow-hidden' >
-     
-     <div className='absolute bottom-0 h-[70%] w-full bg-gradient-to-b from-[#141E30]/90 to-[#000000]/20  rounded-t-[3rem] border-x-[1px] border-zinc-600'/>
-    
-
-     <div className="absolute -bottom-14 lg:-bottom-[3rem]  w-full  flex items-center justify-center shadow-2xl">
-     <img src="chat.svg" className='object-fit size-[90%] shadow-2xl'  alt="" />
-     </div>
-    </div>
-    <h1 className='mt-1 text-lg font-semibold'>Introducing Chat</h1>
-    <p className='opacity-65 text-sm lg:text-sm w-[88vw] lg:w-[30vw]'>Your AI Coding Agent that helps you convert your prompts into working deployed applications</p>
-    </div>
+    </div> */}
   </div>
 {/* features of products */} 
  </div>
@@ -1211,9 +1211,10 @@ className='lg:hidden fixed flex top-0 justify-center items-center w-full'>
      exit={{opacity:0,filter:'blur(20px)'}}
      initial={{opacity:0,filter:'blur(20px)'}}
      animate={{opacity:1,filter:'blur(0px)'}}
-      className='absolute left-[30rem] h-[30vw] w-[58vw] rounded-xl bg-zinc-900'>
+      className='absolute left-[30rem] h-[30vw] w-[58vw] rounded-xl bg-zinc-900 overflow-hidden'>
         {/* <Safari url='codemate.ai' imageSrc='chatss.png' className='dark'/> */}
-        <img src="https://drive.codemate.ai/playground.gif" className='w-full h-full object-fit rounded-xl' alt="" />
+        {/* <img src="https://drive.codemate.ai/playground.gif" className='w-full h-full object-fit rounded-xl' alt="" /> */}
+        <motion.video autoPlay loop muted playsInline initial={{scale:1.025}} className='h-full w-full rounded-xl ' src='termvid.mp4'></motion.video>
         </motion.div>}
      
        {isShowProd &&      <motion.div 
@@ -1233,10 +1234,10 @@ className='lg:hidden fixed flex top-0 justify-center items-center w-full'>
      exit={{opacity:0,filter:'blur(20px)'}}
      initial={{opacity:0,filter:'blur(20px)'}}
      animate={{opacity:1,filter:'blur(0px)'}}
-     className='absolute left-[30rem] h-[30vw] w-[58vw] rounded-xl bg-white'>
+     className='absolute left-[30rem] h-[30vw] w-[58vw] rounded-xl bg-white overflow-hidden'>
       {/* <Safari url='codemate.ai' className='dark object-cover 
       object-left-top' imageSrc='eduation.png'/> */}
-      <img src="https://drive.codemate.ai/review-code.gif" className='w-full h-full object-fit rounded-xl' alt="" />
+        <motion.video autoPlay loop muted playsInline initial={{scale:1.025}} className='h-full w-full rounded-xl ' src='termvid.mp4'></motion.video>
      </motion.div>}
         
       {!isRef2 && !isRef3 &&      
@@ -1300,20 +1301,20 @@ className='relative h-[75%] w-[40%] flex  items-center justify-center  pl-10 py-
         <motion.div 
         style={{opacity:op1}}
         className='text-white flex flex-col gap-2'>
-          <h1 className='text-2xl'>Documentation</h1>
+          <h1 className='text-2xl'>PR Review</h1>
 
           <p className='text-lg opacity-50 w-[33rem] 2xl:w-[30rem] font-normal'>
-          Acts as your AI coding partner by managing bugs and fixing broken features, allowing you to focus on core development.
+         Acts as your AI coding partner by reviewing pull requests and catching issues early, so you can focus on building features that matter.
           </p>
         </motion.div>
          
                  <motion.div 
                  style={{opacity:op2}}
                  className='text-white flex flex-col gap-2'>
-          <h1 className='text-2xl'>Code Maintnance</h1>
+          <h1 className='text-2xl'>Documentation</h1>
 
           <p className='text-lg opacity-50 w-[33rem] 2xl:w-[30rem] font-normal'>
-            We’re your AI coding partner, here to handle the messy parts — from stubborn bugs to broken features while You focus on your vision.
+            Acts as your AI coding partner by simplifying documentation and keeping it up-to-date, so you can focus on writing clean, impactful code.
           </p>
         </motion.div>
 
@@ -1321,7 +1322,7 @@ className='relative h-[75%] w-[40%] flex  items-center justify-center  pl-10 py-
                 <motion.div 
                 style={{opacity:op3}}
                 className='text-white flex flex-col gap-2'>
-          <h1 className='text-2xl'>PR Review</h1>
+          <h1 className='text-2xl'>Terminal</h1>
 
           <p className='text-lg opacity-50 w-[33rem] 2xl:w-[30rem] font-normal'>
             Reviews pull requests to catch errors, enforce coding standards, and suggest improvements before merging.
@@ -1685,7 +1686,7 @@ className='relative h-[75%] w-[40%] flex  items-center justify-center  pl-10 py-
  <motion.div style={{x:mx}} className='flex pl-16 gap-5'>
    <div className='flex flex-col gap-2'>
    <div className='h-[30vh] w-[65vw] bg-zinc-600'></div>
-   <h1 className='font-bold text-2xl'>Documentation</h1>
+   <h1 className='font-bold text-2xl'>PR Review</h1>
    <p className='w-[65vw] text-sm'>Acts as your AI coding partner by managing bugs and fixing broken features, allowing you to focus core development</p>
    </div>
 
@@ -1697,8 +1698,12 @@ className='relative h-[75%] w-[40%] flex  items-center justify-center  pl-10 py-
    </div>
 
    <div className='flex flex-col gap-2'>
-   <div className='h-[30vh] w-[65vw] bg-white'></div>
-   <h1 className='font-bold text-2xl'>Documentation</h1>
+   <div className='h-[30vh] w-[65vw] bg-white'>
+    <video src='termvid.mp4' className='h-full w-full'>
+
+    </video>
+   </div>
+   <h1 className='font-bold text-2xl'>Terminal</h1>
    <p className='w-[65vw] text-sm'>Acts as your AI coding partner by managing bugs and fixing broken features, allowing you to focus core development</p>
    </div>
  </motion.div>
@@ -1801,7 +1806,7 @@ Through the insights Codemate provides, teams are inspired to achieve what truly
 </div>
 
 <div className='w-full flex flex-col lg:flex-row  justify-center items-center gap-5  lg:gap-[1.25] mt-10 '>
-  <div className='relative h-[35vh] lg:h-[21rem] lg:w-[30vw] rounded-2xl flex flex-col  gap-2  border-x-[1px] border-y-[0.5px] border-white border-opacity-20 px-3'
+  <div className='relative h-[35vh] lg:h-[19rem] lg:w-[30vw] rounded-2xl flex flex-col  gap-2  border-x-[1px] border-y-[0.5px] border-white border-opacity-20 px-3'
   style={{background:!isNBack? 'rgba(15, 12, 12, 0.2)' : 'rgba(15, 20, 20, 0.45)',   
         boxShadow: '0 4px 25px rgba(0, 0, 0, 0.1)',
         backdropFilter: 'blur(10px)',
@@ -1809,15 +1814,15 @@ Through the insights Codemate provides, teams are inspired to achieve what truly
         zIndex:99999,
         }}
   >
-  <h1 className='text-left text-[4vw] lg:text-2xl font-semibold mt-[5.5rem] lg:mt-24  bg-gradient-to-b from-white to-gray-400 bg-clip-text text-transparent'>Streamline and synchronize your codebase across knowledge bases with Codemate.</h1>  
+  <h1 className='text-left text-[4vw] lg:text-xl font-semibold mt-[5.5rem] lg:mt-24  bg-gradient-to-b from-white to-gray-400 bg-clip-text text-transparent'>Streamline and synchronize your codebase across knowledge bases with Codemate.</h1>  
   <p className='text-xs lg:text-sm opacity-50'>
     Codemate helps you streamline and synchronize your codebase across knowledge bases, ensuring consistency, reducing redundancy, and enabling your team to focus on innovation and faster delivery.
   </p>
-  <motion.img initial={{scale:1.2}} src="streamline.svg" alt=""  className="absolute top-5 left-3 lg:top-5 lg:left-4 brightness-90 "/>
+  <motion.img initial={{scale:1.2}} src="1st icon (3).svg" alt=""  className="absolute object-fit top-5 left-3 lg:top-5 lg:left-1 brightness-90 size-[17%]"/>
   </div> 
 
   <div className='flex flex-col gap-5 lg:flex-row lg:gap-[1.25]'>
-   <div className='relative h-[35vh] lg:h-[21rem] lg:w-[30vw] rounded-2xl flex flex-col gap-2   border-x-[1px] border-y-[0.5px] border-white border-opacity-20 px-3'
+   <div className='relative h-[35vh] lg:h-[19rem] lg:w-[30vw] rounded-2xl flex flex-col gap-2   border-x-[1px] border-y-[0.5px] border-white border-opacity-20 px-3'
      style={{background:!isNBack? 'rgba(15, 12, 12, 0.2)' : 'rgba(15, 20, 20, 0.45)',   
         boxShadow: '0 4px 25px rgba(0, 0, 0, 0.1)',
         backdropFilter: 'blur(10px)',
@@ -1825,13 +1830,13 @@ Through the insights Codemate provides, teams are inspired to achieve what truly
         zIndex:99999,
         }}
    >
-      <h1 className=' text-left text-[4vw] lg:text-2xl font-semibold mt-20 lg:mt-24  bg-gradient-to-b from-white to-gray-400 bg-clip-text text-transparent'>Run it seamlessly in your environment with Codemate.</h1>
+      <h1 className=' text-left text-[4vw] lg:text-xl font-semibold  mt-[5.5rem] lg:mt-24  bg-gradient-to-b from-white to-gray-400 bg-clip-text text-transparent'>Run it seamlessly in your environment with Codemate.</h1>
         <p className='text-xs lg:text-sm opacity-50'>
 Run it seamlessly in your environment with Codemate, ensuring smooth integration with your existing workflows. Codemate adapts to your setup, minimizing disruption while maximizing efficiency, so your team can maintain focus on delivering quality code without added complexity.
   </p>
-    <motion.img initial={{scale:1}} src="codebase.svg" alt=""  className="absolute top-5 left-3 brightness-90"/>
+    <motion.img initial={{scale:1}} src="icon2.svg" alt=""  className="object-fit absolute top-5 left-2 lg:left-0 brightness-90 size-[20%]"/>
    </div>
-   <div className='relative h-[35vh] lg:h-[21rem] lg:w-[30vw] rounded-2xl flex flex-col  border-x-[1px] border-y-[0.5px]   border-white border-opacity-20 gap-2 px-3'
+   <div className='relative h-[35vh] lg:h-[19rem] lg:w-[30vw] rounded-2xl flex flex-col  border-x-[1px] border-y-[0.5px]   border-white border-opacity-20 gap-2 px-3'
      style={{background:!isNBack? 'rgba(15, 12, 12, 0.2)' : 'rgba(15, 20, 20, 0.45)',   
         boxShadow: '0 4px 25px rgba(0, 0, 0, 0.1)',
         backdropFilter: 'blur(10px)',
@@ -1839,11 +1844,11 @@ Run it seamlessly in your environment with Codemate, ensuring smooth integration
         zIndex:99999,
         }}
    >
-      <h1 className=' text-left text-[4vw] lg:text-2xl font-semibold mt-20 lg:mt-24  bg-gradient-to-b from-white to-gray-400 bg-clip-text text-transparent'>Codemate makes it easy for developers and non-developers to work together.</h1>
+      <h1 className=' text-left text-[4vw] lg:text-xl font-semibold mt-[5.5rem] lg:mt-24  bg-gradient-to-b from-white to-gray-400 bg-clip-text text-transparent'>Codemate makes it easy for developers and non-developers to work together.</h1>
         <p className='text-xs lg:text-sm opacity-50'>
 Codemate’s full-stack nature bridges the gap between developers and non-developers, enabling seamless collaboration, simplifying workflows, and boosting productivity across projects.
   </p>
-      <motion.img initial={{scale:1}} src="empowers.svg" alt=""  className="absolute top-5 left-2 brightness-90"/>
+      <motion.img initial={{scale:1}} src="icon3.svg" alt=""  className="object-fit absolute top-5 left-2 lg:left-0 brightness-90 size-[20%]"/>
    </div>
   </div>
 </div>
@@ -1854,8 +1859,8 @@ Codemate’s full-stack nature bridges the gap between developers and non-develo
 </div>
       <a href="https://cal.com/ayushsinghal/book-a-demo" target="_blank" >
       <motion.button
-      whileHover={{opacity:0.8}} 
-      className='px-4 py-2  bg-[#FFFFFF] text-black  rounded-full   opacity-50 mt-5 font-semibold'>Book a Call</motion.button>
+      whileHover={{opacity:1}} 
+      className='px-4 py-2  bg-[#FFFFFF] text-black  rounded-full   opacity-80 mt-5 font-semibold'>Book a Call</motion.button>
       </a>
 </div>
 {/* enterprises section */}
