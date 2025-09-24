@@ -1,6 +1,6 @@
 export default function VideoEmbed() {
   return (
-    <div className="w-full h-full flex justify-center">
+    <div className="w-full h-full flex justify-center  pointer-events-none">
       <div
         className="w-full flex h-full justify-center items-center"
         style={{
@@ -32,6 +32,7 @@ export default function VideoEmbed() {
             src="https://www.youtube.com/embed/WLFXalppvLY?autoplay=1&mute=1&loop=1&rel=0&controls=0&modestbranding=1&showinfo=0&disablekb=1&playlist=WLFXalppvLY"
             allow="autoplay; encrypted-media"
             allowFullScreen
+            className="pointer-events-none"
           ></iframe>
         </div>
       </div>

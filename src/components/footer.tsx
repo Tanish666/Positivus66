@@ -16,8 +16,8 @@ function Footer() {
            Codemate AI, your smart coding partner. Review, debug, and complete code faster with AI-powered assistance.
           </p>
           <div className="flex gap-3 mt-2">
-            <a href="" aria-label="X" className="hover:text-white"><FaXTwitter size={32} className="md:w-10 md:h-10" /></a>
-            <a href="" aria-label="LinkedIn" className="hover:text-white"><FaLinkedin size={32} className="md:w-10 md:h-10" /></a>
+            <a href="https://twitter.com/codemateai" aria-label="X" className="hover:text-white"><FaXTwitter size={32} className="md:w-10 md:h-10" /></a>
+            <a href="https://www.linkedin.com/company/codemateai/" aria-label="LinkedIn" className="hover:text-white"><FaLinkedin size={32} className="md:w-10 md:h-10" /></a>
 
           </div>
         </div>
@@ -27,18 +27,18 @@ function Footer() {
           <div className="mb-6 sm:mb-0">
             <h4 className="font-semibold mb-3 text-white text-sm md:text-base">COMMUNITY</h4>
             <ul className="space-y-2 text-xs md:text-sm">
-              <li><Link href=""><span className="hover:underline">Discord</span></Link></li>
-              <li><Link href=""><span className="hover:underline">WhatsApp</span></Link></li>
-              <li><Link href=""><span className="hover:underline">Telegram</span></Link></li>
-
+              <li><Link href="https://www.instagram.com/codemateai"><span className="hover:underline">Instagram</span></Link></li>
+              <li><Link href="https://www.linkedin.com/company/codemateai/"><span className="hover:underline">Linkedin</span></Link></li>
+              <li><Link href="https://twitter.com/codemateai"><span className="hover:underline">Twitter</span></Link></li>
+              <li><Link href="https://www.youtube.com/@codemateai"><span className="hover:underline">YouTube</span></Link></li>
             </ul>
           </div>
           <div className="mb-6 sm:mb-0">
             <h4 className="font-semibold mb-3 text-white text-sm md:text-base">OTHERS</h4>
             <ul className="space-y-2 text-xs md:text-sm">
-              <li><Link href=""><span className="hover:underline">Blog</span></Link></li>
-              <li><Link href=""><span className="hover:underline">Case Studies</span></Link></li>
-
+              <li><Link href="https://huggingface.co/codemateai/CodeMate-v0.1"><span className="hover:underline">Hugging Face</span></Link></li>
+              <li><Link href="https://docs.codemate.ai/policies/refund-policy"><span className="hover:underline">Refund Policy</span></Link></li>
+              {/* <li><Link href="./vscode.html"><span className="hover:underline">VS Code</span></Link></li> */}
             </ul>
           </div>
         </div>
@@ -47,8 +47,8 @@ function Footer() {
         <div className="flex-2 min-w-[180px] mb-6 md:mb-0">
           <h4 className="font-semibold mb-3 text-white text-sm md:text-base">LEGAL</h4>
           <ul className="space-y-2 text-xs md:text-sm">
-            <li><Link href="/privacy-policy"><span className="hover:underline">Privacy Policy</span></Link></li>
-            <li><Link href="/terms-of-service"><span className="hover:underline">Terms of Service</span></Link></li>
+            <li><Link href="https://docs.codemate.ai/faqs/privacy-policy"><span className="hover:underline">Privacy Policy</span></Link></li>
+            <li><Link href="https://docs.codemate.ai/faqs/terms-of-service"><span className="hover:underline">Terms of Service</span></Link></li>
 
 
           </ul>

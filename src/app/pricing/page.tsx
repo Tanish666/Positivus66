@@ -3,12 +3,20 @@ import React, { useRef, useState } from 'react'
 import {motion, useMotionValueEvent, useScroll} from 'framer-motion'
 import { useRouter } from 'next/navigation'
 import Footer from '@/components/footer';
+import { Montserrat } from 'next/font/google';
 import { ShineBorder } from '@/components/ui/shainingBoader';
 import {   Accordion,
   AccordionItem,
   AccordionTrigger,
   AccordionContent, } from '@/components/ui/accordion';
   import { ChevronUp } from 'lucide-react';
+
+const montserrat = Montserrat({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'], // Add what you need
+  variable: '--font-montserrat', // Optional, for CSS variable usage
+});
+
 function Page() {
   const router = useRouter();
   const ref = useRef(null);
@@ -46,7 +54,7 @@ function Page() {
   });
 
   return (
-    <div ref={ref} className={` h-screen w-full bg-zinc-950`}>
+    <div ref={ref} className={`${montserrat.className} h-screen w-full bg-zinc-950`}>
      {/* navbar */}
 <div 
 style={{zIndex:999999999999,}}
@@ -159,7 +167,7 @@ className='lg:hidden fixed flex top-0 justify-center items-center w-full'>
         
        <div className='flex justify-center  mt-10 mb-10'>
         <div className='relative border-[3px] border-zinc-500 text-xl px-5 py-2 rounded-full flex gap-5  items-center '>
-        <motion.div initial={{x:-5.5,width:'6rem',color:'black'}} animate={ isPlan1? {x:-9,width:'6.3rem'} : isPlan2? {x:92,width:'5rem'} : {x:176,width:'7rem'} } transition={{duration:0.5}} className='absolute h-9  rounded-3xl bg-gradient-to-b from-[#00BFFF] to-[#1E90FF]'/>  
+        <motion.div initial={{x:-9,width:'6.6rem',color:'black'}} animate={ isPlan1? {x:-9,width:'6.3rem'} : isPlan2? {x:92,width:'5rem'} : {x:176,width:'7rem'} } transition={{duration:0.5}}  className='absolute h-9  rounded-3xl bg-gradient-to-b from-[#00BFFF] to-[#1E90FF]'/>  
         <h1 onClick={()=> handleCurrPlan(1)} className={`${isPlan1? 'text-black font-semibold' : 'text-white'} z-20 text-black cursor-pointer`}>Monthly</h1>
         <h1 onClick={()=> handleCurrPlan(2)} className={`${isPlan2? 'text-black font-semibold' : 'text-white'} z-20 text-black cursor-pointer`}>Yearly</h1>
         <h1 onClick={()=> handleCurrPlan(3)} className={`${isPlan3? 'text-black font-semibold' : 'text-white'} z-20 text-black cursor-pointer`}>One-time</h1>
@@ -289,9 +297,11 @@ function YearlyPlans() {
 
 
           <div className='absolute bottom-5 w-full px-5'>
+          <a href="https://app.codemate.ai/pricing" target="_blank">
           <motion.button whileHover={{scale:1.01}} className='bg-white/85  flex justify-center items-center w-full py-1 rounded-md text-black font-bold'> 
           Subscribe
          </motion.button>
+         </a>
          </div>
         </div>
 
@@ -318,7 +328,7 @@ function YearlyPlans() {
       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
       <path d="M12 7a5 5 0 1 1 -4.995 5.217l-.005 -.217l.005 -.217a5 5 0 0 1 4.995 -4.783z" />
     </svg>
-    <span>Collaborative Knowledge Base Sharing.</span>
+    <span>Collaborative Knowledge Base Hub.</span>
   </div>
 
   <div className="flex gap-1 items-center">
@@ -379,9 +389,11 @@ function YearlyPlans() {
           </div>
           </div>
           <div className='absolute bottom-5 w-full px-5'>
+          <a href="https://app.codemate.ai/pricing" target="_blank">
           <motion.button whileHover={{scale:1.01}} className='bg-white/85  flex justify-center items-center w-full py-1 rounded-md text-black font-bold'> 
           Subscribe
          </motion.button>
+         </a>
          </div>
         </div>
                 <div className='relative h-[30rem] w-[21.5rem] sm:w-[23rem] bg-zinc-900 rounded-2xl  lg:mt-[3rem]'>
@@ -469,9 +481,11 @@ function YearlyPlans() {
           </div>
 
           <div className='absolute bottom-5 w-full px-5'>
+          <a href="https://cal.com/ayushsinghal/book-a-demo">
           <motion.button whileHover={{scale:1.01}} className='bg-white/85  flex justify-center items-center w-full py-1 rounded-md text-black font-bold'> 
           Contact Us
          </motion.button>
+         </a>
          </div>
         </div>  
       </div>  
@@ -565,9 +579,11 @@ function MonthlyPlans() {
 
 
           <div className='absolute bottom-5 w-full px-5'>
+          <a href="https://app.codemate.ai/pricing" target="_blank"> 
           <motion.button whileHover={{scale:1.01}} className='bg-white/85  flex justify-center items-center w-full py-1 rounded-md text-black font-bold'> 
           Subscribe
          </motion.button>
+         </a>
          </div>
         </div>
 
@@ -594,7 +610,7 @@ function MonthlyPlans() {
       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
       <path d="M12 7a5 5 0 1 1 -4.995 5.217l-.005 -.217l.005 -.217a5 5 0 0 1 4.995 -4.783z" />
     </svg>
-    <span>Collaborative Knowledge Base Sharing.</span>
+    <span>Collaborative Knowledge Base Hub.</span>
   </div>
 
   <div className="flex gap-1 items-center">
@@ -655,9 +671,11 @@ function MonthlyPlans() {
           </div>
           </div>
           <div className='absolute bottom-5 w-full px-5'>
+          <a href="https://app.codemate.ai/pricing" target="_blank">
           <motion.button whileHover={{scale:1.01}} className='bg-white/85  flex justify-center items-center w-full py-1 rounded-md text-black font-bold'> 
           Subscribe
          </motion.button>
+         </a>
          </div>
         </div>
                 <div className='relative h-[30rem] w-[21.5rem] sm:w-[23rem] bg-zinc-900 rounded-2xl  lg:mt-[3rem]'>
@@ -745,9 +763,11 @@ function MonthlyPlans() {
           </div>
 
           <div className='absolute bottom-5 w-full px-5'>
+          <a href="https://cal.com/ayushsinghal/book-a-demo">  
           <motion.button whileHover={{scale:1.01}} className='bg-white/85  flex justify-center items-center w-full py-1 rounded-md text-black font-bold'> 
           Contact Us
          </motion.button>
+         </a>
          </div>
         </div>  
       </div>  
@@ -877,9 +897,11 @@ function OneTimePlans() {
 
 
           <div className='absolute bottom-5 w-full px-5'>
+          <a href=" https://buy.stripe.com/14k027abj3Kzgjm6oo" target="_blank">
           <motion.button whileHover={{scale:1.01}} className='bg-white/85  flex justify-center items-center w-full py-1 rounded-md text-black font-bold'> 
           Buy Now
          </motion.button>
+         </a>
          </div>
         </div>
 
@@ -979,9 +1001,11 @@ function OneTimePlans() {
 
 
           <div className='absolute bottom-5 w-full px-5'>
+          <a href="https://buy.stripe.com/dR69CH4QZ4OD4AEaEF" target="_blank">
           <motion.button whileHover={{scale:1.01}} className='bg-white/85  flex justify-center items-center w-full py-1 rounded-md text-black font-bold'> 
           Buy Now
          </motion.button>
+         </a>
          </div>
         </div>
         <div className='relative h-[30rem]  w-[21.5rem] sm:w-[23rem] bg-zinc-900 rounded-2xl  lg:mt-[3rem]'>
@@ -1150,9 +1174,19 @@ function OneTimePlans() {
 
       
           <div className='absolute bottom-5 w-full px-5'>
+           <a   href={
+    isTier3
+      ? "https://buy.stripe.com/8wMbKP3MV1Crebe28a"
+      : isTier4
+      ? "https://buy.stripe.com/28o7uz97f80Pgjm4gj"
+      : isTier5
+      ? "https://buy.stripe.com/3cs7uzdnv0ynd7a004"
+      : ""
+  }> 
           <motion.button whileHover={{scale:1.01}} className='bg-white/85  flex justify-center items-center w-full py-1 rounded-md text-black font-bold'> 
           Buy Now
          </motion.button>
+         </a>
          </div>
         </div>
       </div>  

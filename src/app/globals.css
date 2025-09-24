@@ -170,3 +170,11 @@ body {
   font-weight: 510; /* bold */
 }
 
+@media (min-width: 1400px) and (min-height: 900px) {
+  .xxlHero{
+     margin-top: 4.5vw;
+  }
+  .xxlHerotext{
+    font-size: 15vw;
+  }
+}
