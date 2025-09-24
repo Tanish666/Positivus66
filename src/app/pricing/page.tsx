@@ -481,7 +481,7 @@ function YearlyPlans() {
           </div>
 
           <div className='absolute bottom-5 w-full px-5'>
-          <a href="https://cal.com/ayushsinghal/book-a-demo">
+          <a href="https://cal.com/ayushsinghal/book-a-demo" target="_blank">
           <motion.button whileHover={{scale:1.01}} className='bg-white/85  flex justify-center items-center w-full py-1 rounded-md text-black font-bold'> 
           Contact Us
          </motion.button>
@@ -763,7 +763,7 @@ function MonthlyPlans() {
           </div>
 
           <div className='absolute bottom-5 w-full px-5'>
-          <a href="https://cal.com/ayushsinghal/book-a-demo">  
+          <a href="https://cal.com/ayushsinghal/book-a-demo" target="_blank">  
           <motion.button whileHover={{scale:1.01}} className='bg-white/85  flex justify-center items-center w-full py-1 rounded-md text-black font-bold'> 
           Contact Us
          </motion.button>
@@ -1174,7 +1174,7 @@ function OneTimePlans() {
 
       
           <div className='absolute bottom-5 w-full px-5'>
-           <a   href={
+           <a  target="_blank" href={
     isTier3
       ? "https://buy.stripe.com/8wMbKP3MV1Crebe28a"
       : isTier4

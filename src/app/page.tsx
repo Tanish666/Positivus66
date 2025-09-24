@@ -610,7 +610,7 @@ className='hidden lg:flex fixed  top-0 justify-center items-center w-full'>
        <motion.h1 onClick={()=>setIsProducts(state=>!state)}  whileHover={{opacity:1}} animate={{y:isProducts? 55 : 0 ,x:isProducts? 15 : 0,scale:isProducts? 1.20 : 1,opacity:isProducts? 1 : ''}} transition={{duration:0.2}} className={`flex text-center justify-center items-center opacity-65 z-50 ${isProducts? 'font-semibold' : ''}`}>Products</motion.h1>
        <motion.h1 onClick={() => productShowRef.current?.scrollIntoView({ behavior: "smooth" })} whileHover={{opacity:1}} className='opacity-65'>Features</motion.h1>
        <motion.h1 whileHover={{opacity:1}}  onClick={()=>{router.push('pricing')}} className='opacity-65'>Pricing</motion.h1>
-       <a href="https://app.codemate.ai">
+       <a href="https://app.codemate.ai" target='_blank'>
        <motion.button  whileHover={{opacity:1,scale:1.05}} className={`${montserrat.className} px-2 py-1  bg-[#FFFFFF] text-black  rounded-sm font-semibold opacity-85`}>Get Started</motion.button>
        </a>
        </span>
