@@ -4,8 +4,10 @@ import { IconZoom } from '@tabler/icons-react';
 import {motion, useScroll, useTransform} from 'framer-motion'
 import Lenis from 'lenis'
 import { useEffect } from 'react';
+import { IconChevronDown } from '@tabler/icons-react';
 import { TypingAnimation } from '@/components/ui/typing-animation';
 import { TerminalDemo } from '@/components/terminal';
+import Footer from '@/components/footer';
 function Page() {
 
   const [firstAni,setFirstAni] = useState(false);
@@ -293,10 +295,17 @@ function Page() {
           </div>
         </div>
 
-        <div className='mt-28'>
+        <div className='mt-28 flex flex-col justify-center items-center gap-5'>
+        <h1 className='text-xl font-bold text-center'>Organizations</h1>
+        <div className='relative flex flex-col justify-end items-center py-2 bg-gradient-to-r from-[#0B0B0A]  rounded-xl  to-[#371D0F] h-48 w-[23rem]'>
 
+                <h1 className='font-bold text-center'>Resourcio Community</h1>
+
+             </div>
         </div>
-
+        <div className=''>
+        <FAQ/>
+        </div>
         {/* <motion.img 
       //  initial={{opacity:0,y:50}} 
       //  animate={{opacity:1,y:-10}}
@@ -304,8 +313,89 @@ function Page() {
        src="glow.svg" alt="" className='absolute object-cover top-[6rem] right-0 size-[130%] rotate-180' /> */}
       </div>
        {/* section 2  */}
+
+       {/* footer */}
+       <Footer2/>
     </div>
   )
 }
 
 export default Page
+
+function FAQ() {
+  const faqs = [
+    "What is the ScaffoldGen CLI Tool?",
+    "How do I install the ScaffoldGen CLI Tool?",
+    "What features does the ScaffoldGen CLI Tool have?",
+    "How do I contribute to the ScaffoldGen CLI tool?",
+    "Is the ScaffoldGen CLI tool free to use?",
+    "Where can I get support?",
+  ];
+  return (
+    <section className="w-full  py-5 pb-16">
+      <h1 className="text-center text-3xl font-bold mb-10">FAQ</h1>
+
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {faqs.map((question, index) => (
+          <div
+            key={index}
+            className="flex items-center justify-between rounded-xl bg-gradient-to-r from-[#0B0B0A] to-[#371D0F] px-5 py-4 cursor-pointer hover:opacity-90 transition"
+          >
+            <h2 className="text-lg font-bold text-white">
+              {question}
+            </h2>
+
+            <span className="text-white text-lg"><IconChevronDown stroke={2} /></span>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function Footer2() {
+  return (
+    <footer className="w-full bg-[#0B0B0A] px-10 py-14">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
+          <img src="fulllogo.svg" alt="" />
+        {/* Logo Section */}
+        <div>
+          {/* PLACE YOUR LOGO HERE */}
+          <div className="h-8 w-40 bg-transparent" />
+        </div>
+
+        {/* Quick Links */}
+        <div>
+          <h3 className="text-white font-semibold mb-4">Quick Links</h3>
+          <ul className="space-y-2 text-sm text-gray-400">
+            <li className="hover:text-white cursor-pointer">Downloads</li>
+            <li className="hover:text-white cursor-pointer">Releases</li>
+            <li className="hover:text-white cursor-pointer">Documentation</li>
+            <li className="hover:text-white cursor-pointer">Support</li>
+          </ul>
+        </div>
+
+        {/* Connect With Us */}
+        <div>
+          <h3 className="text-white font-semibold mb-4">Connect With Us</h3>
+          <ul className="space-y-2 text-sm text-gray-400">
+            <li className="flex items-center gap-2 hover:text-white cursor-pointer">
+              LinkedIn
+            </li>
+            <li className="flex items-center gap-2 hover:text-white cursor-pointer">
+              GitHub
+            </li>
+            <li className="flex items-center gap-2 hover:text-white cursor-pointer">
+              Discord
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      {/* Bottom Text */}
+      <div className="mt-12 pl-20 text-lg text-gray-500">
+        © 2024 ScaffoldGen CLI. All rights reserved.
+      </div>
+    </footer>
+  );
+}
