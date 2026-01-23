@@ -30,6 +30,10 @@ function Page() {
       setFirstAni(true)
     },2000);
 
+    setTimeout(()=>{
+      setSecondAni(true)
+    },7000);
+
 
    },[]); 
 
@@ -90,6 +94,10 @@ function Page() {
        animate={{opacity:1,y:-10,filter: "brightness(1.3)"}}
        transition={{duration:2,delay:4,}}
        src="glow.svg" alt="" className='absolute object-cover top-[7rem] right-0 size-[130%]' />
+        
+       <div className='absolute h-full w-full flex justify-center items-center left-0'>
+       <motion.div initial={{opacity:0}} whileInView={secondAni? {opacity:[0,0.2]} : {}} transition={{duration:2,repeat:Infinity,repeatType:'mirror'}}  className='h-[60vh] w-full blur-3xl   bg-[#FA6C25]  left-0 opacity-20 rounded-t-full'/>
+       </div>
 
       </div>
 
@@ -231,8 +239,10 @@ function Page() {
           whileInView={{opacity:1,filter:'blur(0px)'}}
           viewport={{once:true,amount:0.1}}
           transition={{delay:2,duration:1}}
-          src="4.svg" alt=""  className='size-[60%] absolute -left-10 '/>
+          src="4.svg" alt=""  className='size-[60%] absolute -left-10 z-10'/>
+           
 
+           <div className='z-10'>
            <motion.img 
            initial={{y:300}}
            whileInView={{y:0,}}
@@ -240,6 +250,8 @@ function Page() {
            transition={{duration:1}}
 
            src="1.svg" alt=""  className='size-[90%]'/>
+           
+           </div>
 
            <motion.img 
           initial={{opacity:0,filter:'blur(20px)'}}
@@ -260,13 +272,13 @@ function Page() {
           initial={{scale:0.8,y:-100 ,opacity:0}}
           whileInView={{y:0,opacity:1}}
           transition={{duration:1,delay:3.5}}
-          src="10k.svg" alt=""  className='absolute top-2 left-52'/>
+          src="10k.svg" alt=""  className='absolute top-2 left-52 z-20'/>
 
           <motion.img 
           initial={{scale:0.8,y:100,opacity:0}}
           whileInView={{y:0,opacity:1}}
           transition={{duration:1,delay:3.5}}
-          src="25k.svg" alt=""  className='absolute -bottom-10 right-52'/>
+          src="25k.svg" alt=""  className='absolute -bottom-10 right-52 z-20'/>
 
           </div>
         </div>
