@@ -64,8 +64,10 @@ html {
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
   }
+  .theme {
+    --animate-blink-cursor: blink-cursor 1.2s step-end infinite;
+  }
 }
-
 
 @layer base {
   * {
@@ -89,7 +91,7 @@ html {
   --animate-aurora: aurora 8s ease-in-out infinite alternate;
   --animate-marquee: marquee var(--duration) infinite linear;
   --animate-marquee-vertical: marquee-vertical var(--duration) linear infinite;
- 
+
   @keyframes marquee {
     from {
       transform: translateX(0);
@@ -106,7 +108,7 @@ html {
       transform: translateY(calc(-100% - var(--gap)));
     }
   }
-  
+
   @keyframes aurora {
     0% {
       background-position: 0% 50%;
@@ -127,6 +129,14 @@ html {
     100% {
       background-position: 0% 50%;
       transform: rotate(-5deg) scale(0.9);
+    }
+  }
+  @keyframes blink-cursor {
+  0%, 49% {
+    opacity: 1;
+    }
+  50%, 100% {
+    opacity: 0;
     }
   }
 }
@@ -159,19 +169,16 @@ body {
             height: 100px;
             width: 350px;
             /* Added width to make logos of equal height and width */
-          
+
             vertical-align: middle;
             filter: grayscale(100%) brightness(0) invert(1);
             object-fit: contain;
             /* Ensures logos do not look stretched or shrunk */
           }
 
-
-
 .custom-cursor {
   cursor: url("/cursor.svg") 16 16, auto;
 }       
-
 
 @media (min-width: 768px) {
   .panelTitle {

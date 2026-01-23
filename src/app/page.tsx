@@ -4,6 +4,8 @@ import { IconZoom } from '@tabler/icons-react';
 import {motion, useScroll, useTransform} from 'framer-motion'
 import Lenis from 'lenis'
 import { useEffect } from 'react';
+import { TypingAnimation } from '@/components/ui/typing-animation';
+import { TerminalDemo } from '@/components/terminal';
 function Page() {
 
   const [firstAni,setFirstAni] = useState(false);
@@ -96,7 +98,7 @@ function Page() {
        src="glow.svg" alt="" className='absolute object-cover top-[7rem] right-0 size-[130%]' />
         
        <div className='absolute h-full w-full flex justify-center items-center left-0'>
-       <motion.div initial={{opacity:0}} whileInView={secondAni? {opacity:[0,0.2]} : {}} transition={{duration:2,repeat:Infinity,repeatType:'mirror'}}  className='h-[60vh] w-full blur-3xl   bg-[#FA6C25]  left-0 opacity-20 rounded-t-full'/>
+       <motion.div initial={{opacity:0}} whileInView={secondAni? {opacity:[0,0.2]} : {}} transition={{duration:2,repeat:Infinity,repeatType:'mirror'}}  className='h-[60vh] w-full blur-3xl   bg-[#FA6C25]  left-0 opacity-20 rounded-full'/>
        </div>
 
       </div>
@@ -110,8 +112,8 @@ function Page() {
           <button className='bg-[#FA6C25] text-gray-100 py-3 px-5 rounded-lg font-semibold w-fit'>Learn More</button>
          </div>
          
-           <div className='relative w-[35vw] h-[50vh] bg-gradient-to-br from-[#1F1F1F] to-[#000000] rounded-lg flex justify-end items-end'>
-            <div className='w-[90%] h-[80%] bg-[#000000] rounded-tl-xl overflow-hidden'>
+           <div className='relative w-[35vw] h-[50vh] bg-gradient-to-br from-[#1F1F1F] to-[#000000] rounded-lg flex justify-end items-end overflow-hidden'>
+            {/* <div className='w-[90%] h-[80%] bg-[#000000] rounded-tl-xl overflow-hidden'>
               <div className='h-[10%] w-full bg-gradient-to-r from-gray-800 to-gray-700 flex items-center pl-5 justify-between pr-8'>
                 <div className='flex gap-2'>
                   <div className='size-[1.1vw] bg-[#ED6A5E] rounded-full'/>
@@ -122,7 +124,16 @@ function Page() {
                 
                 className='font-bold text-[#A3A5A8]'>scaffoldgen</motion.h1>
               </div>
-            </div> 
+
+              <div className='flex flex-col text-mono text-[#D1CD74] font-semibold pl-5 pt-4 gap-2'>
+              <div className='flex gap-1'><span className='text-[#4EACF9]'><TypingAnimation>~</TypingAnimation></span> <span className='text-[#80D440]'>&gt;</span> <span className=''>cd</span> <span className='text-gray-100 pl-2'>web_development</span></div>
+              <div className='flex gap-1'><span className='text-[#4EACF9]'>~</span> <span className='text-[#80D440]'>&gt;</span> <span className=''>cd</span> <span className='text-nowrap'>scaffoldgen new **my-awesome-app** --template next-ts --style tailwind</span></div>
+              <div className='flex gap-1'><span className='text-[#4EACF9]'>~</span> <span className='text-[#80D440]'>&gt;</span> <span className=''>cd</span> <span className='text-nowrap'>scaffoldgen generate **component** UserProfile --type rfc --path src/components</span></div>
+              <div className='flex gap-1'><span className='text-[#4EACF9]'>~</span> <span className='text-[#80D440]'>&gt;</span> <span className=''>cd</span> <span className='text-nowrap'>scaffoldgen create **route** auth --handler **login,register** --method post</span></div>
+              <div className='flex gap-1'><span className='text-[#4EACF9]'>~</span> <span className='text-[#80D440]'>&gt;</span> <span className=''>cd</span> <span className='text-nowrap '>scaffoldgen config set **default-lang** python</span></div>
+              </div>
+            </div>  */}
+            <TerminalDemo/>
            </div>
 
         </div>
