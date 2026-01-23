@@ -17,7 +17,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "CodeMate AI | Your Professional And Secured AI Pair Programmer",
+  title: "ScaffoldGen",
   description: "This is my Next.js app",
   icons: {
     icon: "/", // path relative to public/
