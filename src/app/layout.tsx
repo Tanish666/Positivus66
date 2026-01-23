@@ -3,7 +3,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 
 
-import { Montserrat } from 'next/font/google';
+import { Montserrat,Inter } from 'next/font/google';
 
 const montserrat = Montserrat({
   subsets: ['latin'],
@@ -11,12 +11,16 @@ const montserrat = Montserrat({
   variable: '--font-montserrat', // Optional, for CSS variable usage
 });
 
+const inter = Inter({
+  subsets: ['latin'],
+  weight: ['300'], 
+});
 
 export const metadata: Metadata = {
   title: "CodeMate AI | Your Professional And Secured AI Pair Programmer",
   description: "This is my Next.js app",
   icons: {
-    icon: "/Union.svg", // path relative to public/
+    icon: "/", // path relative to public/
   },
 };
 
@@ -29,10 +33,10 @@ export default function RootLayout({
   return (
     <html lang="en" className="">
       <head>
-        <title>CodeMate AI | Your Professional And Secured AI Pair Programmer</title>
+        <title>Slangster</title>
       </head>
       <body
-        className= {`${montserrat.className} antialiased bg-zinc-950 text-white dark`}
+        className= {`antialiased bg-[#000000] text-white dark ${inter.className}`}
       >
         {children}
       </body>
