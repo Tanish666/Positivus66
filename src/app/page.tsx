@@ -242,17 +242,16 @@ function Page() {
           src="4.svg" alt=""  className='size-[60%] absolute -left-10 z-10'/>
            
 
-           <div className='z-10'>
+           
            <motion.img 
            initial={{y:300}}
            whileInView={{y:0,}}
            viewport={{once:true}}
            transition={{duration:1}}
 
-           src="1.svg" alt=""  className='size-[90%]'/>
+           src="1.svg" alt=""  className='size-[90%] z-10'/>
            
-           </div>
-
+          
            <motion.img 
           initial={{opacity:0,filter:'blur(20px)'}}
           whileInView={{opacity:1,filter:'blur(0px)'}}
