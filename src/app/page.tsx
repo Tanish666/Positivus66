@@ -351,7 +351,7 @@ function FAQ() {
   {faqs.map((question, index) => (
     <div
       key={index}
-      className="flex items-center justify-between rounded-xl bg-gradient-to-r from-[#0B0B0A] to-[#371D0F] px-5 py-4 cursor-pointer transition-all duration-300 ease-out hover:scale-105 hover:shadow-[0_0_25px_rgba(250,108,37,0.25)] hover:from-[#1A1210] hover:to-[#4A2D1F]"
+      className="flex items-center justify-between rounded-xl bg-gradient-to-r from-[#0B0B0A] to-[#371D0F] px-5 py-4 cursor-pointer transition-all duration-300 ease-out hover:scale-105 hover:shadow-[0_0_25px_rgba(250,108,37,0.25)] hover:from-[#1A1210] hover:to-[#4A2D1F] shadow-lg shadow-zinc-900"
     >
       <h2 className="text-lg font-bold text-white">
         {question}
@@ -367,7 +367,7 @@ function FAQ() {
 
 function Footer2() {
   return (
-    <footer className="w-full bg-[#0B0B0A] px-10 py-14">
+    <footer className="w-full bg-[#0B0B0A] px-10 py-10">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
           <img src="fulllogo.svg" alt="" />
         {/* Logo Section */}
