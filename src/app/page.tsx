@@ -338,19 +338,19 @@ function FAQ() {
       <h1 className="text-center text-3xl font-bold mb-10">FAQ</h1>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {faqs.map((question, index) => (
-          <div
-            key={index}
-            className="flex items-center justify-between rounded-xl bg-gradient-to-r from-[#0B0B0A] to-[#371D0F] px-5 py-4 cursor-pointer hover:opacity-90 transition"
-          >
-            <h2 className="text-lg font-bold text-white">
-              {question}
-            </h2>
+  {faqs.map((question, index) => (
+    <div
+      key={index}
+      className="flex items-center justify-between rounded-xl bg-gradient-to-r from-[#0B0B0A] to-[#371D0F] px-5 py-4 cursor-pointer transition-all duration-300 ease-out hover:scale-105 hover:shadow-[0_0_25px_rgba(250,108,37,0.25)] hover:from-[#1A1210] hover:to-[#4A2D1F]"
+    >
+      <h2 className="text-lg font-bold text-white">
+        {question}
+      </h2>
 
-            <span className="text-white text-lg"><IconChevronDown stroke={2} /></span>
-          </div>
-        ))}
-      </div>
+      <span className="text-white text-lg"><IconChevronDown stroke={2} /></span>
+    </div>
+  ))}
+</div>
     </section>
   );
 }
