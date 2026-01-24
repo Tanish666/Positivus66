@@ -220,18 +220,18 @@ function Page() {
 
         {/* contributors */}
         <div className='mt-28'>
-          <h1 className='text-2xl text-center font-bold mb-5'>Major Contributors</h1>
-          <div className='flex gap-6'>
-          {cards.map((_, index) => (
-        <div
-          key={index}
-          className="size-[17vw] bg-gradient-to-l from-[#FA6C25]/10 to-[#141110]/40 px-20 py-5 flex flex-col justify-end"
-        >
-          <h1 className="font-bold text-center">Name</h1>
-          <h1 className="text-[#969696] text-center">Core Contributor</h1>
-        </div>
-      ))} 
-          </div>
+  <h1 className='text-2xl text-center font-bold mb-5'>Major Contributors</h1>
+  <div className='flex gap-6'>
+    {cards.map((_, index) => (
+      <div
+        key={index}
+        className="size-[17vw] bg-gradient-to-l from-[#FA6C25]/10 to-[#141110]/40 px-5 py-5 flex flex-col justify-end cursor-pointer transition-all duration-300 ease-out hover:scale-105 hover:shadow-[0_0_30px_rgba(250,108,37,0.3)] hover:from-[#FA6C25]/20 hover:to-[#141110]/50 rounded-lg"
+      >
+        <h1 className="font-bold text-center">Name</h1>
+        <h1 className="text-[#969696] text-center text-nowrap">Core Contributor</h1>
+      </div>
+    ))} 
+  </div>
         </div>
         {/* contributors */}
 
@@ -283,12 +283,14 @@ function Page() {
           <motion.img 
           initial={{scale:0.8,y:-100 ,opacity:0}}
           whileInView={{y:0,opacity:1}}
+          viewport={{once:true,amount:0.1}}
           transition={{duration:1,delay:3.5}}
           src="10k.svg" alt=""  className='absolute top-2 left-52 z-20'/>
 
           <motion.img 
           initial={{scale:0.8,y:100,opacity:0}}
           whileInView={{y:0,opacity:1}}
+          viewport={{once:true,amount:0.1}}
           transition={{duration:1,delay:3.5}}
           src="25k.svg" alt=""  className='absolute -bottom-10 right-52 z-20'/>
 
