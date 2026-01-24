@@ -160,59 +160,69 @@ function Page() {
         <div 
         ref={bentoRef}
         className='flex flex-col justify-center items-center mt-28'>
-          <div className='flex'>
-             <div className='relative flex flex-col justify-center items-center bg-gradient-to-tl from-[#FA6C25]/10  px-20 py-10 to-[#141110]/10'>
-              <img src="bitcoin.svg" alt="" className='mb-5 size-[25%]'/>
-              <h1 className='text-2xl font-bold text-center'>multi-Template & Multi-Language Support</h1>
-              <p className='text-xs text-center'>Enables developers to work across different technology stacks with a unified command interface.</p>
-               
-              <motion.div 
-              initial={{opacity:0.5}}
-              whileInView={{opacity:[1,0]}}
-              transition={{duration:2,repeat:Infinity,repeatType:'mirror'}}
-              className='absolute right-0'> 
-              <div className="relative h-72 w-[2px]">
-              {/* Glow */}
-              <div className="absolute inset-0 bg-orange-500/70 blur-xl" />
+<div className=''>
+  <div className='grid grid-cols-1 md:grid-cols-2 '>
+    {/* Card 1 */}
+    <div className='relative flex flex-col justify-center items-center bg-gradient-to-tl from-[#FA6C25]/10 to-[#141110]/10 px-20 py-12 rounded-lg min-h-[400px]'>
+      <img src="bitcoin.svg" alt="" className='h-16 w-16 object-cover mb-6' />
+      <div className='flex flex-col gap-3'>
+        <h1 className='text-2xl font-bold text-center'>multi-Template & Multi-Language Support</h1>
+        <p className='text-sm text-center text-gray-400'>Enables developers to work across different technology stacks with a unified command interface.</p>
+      </div>
+      <motion.div 
+        initial={{opacity:0.5}}
+        whileInView={{opacity:[1,0]}}
+        transition={{duration:2,repeat:Infinity,repeatType:'mirror'}}
+        className='absolute right-0 top-0 bottom-0'
+      > 
+        <div className="relative h-full w-[2px]">
+          <div className="absolute inset-0 bg-orange-500/70 blur-xl" />
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-orange-500 to-transparent" />
+        </div>
+      </motion.div>
+    </div>
 
-              {/* Core line */}
-              <div className="absolute inset-0 bg-gradient-to-b from-transparent via-orange-500 to-transparent" />
-              </div>
-              </motion.div>
-             </div>
-             <div className='flex flex-col justify-center items-center px-20 py-10'>
-              <img src="bitcoin.svg" alt="" className='mb-5 size-[25%]'/>
-              <h1 className='text-2xl font-bold text-center'>multi-Template & Multi-Language Support</h1>
-              <p className='text-xs text-center'>Enables developers to work across different technology stacks with a unified command interface.</p>
-             </div>
-          </div>
-          <div className='flex'>
+    {/* Card 2 */}
+    <div className='flex flex-col justify-center items-center bg-gradient-to-br from-[#0B0B0A]/50 to-[#141110]/10 px-20 py-12 rounded-lg min-h-[400px]'>
+      <img src="bento2.svg" alt="" className='h-16 w-16 object-cover mb-6' />
+      <div className='flex flex-col gap-3'>
+        <h1 className='text-2xl font-bold text-center'>Interactive Configuration & Prompting</h1>
+        <p className='text-sm text-center text-gray-400'>Provides a user-friendly experience and minimizes errors from manual configuration.</p>
+      </div>
+    </div>
+  </div>
 
-             <div className='flex flex-col justify-center items-center px-20 py-10'>
-              <img src="bitcoin.svg" alt="" className='mb-5 size-[25%]'/>
-              <h1 className='text-2xl font-bold text-center'>multi-Template & Multi-Language Support</h1>
-              <p className='text-xs text-center'>Enables developers to work across different technology stacks with a unified command interface.</p>
-             </div>
-             <div className='relative flex flex-col justify-center items-center bg-gradient-to-tr from-[#FA6C25]/10  px-20 py-10 to-[#141110]/10'>
-              <img src="bitcoin.svg" alt="" className='mb-5 size-[25%]'/>
-              <h1 className='text-2xl font-bold text-center'>multi-Template & Multi-Language Support</h1>
-              <p className='text-xs text-center'>Enables developers to work across different technology stacks with a unified command interface.</p>
-               
-              <motion.div 
-              initial={{opacity:0.5}}
-              whileInView={{opacity:[1,0]}}
-              transition={{duration:2,repeat:Infinity,repeatType:'mirror'}}
-              className='absolute left-0'> 
-              <div className="relative h-72 w-[2px]">
-              {/* Glow */}
-              <div className="absolute inset-0 bg-orange-500/70 blur-xl" />
+  <div className='grid grid-cols-1 md:grid-cols-2 '>
+    {/* Card 3 */}
+    <div className='flex flex-col justify-center items-center bg-gradient-to-br from-[#0B0B0A]/50 to-[#141110]/10 px-20 py-12 rounded-lg min-h-[400px]'>
+      <img src="bento3.svg" alt="" className='h-16 w-16 object-cover mb-6' />
+      <div className='flex flex-col gap-3'>
+        <h1 className='text-2xl font-bold text-center'>Component & Module Generation</h1>
+        <p className='text-sm text-center text-gray-400'>Significantly speeds up repetitive coding tasks and enforces best practices.</p>
+      </div>
+    </div>
 
-              {/* Core line */}
-              <div className="absolute inset-0 bg-gradient-to-b from-transparent via-orange-500 to-transparent" />
-              </div>
-              </motion.div>
-             </div>
-          </div>
+    {/* Card 4 */}
+    <div className='relative flex flex-col justify-center items-center bg-gradient-to-tr from-[#FA6C25]/10 to-[#141110]/10 px-20 py-12 rounded-lg min-h-[400px]'>
+      <img src="bento4.svg" alt="" className='h-16 w-16 object-cover mb-6' />
+      <div className='flex flex-col gap-3'>
+        <h1 className='text-2xl font-bold text-center'>Extensible Post-Processing Pipeline</h1>
+        <p className='text-sm text-center text-gray-400'>Delivers a fully functional, ready-to-code project immediately after generation.</p>
+      </div>
+      <motion.div 
+        initial={{opacity:0.5}}
+        whileInView={{opacity:[1,0]}}
+        transition={{duration:2,repeat:Infinity,repeatType:'mirror'}}
+        className='absolute left-0 top-0 bottom-0'
+      > 
+        <div className="relative h-full w-[2px]">
+          <div className="absolute inset-0 bg-orange-500/70 blur-xl" />
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-orange-500 to-transparent" />
+        </div>
+      </motion.div>
+    </div>
+  </div>
+</div>
           <motion.img style={{rotate:rotateCircle,scale:scaleCircle}} src="s.svg" alt="" className='absolute' />
         </div>
         {/* bento */}
@@ -225,7 +235,7 @@ function Page() {
     {cards.map((_, index) => (
       <div
         key={index}
-        className="size-[17vw] bg-gradient-to-l from-[#FA6C25]/10 to-[#141110]/40 px-5 py-5 flex flex-col justify-end cursor-pointer transition-all duration-300 ease-out hover:scale-105 hover:shadow-[0_0_30px_rgba(250,108,37,0.3)] hover:from-[#FA6C25]/20 hover:to-[#141110]/50 rounded-lg"
+        className="size-[17vw] bg-gradient-to-l from-[#FA6C25]/10 to-[#141110]/40 px-5 py-5 flex flex-col justify-end cursor-pointer transition-all duration-300 ease-out hover:scale-105 hover:shadow-[0_0_30px_rgba(250,108,37,0.3)] hover:from-[#FA6C25]/20 hover:to-[#141110]/50 rounded-xl"
       >
         <h1 className="font-bold text-center">Name</h1>
         <h1 className="text-[#969696] text-center text-nowrap">Core Contributor</h1>
@@ -395,7 +405,7 @@ function Footer2() {
       </div>
 
       {/* Bottom Text */}
-      <div className="mt-12 pl-20 text-lg text-gray-500">
+      <div className="max-w-7xl mx-auto mt-12 text-lg text-gray-500">
         © 2024 ScaffoldGen CLI. All rights reserved.
       </div>
     </footer>
