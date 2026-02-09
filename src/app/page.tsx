@@ -97,6 +97,11 @@ function page() {
 
         <Process />
 
+        <div className='flex items-center gap-5 mt-10'>
+          <h1 className='text-3xl text-black bg-[#B9FF66] px-2 py-1 rounded-lg font-bold'>Testimonials</h1>
+          <p className='text-lg w-[35vw] leading-[20px]'>Hear from Our Satisfied Clients: Read Our Testimonials to Learn More about Our Digital Marketing Services</p>
+        </div>
+
 
       </div>
     </>
