@@ -3,6 +3,7 @@ import Image from 'next/image'
 import HeroImg from '@/components/heroImg'
 import HeroMarquee from '@/components/heroMarquee'
 import { Marquee } from '@/components/ui/marquee'
+import Process from '@/components/process'
 
 function page() {
   const marqueeContent = [
@@ -94,26 +95,8 @@ function page() {
         </div>
 
 
-        <div className='space-y-5'>
-          <div className='flex items-center justify-between gap-5 bg-[#F3F3F3] p-5 rounded-[2rem] border border-black border-b-[5px]'>
-            <div className='flex gap-2 items-center'>
-              <h1 className='text-6xl'>01</h1>
-              <h1 className='text-2xl font-semibold'>Consultation</h1>
-            </div>
-            <div className='flex p-2 items-center justify-center rounded-full border border-black cursor-pointer hover:bg-[#B9FF66] hover:text-black transition-all duration-300'>
-              <Image src="plus.svg" width={20} height={20} alt="" />
-            </div>
-          </div>
-          <div className='flex items-center justify-between gap-5 bg-[#F3F3F3] p-5 rounded-[2rem] border border-black border-b-[5px] '>
-            <div className='flex gap-2 items-center'>
-              <h1 className='text-6xl'>02</h1>
-              <h1 className='text-2xl font-semibold'>Research and Strategy Development</h1>
-            </div>
-            <div className='flex p-2 items-center justify-center rounded-full border border-black cursor-pointer hover:bg-[#B9FF66] hover:text-black transition-all duration-300'>
-              <Image src="plus.svg" width={20} height={20} alt="" />
-            </div>
-          </div>
-        </div>
+        <Process />
+
 
       </div>
     </>
