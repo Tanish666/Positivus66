@@ -11,22 +11,22 @@ const testimonials = [
         role: "Marketing Director at XYZ Corp",
     },
     {
-        text: "Positivus has transformed our digital strategy. Their expertise in SEO and PPC is unmatched. We've seen a 200% ROI in just six months.",
+        text: "We have been working with Positivus for the past year and have seen a significant increase in website traffic and leads as a result of their efforts. The team is professional, responsive, and truly cares about the success of our business. We highly recommend Positivus to any company looking to grow their online presence.",
         name: "Jane Doe",
         role: "CEO at TechStart Inc.",
     },
     {
-        text: "The team at Positivus is simply amazing. They delivered a beautiful website that perfectly represents our brand. Our conversion rates have skyrocketed!",
+        text: "We have been working with Positivus for the past year and have seen a significant increase in website traffic and leads as a result of their efforts. The team is professional, responsive, and truly cares about the success of our business. We highly recommend Positivus to any company looking to grow their online presence.",
         name: "Michael Brown",
         role: "Founder at Creative Solutions",
     },
     {
-        text: "Working with Positivus was the best decision we made. Their data-driven approach ensured we targeted the right audience effectively.",
+        text: "We have been working with Positivus for the past year and have seen a significant increase in website traffic and leads as a result of their efforts. The team is professional, responsive, and truly cares about the success of our business. We highly recommend Positivus to any company looking to grow their online presence.",
         name: "Emily Davis",
         role: "CMO at Retail Giants",
     },
     {
-        text: "Exceptional service and results. Positivus helped us scale our business rapidly through targeted social media campaigns.",
+        text: "We have been working with Positivus for the past year and have seen a significant increase in website traffic and leads as a result of their efforts. The team is professional, responsive, and truly cares about the success of our business. We highly recommend Positivus to any company looking to grow their online presence.",
         name: "David Wilson",
         role: "Director at GrowthHackers",
     },
@@ -102,7 +102,7 @@ function QuoteBubble({ text, name, role }: { text: string; name: string; role: s
                 <div className="absolute -bottom-[20px] left-10 w-0 h-0 border-l-[20px] border-r-[20px] border-t-[20px] border-l-transparent border-r-transparent border-t-lime-400"></div>
                 <div className="absolute -bottom-[18px] left-[43px] w-0 h-0 border-l-[18px] border-r-[18px] border-t-[20px] border-l-transparent border-r-transparent border-t-[#1a1f2e]"></div>
             </div>
-            <div className='flex flex-col ml-14'>
+            <div className='flex flex-col md:ml-14'>
                 <h1 className='text-[#B9FF66] font-bold text-lg'>{name}</h1>
                 <p className='text-[#FFFFFF]'>{role}</p>
             </div>
