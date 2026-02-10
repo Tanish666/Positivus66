@@ -2,6 +2,7 @@ import React from 'react'
 import Image from 'next/image'
 import HeroImg from '@/components/heroImg'
 import HeroMarquee from '@/components/heroMarquee'
+import PositivusFooter from '@/components/ui/footer2'
 import { Marquee } from '@/components/ui/marquee'
 import Process from '@/components/process'
 import TestimonialCarousel from '@/components/TestimonialCarousel'
@@ -104,6 +105,7 @@ function page() {
         </div>
 
         <TestimonialCarousel />
+        <PositivusFooter />
       </div>
     </>
   )
