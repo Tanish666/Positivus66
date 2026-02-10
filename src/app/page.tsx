@@ -4,6 +4,7 @@ import HeroImg from '@/components/heroImg'
 import HeroMarquee from '@/components/heroMarquee'
 import { Marquee } from '@/components/ui/marquee'
 import Process from '@/components/process'
+import TestimonialCarousel from '@/components/TestimonialCarousel'
 
 function page() {
   const marqueeContent = [
@@ -102,10 +103,11 @@ function page() {
           <p className='text-lg w-[35vw] leading-[20px]'>Hear from Our Satisfied Clients: Read Our Testimonials to Learn More about Our Digital Marketing Services</p>
         </div>
 
-
+        <TestimonialCarousel />
       </div>
     </>
   )
 }
 
 export default page
+
