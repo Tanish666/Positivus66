@@ -127,7 +127,7 @@ function page() {
             </div>
 
             <div className='hidden md:flex justify-end'>
-              <Image src="/illu.svg" width={250} height={250} alt="" />
+              <Image src="/illu.svg" width={400} height={400} alt="" />
             </div>
           </div>
 
@@ -149,7 +149,7 @@ function page() {
             </div>
 
             <div className='hidden md:flex justify-end'>
-              <Image src="/illu2.svg" width={250} height={250} alt="" />
+              <Image src="/illu2.svg" width={400} height={400} alt="" />
             </div>
           </div>
         </div>
