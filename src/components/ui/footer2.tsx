@@ -21,7 +21,7 @@ export default function PositivusFooter() {
 
                         {/* Contact */}
                         <div className="space-y-4">
-                            <span className="inline-block bg-lime-400 text-black text-sm font-medium px-3 py-1 rounded-md">
+                            <span className="inline-block bg-lime-400 text-black text-sm px-3 py-1 rounded-md font-bold text-lg cursor-default">
                                 Contact us:
                             </span>
 
