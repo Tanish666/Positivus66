@@ -38,7 +38,7 @@ function page() {
       <div className='w-full px-6 md:px-20 space-y-10 overflow-x-hidden'>
         {/* navbar */}
         {/* navbar */}
-        <nav className='h-20 w-full bg-white flex items-center justify-between mt-7 relative z-50'>
+        <nav className='h-20 w-full bg-white flex items-center justify-between md:mt-7 mt-2 relative z-50'>
           <div className='flex items-center gap-2'>
             <Image src="/logo.svg" width={150} height={150} alt="Positivus" className="md:w-[200px]" />
           </div>
@@ -103,9 +103,9 @@ function page() {
         </Marquee>
 
 
-        <div className='flex items-center gap-5 mt-10'>
+        <div className='flex flex-col md:flex-row items-center gap-5 mt-10 text-center md:text-left'>
           <h1 className='text-3xl text-black bg-[#B9FF66] px-2 py-1 rounded-lg font-bold'>Services</h1>
-          <p className='text-lg w-[45vw] leading-[20px]'>At our digital marketing agency, we offer a range of services to help businesses grow and succeed online. These services include:</p>
+          <p className='text-lg w-full md:w-[45vw] leading-[20px]'>At our digital marketing agency, we offer a range of services to help businesses grow and succeed online. These services include:</p>
         </div>
 
         <div className='flex flex-col md:flex-row items-center justify-between gap-10 mt-10'>

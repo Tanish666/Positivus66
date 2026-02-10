@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -34,6 +34,20 @@ const testimonials = [
 
 const TestimonialCarousel = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
+    const [windowWidth, setWindowWidth] = useState(0);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setWindowWidth(window.innerWidth);
+        };
+        handleResize();
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
+    const isMobile = windowWidth < 768;
+    const cardWidth = isMobile ? Math.min(windowWidth - 40, 600) : 600;
+    const gap = isMobile ? 20 : 40;
 
     const handleNext = () => {
         setCurrentIndex((prev) => (prev + 1) % testimonials.length);
@@ -51,12 +65,13 @@ const TestimonialCarousel = () => {
         <div className='bg-[#191A23] overflow-hidden py-10 rounded-[3rem] w-full'>
             <div className='relative w-full overflow-hidden mb-20'>
                 <motion.div
-                    className='flex gap-10 ml-[50%]'
-                    animate={{ x: -(currentIndex * 640 + 300) }}
+                    className='flex ml-[50%]'
+                    style={{ gap: `${gap}px` }}
+                    animate={{ x: -(currentIndex * (cardWidth + gap) + cardWidth / 2) }}
                     transition={{ type: 'spring', stiffness: 300, damping: 30 }}
                 >
                     {testimonials.map((item, index) => (
-                        <div key={index} className='shrink-0 w-[600px] flex justify-center'>
+                        <div key={index} className='shrink-0 flex justify-center' style={{ width: cardWidth }}>
                             <QuoteBubble text={item.text} name={item.name} role={item.role} />
                         </div>
                     ))}
@@ -64,17 +79,17 @@ const TestimonialCarousel = () => {
             </div>
 
             <div className='w-full flex items-center justify-center mt-10'>
-                <div className='flex items-center justify-between w-[50vw] max-w-sm'>
+                <div className='flex items-center justify-between w-full px-8 md:w-[50vw] md:px-0 max-w-sm'>
                     <button onClick={handlePrev} className="focus:outline-none transition-transform hover:scale-110 active:scale-95">
-                        <Image src="/left.svg" width={23} height={23} alt="Previous" />
+                        <Image src="/right.svg" width={23} height={23} alt="Previous" className='rotate-180' />
                     </button>
-                    <div className='flex gap-2'>
+                    <div className='flex gap-4'>
                         {testimonials.map((_, index) => (
                             <button key={index} onClick={() => handleDotClick(index)} className="focus:outline-none">
                                 <Image
                                     src={currentIndex === index ? "/tick.svg" : "/tick2.svg"}
-                                    width={23}
-                                    height={23}
+                                    width={14}
+                                    height={14}
                                     alt={`Go to slide ${index + 1}`}
                                     className="transition-all duration-300"
                                 />
@@ -93,16 +108,16 @@ const TestimonialCarousel = () => {
 function QuoteBubble({ text, name, role }: { text: string; name: string; role: string }) {
     return (
         <div className="flex flex-col items-center md:items-start p-6 max-w-2xl w-full">
-            <div className="relative text-gray-200 text-[16px] leading-relaxed py-8 px-16 rounded-[3rem] border-2 border-lime-400  mb-8 w-full">
+            <div className="relative text-gray-200 text-sm md:text-[16px] leading-relaxed py-8 px-6 md:px-16 rounded-[3rem] border-2 border-lime-400 mb-8 w-full">
                 <p>
                     “{text}”
                 </p>
 
                 {/* Bubble Tail */}
-                <div className="absolute -bottom-[20px] left-10 w-0 h-0 border-l-[20px] border-r-[20px] border-t-[20px] border-l-transparent border-r-transparent border-t-lime-400"></div>
-                <div className="absolute -bottom-[18px] left-[43px] w-0 h-0 border-l-[18px] border-r-[18px] border-t-[20px] border-l-transparent border-r-transparent border-t-[#1a1f2e]"></div>
+                <div className="absolute -bottom-[20px] left-1/2 -translate-x-1/2 md:translate-x-0 md:left-10 w-0 h-0 border-l-[20px] border-r-[20px] border-t-[20px] border-l-transparent border-r-transparent border-t-lime-400"></div>
+                <div className="absolute -bottom-[18px] left-1/2 -translate-x-1/2 md:translate-x-0 md:left-[43px] w-0 h-0 border-l-[18px] border-r-[18px] border-t-[20px] border-l-transparent border-r-transparent border-t-[#1a1f2e]"></div>
             </div>
-            <div className='flex flex-col md:ml-14'>
+            <div className='flex flex-col md:ml-14 items-center md:items-start'>
                 <h1 className='text-[#B9FF66] font-bold text-lg'>{name}</h1>
                 <p className='text-[#FFFFFF]'>{role}</p>
             </div>
