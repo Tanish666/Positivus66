@@ -7,7 +7,7 @@ import Image from "next/image";
 
 export default function PositivusFooter() {
     return (
-        <footer className="w-full bg-[#0f1420] text-white px-6 md:px-16 py-14 rounded-t-[3rem]">
+        <footer className="w-full bg-[#191A23] text-white px-6 md:px-16 py-14 rounded-t-[3rem]">
             <div className="max-w-7xl mx-auto">
                 {/* Top Section */}
                 <div className="flex flex-col lg:flex-row justify-between gap-12">
