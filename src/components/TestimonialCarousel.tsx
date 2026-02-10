@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -34,6 +34,14 @@ const testimonials = [
 
 const TestimonialCarousel = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
+    const [windowWidth, setWindowWidth] = useState(0);
+
+    useEffect(() => {
+        const handleResize = () => setWindowWidth(window.innerWidth);
+        handleResize();
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
 
     const handleNext = () => {
         setCurrentIndex((prev) => (prev + 1) % testimonials.length);
@@ -47,16 +55,34 @@ const TestimonialCarousel = () => {
         setCurrentIndex(index);
     };
 
+    // Configuration
+    const gap = 40; // match gap-10
+    // On mobile (md breakpoint 768), use full width minus padding, max 600px on desktop
+    const isMobile = windowWidth < 768;
+    const itemWidth = isMobile ? windowWidth - 48 : 600;
+
+    // Center alignment logic:
+    // We want the current item's center to be at the center of the container.
+    // The container has ml-[50%], so it starts at the center of the screen.
+    // The items are in a flex row.
+    // To center the i-th item:
+    // x = - (i * (width + gap)) - width/2
+    const xOffset = -(currentIndex * (itemWidth + gap) + itemWidth / 2);
+
+    // Initial render hydration mismatch prevention: render nothing or desktop default until mounted
+    // But since we use use client, we can just wait for windowWidth to be set > 0
+    if (windowWidth === 0) return null;
+
     return (
         <div className='bg-[#191A23] overflow-hidden py-10 rounded-[3rem] w-full'>
             <div className='relative w-full overflow-hidden mb-20'>
                 <motion.div
                     className='flex gap-10 ml-[50%]'
-                    animate={{ x: -(currentIndex * 640 + 300) }}
+                    animate={{ x: xOffset }}
                     transition={{ type: 'spring', stiffness: 300, damping: 30 }}
                 >
                     {testimonials.map((item, index) => (
-                        <div key={index} className='shrink-0 w-[600px] flex justify-center'>
+                        <div key={index} className='shrink-0 flex justify-center' style={{ width: itemWidth }}>
                             <QuoteBubble text={item.text} name={item.name} role={item.role} />
                         </div>
                     ))}
@@ -64,7 +90,7 @@ const TestimonialCarousel = () => {
             </div>
 
             <div className='w-full flex items-center justify-center mt-10'>
-                <div className='flex items-center justify-between w-[50vw] max-w-sm'>
+                <div className='flex items-center justify-between w-full px-5 md:w-[50vw] md:px-0 max-w-sm'>
                     <button onClick={handlePrev} className="focus:outline-none transition-transform hover:scale-110 active:scale-95">
                         <Image src="/left.svg" width={23} height={23} alt="Previous" />
                     </button>
@@ -93,7 +119,7 @@ const TestimonialCarousel = () => {
 function QuoteBubble({ text, name, role }: { text: string; name: string; role: string }) {
     return (
         <div className="flex flex-col items-center md:items-start p-6 max-w-2xl w-full">
-            <div className="relative text-gray-200 text-[16px] leading-relaxed py-8 px-16 rounded-[3rem] border-2 border-lime-400  mb-8 w-full">
+            <div className="relative text-gray-200 text-[16px] leading-relaxed py-8 px-6 md:px-16 rounded-[3rem] border-2 border-lime-400 mb-8 w-full">
                 <p>
                     “{text}”
                 </p>
