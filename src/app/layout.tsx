@@ -17,7 +17,7 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "ScaffoldGen",
+  title: "Positivus",
   description: "This is my Next.js app",
   icons: {
     icon: "/", // path relative to public/
