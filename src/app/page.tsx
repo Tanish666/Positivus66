@@ -117,7 +117,7 @@ function page() {
               </div>
               <div className='flex items-end justify-between w-full'>
                 <div className='flex gap-2 items-center text-lg'>
-                  <Image src="/icon.svg" width={40} height={40} alt="" />
+                  <Image src="/link.svg" width={40} height={40} alt="" />
                   <h1 className='hidden md:block'>Learn more</h1>
                 </div>
                 <div className='md:hidden'>
@@ -139,7 +139,7 @@ function page() {
               </div>
               <div className='flex items-end justify-between w-full'>
                 <div className='flex gap-2 items-center text-lg'>
-                  <Image src="/icon.svg" width={40} height={40} alt="" />
+                  <Image src="/link.svg" width={40} height={40} alt="" />
                   <h1 className='hidden md:block'>Learn more</h1>
                 </div>
                 <div className='md:hidden'>
